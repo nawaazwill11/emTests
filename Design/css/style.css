@@ -31,6 +31,29 @@ legend{
 	box-shadow: 0px 1px 10px 2px darkgrey;
 }
 
+.containerForgot{
+	padding: 5px;
+	position: fixed;
+    width: auto; /* Set your desired with */
+    z-index: 2; /* Make sure its above other items. */
+    top: 40%;
+    left: 50%;
+    margin-top: -10%; /* Changes with height. */
+    margin-left: -10%;
+	box-shadow: 0px 1px 10px 2px darkgrey;
+}
+
+.containerResetSent{
+	padding: 5px;
+	position: fixed;
+    width: auto; /* Set your desired with */
+    z-index: 2; /* Make sure its above other items. */
+    top: 26%;
+    left: 11%;
+    margin-top: -10%; /* Changes with height. */
+    margin-left: -10%;
+	box-shadow: 0px 1px 10px 2px darkgrey;
+}
 .btnLoginLogin{
 	text-align: center;
 }
