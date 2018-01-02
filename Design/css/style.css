@@ -7,9 +7,22 @@ legend{
 	text-align: center;
 }
 
-.container{
+.containerLogin{
+	padding: 5px;
 	position: fixed;
     width: 21%; /* Set your desired with */
+    z-index: 2; /* Make sure its above other items. */
+    top: 40%;
+    left: 50%;
+    margin-top: -10%; /* Changes with height. */
+    margin-left: -10%;
+	box-shadow: 0px 1px 10px 2px darkgrey;
+}
+
+.containerReg{
+	padding: 5px;
+	position: fixed;
+    width: 25%; /* Set your desired with */
     z-index: 2; /* Make sure its above other items. */
     top: 40%;
     left: 50%;
@@ -26,6 +39,9 @@ legend{
 	width: 110px;
 }
 
-.btnLoginLogin a{
+.btnLoginLogin a, .btnRegReg a{
 	color: black
+}
+.btnRegReg button{
+
 }
