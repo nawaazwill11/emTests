@@ -65,3 +65,16 @@
 .btnRegReg button{
 
 }
+nav {
+    background-color: #e62828; 
+}
+.searches{
+    float: left;
+    margin-top: 12px;
+}
+.em-name{
+    float: left;
+    font-size: 35px;
+    color: white;
+    margin-right: 20px;
+}
