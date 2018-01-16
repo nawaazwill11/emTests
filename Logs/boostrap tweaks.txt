@@ -3,7 +3,7 @@ role :
 1. button - for respresenting button for screen reader
 2. group - for grouping a series of buttons. The group members will be the underlying buttons under this div that has role="group. ex: <div class="btn-group btn-group-lg" role="group">
 btn disabled - disables the button.
-container - for using col
+container - for padding
 row - for making responsive pages
 clearfix visible-sm - clears unnecessary spaces in small screens (sm).
 <a href="#id" data-toggle="collapse">Some text</a>
@@ -11,3 +11,9 @@ clearfix visible-sm - clears unnecessary spaces in small screens (sm).
 Some content</div>
 the above code collapses the content when the link is clicked.
 class="collapse in" will not let the collapse be initially. 
+well - adds a rounded border and background
+hidden-[size] - hides contents on specific screen sizes.(xs<768,768=sm<992,992=md<1200,lg>=1200)
+col-[size]-offset-[blocks] - leaves the number of blocks before it.
+img-responsive - for responsive image
+text-muted - colors text
+bg-muted - color text background

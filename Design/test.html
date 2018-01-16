@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <style>
+    .fixed-sidebar {
+    position: fixed;
+    z-index: 22;
+    width: 70px;
+    min-height: 1000vh;
+  }
+  .fixed-sidebar-left.sidebar--small {
+    width: 70px;
+    transition-delay: .3s;
+}
+
+.fixed-sidebar .mCustomScrollbar {
+    max-height: calc(100vh - 70px);
+    overflow: hidden;
+}
+
+.ps {
+    -ms-touch-action: auto;
+    touch-action: auto;
+    overflow: hidden!important;
+    -ms-overflow-style: none;
+}
+  </style>
+</head>
+<body>
+<div class="fixed-sidebar">
+  <div class="fixed-sidebar-left sidebar--small" id="sidebar-left">
+
+    <a href="02-ProfilePage.html" class="logo">
+      <div class="img-wrap">
+        <img src="img/logo.png" alt="Olympus">
+      </div>
+    </a>
+
+    <div class="mCustomScrollbar ps ps--theme_default ps--active-x ps--active-y" data-mcs-theme="dark" data-ps-id="f0caf02d-223c-a860-8c3c-fc8509c365e4">
+      <ul class="left-menu">
+        <li>
+          <a href="#" class="js-sidebar-open">
+            <svg class="olymp-menu-icon left-menu-icon" data-toggle="tooltip" data-placement="right" data-original-title="OPEN MENU"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="svg-icons/sprites/icons.svg#olymp-menu-icon"></use></svg>
+          </a>
+        </li>
+        <li>
+          <a href="03-Newsfeed.html">
+            <svg class="olymp-newsfeed-icon left-menu-icon" data-toggle="tooltip" data-placement="right" data-original-title="NEWSFEED"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="svg-icons/sprites/icons.svg#olymp-newsfeed-icon"></use></svg>
+          </a>
+        </li>
+        <li>
+          <a href="16-FavPagesFeed.html">
+            <svg class="olymp-star-icon left-menu-icon" data-toggle="tooltip" data-placement="right" data-original-title="FAV PAGE"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="svg-icons/sprites/icons.svg#olymp-star-icon"></use></svg>
+          </a>
+        </li>
+        <li>
+          <a href="17-FriendGroups.html">
+            <svg class="olymp-happy-faces-icon left-menu-icon" data-toggle="tooltip" data-placement="right" data-original-title="FRIEND GROUPS"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="svg-icons/sprites/icons.svg#olymp-happy-faces-icon"></use></svg>
+          </a>
+        </li>
+        <li>
+          <a href="18-MusicAndPlaylists.html">
+            <svg class="olymp-headphones-icon left-menu-icon" data-toggle="tooltip" data-placement="right" data-original-title="MUSIC&amp;PLAYLISTS"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="svg-icons/sprites/icons.svg#olymp-headphones-icon"></use></svg>
+          </a>
+        </li>
+        <li>
+          <a href="19-WeatherWidget.html">
+            <svg class="olymp-weather-icon left-menu-icon" data-toggle="tooltip" data-placement="right" data-original-title="WEATHER APP"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="svg-icons/sprites/icons.svg#olymp-weather-icon"></use></svg>
+          </a>
+        </li>
+        <li>
+          <a href="20-CalendarAndEvents-MonthlyCalendar.html">
+            <svg class="olymp-calendar-icon left-menu-icon" data-toggle="tooltip" data-placement="right" data-original-title="CALENDAR AND EVENTS"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="svg-icons/sprites/icons.svg#olymp-calendar-icon"></use></svg>
+          </a>
+        </li>
+        <li>
+          <a href="24-CommunityBadges.html">
+            <svg class="olymp-badge-icon left-menu-icon" data-toggle="tooltip" data-placement="right" data-original-title="Community Badges"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="svg-icons/sprites/icons.svg#olymp-badge-icon"></use></svg>
+          </a>
+        </li>
+        <li>
+          <a href="25-FriendsBirthday.html">
+            <svg class="olymp-cupcake-icon left-menu-icon" data-toggle="tooltip" data-placement="right" data-original-title="Friends Birthdays"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="svg-icons/sprites/icons.svg#olymp-cupcake-icon"></use></svg>
+          </a>
+        </li>
+        <li>
+          <a href="26-Statistics.html">
+            <svg class="olymp-stats-icon left-menu-icon" data-toggle="tooltip" data-placement="right" data-original-title="Account Stats"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="svg-icons/sprites/icons.svg#olymp-stats-icon"></use></svg>
+          </a>
+        </li>
+        <li>
+          <a href="27-ManageWidgets.html">
+            <svg class="olymp-manage-widgets-icon left-menu-icon" data-toggle="tooltip" data-placement="right" data-original-title="Manage Widgets"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="svg-icons/sprites/icons.svg#olymp-manage-widgets-icon"></use></svg>
+          </a>
+        </li>
+      </ul>
+    <div class="ps__scrollbar-x-rail" style="width: 70px; left: 0px; bottom: 0px;"><div class="ps__scrollbar-x" tabindex="0" style="left: 0px; width: 64px;"></div></div><div class="ps__scrollbar-y-rail" style="top: 0px; height: 534px; right: 0px;"><div class="ps__scrollbar-y" tabindex="0" style="top: 0px; height: 401px;"></div></div></div>
+  </div>
+</div>
+</body>
+</html>

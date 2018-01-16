@@ -65,9 +65,37 @@
 .btnRegReg button{
 
 }
-nav {
-    background-color: #e62828; 
+.navbar{
+        margin-bottom: 0;
+        border-radius: 0;
+        background-color: #ef0707;
+        color: #FFF;
+        font-size: 1.2em;
+        border: 0;
 }
+.navbar-brand{
+    float: left;
+    min-height: 55px;
+    padding: 10px 15px 5px;
+    margin-bottom: 5px;
+}
+.navbar-brand > img {
+    width: 3.9em; 
+    
+}
+.navbar-inverse .navbar-nav>li>a {
+    color: #ffffff;
+}
+.navbar-inverse .navbar-nav>li>a:hover {
+    color: #b2b2b2;
+}   
+#navMenu {
+    margin-top: 9px;
+}
+.navbar-brand {
+    margin-bottom: 14px;
+}
+/******End NavBar******/
 .searches{
     float: left;
     margin-top: 12px;
@@ -77,4 +105,98 @@ nav {
     font-size: 35px;
     color: white;
     margin-right: 20px;
+}
+
+.left-sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.left-sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.left-sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.left-sidenav .left-closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .left-sidenav {padding-top: 15px;}
+  .left-sidenav a {font-size: 18px;}
+}
+#leftSidenav{
+    position: fixed;
+    z-index: 22;
+    width: 0px;
+    min-height: 1000vh
+}
+.leftSidenav-content {
+    position: fixed;
+    /* z-index: 22; */
+    width: 70px;
+    min-height: 1000vh;
+    background-color: antiquewhite;
+    box-shadow: 1px 6px 15px 2px grey;
+}
+.leftSidenav-content-ul{
+    list-style: none;
+    margin-left: -20px;
+}
+
+.leftSidenav-content-ul > li {
+    margin-top: 33px;
+}
+
+.leftSidenav-content-ul-open > li{
+    margin-top: 25px;
+}
+.leftSidenav-content-ul-open > li > a{
+    color: white;
+}
+.leftSidenav-content-ul-open > li > a:hover {
+    color: #ef0707;
+}
+
+.glyphicon{
+    color: #ef0707;
+}
+
+.glyphicon:hover{
+    color: black;
+}
+@media screen and (min-width: 845px) {
+  .navbar-brand {margin-left: -15px;}
+}
+#nav-search{
+    position: fixed;
+    display: inline-flex;
+    margin-top: 16px;
+}
+#nav-search .glyphicon{
+    color: white;
+    font-size: inherit;
+}
+#nav-search .glyphicon:hover{
+    color: black;
 }
