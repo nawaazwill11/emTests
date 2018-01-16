@@ -7,7 +7,7 @@
 .containerLogin{
 	padding: 5px;
 	position: fixed;
-    width: 21%; /* Set your desired with */
+    width: 21%; /* Set your desired width */
     z-index: 2; /* Make sure its above other items. */
     top: 40%;
     left: 50%;
@@ -192,6 +192,7 @@
     position: fixed;
     display: inline-flex;
     margin-top: 16px;
+    float: left
 }
 #nav-search .glyphicon{
     color: white;
@@ -199,4 +200,7 @@
 }
 #nav-search .glyphicon:hover{
     color: black;
+}
+.navbar-toggle{
+    margin-top: 16px
 }
