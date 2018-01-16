@@ -1,0 +1,13 @@
+btn btn-lg btn-primary- has button class followed by the size and the color of the button
+role :
+1. button - for respresenting button for screen reader
+2. group - for grouping a series of buttons. The group members will be the underlying buttons under this div that has role="group. ex: <div class="btn-group btn-group-lg" role="group">
+btn disabled - disables the button.
+container - for using col
+row - for making responsive pages
+clearfix visible-sm - clears unnecessary spaces in small screens (sm).
+<a href="#id" data-toggle="collapse">Some text</a>
+<div id="id" class="collapse">
+Some content</div>
+the above code collapses the content when the link is clicked.
+class="collapse in" will not let the collapse be initially. 
