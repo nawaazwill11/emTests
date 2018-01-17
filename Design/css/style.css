@@ -295,7 +295,7 @@
 .story-main{
     position: absolute;
     left: 10px;
-    height: 25vh;
+    height: 50vh;
     background-color: #fff6c5;
     margin-top: 20px;
 }
@@ -348,4 +348,23 @@
     top: 0;
     left: 60px;
     padding-top: 5px;
+}
+
+.trio-op{
+    position: absolute;
+    display: inline-flex;
+    right: 0;
+    background-color: red;
+    padding: 6px;
+}
+.trio-op .glyphicon {
+    color: white;
+    font-size: 20px;
+}
+
+.trio-op > button{
+    border: none;
+    color: transparent;
+    border-radius: 0;
+    background: transparent;
 }
