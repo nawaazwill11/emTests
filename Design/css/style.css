@@ -3,7 +3,6 @@
 	justify-content: center;
 }
 */ 
-
 .containerLogin{
 	padding: 5px;
 	position: fixed;
@@ -229,6 +228,13 @@
 .glyphicon:hover{
     color: black;
 }
+
+.fai {
+    font-size: 25px;
+    color: #ef0707;
+    margin-right: 25px;
+}
+
 @media screen and (min-width: 845px) {
   .navbar-brand {margin-left: -15px;}
 }
@@ -266,3 +272,52 @@
 .user-info .glyphicon{
     color: black;
 }
+
+#container-feed{
+    min-height: 1000vh;
+}
+.container-feed{
+    margin-top: 67px;
+    background-color: #49c449;
+    position: relative;
+    min-height: 1000vh;
+    height: auto;
+}
+
+#wall-feed-main{
+    min-height: 100vh;
+    margin-top: 5px;
+    height: auto;
+    background-color: #b84949 ;
+    padding: 6px;
+}
+
+.story-main{
+    position: absolute;
+    left: 10px;
+    height: 25vh;
+    background-color: #fff6c5;
+    margin-top: 20px;
+}
+
+#side-feed-main{
+    background-color: #b84949;
+    right: 0;
+    display: inline-block;
+    position: absolute;
+    margin: 5px 10px 0 0;
+}
+
+#side-feed-1, #side-feed-2. #side-feed-3{
+    position: relative;
+}
+.table{
+    margin-top: 20px;
+    background-color: floralwhite;
+}
+
+.table .glyphicon {
+    font-size: 15px;
+}
+
+
