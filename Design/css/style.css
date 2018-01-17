@@ -295,7 +295,7 @@
 .story-main{
     position: absolute;
     left: 10px;
-    height: 75vh;
+    height: 100vh;
     background-color: #fff6c5;
     margin-top: 20px;
 }
@@ -326,19 +326,10 @@
 
 }
 
-.author-time-info{
-    display: inline-flex;
-    position: relative;
-    width: 50vh;
-    background-color: red;
-    padding-left: 10px;
-}
 .author-img-info{
     background-color: blueviolet;
     z-index: 1010;
     margin: 7px 0 0 0;
-}
-.author-img-info{
     width: 40px;
     border-radius: 50%;
 }
@@ -349,6 +340,14 @@
     left: 60px;
     padding-top: 5px;
 }
+.author-time-info{
+    display: inline-flex;
+    position: relative;
+    width: 50vh;
+    background-color: red;
+    padding-left: 10px;
+}
+
 
 .trio-op{
     position: absolute;
@@ -395,6 +394,7 @@
     margin: -8px 0 0 -9px;
     border: 2px solid white;
     height: 30vh;
+    width: 103%;
 }
 
 .media-patch-1, .media-patch-2, .media-patch-3 {
@@ -402,7 +402,7 @@
     margin: 0 5px 0 5px;
     border: 1px solid green;
     height: 27vh;
-    width: 30vh;
+    width: 27vh;
 }
 
 .media-patch-1 > img, .media-patch-2 > img, .media-patch-3 > img {
@@ -414,10 +414,30 @@
     height: 4vh;
     display: block;
     margin-left: -8px;
-    width: 95vh;
+    width: 88vh;
     background-color: white;
 }
 .media-more-click{
     position: absolute;
     right: 0;
+}
+
+.story-layer-4{
+    background-color: grey;
+    position: relative;   
+    top: 40px;
+    height: 20vh;
+}
+
+.story-comment-view{
+    position: relative;
+    display: inline-flex;
+}
+.comment-user-info{
+    position: relative;
+}
+.comment-user-img{
+    position: absolute;
+    padding: 10px;
+
 }
