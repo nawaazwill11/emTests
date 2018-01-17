@@ -320,4 +320,32 @@
     font-size: 15px;
 }
 
+.story-layer-1 {
+    background-color: white;
+    position: relative;
+}
 
+.author-time-info{
+    display: inline-flex;
+    position: relative;
+    width: 50vh;
+    background-color: red;
+    margin-left: -15px;
+    padding-left: 10px;
+}
+.author-img-info{
+    background-color: blueviolet;
+    z-index: 1010;
+    margin: 7px 0 0 0;
+}
+.author-img-info{
+    width: 40px;
+    border-radius: 50%;
+}
+
+.bossy{
+    position: absolute;
+    top: 0;
+    left: 60px;
+    padding-top: 5px;
+}
