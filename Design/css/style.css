@@ -330,7 +330,6 @@
     position: relative;
     width: 50vh;
     background-color: red;
-    margin-left: -15px;
     padding-left: 10px;
 }
 .author-img-info{
@@ -367,4 +366,11 @@
     color: transparent;
     border-radius: 0;
     background: transparent;
+}
+
+.story-desc{
+    background-color: lightgrey;
+    position: relative;
+    top: 15px;
+
 }
