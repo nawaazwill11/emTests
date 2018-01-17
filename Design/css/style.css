@@ -208,6 +208,10 @@
     margin-top: 33px;
 }
 
+.leftSidenav-content-ul > span, .rightSidenav-content-ul > li > a > span {
+    color: #ef0707;
+}
+
 .leftSidenav-content-ul-open > li, .rightSidenav-content-ul-open > li {
     margin-top: 25px;
 }
