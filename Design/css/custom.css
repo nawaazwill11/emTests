@@ -1,0 +1,15 @@
+.story{
+	position: relative;
+ 	min-height: 1px;
+  	padding-right: 15px;
+  	padding-left: 15px;  	
+  	width: 40%;
+  	height: 80vh;
+  	margin: 5px;
+}
+
+.story-main{
+    padding: 10px;
+    position: relative;
+    display: block;
+}

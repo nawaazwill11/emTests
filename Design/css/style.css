@@ -326,7 +326,7 @@
 
 }
 
-.author-img-info{
+.author-img-info, .comment-user-img{
     background-color: blueviolet;
     z-index: 1010;
     margin: 7px 0 0 0;
@@ -340,14 +340,13 @@
     left: 60px;
     padding-top: 5px;
 }
-.author-time-info{
+.author-time-info, .comment-user-info{
     display: inline-flex;
     position: relative;
     width: 50vh;
     background-color: red;
     padding-left: 10px;
 }
-
 
 .trio-op{
     position: absolute;
@@ -433,11 +432,17 @@
     position: relative;
     display: inline-flex;
 }
-.comment-user-info{
-    position: relative;
-}
-.comment-user-img{
-    position: absolute;
-    padding: 10px;
 
+.comment-body{
+    width: 88vh;
+
+}
+.comment-desc{
+    position: relative;
+    left: 107px;
+    top: 5px;
+    background-color: gainsboro;
+    width: 60%;
+    padding: 6px; 
+    word-wrap: break-word;
 }
