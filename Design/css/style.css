@@ -295,7 +295,7 @@
 .story-main{
     position: absolute;
     left: 10px;
-    height: 50vh;
+    height: 75vh;
     background-color: #fff6c5;
     margin-top: 20px;
 }
@@ -323,6 +323,7 @@
 .story-layer-1 {
     background-color: white;
     position: relative;
+
 }
 
 .author-time-info{
@@ -367,10 +368,56 @@
     border-radius: 0;
     background: transparent;
 }
-
+.story-layer-2{
+    display: inline-grid;
+    position: relative;
+    top: 15px;
+}
 .story-desc{
     background-color: lightgrey;
     position: relative;
-    top: 15px;
+    padding: 6px;
+}
+.story-layer-3{
+    display: block;
+    position: relative;
+    top: 27px;
+    background-color: grey;
+    padding: 10px 10px 0 10px;
+    width: 100%;
+    height: 35vh;
+}
+.story-media{
+    display: inline-flex;
+    position: relative;
+    align-items: center;
+    background-color: #2e8229;
+    margin: -8px 0 0 -9px;
+    border: 2px solid white;
+    height: 30vh;
+}
 
+.media-patch-1, .media-patch-2, .media-patch-3 {
+    position: relative;
+    margin: 0 5px 0 5px;
+    border: 1px solid green;
+    height: 27vh;
+    width: 30vh;
+}
+
+.media-patch-1 > img, .media-patch-2 > img, .media-patch-3 > img {
+    width: 165px;
+}
+.media-more{
+    position: relative;
+    display: block;
+    height: 4vh;
+    display: block;
+    margin-left: -8px;
+    width: 95vh;
+    background-color: white;
+}
+.media-more-click{
+    position: absolute;
+    right: 0;
 }
