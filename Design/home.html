@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Profile Page</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, intial-scale=1">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/fontawesome-all.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navBar">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#"><img class="img-responsive pull-left" src="img/emLogo.png" alt="..."></a>
+				<div class="page-title"><h1>Home</h1></div>
+				<div class="input-group input-group-md col-lg-offset-2 col-md-offset-2 col-sm-offset-1 col xs-offset-1 col-xs-4 col-sm-3 col-md-3 col-lg-3" id="nav-search">
+					<input type="text" name="search" class="form-control" placeholder="Search places or events">
+					<span class="input-group-btn">
+						<button class="btn btn-danger"><span class="glyphicon glyphicon-search"></span></button>
+					</span>
+			</div>
+			</div>
+			<div class="user-info col-lg-offset-7">
+				<button class="btn btn-default dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+					<span class="glyphicon glyphicon-user" style="font-size: 13px;"></span> Willo Walker</a>
+				<span class="caret"></span>
+			</button>
+				<ul class="dropdown-menu">
+					<li><a href="#">Settings</a></li>
+					<li><a href="#">Help</a></li>
+					<li role="separator" class="divider"></li>
+					<li><a href="#">Logout</a></li>
+				</ul>
+			</div>
+			
+			<div class="collapse navbar-collapse" id="navBar"  style="overflow: hidden;">
+				<ul class="nav navbar-nav navbar-right" id="navMenu">
+					<li><a class="text-center" href="#">Friend Requests</a></li>
+					<li><a class="text-center" href="#">Messages</a></li>
+					<li><a class="text-center" href="#">Notifications</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div id="leftSidenav" class="left-sidenav">
+  		<a href="javascript:void(0)" class="left-closebtn" onclick="leftCloseNav()">&times;</a>
+		<ul class="leftSidenav-content-ul-open" style="list-style: none;">
+			<li style="color: #ef0707"><h1><u> Main Options</u></h1></li>
+		  	<li><a href="#"><span class="glyphicon glyphicon-th" style="font-size: 25px">&nbsp</span>Home</a></li>
+			<li><a href="#"><span class="glyphicon glyphicon-sunglasses" style="font-size: 25px">&nbsp</span>Profile</a></li>
+			<li><a href="#"><span class="glyphicon glyphicon-road" style="font-size: 25px">&nbsp</span>Traveller</a></li>
+			<li><a href="#"><span class="glyphicon glyphicon-pushpin" style="font-size: 25px">&nbsp</span>Organizer</a></li>
+			<li><a href="#"><span class="glyphicon glyphicon-list-alt" style="font-size: 25px">&nbsp</span>Estimator</a></li>
+			<li><a href="#"><span class="glyphicon glyphicon-warning-sign" style="font-size: 25px">&nbsp</span>Emergency</a></li>
+		</ul>
+	</div>
+	<div class="leftSidenav-content">
+		<ul class="leftSidenav-content-ul">
+			<li><span class="glyphicon glyphicon-menu-hamburger" style="font-size:35px;cursor:pointer;;" onclick="leftOpenNav()"></span></li>
+			<li><a href="#"><span class="glyphicon glyphicon-th" style="font-size: 35px"></span></a></li>
+			<li><a href="#"><span class="glyphicon glyphicon-sunglasses" style="font-size: 35px"></span></a></li>
+			<li><a href="#"><span class="glyphicon glyphicon-road" style="font-size: 35px"></span></a></li>
+			<li><a href="#"><span class="glyphicon glyphicon-pushpin" style="font-size: 35px"></span></a></li>
+			<li><a href="#"><span class="glyphicon glyphicon-list-alt" style="font-size: 35px"></span></a></li>
+			<li><a href="#"><span class="glyphicon glyphicon-warning-sign" style="font-size: 35px"></span></a></li>		
+
+		</ul>
+	</div>
+
+	<div id="rightSidenav" class="right-sidenav">
+  		<a href="javascript:void(0)" class="right-closebtn" onclick="rightCloseNav()">&times;</a>
+		<ul class="rightSidenav-content-ul-open" style="list-style: none;">
+			<li style="color: #ef0707"><h1><u> Page Options</u></h1></li>
+		  	<li><a href="#"><span class="glyphicon glyphicon-globe" style="font-size: 25px">&nbsp</span>Around The World</a></li>
+			<li><a href="#"><span class="glyphicon glyphicon-map-marker" style="font-size: 25px">&nbsp</span>Near Me</a></li>
+			<li style="margin-top: 20px"><a href="#"><span style="font-size: 25px"><i class="fa fa-suitcase" aria-hidden="true"></i>&nbsp&nbsp</span>My Trips</a></li>
+			<li><a href="#"><span class="glyphicon glyphicon-check" style="font-size: 25px">&nbsp</span>My Events</a></li>
+			<li><a href="#"><span style="font-size: 25px"><i class="fas fa-comments"></i></span>&nbspMessages</a></li>
+		</ul>
+	</div>
+
+	<div class="rightSidenav-content">
+		<ul class="rightSidenav-content-ul">
+			<li><span class="glyphicon glyphicon-menu-hamburger" style="font-size:35px;cursor:pointer;;" onclick="rightOpenNav()"></span></li>
+			<li><a href="#"><span class="glyphicon glyphicon-globe" style="font-size: 35px"></span></a></li>
+			<li><a href="#"><span class="glyphicon glyphicon-map-marker" style="font-size: 35px"></span></a></li>
+			<li style="margin-top: 20px"><a href="#"><span style="font-size: 35px"><i class="fa fa-suitcase" aria-hidden="true"></i></span></a></li>
+			<li><a href="#"><span class="glyphicon glyphicon-check" style="font-size: 35px"></span></a></li>
+			<li><a href="#"><span style="font-size: 35px"><i class="fas fa-comments"></i></span></a></li>
+		</ul>
+	</div>
+
+
+
+
+	<div class="container col-lg-offset-2 col-lg-8" style="background-color: green;">
+		<div >
+			asdlhasjdsakhdkjashkjdsakjhdxadashda
+
+		</div>
+		</div>
+	</div>
+<script type="text/javascript" src="js/custom.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>

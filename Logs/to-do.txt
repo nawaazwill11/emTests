@@ -1,0 +1,4 @@
+1. Adjust user-info dropdown.
+2. Arrange page title (ex. home) on smaller devices
+3. Arrange right sidebar on smaller devices.
+
