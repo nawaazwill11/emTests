@@ -351,7 +351,7 @@
 .author-time-info, .comment-user-info{
     display: inline-flex;
     position: relative;
-    width: 50vh;
+    width: 30vh;
     background-color: red;
     padding-left: 10px;
 }
@@ -468,12 +468,7 @@
     height:auto;  /* just added this line */
 }
 }
-#pp:hover{
-    overflow: visible;
-    white-space: normal;
-    height: auto;
-    width: auto;
-}
+
 .clubbed{
     display: inline-flex;
     position: relative;
@@ -481,4 +476,49 @@
 }
 .likes-freq{
     margin: 0 9px;
+}
+
+.icon-click{
+    position: absolute;
+    background-color: black;
+    padding: 6px 8px 0px 7px;
+    border-radius: 15px;
+}
+
+.like-click-icon{
+    top: 37%;
+    left: -25px;
+}
+.share-click-icon{
+    display: inline-flex;
+    top: 37%;
+    right: -25px;
+}
+.comment-click-icon{
+    top: 96%;
+    left: 46%;
+}
+.story-detailed-view{
+    position: relative;
+}
+.story-travel-route{
+    position: absolute;
+    display: inline-flex;
+    width: 20vh;
+    background-color: grey;
+    height: 48px;
+}
+
+.route-title{
+    margin: 0 auto;
+    height: auto;
+}
+.equator{
+    position: absolute;
+    display: flex;
+    bottom: 0;
+    width: 99%;
+    height: fit-content;
+    bottom: -5px;
+    left: 10px;
 }
