@@ -325,13 +325,21 @@
     position: relative;
 
 }
-
+.user-info-holder{
+    background-color: pink;
+    display: inline-flex;
+    width: 26vh;
+    border-radius: 5px;
+    margin-right: 11px;
+    height: max-content;
+}
 .author-img-info, .comment-user-img{
     background-color: blueviolet;
     z-index: 1010;
     margin: 7px 0 0 0;
     width: 40px;
     border-radius: 50%;
+    height: 2.9em;
 }
 
 .bossy{
@@ -439,10 +447,38 @@
 }
 .comment-desc{
     position: relative;
-    left: 107px;
-    top: 5px;
     background-color: gainsboro;
     width: 60%;
-    padding: 6px; 
-    word-wrap: break-word;
+    padding: 5px; 
+    left: 8px;
+    border-radius: 5px;
+}
+
+.comment-p{
+    text-overflow: ellipsis;
+    margin-bottom: 12px;
+    cursor: pointer;
+    word-break: break-all;
+    overflow:hidden;
+    white-space: nowrap;
+}
+.comment-p:hover{
+    overflow: visible; 
+    white-space: normal;
+    height:auto;  /* just added this line */
+}
+}
+#pp:hover{
+    overflow: visible;
+    white-space: normal;
+    height: auto;
+    width: auto;
+}
+.clubbed{
+    display: inline-flex;
+    position: relative;
+    background-color: white;   
+}
+.likes-freq{
+    margin: 0 9px;
 }
