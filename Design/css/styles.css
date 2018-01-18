@@ -360,8 +360,8 @@ body{
     
 #trio-op{
     position: absolute;
-    top: 20px;
-    left: 25px;
+    top: 5px;
+    left: 13px;
 }
 
 .trio-op .glyphicon {
@@ -381,7 +381,9 @@ body{
 }
 .story-desc{
     position: relative;
-    padding: 6px;
+    padding: 0 30px 0 15px;
+    word-break: break-all;
+    border-bottom: 1px solid #edf2f6;
 }
 .story-layer-3{
     display: block;
@@ -494,26 +496,7 @@ body{
     margin: 5px 0 30px 0;
 }
 
-.icon-click{
-    position: absolute;
-    background-color: black;
-    padding: 6px 8px 0px 7px;
-    border-radius: 15px;
-}
 
-.like-click-icon{
-    top: 37%;
-    left: -25px;
-}
-.share-click-icon{
-    display: inline-flex;
-    top: 37%;
-    right: -25px;
-}
-.comment-click-icon{
-    top: 96%;
-    left: 46%;
-}
 .story-travel-route{
     position: absolute;
     display: inline-flex;
@@ -534,7 +517,7 @@ body{
 #detailed-view{
     position: relative;
     background-color: #888da6;
-    border: 1px dotted #888da6;
+    border: 1px solid #888da6;
 
 }
 .detailed-loc-info, .detailed-time-info, .detailed-tm-info{
@@ -559,4 +542,41 @@ body{
 .dli{
     margin-left: 15px;
     
+}
+
+.icon-click{
+    position: absolute;
+    width: 40px;
+    right: -19.5px;
+    border-radius: 5px;
+    padding: 7px 0px 0px 6px;
+    background-color: #888da6;
+
+}
+.icon-click .glyphicon, .icon-holder-item .glyphicon{
+    color: white;
+    font-size: 26px;
+    
+}
+.icon-holder{
+    top: 4vh;
+    height: 22vh;
+    padding: 0 7px 7px 7px;
+}
+
+.icon-holder-item{
+    position: relative;
+}
+
+.like-icon{
+    top: 2vh;
+}
+.comment-icon{
+    top: 4vh;
+}
+.share-icon{
+    top: 6vh;
+}
+.comment-click-icon{
+    top: 16vh;
 }
