@@ -442,7 +442,7 @@ body{
 .story-comment-view{
     position: relative;
     display: inline-flex;
-    background-color: #edf2f6;
+    margin-top: 10px;
 }
 
 
@@ -480,6 +480,17 @@ body{
 }
 .likes-freq{
     margin: 0 9px;
+}
+#cti { /*.comment-time-info*/
+    position: absolute;
+}
+.comment-body{
+    position: absolute;
+    background-color: #edf2f6;
+    left: 15px;
+    border-radius: 20px;
+    padding: 4px 0 4px 0;
+    margin: 5px 0 30px 0;
 }
 
 .icon-click{
