@@ -1,65 +1,70 @@
 /*.container{
-	display: flex;
-	justify-content: center;
+    display: flex;
+    justify-content: center;
 }
 */ 
+body{
+    background-color: #edf2f6;
+    font-family: sans-serif;
+
+}
 .containerLogin{
-	padding: 5px;
-	position: fixed;
+    padding: 5px;
+    position: fixed;
     width: 21%; /* Set your desired width */
     z-index: 2; /* Make sure its above other items. */
     top: 40%;
     left: 50%;
     margin-top: -10%; /* Changes with height. */
     margin-left: -10%;
-	box-shadow: 0px 1px 10px 2px darkgrey;
+    box-shadow: 0px 1px 10px 2px darkgrey;
 }
 
 .containerReg{
-	padding: 5px;
-	position: fixed;
+    padding: 5px;
+    position: fixed;
     width: 25%; /* Set your desired with */
     z-index: 2; /* Make sure its above other items. */
     top: 40%;
     left: 50%;
     margin-top: -10%; /* Changes with height. */
     margin-left: -10%;
-	box-shadow: 0px 1px 10px 2px darkgrey;
+    box-shadow: 0px 1px 10px 2px darkgrey;
 }
 
 .containerForgot{
-	padding: 5px;
-	position: fixed;
+    padding: 5px;
+    position: fixed;
     width: auto; /* Set your desired with */
     z-index: 2; /* Make sure its above other items. */
     top: 40%;
     left: 50%;
     margin-top: -10%; /* Changes with height. */
     margin-left: -10%;
-	box-shadow: 0px 1px 10px 2px darkgrey;
+    box-shadow: 0px 1px 10px 2px darkgrey;
 }
 
 .containerResetSent{
-	padding: 5px;
-	position: fixed;
+    padding: 5px;
+    position: fixed;
     width: auto; /* Set your desired with */
     z-index: 2; /* Make sure its above other items. */
     top: 26%;
     left: 11%;
     margin-top: -10%; /* Changes with height. */
     margin-left: -10%;
-	box-shadow: 0px 1px 10px 2px darkgrey;
+    box-shadow: 0px 1px 10px 2px darkgrey;
 }
 .btnLoginLogin{
-	text-align: center;
+    text-align: center;
 }
 
 .btnLoginLogin button{
-	width: 110px;
+    width: 110px;
 }
 
 .btnLoginLogin a, .btnRegReg a{
-	color: black
+    color: black
 }
 .btnRegReg button{
 
@@ -278,7 +283,6 @@
 }
 .container-feed{
     margin-top: 67px;
-    background-color: #49c449;
     position: relative;
     min-height: 1000vh;
     height: auto;
@@ -288,16 +292,15 @@
     min-height: 100vh;
     margin-top: 5px;
     height: auto;
-    background-color: #b84949 ;
     padding: 6px;
 }
 
 .story-main{
     position: absolute;
     left: 10px;
-    height: 100vh;
-    background-color: #fff6c5;
+    background-color: #ffffff;
     margin-top: 20px;
+    padding: 20px;
 }
 
 #side-feed-main{
@@ -333,46 +336,43 @@
     margin-right: 11px;
     height: max-content;
 }
-.author-img-info, .comment-user-img{
+.author-img-info, .comment-img-info{
     background-color: blueviolet;
-    z-index: 1010;
-    margin: 7px 0 0 0;
     width: 40px;
-    border-radius: 50%;
+    margin: 7px 0 0 0;
+    border-radius: 15%;
     height: 2.9em;
 }
 
-.bossy{
-    position: absolute;
-    top: 0;
-    left: 60px;
-    padding-top: 5px;
+.bt{
+    font-weight: 700;
+    font-size:1.875rem;
 }
-.author-time-info, .comment-user-info{
-    display: inline-flex;
+#authimg, #cmtimg{
+    width:  40px;
+    margin-left: -20px;
+    padding: 6px 0 8px 0;
+}
+.bossy{
     position: relative;
-    width: 30vh;
-    background-color: red;
-    padding-left: 10px;
+    margin-top: 5px;
+}
+    
+#trio-op{
+    position: absolute;
+    top: 5px;
+    left: 13px;
 }
 
-.trio-op{
-    position: absolute;
-    display: inline-flex;
-    right: 0;
-    background-color: red;
-    padding: 6px;
-}
 .trio-op .glyphicon {
-    color: white;
+    color: #888da8;
     font-size: 20px;
 }
 
 .trio-op > button{
-    border: none;
-    color: transparent;
-    border-radius: 0;
-    background: transparent;
+    border: 0;
+    border-radius: 5px;
+    padding: 11px 13px 4px 11px;
 }
 .story-layer-2{
     display: inline-grid;
@@ -380,24 +380,28 @@
     top: 15px;
 }
 .story-desc{
-    background-color: lightgrey;
     position: relative;
-    padding: 6px;
+    padding: 0 30px 0 15px;
+    word-break: break-all;
+    border-bottom: 1px solid #edf2f6;
 }
 .story-layer-3{
     display: block;
     position: relative;
     top: 27px;
-    background-color: grey;
     padding: 10px 10px 0 10px;
     width: 100%;
-    height: 35vh;
+    /*height: 35vh;*/
+    border: 1px solid #e6ecf5;
+    border-radius: 3px;
+    overflow: hidden;
+    margin: 0 auto;
 }
 .story-media{
     display: inline-flex;
     position: relative;
     align-items: center;
-    background-color: #2e8229;
+    background-color: #edf2f6;
     margin: -8px 0 0 -9px;
     border: 2px solid white;
     height: 30vh;
@@ -407,9 +411,9 @@
 .media-patch-1, .media-patch-2, .media-patch-3 {
     position: relative;
     margin: 0 5px 0 5px;
-    border: 1px solid green;
+    border: 1px solid lightgrey;
     height: 27vh;
-    width: 27vh;
+    width: 31.5%;
 }
 
 .media-patch-1 > img, .media-patch-2 > img, .media-patch-3 > img {
@@ -421,38 +425,30 @@
     height: 4vh;
     display: block;
     margin-left: -8px;
-    width: 88vh;
-    background-color: white;
-}
+  
+}   
 .media-more-click{
     position: absolute;
     right: 0;
 }
 
 .story-layer-4{
-    background-color: grey;
     position: relative;   
     top: 40px;
-    height: 20vh;
+    border-top: 1px solid #e6ecf5;
+   /*background-color: #edf2f6;
+    border-bottom: 1px solid white;*/
+    margin-bottom: 15px;
 }
 
 .story-comment-view{
     position: relative;
     display: inline-flex;
+    margin-top: 10px;
+    border-bottom: 1px solid #edf2f6;
 }
 
-.comment-body{
-    width: 88vh;
 
-}
-.comment-desc{
-    position: relative;
-    background-color: gainsboro;
-    width: 60%;
-    padding: 5px; 
-    left: 8px;
-    border-radius: 5px;
-}
 
 .comment-p{
     text-overflow: ellipsis;
@@ -467,37 +463,40 @@
     white-space: normal;
     height:auto;  /* just added this line */
 }
+.likes-comments-bar{
+    display: block;
+    position: relative;
+    float: right;
+    right: 20px;
 }
 
+#lcb{ /*likes-comment-bar*/
+    display: block;
+    position: relative;
+    float: right;
+    right: 20px;
+}
 .clubbed{
     display: inline-flex;
     position: relative;
-    background-color: white;   
+
 }
 .likes-freq{
     margin: 0 9px;
 }
-
-.icon-click{
+#cti { /*.comment-time-info*/
     position: absolute;
-    background-color: black;
-    padding: 6px 8px 0px 7px;
-    border-radius: 15px;
+}
+.comment-body{
+    position: absolute;
+    background-color: #edf2f6;
+    left: 15px;
+    border-radius: 20px;
+    padding: 4px 0 4px 0;
+    margin: 5px 0 30px 0;
 }
 
-.like-click-icon{
-    top: 37%;
-    left: -25px;
-}
-.share-click-icon{
-    display: inline-flex;
-    top: 37%;
-    right: -25px;
-}
-.comment-click-icon{
-    top: 96%;
-    left: 46%;
-}
+
 .story-travel-route{
     position: absolute;
     display: inline-flex;
@@ -510,27 +509,21 @@
     margin: 0 auto;
     height: auto;
 }
-.equator{
-    position: absolute;
-    display: flex;
-    bottom: 0;
-    width: 99%;
-    height: fit-content;
-    bottom: -5px;
-    left: 10px;
-}
+
 .story-detailed-view{
     position: relative;
-    top: 40px;
+    margin-top: 28vh;
 }
-.detailed-view{
+#detailed-view{
     position: relative;
+    background-color: #888da6;
+    border: 1px solid #888da6;
 
 }
 .detailed-loc-info, .detailed-time-info, .detailed-tm-info{
     position: relative;
-    border-bottom: 2px solid black;
-    background-color: lightyellow;
+    border-bottom: 1px solid #888da6;
+    background-color: #edf2f6;
 }
 
 .detailed-time-info, .detailed-tm-info{
@@ -549,4 +542,41 @@
 .dli{
     margin-left: 15px;
     
+}
+
+.icon-click{
+    position: absolute;
+    width: 40px;
+    right: -19.5px;
+    border-radius: 5px;
+    padding: 7px 0px 0px 6px;
+    background-color: #888da6;
+
+}
+.icon-click .glyphicon, .icon-holder-item .glyphicon{
+    color: white;
+    font-size: 26px;
+    
+}
+.icon-holder{
+    top: 4vh;
+    height: 22vh;
+    padding: 0 7px 7px 7px;
+}
+
+.icon-holder-item{
+    position: relative;
+}
+
+.like-icon{
+    top: 2vh;
+}
+.comment-icon{
+    top: 4vh;
+}
+.share-icon{
+    top: 6vh;
+}
+.comment-click-icon{
+    top: 16vh;
 }
