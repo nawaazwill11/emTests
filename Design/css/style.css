@@ -498,9 +498,6 @@
     top: 96%;
     left: 46%;
 }
-.story-detailed-view{
-    position: relative;
-}
 .story-travel-route{
     position: absolute;
     display: inline-flex;
@@ -521,4 +518,26 @@
     height: fit-content;
     bottom: -5px;
     left: 10px;
+}
+.story-detailed-view{
+    position: relative;
+    top: 40px;
+}
+.detailed-view{
+    position: relative;
+
+}
+.detailed-loc-info{
+    position: relative;
+    border-bottom: 2px solid black;
+    background-color: lightyellow;
+}
+
+.detailed-loc-info-bottom{
+    position: relative;
+    display: flex;
+}
+.dli{
+    margin-left: 15px;
+    
 }
