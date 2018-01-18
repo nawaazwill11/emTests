@@ -527,15 +527,24 @@
     position: relative;
 
 }
-.detailed-loc-info{
+.detailed-loc-info, .detailed-time-info, .detailed-tm-info{
     position: relative;
     border-bottom: 2px solid black;
     background-color: lightyellow;
 }
 
-.detailed-loc-info-bottom{
+.detailed-time-info, .detailed-tm-info{
+    display: grid;
+}
+.detailed-loc-info-top,.detailed-time-info-top, .detailed-tm-info-top{
+    position: relative;
+    padding: 5px 0 0 20px;
+}
+.detailed-loc-info-bottom, .detailed-time-info-bottom, .detailed-tm-info-bottom{
     position: relative;
     display: flex;
+    margin-left: -10px;
+    padding-bottom: 14px;
 }
 .dli{
     margin-left: 15px;
