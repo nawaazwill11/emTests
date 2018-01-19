@@ -11,7 +11,7 @@ body{
 .containerLogin{
     padding: 5px;
     position: fixed;
-    width: 21%; /* Set your desired width */
+    width: 21%; /* Set your desi#ef0707 width */
     z-index: 2; /* Make sure its above other items. */
     top: 40%;
     left: 50%;
@@ -23,7 +23,7 @@ body{
 .containerReg{
     padding: 5px;
     position: fixed;
-    width: 25%; /* Set your desired with */
+    width: 25%; /* Set your desi#ef0707 with */
     z-index: 2; /* Make sure its above other items. */
     top: 40%;
     left: 50%;
@@ -35,7 +35,7 @@ body{
 .containerForgot{
     padding: 5px;
     position: fixed;
-    width: auto; /* Set your desired with */
+    width: auto; /* Set your desi#ef0707 with */
     z-index: 2; /* Make sure its above other items. */
     top: 40%;
     left: 50%;
@@ -47,7 +47,7 @@ body{
 .containerResetSent{
     padding: 5px;
     position: fixed;
-    width: auto; /* Set your desired with */
+    width: auto; /* Set your desi#ef0707 with */
     z-index: 2; /* Make sure its above other items. */
     top: 26%;
     left: 11%;
@@ -77,14 +77,14 @@ body{
         font-size: 1.2em;
         border: 0;
 }
-.navbar-brand{
-    float: left;
-    min-height: 55px;
-    padding: 10px 15px 5px;
-    margin-bottom: 5px;
-}
+margin-bottom: 14px;
+    background-color: #ef0707;
+    width: 85.4px;
+    padding: 24px 0 0 15px
 .navbar-brand > img {
-    width: 3.9em; 
+    width: 3.9em;
+    background-color: #ef0707;
+    height: 3.5em;
     
 }
 .navbar-inverse .navbar-nav>li>a {
@@ -96,9 +96,28 @@ body{
 #navMenu {
     margin-top: 9px;
 }
-.navbar-brand {
-    margin-bottom: 14px;
+.search-input-top{
+    height: 82px;
+    border-radius: 0;
+    background-color: #494b62;
+    border: 0;
+
 }
+.search-input-top::placeholder{
+    color: #6a6169;
+}
+.search-button-top{
+    height: 82px;
+    border-radius: 0;
+}
+
+.nav-fmn {
+    float: left;
+    position: relative;
+    top: 7px;
+    left: 35px;
+}
+
 /******End NavBar******/
 .searches{
     float: left;
@@ -172,7 +191,7 @@ body{
 
 #rightSidenav{
     position: fixed;
-    z-index: 22;
+    z-index: 1031;
     width: 0px;
     min-height: 1000vh
 }
@@ -182,34 +201,49 @@ body{
     z-index: 22;
     width: 70px;
     min-height: 1000vh;
-    background-color: antiquewhite;
-    box-shadow: 1px 6px 15px 2px grey;
+    background-color: white;
+    box-shadow: -7px 24px 47px -2px #888da6;
 }
+
+.leftSidenav-content > span{
+    font-size: 25px;
+}
+
 .rightSidenav-content{
     position: fixed;
     right: 0;
     z-index: 21; 
     width: 70px;
     min-height: 1000vh;
-    background-color: antiquewhite;
-    box-shadow: 1px 6px 15px 2px grey;
+    background-color: white;
     margin-right: 0;
     overflow: hidden;
+    box-shadow: 7px 42px 47px -2px #888da6
 }
 .leftSidenav-content-ul {
     list-style: none;
-    margin-left: -20px;
-    margin-top: 100px;
+    margin-left: -18px;
+    margin-top: 125px;
 }
 .rightSidenav-content-ul{
     list-style: none;
     margin-right: 20px;
     padding: 0 0 0 20px;
     margin-top: 100px;
+
 }
 
 .leftSidenav-content-ul > li, .rightSidenav-content-ul > li {
     margin-top: 33px;
+    margin-bottom: 40px;
+}
+.leftSidenav-content-ul-open{
+    list-style: none;
+    padding: 0px;
+    padding-left: 20px;
+}
+.leftSidenav-content-ul-open > li > a > span{
+    color: #ef0707;
 }
 
 .leftSidenav-content-ul > span, .rightSidenav-content-ul > li > a > span {
@@ -217,7 +251,7 @@ body{
 }
 
 .leftSidenav-content-ul-open > li, .rightSidenav-content-ul-open > li {
-    margin-top: 25px;
+    margin-top: 17px;
 }
 .leftSidenav-content-ul-open > li > a, .rightSidenav-content-ul-open >li >a {
     color: white;
@@ -225,14 +259,25 @@ body{
 .leftSidenav-content-ul-open > li > a:hover, .rightSidenav-content-ul-open >li >a:hover {
     color: #ef0707;
 }
+.leftSidenav-content-ul-open > li > h1, .rightSidenav-content-ul-open >li >a:hover {
+    color: white;
+    margin-bottom: 35px;
+}
 
 .glyphicon{
-    color: #ef0707;
+    color: #888da6;
 }
 
 .glyphicon:hover{
-    color: black;
+    color: #ef0707;
 }
+#l-ham .glyphicon:hover{
+    color: #888da6;
+}
+#l-ham .glyphicon{
+    color: #ef0707;
+}
+
 
 .fai {
     font-size: 25px;
@@ -245,9 +290,17 @@ body{
 }
 #nav-search{
     position: fixed;
-    display: inline-flex;
-    margin-top: 16px;
-    float: left
+    float: left;
+    top: 2px;
+}
+#nav-search > input{
+    height: 82px;
+    border-radius: 0;
+    background-color: #494b62;
+    border: 0;
+}
+#nav-search > span > button{
+    border-radius: 0;
 }
 #nav-search .glyphicon{
     color: white;
@@ -264,18 +317,33 @@ body{
     margin-left: 14px;
   }
 }
+.page-title{
+
+}
 .page-title > h1{
     font-weight: bolder;
     position: fixed;
     display: inline-flex;
-    margin-top: 13px;
+    margin-left: 15px;
 }
-.user-info{
+.user-info-nav{
     position: fixed;
-    margin-top: 16px;
+    top: 2px
 }
-.user-info .glyphicon{
+.user-info-nav .glyphicon{
     color: black;
+}
+#user-info-nav > button {
+    border-radius: 0;
+    height: 82px;
+    border: 0;
+    color: white;
+    width: 156px;
+    background-color: #494a62;
+    font-weight: bold;
+}
+#user-info-nav > button > a {
+    color: white;
 }
 
 #container-feed{
@@ -304,8 +372,9 @@ body{
 }
 
 #side-feed-main{
-    background-color: #b84949;
-    right: 0;
+    background-color: white;
+    right: 30px;
+    top: 25px;
     display: inline-block;
     position: absolute;
     margin: 5px 10px 0 0;
@@ -553,16 +622,19 @@ body{
     background-color: #888da6;
 
 }
+.icon-holder {
+    top: 22px;
+    height: 135px;
+    padding: 0 7px 7px 7px;
+    
+}
+
 .icon-click .glyphicon, .icon-holder-item .glyphicon{
     color: white;
     font-size: 26px;
     
 }
-.icon-holder{
-    top: 4vh;
-    height: 22vh;
-    padding: 0 7px 7px 7px;
-}
+
 
 .icon-holder-item{
     position: relative;
@@ -571,6 +643,13 @@ body{
 .like-icon{
     top: 2vh;
 }
+
+
+
+.icon-holder-item > a > span:hover{
+    color: #ef0707;
+}
+
 .comment-icon{
     top: 4vh;
 }

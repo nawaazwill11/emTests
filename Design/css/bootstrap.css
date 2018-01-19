@@ -279,7 +279,8 @@ th {
   font-style: normal;
   font-weight: normal;
   line-height: 1;
-  font-size: 35px;
+  font-size: 27px;
+  color: #888da6;
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -4281,11 +4282,13 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-brand {
   float: left;
-  height: 50px;
-  padding: 15px 15px;
   font-size: 18px;
   line-height: 20px;
   margin: -14px 0 23px -30px;
+  background-color: #ef0707;
+  height: 5.5em;
+  width: 4.74em;
+  padding: 22px 0 0 15px
 
 }
 .navbar-brand:hover,
@@ -4605,10 +4608,11 @@ fieldset[disabled] .navbar-default .btn-link:focus {
 .navbar-inverse {
   margin-bottom: 0;
   border-radius: 0;
-  background-color: #ef0707;
+  background-color: #3f4257;
   color: #FFF;
   font-size: 1.2em;
   border: 0;
+  height: 85px;
 }
 }
 .navbar-inverse .navbar-brand {

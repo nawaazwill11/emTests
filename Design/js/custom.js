@@ -1,5 +1,5 @@
 function leftOpenNav() {
-    document.getElementById("leftSidenav").style.width = "295px";
+    document.getElementById("leftSidenav").style.width = "280px";
 }
 
 function leftCloseNav() {
@@ -13,3 +13,7 @@ function rightOpenNav() {
 function rightCloseNav() {
     document.getElementById("rightSidenav").style.width = "0";
 }
+
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+});
