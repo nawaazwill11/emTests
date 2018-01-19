@@ -1,6 +1,6 @@
 /*.container{
-    display: flex;
-    justify-content: center;
+	display: flex;
+	justify-content: center;
 }
 */ 
 body{
@@ -9,62 +9,62 @@ body{
 
 }
 .containerLogin{
-    padding: 5px;
-    position: fixed;
-    width: 21%; /* Set your desi#ef0707 width */
+	padding: 5px;
+	position: fixed;
+    width: 21%; /* Set your desired width */
     z-index: 2; /* Make sure its above other items. */
     top: 40%;
     left: 50%;
     margin-top: -10%; /* Changes with height. */
     margin-left: -10%;
-    box-shadow: 0px 1px 10px 2px darkgrey;
+	box-shadow: 0px 1px 10px 2px darkgrey;
 }
 
 .containerReg{
-    padding: 5px;
-    position: fixed;
-    width: 25%; /* Set your desi#ef0707 with */
+	padding: 5px;
+	position: fixed;
+    width: 25%; /* Set your desired with */
     z-index: 2; /* Make sure its above other items. */
     top: 40%;
     left: 50%;
     margin-top: -10%; /* Changes with height. */
     margin-left: -10%;
-    box-shadow: 0px 1px 10px 2px darkgrey;
+	box-shadow: 0px 1px 10px 2px darkgrey;
 }
 
 .containerForgot{
-    padding: 5px;
-    position: fixed;
-    width: auto; /* Set your desi#ef0707 with */
+	padding: 5px;
+	position: fixed;
+    width: auto; /* Set your desired with */
     z-index: 2; /* Make sure its above other items. */
     top: 40%;
     left: 50%;
     margin-top: -10%; /* Changes with height. */
     margin-left: -10%;
-    box-shadow: 0px 1px 10px 2px darkgrey;
+	box-shadow: 0px 1px 10px 2px darkgrey;
 }
 
 .containerResetSent{
-    padding: 5px;
-    position: fixed;
-    width: auto; /* Set your desi#ef0707 with */
+	padding: 5px;
+	position: fixed;
+    width: auto; /* Set your desired with */
     z-index: 2; /* Make sure its above other items. */
     top: 26%;
     left: 11%;
     margin-top: -10%; /* Changes with height. */
     margin-left: -10%;
-    box-shadow: 0px 1px 10px 2px darkgrey;
+	box-shadow: 0px 1px 10px 2px darkgrey;
 }
 .btnLoginLogin{
-    text-align: center;
+	text-align: center;
 }
 
 .btnLoginLogin button{
-    width: 110px;
+	width: 110px;
 }
 
 .btnLoginLogin a, .btnRegReg a{
-    color: black
+	color: black
 }
 .btnRegReg button{
 
@@ -77,14 +77,14 @@ body{
         font-size: 1.2em;
         border: 0;
 }
-margin-bottom: 14px;
-    background-color: #ef0707;
-    width: 85.4px;
-    padding: 24px 0 0 15px
+.navbar-brand{
+    float: left;
+    min-height: 55px;
+    padding: 10px 15px 5px;
+    margin-bottom: 5px;
+}
 .navbar-brand > img {
-    width: 3.9em;
-    background-color: #ef0707;
-    height: 3.5em;
+    width: 3.9em; 
     
 }
 .navbar-inverse .navbar-nav>li>a {
@@ -96,28 +96,9 @@ margin-bottom: 14px;
 #navMenu {
     margin-top: 9px;
 }
-.search-input-top{
-    height: 82px;
-    border-radius: 0;
-    background-color: #494b62;
-    border: 0;
-
+.navbar-brand {
+    margin-bottom: 14px;
 }
-.search-input-top::placeholder{
-    color: #6a6169;
-}
-.search-button-top{
-    height: 82px;
-    border-radius: 0;
-}
-
-.nav-fmn {
-    float: left;
-    position: relative;
-    top: 7px;
-    left: 35px;
-}
-
 /******End NavBar******/
 .searches{
     float: left;
@@ -152,12 +133,9 @@ margin-bottom: 14px;
     background-color: #111;
     overflow-x: hidden;
     transition: 0.5s;
-    padding-top: 5px;   
+    padding-top: 60px;   
 }
-.right-sidenav > a{
-    font-size: 40px;
-    padding: 1px 8px 0px 38px;
-}
+
 .left-sidenav a, .right-sidenav a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
@@ -194,7 +172,7 @@ margin-bottom: 14px;
 
 #rightSidenav{
     position: fixed;
-    z-index: 1031;
+    z-index: 22;
     width: 0px;
     min-height: 1000vh
 }
@@ -204,102 +182,61 @@ margin-bottom: 14px;
     z-index: 22;
     width: 70px;
     min-height: 1000vh;
-    background-color: white;
-    box-shadow: -7px 24px 47px -2px #888da6;
+    background-color: antiquewhite;
+    box-shadow: 1px 6px 15px 2px grey;
 }
-
-.leftSidenav-content > span{
-    font-size: 25px;
-}
-
 .rightSidenav-content{
     position: fixed;
     right: 0;
     z-index: 21; 
     width: 70px;
     min-height: 1000vh;
-    background-color: white;
+    background-color: antiquewhite;
+    box-shadow: 1px 6px 15px 2px grey;
     margin-right: 0;
     overflow: hidden;
-    box-shadow: 7px 42px 47px -2px #888da6
 }
 .leftSidenav-content-ul {
     list-style: none;
-    margin-left: -18px;
-    margin-top: 125px;
+    margin-left: -20px;
+    margin-top: 100px;
 }
 .rightSidenav-content-ul{
     list-style: none;
     margin-right: 20px;
     padding: 0 0 0 20px;
-    margin-top: 125px;
-
+    margin-top: 100px;
 }
 
 .leftSidenav-content-ul > li, .rightSidenav-content-ul > li {
     margin-top: 33px;
-    margin-bottom: 40px;
 }
-.leftsidenav-content-ul-open {
-    padding-left: 20px;
-}
-.sidenav-content-ul-open > li > a > span{
-    color: #ef0707;
-    font-size: 25px;
-}
-.sidenav-content-ul-open > li {
-    
-}
-.sidenav-content-ul-open {
-    list-style: none;
-    padding-left: 20px;
-}
-.rightSidenav-content-ul > li {
-    margin-bottom: 45px;
-}
-.rightSidenav-content-ul > li > a > span {
-    font-size: 27px;
-    color: #888da6;
-}
-.rightSidenav-content-ul > li > a > span > i:hover{
+
+.leftSidenav-content-ul > span, .rightSidenav-content-ul > li > a > span {
     color: #ef0707;
 }
 
-.rightSidenav-content-ul-open > li {
-    margin-top: 35px
-}
-.leftSidenav-content-ul-open > li {
-    margin-top: 17px;
+.leftSidenav-content-ul-open > li, .rightSidenav-content-ul-open > li {
+    margin-top: 25px;
 }
 .leftSidenav-content-ul-open > li > a, .rightSidenav-content-ul-open >li >a {
     color: white;
 }
 .leftSidenav-content-ul-open > li > a:hover, .rightSidenav-content-ul-open >li >a:hover {
-    color: #888da6;
-}
-.leftSidenav-content-ul-open > li > h1, .rightSidenav-content-ul-open >li >a:hover {
-    color: white;
-    margin-bottom: 35px;
+    color: #ef0707;
 }
 
 .glyphicon{
-    color: #888da6;
+    color: #ef0707;
 }
 
 .glyphicon:hover{
-    color: #ef0707;
+    color: black;
 }
-#t-ham .glyphicon:hover{
-    color: #888da6;
-}
-#t-ham .glyphicon{
-    color: #ef0707;
-}
-
 
 .fai {
     font-size: 25px;
-    color: #888da6;
+    color: #ef0707;
     margin-right: 25px;
 }
 
@@ -308,17 +245,9 @@ margin-bottom: 14px;
 }
 #nav-search{
     position: fixed;
-    float: left;
-    top: 2px;
-}
-#nav-search > input{
-    height: 82px;
-    border-radius: 0;
-    background-color: #494b62;
-    border: 0;
-}
-#nav-search > span > button{
-    border-radius: 0;
+    display: inline-flex;
+    margin-top: 16px;
+    float: left
 }
 #nav-search .glyphicon{
     color: white;
@@ -335,33 +264,18 @@ margin-bottom: 14px;
     margin-left: 14px;
   }
 }
-.page-title{
-
-}
 .page-title > h1{
     font-weight: bolder;
     position: fixed;
     display: inline-flex;
-    margin-left: 15px;
+    margin-top: 13px;
 }
-.user-info-nav{
+.user-info{
     position: fixed;
-    top: 2px
+    margin-top: 16px;
 }
-.user-info-nav .glyphicon{
+.user-info .glyphicon{
     color: black;
-}
-#user-info-nav > button {
-    border-radius: 0;
-    height: 82px;
-    border: 0;
-    color: white;
-    width: 156px;
-    background-color: #494a62;
-    font-weight: bold;
-}
-#user-info-nav > button > a {
-    color: white;
 }
 
 #container-feed{
@@ -387,13 +301,11 @@ margin-bottom: 14px;
     background-color: #ffffff;
     margin-top: 20px;
     padding: 20px;
-    border-radius: 5px;
 }
 
 #side-feed-main{
-    background-color: white;
-    right: 30px;
-    top: 25px;
+    background-color: #b84949;
+    right: 0;
     display: inline-block;
     position: absolute;
     margin: 5px 10px 0 0;
@@ -470,6 +382,7 @@ margin-bottom: 14px;
 .story-desc{
     position: relative;
     padding: 0 30px 0 15px;
+    word-break: break-all;
     border-bottom: 1px solid #edf2f6;
 }
 .story-layer-3{
@@ -640,37 +553,30 @@ margin-bottom: 14px;
     background-color: #888da6;
 
 }
-.icon-holder {
-    top: 22px;
-    height: 135px;
-    padding: 0 7px 7px 7px;
-    
-}
-
 .icon-click .glyphicon, .icon-holder-item .glyphicon{
     color: white;
     font-size: 26px;
     
 }
-
+.icon-holder{
+    top: 4vh;
+    height: 22vh;
+    padding: 0 7px 7px 7px;
+}
 
 .icon-holder-item{
     position: relative;
 }
 
 .like-icon{
-    top: 13px;
+    top: 2vh;
 }
-
-
-
-.icon-holder-item > a > span:hover{
-    color: #ef0707;
-}
-
 .comment-icon{
-    top: 26px;
+    top: 4vh;
 }
 .share-icon{
-    top: 39px;
+    top: 6vh;
+}
+.comment-click-icon{
+    top: 16vh;
 }
