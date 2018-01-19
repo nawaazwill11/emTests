@@ -152,9 +152,12 @@ margin-bottom: 14px;
     background-color: #111;
     overflow-x: hidden;
     transition: 0.5s;
-    padding-top: 60px;   
+    padding-top: 5px;   
 }
-
+.right-sidenav > a{
+    font-size: 40px;
+    padding: 1px 8px 0px 38px;
+}
 .left-sidenav a, .right-sidenav a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
@@ -229,7 +232,7 @@ margin-bottom: 14px;
     list-style: none;
     margin-right: 20px;
     padding: 0 0 0 20px;
-    margin-top: 100px;
+    margin-top: 125px;
 
 }
 
@@ -237,27 +240,42 @@ margin-bottom: 14px;
     margin-top: 33px;
     margin-bottom: 40px;
 }
-.leftSidenav-content-ul-open{
-    list-style: none;
-    padding: 0px;
+.leftsidenav-content-ul-open {
     padding-left: 20px;
 }
-.leftSidenav-content-ul-open > li > a > span{
+.sidenav-content-ul-open > li > a > span{
+    color: #ef0707;
+    font-size: 25px;
+}
+.sidenav-content-ul-open > li {
+    
+}
+.sidenav-content-ul-open {
+    list-style: none;
+    padding-left: 20px;
+}
+.rightSidenav-content-ul > li {
+    margin-bottom: 55px;
+}
+.rightSidenav-content-ul > li > a > span {
+    font-size: 27px;
+    color: #888da6;
+}
+.rightSidenav-content-ul > li > a > span > i:hover{
     color: #ef0707;
 }
 
-.leftSidenav-content-ul > span, .rightSidenav-content-ul > li > a > span {
-    color: #ef0707;
+.rightSidenav-content-ul-open > li {
+    margin-top: 35px
 }
-
-.leftSidenav-content-ul-open > li, .rightSidenav-content-ul-open > li {
+.leftSidenav-content-ul-open > li {
     margin-top: 17px;
 }
 .leftSidenav-content-ul-open > li > a, .rightSidenav-content-ul-open >li >a {
     color: white;
 }
 .leftSidenav-content-ul-open > li > a:hover, .rightSidenav-content-ul-open >li >a:hover {
-    color: #ef0707;
+    color: #888da6;
 }
 .leftSidenav-content-ul-open > li > h1, .rightSidenav-content-ul-open >li >a:hover {
     color: white;
@@ -271,17 +289,17 @@ margin-bottom: 14px;
 .glyphicon:hover{
     color: #ef0707;
 }
-#l-ham .glyphicon:hover{
+#t-ham .glyphicon:hover{
     color: #888da6;
 }
-#l-ham .glyphicon{
+#t-ham .glyphicon{
     color: #ef0707;
 }
 
 
 .fai {
     font-size: 25px;
-    color: #ef0707;
+    color: #888da6;
     margin-right: 25px;
 }
 
