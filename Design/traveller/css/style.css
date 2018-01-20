@@ -7,18 +7,54 @@
 } /*Parent of all parents*/
 
 .top-section{
-    background-color: #ffb2b2;
     position: relative;
+    margin: 25px 0 30px 0; 
+    background-color: white;
+    padding: 25px; 
+    border-radius: 5px;
 }/*Top parent*/
 
 .pjt{
-    background-color: white;
     position: relative;
     display: inline-flex;
     flex-direction: column;
     height: auto;
 }/*create join top collaborate*/
+.plan-trip-top-left {
+    border-right: 1px solid #888da6;
+}
+.plan-trip-body, .join-trip-body {
+    position: relative;
+    display: flex;
+    background-color: white;
+    border-radius: 4px;
+}
+.plan-trip-body-main, .join-trip-body-main {
+    margin: 5px 0 10px 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    left: 6%;
+}
+.pjt-heading {
+    position: relative;
+    left: 25%;
+    width: fit-content;
+}
+.pjt-desc {
+    margin-bottom: 10px;
+    padding-right: 40px;
+    text-align: center;
+}
+.pjt-push {
+    position: relative;
+    left: 31%;
+}
+.pjt-push-join {
+    left: 21%;
+}
 
+/*Top section ends*/
 .low-section{
     position: relative;
     background-color: transparent;
@@ -26,20 +62,20 @@
 .lsc-head {
     display: block;
     position: relative;
-    border-bottom: 2px solid black;
-    border-top: 2px solid black;
-    background-color: #888da6;
+    background-color: white;
 }
 .lsc-title{
     position: relative;
     display: inline-block;
+    margin: 10px auto;  
 }
 .lsc-title > span > h4 {
     font-size: 25px;
     padding-left: 35px;
 }
 .lsc-title > span > h4 > a {
-    color: white;
+    border-bottom: 1px solid #888da6;
+    color: #888da6;
 }
 .lsc-body {
     display: flex;
@@ -82,7 +118,7 @@
     display: flex;
     position: relative;
     background-color: blueviolet;
-    border-radius: 3px;
+    
 }
 .lsc-action-plan {
     display: flex;
