@@ -7,7 +7,7 @@ function leftCloseNav() {
 }
 
 function rightOpenNav() {
-    document.getElementById("rightSidenav").style.width = "360px";
+    document.getElementById("rightSidenav").style.width = "290px";
 }
 
 function rightCloseNav() {
