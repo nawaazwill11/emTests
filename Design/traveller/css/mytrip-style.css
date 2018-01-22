@@ -1,0 +1,12 @@
+.main{
+    position: relative;
+    top: 100px;
+    height: auto;  
+    display: flex;
+    flex-direction: column;
+    background-color: antiquewhite;
+} /*Parent of all parents*/
+.left-panel {
+    position: relative;
+    background-color: white;
+}

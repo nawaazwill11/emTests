@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Traveller - Suggestions</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
+  <link rel="stylesheet" type="text/css" href="css/mytrip-style.css">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="../css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/fontawesome-all.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body >
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navBar">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#"><img class="img-responsive pull-left" src="img/emLogo-1.png" alt="..."></a>
+				<div class="page-title col-lg-1" style="right: 8px;"><h1 style="margin-left: 0;s"><i>Traveller</i></h1></div>
+				<div class="input-group input-group-md col-lg-offset-2 col-lg-3" id="nav-search">
+					<input type="text" name="search" class="form-control search-input-top" placeholder="Search places or events">
+					<span class="input-group-btn">
+						<button class="btn btn-danger search-button-top"><span class="glyphicon glyphicon-search"></span></button>
+					</span>
+			</div>
+			</div>
+			<div id="user-info-nav" class="user-info-nav col-lg-offset-6">
+				<button class="btn btn-default dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+					<a href="#">
+						<span style="font-size: 13px;">
+							<img src="img/user-white.png" style="width: 30px">
+						</span>
+						<span style="margin-left: 8px;">
+							<u>Willo Walker</u></a>
+						</span>
+					<span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu">
+					<li><a href="#">Settings</a></li>
+					<li><a href="#">Help</a></li>
+					<li role="separator" class="divider"></li>
+					<li><a href="#">Logout</a></li>
+				</ul>
+			</div>
+			
+			<div class="col-lg-offset-7 nav-fmn" >
+				<ul class="nav navbar-nav navbar-right" id="navMenu">
+					<li><a class="text-center" href="#">Friend Requests</a></li>
+					<li><a class="text-center" href="#">Messages</a></li>
+					<li><a class="text-center" href="#">Notifications</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div id="leftSidenav" class="left-sidenav">
+  		<a href="javascript:void(0)" class="left-closebtn" onclick="leftCloseNav()">&times;</a>
+  		<ul class="leftSidenav-content-ul-open sidenav-content-ul-open">
+	   		<li><h1><u> Main Options</u></h1></li>
+		  	<li><a href="#"><span class="glyphicon glyphicon-th" style="font-size: 25px">&nbsp</span>Home</a></li>
+  			<li><a href="#"><span class="glyphicon glyphicon-sunglasses">&nbsp</span>Profile</a></li>
+  			<li><a href="#"><span class="glyphicon glyphicon-road"">&nbsp</span>Traveller</a></li>
+  			<li><a href="#"><span class="glyphicon glyphicon-pushpin">&nbsp</span>Organizer</a></li>
+  			<li><a href="#"><span class="glyphicon glyphicon-list-alt">&nbsp</span>Estimator</a></li>
+  			<li><a href="#"><span class="glyphicon glyphicon-warning-sign">&nbsp</span>Emergency</a></li>
+		  </ul>
+	</div>
+	<div class="leftSidenav-content">
+		<ul class="leftSidenav-content-ul">
+			<li id="t-ham"><span  data-toggle="tooltip" data-placement="right" data-original-title="Menu"  class="glyphicon glyphicon-menu-hamburger ham" style=";cursor:pointer;"   onclick="leftOpenNav()"></span></li>
+			<li><a href="#"><span data-toggle="tooltip" data-placement="right" data-original-title="Wall" class="glyphicon glyphicon-th" style=""></span></a></li>
+			<li><a href="#"><span data-toggle="tooltip" data-placement="right" data-original-title="Profile" class="glyphicon glyphicon-sunglasses" style=""></span></a></li>
+			<li><a href="#"><span data-toggle="tooltip" data-placement="right" data-original-title="Traveller" class="glyphicon glyphicon-road" style=""></span></a></li>
+			<li><a href="#"><span data-toggle="tooltip" data-placement="right" data-original-title="Organizer" class="glyphicon glyphicon-pushpin" style=""></span></a></li>
+			<li><a href="#"><span data-toggle="tooltip" data-placement="right" data-original-title="Estimator" class="glyphicon glyphicon-list-alt" style="
+			"></span></a></li>
+			<li><a href="#"><span data-toggle="tooltip" data-placement="right" data-original-title="Emergency" class="glyphicon glyphicon-warning-sign" style="font-size: 35p"></span></a></li>		
+
+		</ul>
+	</div>
+
+  <div id="rightSidenav" class="right-sidenav">
+  		<a href="javascript:void(0)" class="right-closebtn" onclick="rightCloseNav()">&times;</a>
+		<ul class="rightSidenav-content-ul-open sidenav-content-ul-open" style="list-style: none;">
+			<li style="color: #ef0707"><h1><u> Page Options</u></h1></li>
+			<li><a href="#"><span class="glyphicon glyphicon-th-list">&nbsp</span>Guide</a></li>
+			<li><a href="#"><span><i class="fa fa-suitcase fai" aria-hidden="true" style="color: #ef0707"></i></span>My Trips</a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-pencil"">&nbsp</span>Plan a Trip</a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-plus" >&nbsp</span>Join a Trip</a></li>
+			<li><a href="#"><span><i class="fas fa-comments fai"  style="color: #ef0707" ></i></span>Chat</a></li>
+		</ul>
+	</div>
+
+	<div class="rightSidenav-content ">
+		<ul class="rightSidenav-content-ul">
+			<li id="t-ham"><span data-toggle="tooltip" data-placement="top" data-original-title="Menu" class="glyphicon glyphicon-menu-hamburger" onclick="rightOpenNav()"></span></li>
+      <li><a href="#"><span data-toggle="tooltip" data-placement="top" data-original-title="Suggestions" class="glyphicon glyphicon-th-list"></span></a></li>
+			<li style="margin-top: 20px"><a href="#"><span data-toggle="tooltip" data-placement="top" data-original-title="My Trips" ><i class="fa fa-suitcase" aria-hidden="true"></i></span></a></li>
+      <li><a href="#"><span data-toggle="tooltip" data-placement="top" data-original-title="Plan a Trip" class="glyphicon glyphicon-pencil"></span></a></li>
+			<li><a href="#"><span data-toggle="tooltip" data-placement="top" data-original-title="Join a Trip" class="glyphicon glyphicon-plus"></span></a></li>
+			<li><a href="#"><span data-toggle="tooltip" data-placement="top" data-original-title="Chat" ><i class="fas fa-comments"></i></span></a></li>
+		</ul>
+	</div>
+  <div class="container main col-lg-offset-1 col-lg-10">
+    <div class="left-panel col-lg-4">
+      <div class="left-panel-body">
+        <div class="left-panel-body-top">
+          <h3>
+            View By
+          </h3>
+        </div>
+        <div class="left-panel-body-low">
+          <ul style="list-style: none;">
+            <li><input type="radio" name="selection" value="Starting Soon">Starting Soon</li>
+            <li><input type="radio" name="selection" value="On-Going">On-Going</li>
+            <li><input type="radio" name="selection" value="Completed">Completed</li>
+            <li role="separator" class="divider"></li>
+            <li><input type="radio" name="selection" value="Drafts">Drafts</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="right-panel">
+      
+    </div>
+  </div><!-- container main end -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/custom.js"></script>
+</body>
+</html>
