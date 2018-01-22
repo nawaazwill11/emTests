@@ -2,11 +2,191 @@
     position: relative;
     top: 100px;
     height: auto;  
-    display: flex;
-    flex-direction: column;
-    background-color: antiquewhite;
 } /*Parent of all parents*/
+
+/*****Left Panel Start*****/
+
 .left-panel {
     position: relative;
     background-color: white;
 }
+.left-panel-body-low {
+    margin-bottom: 60px;
+}
+.left-panel-body-low > ul > li > span{
+    margin-left: 10px;
+}
+
+/*****Left Panel end*****/
+/*****Right Panel*****/
+
+.right-panel {
+    
+    background-color: white;
+}
+.right-panel-main {
+    padding-left: 20px;
+}
+.trip-section {
+    display: flex;
+    margin-bottom: 20px;
+
+}
+.side-box {
+    height: fit-content;
+    border-top: 1px solid #edf2f7;
+
+    border-bottom: 1px solid #edf2f7;
+}
+.side-box-body {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+}
+#sb {
+    width: 18%;
+}
+.sb {
+    margin-bottom: 29px;
+}
+.sb-cancel-btn {
+    margin-bottom: 25px;
+}
+.sb > button {
+    width: 92px;
+}
+/****trip-box****/
+.layers {
+    position: relative;
+    margin-top: 5px;
+    border-bottom: 1px solid #edf2f6
+}
+
+#trip-box{
+    background-color: white;
+    position: relative;
+    display: flex;
+    padding: 2px;
+    flex-direction: column;
+    border-radius: 3px;
+    box-shadow: 0px 0px 4px 1px #888da6;
+    margin-bottom: 15px;
+}
+
+/****trip-box-layer-1****/
+
+.trip-box-layer-1 {
+    position: relative;
+    border-bottom: 2px solid #edf2f6;
+
+}
+#tbl1 {
+    background-color: #edf2f7;
+    color: #888da6;
+    margin-top: 0;
+}
+#tbl1l {
+    padding: 0;
+    padding-top: 10px;
+}
+.tbl1l-title > span {
+    font-size: 17px;
+    font-weight: 600;
+}
+.trip-box-l1-left{
+    position: relative;
+    float: left;
+}
+.tbl1l-img {
+    float: left;
+    width: fit-content;
+    margin: 0; 
+}
+.tbl1l-img > img {
+    width: 40px
+}
+#tbl1r {
+    padding: 0;
+}
+.trip-box-l1-right {
+    position: relative;
+    float: right;
+    padding: 0;
+
+}
+#tc {
+    padding: 0;
+}
+.trip-creator {
+    position: relative;
+    display: flex;
+    float: right;
+    padding: 0;
+}
+.trip-creator > span {
+    display: flex;
+    flex: 1;
+    margin-top: 13px;
+}
+.trip-creator-img {
+    margin: 0 auto;
+}
+.trip-creator-img > img {
+    width: 40px;
+}
+.creator-club {
+    display: flex;
+    flex-direction: column;
+}
+/****trip-box-layer-1 end****/
+
+/****trip-box-layer-2****/
+.trip-box-layer-2 {
+    position: relative;
+    margin-top: 5px;
+}
+.sub-layer {
+    position: relative;
+    display: flex;
+}
+.sub-layer-1, .sub-layer-2 {
+    display: flex;
+    flex: 1;
+}
+
+/****trip-box-layer-2 end****/
+
+/****trip-box-layer-3****/
+
+/****trip-box-layer-3 end****/
+
+/****trip-box-layer-4****/
+
+/****trip-box-layer-4 end****/
+
+/****trip-box end****/
+
+/****trip-box-layer-4****/
+
+#tbl5 {
+    border-bottom: 0;
+}
+
+.trip-route-join {
+    border: 0;s
+}
+.trip-join {
+    display: block;
+    margin-right: -15px;
+
+}
+.trip-join > button {
+    border-radius: 0;
+    float: right;
+}
+.trip-route {
+    margin-bottom: 10px;
+}
+/****trip-box-layer-5****/
+
+/****right-panel end****/

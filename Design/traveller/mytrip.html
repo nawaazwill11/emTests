@@ -106,26 +106,398 @@
 		</ul>
 	</div>
   <div class="container main col-lg-offset-1 col-lg-10">
-    <div class="left-panel col-lg-4">
+    <div class="left-panel col-lg-3">
       <div class="left-panel-body">
         <div class="left-panel-body-top">
           <h3>
             View By
           </h3>
+          <hr>
         </div>
         <div class="left-panel-body-low">
           <ul style="list-style: none;">
-            <li><input type="radio" name="selection" value="Starting Soon">Starting Soon</li>
-            <li><input type="radio" name="selection" value="On-Going">On-Going</li>
-            <li><input type="radio" name="selection" value="Completed">Completed</li>
-            <li role="separator" class="divider"></li>
-            <li><input type="radio" name="selection" value="Drafts">Drafts</li>
+            <li><h4><b>Type</b></h4></li>
+            <li><input type="checkbox" name="type-created" value="created"><span>Created</span></li>
+            <li><input type="checkbox" name="type-joined" value="joined"><span>Joined</span></li>
+            <hr>
+            <li><h4><b>Status</b></h4></li>
+            <li><input type="checkbox" name="status-starting-soon" value="starting-soon"><span>Starting Soon</span></li>
+            <li><input type="checkbox" name="status-on-going" value="on-going"><span>On-Going</span></li>
+            <li><input type="checkbox" name="status-completed" value="Completed"><span>Completed</span></li>
+            <li><hr></li>
+            <li><h4><b>Others</b></h4></li>
+            <li><input type="checkbox" name="others-favorites" value="favorites"><span>Favorites</span></li>
+            <li><input type="checkbox" name="others-drafts" value="drafts"><span>Drafts</span></li>
+            <li><input type="checkbox" name="others-cancelled" value="cancelled"><span>Cancelled</span></li>
           </ul>
         </div>
       </div>
     </div>
-    <div class="right-panel">
-      
+    <div class="right-panel col-lg-offset-1 col-lg-8">
+      <div class="right-panel-main">
+        <div class="right-panel-head">
+          <div class="right-panel-title">
+            <h3>
+              Results
+            </h3>
+            <hr>
+          </div>
+        </div>
+        <div class="right-panel-body">
+          <div class="trip-section">
+            <div id="trip-box" class="trip-box col-lg-8">
+              <div id="tbl1" class="trip-box-layer-1 col-lg-12 layers">
+                <div id="tbl1l" class="trip-box-l1-left col-lg-7">
+                  <div class="tbl1l-title">
+                      <span><i>Around the state in 20 days</i></span>
+                  </div>
+                </div>
+                <div id="tbl1r" class="trip-box-l1-right col-lg-5">
+                  <div id="tc" class="trip-creator col-lg-12">
+                    <span>Created By:</span>
+                    <div class="creator-club">
+                      <div class="trip-creator-img">
+                        <img src="img/user-black.png">
+                      </div>
+                      <div class="trip-creator-name">
+                        Willo Walker
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="trip-box-layer-2 col-lg-12 layers">
+                <div class="trip-src-dest sub-layer">
+                  <div class="trip-src sub-layer-1">
+                    <span><b>From:</b></span>&nbsp <span>Daman, Daman & Diu</span>
+                  </div>
+                  <div class="trip-dest sub-layer-2">
+                    <span><b>To:</b></span>&nbsp <span>Pune, Maharashtra</span>
+                  </div>
+                </div>
+              </div>
+              <div class="trip-box-layer-3 col-lg-12 layers">
+                <div class="trip-date-time sub-layer">
+                  <div class="trip-date sub-layer-1">
+                    <span><b>Starts on:</b></span>&nbsp <span>28th February, 2018</span>
+                  </div>
+                  <div class="trip-time sub-layer-2">
+                    <span><b>Time:</b></span>&nbsp <span>10:00 am</span>
+                  </div>
+                </div>
+              </div>
+              <div class="trip-box-layer-4 col-lg-12 layers">
+                <div class="trip-nop-vac sub-layer">
+                  <div class="trip-nop sub-layer-1">
+                    <span><b>People Travelling:</b></span>&nbsp <span><a href="#">28</a></span>
+                  </div>
+                  <div class="trip-vac sub-layer-2">
+                    <span><b>Vacancy:</b></span>&nbsp <span>7</span>
+                  </div>
+                </div>
+              </div>
+              <div class="trip-box-layer-4 col-lg-12 layers">
+                <div class="trip-mode-type-veh sub-layer">
+                  <div class="trip-mode sub-layer-1">
+                    <span><b>Mode:</b></span>&nbsp <span>Roadways</span>
+                  </div>
+                  <div class="trip-type sub-layer-2">
+                    <span><b>Type:</b></span>&nbsp <span>Adventure</span>
+                  </div>
+                  <div class="trip-type sub-layer-3">
+                    <span><b>Vehicle:</b></span>&nbsp <span>Motorbike</span>
+                  </div>
+                </div>
+              </div>
+              <div id="tbl5" class="trip-box-layer-5 col-lg-12 layers">
+                <div class="trip-route-join sub-layer">
+                  <div class="trip-route sub-layer-1">
+                    <span><b>Route-Info:</b></span>&nbsp <span><a href="#">Click Here..</a></span>
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+            <div id="sb" class="side-box col-lg-offset-1 col-lg-3">
+              <div class="side-box-body">
+                <div class="sb-edit-btn sb">
+                  <button class="btn btn-primary">Edit</button>
+                </div>
+                <div class="sb-discussion-btn sb">
+                  <button class="btn btn-success">Discussion</button>
+                </div>
+                <div class="sb-cancel-btn sb">
+                  <button class="btn btn-danger">Cancel</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="trip-section">
+            <div id="trip-box" class="trip-box col-lg-8">
+              <div id="tbl1" class="trip-box-layer-1 col-lg-12 layers">
+                <div id="tbl1l" class="trip-box-l1-left col-lg-7">
+                  <div class="tbl1l-title">
+                      <span><i>Around the state in 20 days</i></span>
+                  </div>
+                </div>
+                <div id="tbl1r" class="trip-box-l1-right col-lg-5">
+                  <div id="tc" class="trip-creator col-lg-12">
+                    <span>Created By:</span>
+                    <div class="creator-club">
+                      <div class="trip-creator-img">
+                        <img src="img/user-black.png">
+                      </div>
+                      <div class="trip-creator-name">
+                        Willo Walker
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="trip-box-layer-2 col-lg-12 layers">
+                <div class="trip-src-dest sub-layer">
+                  <div class="trip-src sub-layer-1">
+                    <span><b>From:</b></span>&nbsp <span>Daman, Daman & Diu</span>
+                  </div>
+                  <div class="trip-dest sub-layer-2">
+                    <span><b>To:</b></span>&nbsp <span>Pune, Maharashtra</span>
+                  </div>
+                </div>
+              </div>
+              <div class="trip-box-layer-3 col-lg-12 layers">
+                <div class="trip-date-time sub-layer">
+                  <div class="trip-date sub-layer-1">
+                    <span><b>Starts on:</b></span>&nbsp <span>28th February, 2018</span>
+                  </div>
+                  <div class="trip-time sub-layer-2">
+                    <span><b>Time:</b></span>&nbsp <span>10:00 am</span>
+                  </div>
+                </div>
+              </div>
+              <div class="trip-box-layer-4 col-lg-12 layers">
+                <div class="trip-nop-vac sub-layer">
+                  <div class="trip-nop sub-layer-1">
+                    <span><b>People Travelling:</b></span>&nbsp <span><a href="#">28</a></span>
+                  </div>
+                  <div class="trip-vac sub-layer-2">
+                    <span><b>Vacancy:</b></span>&nbsp <span>7</span>
+                  </div>
+                </div>
+              </div>
+              <div class="trip-box-layer-4 col-lg-12 layers">
+                <div class="trip-mode-type-veh sub-layer">
+                  <div class="trip-mode sub-layer-1">
+                    <span><b>Mode:</b></span>&nbsp <span>Roadways</span>
+                  </div>
+                  <div class="trip-type sub-layer-2">
+                    <span><b>Type:</b></span>&nbsp <span>Adventure</span>
+                  </div>
+                  <div class="trip-type sub-layer-3">
+                    <span><b>Vehicle:</b></span>&nbsp <span>Motorbike</span>
+                  </div>
+                </div>
+              </div>
+              <div id="tbl5" class="trip-box-layer-5 col-lg-12 layers">
+                <div class="trip-route-join sub-layer">
+                  <div class="trip-route sub-layer-1">
+                    <span><b>Route-Info:</b></span>&nbsp <span><a href="#">Click Here..</a></span>
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+            <div id="sb" class="side-box col-lg-offset-1 col-lg-3">
+              <div class="side-box-body">
+                <div class="sb-edit-btn sb">
+                  <button class="btn btn-primary">Edit</button>
+                </div>
+                <div class="sb-discussion-btn sb">
+                  <button class="btn btn-success">Discussion</button>
+                </div>
+                <div class="sb-cancel-btn sb">
+                  <button class="btn btn-danger">Cancel</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="trip-section">
+            <div id="trip-box" class="trip-box col-lg-8">
+              <div id="tbl1" class="trip-box-layer-1 col-lg-12 layers">
+                <div id="tbl1l" class="trip-box-l1-left col-lg-7">
+                  <div class="tbl1l-title">
+                      <span><i>Around the state in 20 days</i></span>
+                  </div>
+                </div>
+                <div id="tbl1r" class="trip-box-l1-right col-lg-5">
+                  <div id="tc" class="trip-creator col-lg-12">
+                    <span>Created By:</span>
+                    <div class="creator-club">
+                      <div class="trip-creator-img">
+                        <img src="img/user-black.png">
+                      </div>
+                      <div class="trip-creator-name">
+                        Willo Walker
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="trip-box-layer-2 col-lg-12 layers">
+                <div class="trip-src-dest sub-layer">
+                  <div class="trip-src sub-layer-1">
+                    <span><b>From:</b></span>&nbsp <span>Daman, Daman & Diu</span>
+                  </div>
+                  <div class="trip-dest sub-layer-2">
+                    <span><b>To:</b></span>&nbsp <span>Pune, Maharashtra</span>
+                  </div>
+                </div>
+              </div>
+              <div class="trip-box-layer-3 col-lg-12 layers">
+                <div class="trip-date-time sub-layer">
+                  <div class="trip-date sub-layer-1">
+                    <span><b>Starts on:</b></span>&nbsp <span>28th February, 2018</span>
+                  </div>
+                  <div class="trip-time sub-layer-2">
+                    <span><b>Time:</b></span>&nbsp <span>10:00 am</span>
+                  </div>
+                </div>
+              </div>
+              <div class="trip-box-layer-4 col-lg-12 layers">
+                <div class="trip-nop-vac sub-layer">
+                  <div class="trip-nop sub-layer-1">
+                    <span><b>People Travelling:</b></span>&nbsp <span><a href="#">28</a></span>
+                  </div>
+                  <div class="trip-vac sub-layer-2">
+                    <span><b>Vacancy:</b></span>&nbsp <span>7</span>
+                  </div>
+                </div>
+              </div>
+              <div class="trip-box-layer-4 col-lg-12 layers">
+                <div class="trip-mode-type-veh sub-layer">
+                  <div class="trip-mode sub-layer-1">
+                    <span><b>Mode:</b></span>&nbsp <span>Roadways</span>
+                  </div>
+                  <div class="trip-type sub-layer-2">
+                    <span><b>Type:</b></span>&nbsp <span>Adventure</span>
+                  </div>
+                  <div class="trip-type sub-layer-3">
+                    <span><b>Vehicle:</b></span>&nbsp <span>Motorbike</span>
+                  </div>
+                </div>
+              </div>
+              <div id="tbl5" class="trip-box-layer-5 col-lg-12 layers">
+                <div class="trip-route-join sub-layer">
+                  <div class="trip-route sub-layer-1">
+                    <span><b>Route-Info:</b></span>&nbsp <span><a href="#">Click Here..</a></span>
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+            <div id="sb" class="side-box col-lg-offset-1 col-lg-3">
+              <div class="side-box-body">
+                <div class="sb-edit-btn sb">
+                  <button class="btn btn-primary">Edit</button>
+                </div>
+                <div class="sb-discussion-btn sb">
+                  <button class="btn btn-success">Discussion</button>
+                </div>
+                <div class="sb-cancel-btn sb">
+                  <button class="btn btn-danger">Cancel</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="trip-section">
+            <div id="trip-box" class="trip-box col-lg-8">
+              <div id="tbl1" class="trip-box-layer-1 col-lg-12 layers">
+                <div id="tbl1l" class="trip-box-l1-left col-lg-7">
+                  <div class="tbl1l-title">
+                      <span><i>Around the state in 20 days</i></span>
+                  </div>
+                </div>
+                <div id="tbl1r" class="trip-box-l1-right col-lg-5">
+                  <div id="tc" class="trip-creator col-lg-12">
+                    <span>Created By:</span>
+                    <div class="creator-club">
+                      <div class="trip-creator-img">
+                        <img src="img/user-black.png">
+                      </div>
+                      <div class="trip-creator-name">
+                        Willo Walker
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="trip-box-layer-2 col-lg-12 layers">
+                <div class="trip-src-dest sub-layer">
+                  <div class="trip-src sub-layer-1">
+                    <span><b>From:</b></span>&nbsp <span>Daman, Daman & Diu</span>
+                  </div>
+                  <div class="trip-dest sub-layer-2">
+                    <span><b>To:</b></span>&nbsp <span>Pune, Maharashtra</span>
+                  </div>
+                </div>
+              </div>
+              <div class="trip-box-layer-3 col-lg-12 layers">
+                <div class="trip-date-time sub-layer">
+                  <div class="trip-date sub-layer-1">
+                    <span><b>Starts on:</b></span>&nbsp <span>28th February, 2018</span>
+                  </div>
+                  <div class="trip-time sub-layer-2">
+                    <span><b>Time:</b></span>&nbsp <span>10:00 am</span>
+                  </div>
+                </div>
+              </div>
+              <div class="trip-box-layer-4 col-lg-12 layers">
+                <div class="trip-nop-vac sub-layer">
+                  <div class="trip-nop sub-layer-1">
+                    <span><b>People Travelling:</b></span>&nbsp <span><a href="#">28</a></span>
+                  </div>
+                  <div class="trip-vac sub-layer-2">
+                    <span><b>Vacancy:</b></span>&nbsp <span>7</span>
+                  </div>
+                </div>
+              </div>
+              <div class="trip-box-layer-4 col-lg-12 layers">
+                <div class="trip-mode-type-veh sub-layer">
+                  <div class="trip-mode sub-layer-1">
+                    <span><b>Mode:</b></span>&nbsp <span>Roadways</span>
+                  </div>
+                  <div class="trip-type sub-layer-2">
+                    <span><b>Type:</b></span>&nbsp <span>Adventure</span>
+                  </div>
+                  <div class="trip-type sub-layer-3">
+                    <span><b>Vehicle:</b></span>&nbsp <span>Motorbike</span>
+                  </div>
+                </div>
+              </div>
+              <div id="tbl5" class="trip-box-layer-5 col-lg-12 layers">
+                <div class="trip-route-join sub-layer">
+                  <div class="trip-route sub-layer-1">
+                    <span><b>Route-Info:</b></span>&nbsp <span><a href="#">Click Here..</a></span>
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+            <div id="sb" class="side-box col-lg-offset-1 col-lg-3">
+              <div class="side-box-body">
+                <div class="sb-edit-btn sb">
+                  <button class="btn btn-primary">Edit</button>
+                </div>
+                <div class="sb-discussion-btn sb">
+                  <button class="btn btn-success">Discussion</button>
+                </div>
+                <div class="sb-cancel-btn sb">
+                  <button class="btn btn-danger">Cancel</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div><!-- container main end -->
 
