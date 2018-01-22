@@ -21,17 +21,37 @@
 	display: flex;
 	flex: 1;
 }
+.option-solo > img, .option-group > img, .op-ty >img {
+	width: 250px;
+    height: 120px;
+    opacity: 0.4;
+}
+.option-solo > img:hover, .option-group > img:hover {
+	opacity: 0.2;
+} 
+.option-solo > span, .option-group > span {
+	position: absolute;
+    margin-left: 50px;
+    font-size: 56px;
+    margin-top: 4px;
+}
+.option-solo > span > h3, .option-group > span > h3 {
+    font-size: 60px;
+    font-weight: 900;
+
+}
 .option-group {
 	display: flex;
 	flex: 1;
 }
-.op {
-	display: flex;
+.option-group > span {
+	margin-left: 22px;
 }
-.sop {
-	display: flex;
-	flex: 1;
+
+.op-ty {
+	margin-left: 30px;
 }
+
 .navigante {
 	display: flex;
 	float: right;
@@ -76,4 +96,33 @@
 }
 .progress-container {
 	background-color: white;
+}
+
+
+.sop {
+	display: flex;
+	flex: 1;
+	margin-left: 30px;
+}
+.sop > img {
+	width: 250px;
+    height: 120px;
+    opacity: 0.7;
+}
+.sop > span {
+	position: absolute;
+    font-size: 56px;
+    margin-top: 4px;
+    width: 39%;
+    text-align: center;	
+}
+.sop > span > h3 {
+	font-size: 30px;
+    font-weight: 900;
+    margin-top: 37px;
+    background-color: white;
+}
+.op {
+	display: flex;
+	margin-bottom: 20px;
 }
