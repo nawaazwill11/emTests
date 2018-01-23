@@ -1,0 +1,151 @@
+.main{
+    position: relative;
+    top: 100px;
+    height: auto;  
+    background-color: antiquewhite;
+}
+#one, #two {
+	osition: absolute;
+}
+.plan-container {
+	background-color: white;
+	position: absolute;
+}
+.plan-title {
+	text-align: center;
+}
+.layer-1 {
+	display: flex;
+	flex-direction: column;
+	padding-left: 60px;
+	background-color: #edf2f7;
+	border-radius: 5px;
+	margin-bottom: 20px;
+}
+.l1-options {
+	display: flex;
+	flex-direction: column;
+	padding: 15px 0 0 15px; 
+}
+#l1-op {
+	padding: 0;
+	margin-bottom: 12px;
+	display: flex;
+}
+#l1-op > label {
+	display: flex;
+}
+#l1-op > label > span {
+	display: flex;
+	flex: 1;
+}
+#l1-op > label > input {
+	display: flex;
+	flex: 10;
+}
+
+.date-select{
+	display: flex;
+	flex: 3;
+}
+.time-select {
+	display: flex;
+    flex: 3;
+}
+#vs {
+	background-color: white;
+    border: 0;
+    border-radius: 5px;
+    height: 30px;
+    margin-left: 5px;
+}
+
+.navigante {
+	display: flex;
+	float: right;
+}
+#btn-cancel > button, #btn-save > button {
+	font-size: 30px;
+    width: 45px;
+    height: 45px;
+    border-radius: 0;
+    padding: 0;
+}
+#btn-cancel > button > a, #btn-save > button > a {
+	color: white;
+}
+.btn-cancel {
+	position: absolute;
+    left: 0;
+    top: 0;
+}
+
+#btn-save {
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+#btn-save > button {
+	font-size: 20px;
+}
+
+#btn-next {
+	position: relative;
+	right: -15px;
+}
+#btn-next > button, #btn-prev > button {
+	border-radius: 0;
+	font-size: 20px;
+}
+#btn-prev {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+.progress-container {
+	background-color: white;
+}
+
+
+
+.sts {
+	margin: 12px 0px;
+    margin-left: 25px;
+    border-top: 1px solid #888da6;
+    padding-top: 9px;
+    padding-bottom: 0px;
+    margin-bottom: 0;
+}
+.btnt {
+	border-radius: 3px;
+    border: 0;
+    background-color: blueviolet;
+    color: white;
+    width: 70px;
+    height: 30px;
+}
+.age-group {
+	display: flex;
+}
+.age-select {
+	flex: 3 0 auto;
+}
+.button-group {
+	display: flex;
+}
+.nop {
+	display: flex;
+	flex: 1;
+	margin-top: 5px;
+}
+.nop > label > input {
+	width: 80px;
+}
+.nop-radio {
+	margin-right: 9px;
+}
+
+textarea{
+	border-radius: 5px;
+
+}

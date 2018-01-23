@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Traveller - Suggestions</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="../css/reset.css">
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
+  <link rel="stylesheet" type="text/css" href="css/plan3-style.css">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="../css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/fontawesome-all.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body >
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navBar">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#"><img class="img-responsive pull-left" src="img/emLogo-1.png" alt="..."></a>
+				<div class="page-title col-lg-1" style="right: 8px;"><h1 style="margin-left: 0;s"><i>Traveller</i></h1></div>
+				<div class="input-group input-group-md col-lg-offset-2 col-lg-3" id="nav-search">
+					<input type="text" name="search" class="form-control search-input-top" placeholder="Search places or events">
+					<span class="input-group-btn">
+						<button class="btn btn-danger search-button-top"><span class="glyphicon glyphicon-search"></span></button>
+					</span>
+			</div>
+			</div>
+			<div id="user-info-nav" class="user-info-nav col-lg-offset-6">
+				<button class="btn btn-default dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+					<a href="#">
+						<span style="font-size: 13px;">
+							<img src="img/user-white.png" style="width: 30px">
+						</span>
+						<span style="margin-left: 8px;">
+							<u>Willo Walker</u></a>
+						</span>
+					<span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu">
+					<li><a href="#">Settings</a></li>
+					<li><a href="#">Help</a></li>
+					<li role="separator" class="divider"></li>
+					<li><a href="#">Logout</a></li>
+				</ul>
+			</div>
+			
+			<div class="col-lg-offset-7 nav-fmn" >
+				<ul class="nav navbar-nav navbar-right" id="navMenu">
+					<li><a class="text-center" href="#">Friend Requests</a></li>
+					<li><a class="text-center" href="#">Messages</a></li>
+					<li><a class="text-center" href="#">Notifications</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div id="leftSidenav" class="left-sidenav">
+  		<a href="javascript:void(0)" class="left-closebtn" onclick="leftCloseNav()">&times;</a>
+  		<ul class="leftSidenav-content-ul-open sidenav-content-ul-open">
+	   		<li><h1><u> Main Options</u></h1></li>
+		  	<li><a href="../story/story.html"><span class="glyphicon glyphicon-th" style="font-size: 25px">&nbsp</span>Story</a></li>
+  			<li><a href="#"><span class="glyphicon glyphicon-sunglasses">&nbsp</span>Profile</a></li>
+  			<li><a href="#"><span class="glyphicon glyphicon-road"">&nbsp</span>Traveller</a></li>
+  			<li><a href="#"><span class="glyphicon glyphicon-pushpin">&nbsp</span>Organizer</a></li>
+  			<li><a href="#"><span class="glyphicon glyphicon-list-alt">&nbsp</span>Estimator</a></li>
+  			<li><a href="#"><span class="glyphicon glyphicon-warning-sign">&nbsp</span>Emergency</a></li>
+		  </ul>
+	</div>
+	<div class="leftSidenav-content">
+		<ul class="leftSidenav-content-ul">
+			<li id="t-ham"><span  data-toggle="tooltip" data-placement="right" data-original-title="Menu"  class="glyphicon glyphicon-menu-hamburger ham" style=";cursor:pointer;"   onclick="leftOpenNav()"></span></li>
+			<li><a href="../story/story.html"><span data-toggle="tooltip" data-placement="right" data-original-title="Story" class="glyphicon glyphicon-th" style=""></span></a></li>
+			<li><a href="#"><span data-toggle="tooltip" data-placement="right" data-original-title="Profile" class="glyphicon glyphicon-sunglasses" style=""></span></a></li>
+			<li><a href="traveller-main.html"><span data-toggle="tooltip" data-placement="right" data-original-title="Traveller" class="glyphicon glyphicon-road" style=""></span></a></li>
+			<li><a href="#"><span data-toggle="tooltip" data-placement="right" data-original-title="Organizer" class="glyphicon glyphicon-pushpin" style=""></span></a></li>
+			<li><a href="#"><span data-toggle="tooltip" data-placement="right" data-original-title="Estimator" class="glyphicon glyphicon-list-alt" style="
+			"></span></a></li>
+			<li><a href="#"><span data-toggle="tooltip" data-placement="right" data-original-title="Emergency" class="glyphicon glyphicon-warning-sign" style="font-size: 35p"></span></a></li>		
+
+		</ul>
+	</div>
+
+  <div id="rightSidenav" class="right-sidenav">
+  		<a href="javascript:void(0)" class="right-closebtn" onclick="rightCloseNav()">&times;</a>
+		<ul class="rightSidenav-content-ul-open sidenav-content-ul-open" style="list-style: none;">
+			<li style="color: #ef0707"><h1><u> Page Options</u></h1></li>
+			<li><a href="traveller-main.html"><span class="glyphicon glyphicon-th-list">&nbsp</span>Guide</a></li>
+			<li><a href="mytrip.html"><span><i class="fa fa-suitcase fai" aria-hidden="true" style="color: #ef0707"></i></span>My Trips</a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-pencil"">&nbsp</span>Plan a Trip</a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-plus" >&nbsp</span>Join a Trip</a></li>
+			<li><a href="#"><span><i class="fas fa-comments fai"  style="color: #ef0707" ></i></span>Chat</a></li>
+		</ul>
+	</div>
+
+	<div class="rightSidenav-content ">
+		<ul class="rightSidenav-content-ul">
+			<li id="t-ham"><span data-toggle="tooltip" data-placement="top" data-original-title="Menu" class="glyphicon glyphicon-menu-hamburger" onclick="rightOpenNav()"></span></li>
+      <li><a href="traveller-main.html"><span data-toggle="tooltip" data-placement="top" data-original-title="Suggestions" class="glyphicon glyphicon-th-list"></span></a></li>
+			<li style="margin-top: 20px"><a href="mytrip.html"><span data-toggle="tooltip" data-placement="top" data-original-title="My Trips" ><i class="fa fa-suitcase" aria-hidden="true"></i></span></a></li>
+      <li><a href="#"><span data-toggle="tooltip" data-placement="top" data-original-title="Plan a Trip" class="glyphicon glyphicon-pencil"></span></a></li>
+			<li><a href="#"><span data-toggle="tooltip" data-placement="top" data-original-title="Join a Trip" class="glyphicon glyphicon-plus"></span></a></li>
+			<li><a href="#"><span data-toggle="tooltip" data-placement="top" data-original-title="Chat" ><i class="fas fa-comments"></i></span></a></li>
+		</ul>
+	</div>
+
+  	<div class="container main col-lg-offset-2 col-lg-9">
+  		<div id="one" class="plan-container col-lg-8">
+  			<div class="plan-head">
+  				<div class="plan-title">
+  					<div class="title-top">
+  						<h2>Create Trip Plan</h2>
+  					</div>
+  					<div class="title-low">
+  						<h3>#3: Date and Other Info</h3>   
+  					</div>
+  				</div>
+  			</div>
+  			<div class="plan-body">
+  				<div class="layer-1 col-lg-10 col-lg-offset-1">
+  					<div class="l1-options col-lg-12">
+  						<div id="l1-op" class=" l1-op col-lg-10 col-lg-offset-1">
+  							<span style="display: flex; flex: 1;">Starting Date:</span>
+  							<div class="date-select slt-div">
+  								<select id="vs" class="year slt">
+  									<option>------</option>
+  									<option>2018</option>
+  									<option>2019</option>
+  									<option>2020</option>
+  									<option>2021</option>
+  									<option>2022</option>
+  									<option>2023</option>
+  									<option>2024</option>
+  									<option>2025</option>
+  									<option>2026</option>
+  									<option>2027</option>
+  									<option>2028</option>
+  									<option>2029</option>
+  									<option>2030</option>
+  								</select>
+  								<select id="vs" class="month slt">
+  									<option>------</option>
+  									<option>Jan</option>
+  									<option>Feb</option>
+  									<option>March</option>
+  									<option>April</option>
+  									<option>May</option>
+  									<option>June</option>
+  									<option>July</option>
+  									<option>Aug</option>
+  									<option>Sep</option>
+  									<option>Oct</option>
+  									<option>Nov</option>
+  									<option>Dec</option>
+  								</select>
+  								<select id="vs" class="date slt">
+  									<option>------</option>
+  									<option>1</option>
+  									<option>2</option>
+  									<option>3</option>
+  									<option>4</option>
+  									<option>5</option>
+  									<option>6</option>
+  									<option>7</option>
+  									<option>8</option>
+  									<option>9</option>
+  									<option>10</option>
+  									<option>11</option>
+  									<option>12</option>
+  									<option>13</option>
+  									<option>14</option>
+  									<option>15</option>
+  									<option>16</option>
+  									<option>17</option>
+  									<option>18</option>
+  									<option>19</option>
+  									<option>20</option>
+  									<option>21</option>
+  									<option>21</option>
+  									<option>23</option>
+  									<option>24</option>
+  									<option>25</option>
+  									<option>26</option>
+  									<option>27</option>
+  									<option>28</option>
+  									<option>29</option>
+  									<option>30</option>
+  									<option>31</option>
+  								</select>
+  							</div>
+  						</div>
+  							
+  						<div id="l1-op" class="l1-op col-lg-10 col-lg-offset-1">
+  							<span style="display: flex;flex: 1;">Starting Time:</span>
+  							<div class="time-select slt-div">
+  								<select id="vs" class="hour slt">
+  									<option>------</option>
+  									<option>12</option>
+  									<option>11</option>
+  									<option>10</option>
+  									<option>9</option>
+  									<option>8</option>
+  									<option>7</option>
+  									<option>6</option>
+  									<option>5</option>
+  									<option>4</option>
+  									<option>3</option>
+  									<option>2</option>
+  									<option>1</option>
+  								</select>
+  								<select id="vs" class="meridiem slt">
+  									<option>------</option>
+  									<option>am</option>
+  									<option>pm</option>
+  								</select>
+  							</div>
+  						</div>
+  						<div id="l1-op" class="l1-op col-lg-10 col-lg-offset-1">
+  							<span style="flex: 1;">Gender:</span>
+  							<div class="gender-select slt-div" style="display:flex;flex: 3;">
+  								<select id="vs" class="gender slt">
+  									<option>------</option>
+  									<option>Male</option>
+  									<option>Female</option>
+  									<option>Any</option>
+  								</select>
+  								
+  							</div>
+  						</div>
+  						<div id="l1-op" class="l1-op col-lg-11 col-lg-offset-1 age-group">
+  							<span class="ag" style="flex: 2 30px;">Age Group:</span>
+  							<div class="age-select ag slt-div">
+  								<select id="vs" class="age slt">
+  									<option>---------</option>
+  									<option>Under 18</option>
+  									<option>18-30</option>
+  									<option>30-50</option>
+  									<option>Above 50</option>
+  									<option>Any</option>
+  								</select>
+  							</div>
+  							<div class="button-group">
+                  <div class="age-add ag">
+    								<button class="btn btn-success">+Add</button>
+    							</div>
+    							<div class="age-remove">
+    								<button class="btn btn-danger">-Remove</button>
+    							</div>
+                </div>
+  						</div>
+  						<div id="l1-op" class="l1-op col-lg-11 col-lg-offset-1">
+  							<div class="nop">
+  								<div class="nop-radio">
+
+  									<label><span style="margin-right: 10px;">Limit Participants:</span><input type="radio" name="nop">Yes</label>
+  									<label><input type="radio" name="nop">No</label>
+  								</div>
+  								<label style="display: flex;"><input type="text" name="limit" placeholder="Enter Limit" style="font-weight: 500;"></label>
+                  <br>
+  							</div>
+                <button class="btn btn-success" style="margin-top: -5px;">Add</button>
+  						</div>
+  						<div id="l1-op" class="l1-op col-lg-10 col-lg-offset-1">
+  							<div class="description">
+  								<textarea id="desc" cols="43" rows="4" maxlength="160" placeholder="Enter a short description. Max character: 160" style="resize: none;"></textarea>
+  							</div>
+  						</div>
+  					</div>
+  				</div>
+          <div class="layer-2">
+            <div class="navigante">
+              <div id="btn-cancel" class="btn-cancel">
+                <button class="btn btn-danger" onclick="abort()"><a href="mytrip.html">x</a></button>
+              </div>
+              <div id="btn-save" class="btn-save">
+                <button class="btn btn-success glyphicon glyphicon-floppy-disk" onclick="save()"><a href="mytrip.html"></a></button>
+              </div>
+              <div id=btn-prev class="btn-prev">
+                <button class="btn btn-primary">Prev</button>
+              </div>
+              <div id=btn-next class="btn-next">
+                <button class="btn btn-primary">Next</button>
+              </div>
+            </div>
+          </div>
+  			</div>
+  		</div>
+  		
+  		<div class="progress-container col-lg-offset-1 col-lg-3">
+  			asd
+  		</div>
+  	</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/custom.js"></script>
+</body>
+</html>
