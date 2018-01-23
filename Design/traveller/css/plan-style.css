@@ -24,9 +24,9 @@
 .option-solo > img, .option-group > img, .op-ty >img {
 	width: 250px;
     height: 120px;
-    opacity: 0.4;
+    opacity: 0.7;
 }
-.option-solo > img:hover, .option-group > img:hover {
+.option-solo:hover, .option-group > img:hover {
 	opacity: 0.2;
 } 
 .option-solo > span, .option-group > span {

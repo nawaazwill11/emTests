@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Traveller - Suggestions</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
+  <link rel="stylesheet" type="text/css" href="css/plan2-style.css">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="../css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/fontawesome-all.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body >
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navBar">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#"><img class="img-responsive pull-left" src="img/emLogo-1.png" alt="..."></a>
+				<div class="page-title col-lg-1" style="right: 8px;"><h1 style="margin-left: 0;s"><i>Traveller</i></h1></div>
+				<div class="input-group input-group-md col-lg-offset-2 col-lg-3" id="nav-search">
+					<input type="text" name="search" class="form-control search-input-top" placeholder="Search places or events">
+					<span class="input-group-btn">
+						<button class="btn btn-danger search-button-top"><span class="glyphicon glyphicon-search"></span></button>
+					</span>
+			</div>
+			</div>
+			<div id="user-info-nav" class="user-info-nav col-lg-offset-6">
+				<button class="btn btn-default dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+					<a href="#">
+						<span style="font-size: 13px;">
+							<img src="img/user-white.png" style="width: 30px">
+						</span>
+						<span style="margin-left: 8px;">
+							<u>Willo Walker</u></a>
+						</span>
+					<span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu">
+					<li><a href="#">Settings</a></li>
+					<li><a href="#">Help</a></li>
+					<li role="separator" class="divider"></li>
+					<li><a href="#">Logout</a></li>
+				</ul>
+			</div>
+			
+			<div class="col-lg-offset-7 nav-fmn" >
+				<ul class="nav navbar-nav navbar-right" id="navMenu">
+					<li><a class="text-center" href="#">Friend Requests</a></li>
+					<li><a class="text-center" href="#">Messages</a></li>
+					<li><a class="text-center" href="#">Notifications</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div id="leftSidenav" class="left-sidenav">
+  		<a href="javascript:void(0)" class="left-closebtn" onclick="leftCloseNav()">&times;</a>
+  		<ul class="leftSidenav-content-ul-open sidenav-content-ul-open">
+	   		<li><h1><u> Main Options</u></h1></li>
+		  	<li><a href="../story/story.html"><span class="glyphicon glyphicon-th" style="font-size: 25px">&nbsp</span>Story</a></li>
+  			<li><a href="#"><span class="glyphicon glyphicon-sunglasses">&nbsp</span>Profile</a></li>
+  			<li><a href="#"><span class="glyphicon glyphicon-road"">&nbsp</span>Traveller</a></li>
+  			<li><a href="#"><span class="glyphicon glyphicon-pushpin">&nbsp</span>Organizer</a></li>
+  			<li><a href="#"><span class="glyphicon glyphicon-list-alt">&nbsp</span>Estimator</a></li>
+  			<li><a href="#"><span class="glyphicon glyphicon-warning-sign">&nbsp</span>Emergency</a></li>
+		  </ul>
+	</div>
+	<div class="leftSidenav-content">
+		<ul class="leftSidenav-content-ul">
+			<li id="t-ham"><span  data-toggle="tooltip" data-placement="right" data-original-title="Menu"  class="glyphicon glyphicon-menu-hamburger ham" style=";cursor:pointer;"   onclick="leftOpenNav()"></span></li>
+			<li><a href="../story/story.html"><span data-toggle="tooltip" data-placement="right" data-original-title="Story" class="glyphicon glyphicon-th" style=""></span></a></li>
+			<li><a href="#"><span data-toggle="tooltip" data-placement="right" data-original-title="Profile" class="glyphicon glyphicon-sunglasses" style=""></span></a></li>
+			<li><a href="traveller-main.html"><span data-toggle="tooltip" data-placement="right" data-original-title="Traveller" class="glyphicon glyphicon-road" style=""></span></a></li>
+			<li><a href="#"><span data-toggle="tooltip" data-placement="right" data-original-title="Organizer" class="glyphicon glyphicon-pushpin" style=""></span></a></li>
+			<li><a href="#"><span data-toggle="tooltip" data-placement="right" data-original-title="Estimator" class="glyphicon glyphicon-list-alt" style="
+			"></span></a></li>
+			<li><a href="#"><span data-toggle="tooltip" data-placement="right" data-original-title="Emergency" class="glyphicon glyphicon-warning-sign" style="font-size: 35p"></span></a></li>		
+
+		</ul>
+	</div>
+
+  <div id="rightSidenav" class="right-sidenav">
+  		<a href="javascript:void(0)" class="right-closebtn" onclick="rightCloseNav()">&times;</a>
+		<ul class="rightSidenav-content-ul-open sidenav-content-ul-open" style="list-style: none;">
+			<li style="color: #ef0707"><h1><u> Page Options</u></h1></li>
+			<li><a href="traveller-main.html"><span class="glyphicon glyphicon-th-list">&nbsp</span>Guide</a></li>
+			<li><a href="mytrip.html"><span><i class="fa fa-suitcase fai" aria-hidden="true" style="color: #ef0707"></i></span>My Trips</a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-pencil"">&nbsp</span>Plan a Trip</a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-plus" >&nbsp</span>Join a Trip</a></li>
+			<li><a href="#"><span><i class="fas fa-comments fai"  style="color: #ef0707" ></i></span>Chat</a></li>
+		</ul>
+	</div>
+
+	<div class="rightSidenav-content ">
+		<ul class="rightSidenav-content-ul">
+			<li id="t-ham"><span data-toggle="tooltip" data-placement="top" data-original-title="Menu" class="glyphicon glyphicon-menu-hamburger" onclick="rightOpenNav()"></span></li>
+      <li><a href="traveller-main.html"><span data-toggle="tooltip" data-placement="top" data-original-title="Suggestions" class="glyphicon glyphicon-th-list"></span></a></li>
+			<li style="margin-top: 20px"><a href="mytrip.html"><span data-toggle="tooltip" data-placement="top" data-original-title="My Trips" ><i class="fa fa-suitcase" aria-hidden="true"></i></span></a></li>
+      <li><a href="#"><span data-toggle="tooltip" data-placement="top" data-original-title="Plan a Trip" class="glyphicon glyphicon-pencil"></span></a></li>
+			<li><a href="#"><span data-toggle="tooltip" data-placement="top" data-original-title="Join a Trip" class="glyphicon glyphicon-plus"></span></a></li>
+			<li><a href="#"><span data-toggle="tooltip" data-placement="top" data-original-title="Chat" ><i class="fas fa-comments"></i></span></a></li>
+		</ul>
+	</div>
+
+  	<div class="container main col-lg-offset-2 col-lg-9">
+  		<div id="one" class="plan-container col-lg-8">
+  			<div class="plan-head">
+  				<div class="plan-title">
+  					<div class="title-top">
+  						<h2>Create Trip Plan</h2>
+  					</div>
+  					<div class="title-low">
+  						<h3>#2: Route Info</h3>
+  					</div>
+  				</div>
+  			</div>
+  			<div class="plan-body">
+  				<div class="layer-1 col-lg-10 col-lg-offset-1">
+  					<div class="l1-options col-lg-12">
+  						<div id="l1-op" class="source l1-op col-lg-10 col-lg-offset-1">
+  							<label><span>From:</span><input type="text" name="source"></label>
+  						</div>
+  							
+  						<div id="l1-op" class="dest l1-op col-lg-10 col-lg-offset-1">
+  							<label><span>To:</span><input type="text" name="dest" style="flex: 9;"></label>
+  						</div>
+  						<br>
+  						
+  					</div>
+  					<div class="vehicle l1-op  col-lg-7 col-lg-offset-4">
+  						<div class="veh-club">
+  							<span>Mode:</span>
+  							<select id="vs" class="vehicle-select">
+								<option>-----</option>
+								<option value="car">Car</option>
+								<option value="motorbike">Motorbike</option>
+								<option value="cycle">Cycling</option>
+								<option value="walking">Walking</option>
+							</select>
+  						</div>
+  					</div>
+  				</div>
+  				<div class="map-container col-lg-offset-1 col-lg-10">
+  					<div class="map col-lg-12" style="padding: 0;">
+  						<img src="img/maps.png" >
+  					</div>
+  					
+  				</div>
+  				<div class="layer-2 col-lg-offset-1 col-lg-10">
+					<div class="sub-layer-1">
+						<div class="add-stop">
+							<button class="btn btn-success"><span>+</span>AddStop</button>
+						</div>
+					</div>
+					<div class="sub-layer-2">
+						<div class="pits-handler">
+							<div class="pitstops pb">
+								<div class="pitstops-club">
+									<span class="s1">Pitstops:</span>
+									<select id="vs" class="select-pitstops">
+										<option>--------</option>
+										<option value="0">0</option>
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+										<option value="6">6</option>
+										<option value="7">7</option>
+										<option value="8">8</option>
+										<option value="9">9</option>
+										<option value="custom">custom</option>
+									</select>
+									<span class="s2"><input type="text" name="custom-pitstop"></span>
+									<span class="s3"><button class="edit-pitstop btnt">Check</button></span>
+								</div>
+							</div>
+							<div class="time-per-pitstop pb">
+								<div class="pitstime-club">
+									<span>Time Per Pitstop:</span>
+									<select id="vs" class="select-pitstime">
+										<option>--------</option>
+										<option value="five">5 min</option>
+										<option value="ten">10 min</option>
+										<option value="fifteen">15 min</option>
+										<option value="thirty">30 min</option>
+										<option value="hour">1 hour</option>
+										<option value="custom">custom</option>
+									</select>	
+									<span style="display: flex; flex: 1;">
+										<input type="text" name="custom-time">
+										<select id="vs" class="custom-time-unit">
+											<option value="minutes">mins</option>
+											<option value="hours">hours</option>
+											<option value="days">days</option>
+										</select>
+									</span>
+									<button class="edit-pitstime btnt">Check</button>
+								</div>
+							</div>
+						</div>
+						<div class="time-distance pb">
+							<div class="distance">
+									<span>Distance:</span>
+									<span>300 km</span>
+							</div>
+							<div class="time">
+									<span>Travel Time:</span>
+									<span>8 hours 15 min</span>
+							</div>
+						</div>
+						<div class="total-time-distance pb">
+							<div class="total-time">
+								<span style="display: flex; flex: 1;">Total Journey Time:</span>
+								<span>9 hours 20 min</span>
+							</div>
+							<div class="total-distance">
+								<span style="display: flex; flex: 1;">Total Distance:</span>
+								<span>310 km</span>
+							</div>
+						</div>
+					</div>
+					
+					<div class="details-click">
+              			<h4>
+                			<a href="#subtrip-coll" data-toggle="collapse">View Journey Details</a>
+              			</h4>	
+            		</div>
+		            <div id="subtrip-coll" class="collapse">
+		              <div class="subtrip-layers">
+				            <div class="subtrip-layer-top">
+				                <div class="coll-trip-header">
+				                  <h3><u>Trip: 1</u></h3>
+				                </div>
+				            </div><br>
+				            <div class="subtrip-layer-bottom">
+				            	<div class="bottom-sublayer col-lg-11 sts">
+					                <div class="subtrip-src st">
+					                  <b>From: </b>
+					                  <span>Pune</span>
+					                </div>
+					                <div class="subtrip-dest st">
+					                  <b>To: </b>
+					                  <span>Goa</span>
+					                </div>
+					                <div class="subtrip-route-info st">
+					                  <b>Route Info: </b>
+					                  <span><a href="#"><u>Click Here</u></a></span>
+					                </div>
+					            </div>
+					            <div class="bottom-sublayer col-lg-11 sts">
+					                <div class="subtrip-pitstop st">
+					                  <b>Pitstop: </b>
+					                  <span>4</span>
+					                </div>
+					                <div class="subtrip-pitstime st">
+					                  <b>Time/Pitstop:</b>
+					                  <span>15 min</span>
+					                </div>
+					            </div>
+					            <div class="bottom-sublayer col-lg-11 sts">
+					                <div class="subtrip-ttime st">
+					                  <b>Trip Distance: </b>
+					                  <span>300 km</span>
+					                </div>
+					                <div class="subtrip-tdist st">
+					                  <b>Trip Time:</b>
+					                  <span>6 hour 20 min</span>
+					                </div>
+					            </div>
+					            <div class="subtrip-edit">
+					            	<button class="st-btn-edit btnt">Edit</button>
+					            </div>
+				            </div>
+		              </div>
+		              <div class="subtrip-layers">
+				            <div class="subtrip-layer-top">
+				                <div class="coll-trip-header">
+				                  <h3><u>Trip: 2</u></h3>
+				                </div>
+				            </div><br>
+				            <div class="subtrip-layer-bottom">
+				            	<div class="bottom-sublayer col-lg-11 sts">
+					                <div class="subtrip-src st">
+					                  <b>From: </b>
+					                  <span>Goa</span>
+					                </div>
+					                <div class="subtrip-dest st">
+					                  <b>To: </b>
+					                  <span>Mangalore</span>
+					                </div>
+					                <div class="subtrip-route-info st">
+					                  <b>Route Info: </b>
+					                  <span><a href="#"><u>Click Here</u></a></span>
+					                </div>
+					            </div>
+					            <div class="bottom-sublayer col-lg-11 sts">
+					                <div class="subtrip-pitstop st">
+					                  <b>Pitstop: </b>
+					                  <span>3</span>
+					                </div>
+					                <div class="subtrip-pitstime st">
+					                  <b>Time/Pitstop:</b>
+					                  <span>5 min</span>
+					                </div>
+					            </div>
+					            <div class="bottom-sublayer col-lg-11 sts">
+					                <div class="subtrip-ttime st">
+					                  <b>Trip Distance: </b>
+					                  <span>180 km</span>
+					                </div>
+					                <div class="subtrip-tdist st">
+					                  <b>Trip Time:</b>
+					                  <span>3 hour</span>
+					                </div>
+					            </div>
+					            <div class="subtrip-edit">
+					            	<button class="st-btn-edit btnt">Edit</button>
+					            </div>
+				            </div>
+		              </div>
+		            </div>
+  					
+  				</div>
+  				<div class="layer-3">
+  					<div class="navigante">
+  						<div id="btn-cancel" class="btn-cancel">
+  							<button class="btn btn-danger" onclick="abort()"><a href="mytrip.html">x</a></button>
+  						</div>
+  						<div id="btn-save" class="btn-save">
+  							<button class="btn btn-success glyphicon glyphicon-floppy-disk" onclick="save()"><a href="mytrip.html"></a></button>
+  						</div>
+  						<div id=btn-prev class="btn-prev">
+  							<button class="btn btn-primary">Prev</button>
+  						</div>
+  						<div id=btn-next class="btn-next">
+  							<button class="btn btn-primary">Next</button>
+  						</div>
+  					</div>
+  				</div>
+  			</div>
+  		</div>
+  		
+  		<div class="progress-container col-lg-offset-1 col-lg-3">
+  			asd
+  		</div>
+  	</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/custom.js"></script>
+</body>
+</html>
