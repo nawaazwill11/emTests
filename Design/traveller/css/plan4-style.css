@@ -2,7 +2,7 @@
     position: relative;
     top: 100px;
     height: auto;  
-    background-color: antiquewhite;
+    margin-bottom: 20px;
 }
 #one, #two {
 	osition: absolute;
@@ -26,6 +26,7 @@
 	display: flex;
 	flex-direction: column;
 	padding: 15px 0 0 15px; 
+	margin-bottom: 10px;
 }
 #l1-op {
 	padding: 0;
@@ -43,7 +44,21 @@
 	display: flex;
 	flex: 10;
 }
-
+.heads {
+	 border-bottom: 1px solid white;
+}
+.heads > h3 {
+	
+}
+#club {
+	display: flex;
+    flex-direction: column;
+    padding-top: 15px;
+    border-radius: 5px;
+    border: 2px solid white;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
 .fuel, .get-rate {
 	flex: 1;
 }
@@ -99,6 +114,7 @@
 }
 .progress-container {
 	background-color: white;
+	border-radius: 5px;
 }
 
 
@@ -125,3 +141,4 @@ input {
 .fuel, .get-rate {
 	display: flex;
 }
+

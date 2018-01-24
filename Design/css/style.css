@@ -316,6 +316,7 @@ margin-bottom: 14px;
     border-radius: 0;
     background-color: #494b62;
     border: 0;
+    color: white;
 }
 #nav-search > span > button{
     border-radius: 0;
@@ -365,3 +366,52 @@ margin-bottom: 14px;
 }
 
 /**********All nav-bar ends***************/
+
+#progress-container {
+    background-color: white;
+    border: 3px solid white;
+    position: fixed;
+    right: 130px;
+    width: fit-content;
+    height: 82%;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+.prog-layer {
+    margin: 0 -14px;
+    padding: 10px 5px 0px 5px;
+}
+.hash {
+    background-color: white;
+    border-radius: 5px;
+    padding: 0px 1px 1px 1px;
+    border: 1px solid lightgrey;
+}
+.prog-head {
+    border-bottom: 1px solid lightgrey;
+}
+.sub-hash > h3 {
+    border-bottom: 1px solid lightgrey;
+}
+.p-heads {
+    padding: 0;
+}
+.p-heads > h4 {
+    background-color: #edf2f7;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    margin: 0; 
+    padding-top: 5px;
+}
+.s-sh {
+    display: flex;
+}
+.hash-content-left {
+    flex: 4;
+}
+.hash-content-right {
+    flex: 5;
+}
+.p-bot {
+    padding: 10px;
+}

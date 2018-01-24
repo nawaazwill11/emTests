@@ -21,7 +21,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#"><img class="img-responsive pull-left" src="img/emLogo-1.png" alt="..."></a>
+				<a class="navbar-brand" href="../story/story.html"><img class="img-responsive pull-left" src="img/emLogo-1.png" alt="..."></a>
 				<div class="page-title col-lg-1" style="right: 8px;"><h1 style="margin-left: 0;s"><i>Traveller</i></h1></div>
 				<div class="input-group input-group-md col-lg-offset-2 col-lg-3" id="nav-search">
 					<input type="text" name="search" class="form-control search-input-top" placeholder="Search places or events">
@@ -90,7 +90,7 @@
 			<li style="color: #ef0707"><h1><u> Page Options</u></h1></li>
 			<li><a href="traveller-main.html"><span class="glyphicon glyphicon-th-list">&nbsp</span>Guide</a></li>
 			<li><a href="mytrip.html"><span><i class="fa fa-suitcase fai" aria-hidden="true" style="color: #ef0707"></i></span>My Trips</a></li>
-      <li><a href="#"><span class="glyphicon glyphicon-pencil"">&nbsp</span>Plan a Trip</a></li>
+      <li><a href="plan.html"><span class="glyphicon glyphicon-pencil"">&nbsp</span>Plan a Trip</a></li>
       <li><a href="#"><span class="glyphicon glyphicon-plus" >&nbsp</span>Join a Trip</a></li>
 			<li><a href="#"><span><i class="fas fa-comments fai"  style="color: #ef0707" ></i></span>Chat</a></li>
 		</ul>
@@ -101,7 +101,7 @@
 			<li id="t-ham"><span data-toggle="tooltip" data-placement="top" data-original-title="Menu" class="glyphicon glyphicon-menu-hamburger" onclick="rightOpenNav()"></span></li>
       <li><a href="traveller-main.html"><span data-toggle="tooltip" data-placement="top" data-original-title="Suggestions" class="glyphicon glyphicon-th-list"></span></a></li>
 			<li style="margin-top: 20px"><a href="mytrip.html"><span data-toggle="tooltip" data-placement="top" data-original-title="My Trips" ><i class="fa fa-suitcase" aria-hidden="true"></i></span></a></li>
-      <li><a href="#"><span data-toggle="tooltip" data-placement="top" data-original-title="Plan a Trip" class="glyphicon glyphicon-pencil"></span></a></li>
+      <li><a href="plan.html"><span data-toggle="tooltip" data-placement="top" data-original-title="Plan a Trip" class="glyphicon glyphicon-pencil"></span></a></li>
 			<li><a href="#"><span data-toggle="tooltip" data-placement="top" data-original-title="Join a Trip" class="glyphicon glyphicon-plus"></span></a></li>
 			<li><a href="#"><span data-toggle="tooltip" data-placement="top" data-original-title="Chat" ><i class="fas fa-comments"></i></span></a></li>
 		</ul>
@@ -126,7 +126,7 @@
   							<span style="display: flex; flex: 1;">Starting Date:</span>
   							<div class="date-select slt-div">
   								<select id="vs" class="year slt">
-  									<option>------</option>
+  									<option>----------------</option>
   									<option>2018</option>
   									<option>2019</option>
   									<option>2020</option>
@@ -142,7 +142,7 @@
   									<option>2030</option>
   								</select>
   								<select id="vs" class="month slt">
-  									<option>------</option>
+  									<option>----------------</option>
   									<option>Jan</option>
   									<option>Feb</option>
   									<option>March</option>
@@ -157,7 +157,7 @@
   									<option>Dec</option>
   								</select>
   								<select id="vs" class="date slt">
-  									<option>------</option>
+  									<option>----------------</option>
   									<option>1</option>
   									<option>2</option>
   									<option>3</option>
@@ -197,7 +197,7 @@
   							<span style="display: flex;flex: 1;">Starting Time:</span>
   							<div class="time-select slt-div">
   								<select id="vs" class="hour slt">
-  									<option>------</option>
+  									<option>----------------</option>
   									<option>12</option>
   									<option>11</option>
   									<option>10</option>
@@ -212,7 +212,7 @@
   									<option>1</option>
   								</select>
   								<select id="vs" class="meridiem slt">
-  									<option>------</option>
+  									<option>----------------</option>
   									<option>am</option>
   									<option>pm</option>
   								</select>
@@ -222,7 +222,7 @@
   							<span style="flex: 1;">Gender:</span>
   							<div class="gender-select slt-div" style="display:flex;flex: 3;">
   								<select id="vs" class="gender slt">
-  									<option>------</option>
+  									<option>----------------</option>
   									<option>Male</option>
   									<option>Female</option>
   									<option>Any</option>
@@ -234,7 +234,7 @@
   							<span class="ag" style="flex: 2 30px;">Age Group:</span>
   							<div class="age-select ag slt-div">
   								<select id="vs" class="age slt">
-  									<option>---------</option>
+  									<option>-------------------</option>
   									<option>Under 18</option>
   									<option>18-30</option>
   									<option>30-50</option>
@@ -244,10 +244,10 @@
   							</div>
   							<div class="button-group">
                   <div class="age-add ag">
-    								<button class="btn btn-success">+Add</button>
+    								<button class="btn btn-success"><span class="intbtn">+</span></button>
     							</div>
-    							<div class="age-remove">
-    								<button class="btn btn-danger">-Remove</button>
+    							<div class="age-remove ag">
+    								<button class="btn btn-danger"><span class="intbtn">-</span></button>
     							</div>
                 </div>
   						</div>
@@ -261,11 +261,12 @@
   								<label style="display: flex;"><input type="text" name="limit" placeholder="Enter Limit" style="font-weight: 500;"></label>
                   <br>
   							</div>
-                <button class="btn btn-success" style="margin-top: -5px;">Add</button>
+                <button class="btn btn-success"><span class="intbtn">+</span></button>
   						</div>
   						<div id="l1-op" class="l1-op col-lg-10 col-lg-offset-1">
   							<div class="description">
-  								<textarea id="desc" cols="43" rows="4" maxlength="160" placeholder="Enter a short description. Max character: 160" style="resize: none;"></textarea>
+                  <span><b>Tell Something About It:</b></span>
+  								<textarea id="desc" cols="43" rows="4" maxlength="160" placeholder="Enter a short description. Max character: 160" style="margin-top: 3px; color: #888da6"></textarea>
   							</div>
   						</div>
   					</div>
@@ -278,22 +279,134 @@
               <div id="btn-save" class="btn-save">
                 <button class="btn btn-success glyphicon glyphicon-floppy-disk" onclick="save()"><a href="mytrip.html"></a></button>
               </div>
+              <div>
               <div id=btn-prev class="btn-prev">
-                <button class="btn btn-primary">Prev</button>
+                <button class="btn btn-primary" onclick="two()">Prev</button>
               </div>
               <div id=btn-next class="btn-next">
-                <button class="btn btn-primary">Next</button>
+                <button class="btn btn-primary" onclick="four()">Next</button>
               </div>
             </div>
           </div>
   			</div>
   		</div>
   		
-  		<div class="progress-container col-lg-offset-1 col-lg-3">
-  			asd
-  		</div>
-  	</div>
-
+  </div>
+  <div id="progress-container" class="progress-container col-lg-offset-1 col-lg-3">
+        <div class="progress-main">
+          <div class="prog-head">
+            <div class="prog-title">
+              <h2>Progress Bar</h2>
+            </div>
+          </div>
+          <div class="prog-body">
+            <div class="club">
+              <div class="prog-layer" style="margin-top: 10px;">
+                <div class="hash">
+                  <div class="sub-hash p-heads">
+                    <h4><b>#1 Type</b></h4>
+                  </div>
+                  <div class="sub-hash p-bot">
+                    <div class="s-sh">
+                      <span class="hash-content-left"><b>Company:</b></span>
+                      <span class="hash-content-right">Group</span>
+                    </div>
+                    <div class="s-sh">
+                      <span class="hash-content-left"><b> Travel Moto:</b></span>
+                      <span class="hash-content-right">Photography</span>
+                    </div>
+                  </div>  
+                </div>
+              </div>
+              <div class="prog-layer">
+                <div class="hash">
+                  <div class="sub-hash p-heads">
+                    <h4><b>#2 Route Info</b></h4>
+                  </div>
+                  <div class="sub-hash p-bot">
+                    <div class="s-sh">
+                      <span class="hash-content-left"><b>From:</b></span>
+                      <span class="hash-content-right">Daman</span>
+                    </div>
+                    <div class="s-sh">
+                      <span class="hash-content-left"><b>To:</b></span>
+                      <span class="hash-content-right">Goa</span>
+                    </div>
+                    <div class="s-sh">
+                      <span class="hash-content-left"><b>Mode:</b></span>
+                      <span class="hash-content-right">Motorbike</span>
+                    </div>
+                    <div class="s-sh">
+                      <span class="hash-content-left"><b>T. Dist.:</b></span>
+                      <span class="hash-content-right">550 km</span>
+                    </div>
+                    <div class="s-sh">
+                      <span class="hash-content-left"><b>T. Time:</b></span>
+                      <span class="hash-content-right">9 hr 20 min</span>
+                    </div>
+                  </div>   
+                </div>
+              </div>
+            </div>
+            <div class="club">
+              <div class="prog-layer">
+                <div class="hash">
+                  <div class="sub-hash p-heads">
+                    <h4><b>#3 Date and Other Info</b></h4>
+                  </div>
+                  <div class="sub-hash p-bot">
+                    <div class="s-sh">
+                      <span class="hash-content-left"><b>Start Date:</b></span>
+                      <span class="hash-content-right">25 FEB 2018</span>
+                    </div>
+                    <div class="s-sh">
+                      <span class="hash-content-left"><b>Start Time:</b></span>
+                      <span class="hash-content-right">10:00 am</span>
+                    </div>
+                    <div class="s-sh">
+                      <span class="hash-content-left"><b>Gender:</b></span>
+                      <span class="hash-content-right">Men Only</span>
+                    </div>
+                    <div class="s-sh">
+                      <span class="hash-content-left"><b>Age Group:</b></span>
+                      <span class="hash-content-right">U-18, 18-30</span>
+                    </div>
+                    <div class="s-sh">
+                      <span class="hash-content-left"><b>Limit:</b></span>
+                      <span class="hash-content-right">Any</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="prog-layer">
+              <div class="hash">
+                <div class="sub-hash p-heads">
+                  <h4><b>#4 Cost Info</b></h4>
+                </div>
+                <div class="sub-hash p-bot">
+                  <div class="s-sh">
+                    <span class="hash-content-left"><b>Fuel Cost:</b></span>
+                    <span class="hash-content-right">2000</span>
+                  </div>
+                  <div class="s-sh">
+                    <span class="hash-content-left"><b>Vehicle Cost:</b></span>
+                    <span class="hash-content-right">1000</span>
+                  </div>
+                  <div class="s-sh">
+                    <span class="hash-content-left"><b>Hotel Cost:</b></span>
+                    <span class="hash-content-right">10000</span>
+                  </div>
+                  <div class="s-sh">
+                    <span class="hash-content-left"><b>Total Cost:</b></span>
+                    <span class="hash-content-right">13000</span>
+                  </div>
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/custom.js"></script>

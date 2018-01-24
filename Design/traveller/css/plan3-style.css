@@ -1,12 +1,14 @@
 .main{
     position: relative;
     top: 100px;
-    height: auto;  
-    background-color: antiquewhite;
+    height: auto; 
+    margin-bottom: 20px; 
 }
-#one, #two {
-	osition: absolute;
+/*
+#one, #two,,#three,#four {
+	position: absolute;
 }
+*/
 .plan-container {
 	background-color: white;
 	position: absolute;
@@ -43,7 +45,14 @@
 	display: flex;
 	flex: 10;
 }
+#l1-op > button {
+	margin-top: 4px;
+    height: 27px;
+    padding: 0;
+    width: 47px;
+    border-radius: 0;
 
+}
 .date-select{
 	display: flex;
 	flex: 3;
@@ -58,6 +67,7 @@
     border-radius: 5px;
     height: 30px;
     margin-left: 5px;
+    width: 90px;
 }
 
 .navigante {
@@ -128,10 +138,20 @@
 	display: flex;
 }
 .age-select {
-	flex: 3 0 auto;
+	flex: 4 0 auto;
+}
+.ag > button, .eq {
+	height: 27px;
+    padding: 0;
+    width: 47px;
+    border-radius: 0;s
 }
 .button-group {
 	display: flex;
+	margin-top: 2px;
+}
+.intbtn {
+	font-size: 18px;
 }
 .nop {
 	display: flex;
@@ -147,5 +167,4 @@
 
 textarea{
 	border-radius: 5px;
-
 }

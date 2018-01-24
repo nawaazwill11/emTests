@@ -17,7 +17,7 @@ function rightCloseNav() {
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();   
 });
-
+/*
 function one() {
     document.getElementById("one").style.zIndex = "20";
     document.getElementById("two").style.zIndex = "19";
@@ -45,7 +45,7 @@ function four() {
     document.getElementById("three").style.zIndex = "19";
     document.getElementById("four").style.zIndex = "20";
 }
-
+*/
 function save() {
 	location.href = "mytrip.html";
 }
@@ -54,7 +54,19 @@ function abort() {
 	location.href = "mytrip.html";
 }
 
+function one() {
+	location.href = "plan.html";
+}
 
+function two() {
+	location.href = "plan-2.html";
+}
+function three() {
+	location.href = "plan-3.html";
+}
+function four() {
+	location.href = "plan-4.html";
+}
 $(document).ready(function(e){
         $(".img-check").click(function(){
         $(this).toggleClass("check");
