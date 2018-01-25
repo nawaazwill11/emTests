@@ -1,4 +1,4 @@
-.main{
+ .main{
     position: relative;
     top: 100px;
     height: auto;  
@@ -14,7 +14,7 @@
 .plan-title {
 	text-align: center;
 }
-.layer-1 {
+.p4-layer-1 {
 	display: flex;
 	flex-direction: column;
 	padding-left: 60px;
@@ -22,25 +22,25 @@
 	border-radius: 5px;
 	margin-bottom: 20px;
 }
-.l1-options {
+.p4-l1-options {
 	display: flex;
 	flex-direction: column;
 	padding: 15px 0 0 15px; 
 	margin-bottom: 10px;
 }
-#l1-op {
+#p4-l1-op {
 	padding: 0;
 	margin-bottom: 12px;
 	display: flex;
 }
-#l1-op > label {
+#p4-l1-op > label {
 	display: flex;
 }
-#l1-op > label > span {
+#p4-l1-op > label > span {
 	display: flex;
 	flex: 1;
 }
-#l1-op > label > input {
+#p4-l1-op > label > input {
 	display: flex;
 	flex: 10;
 }
@@ -62,7 +62,7 @@
 .fuel, .get-rate {
 	flex: 1;
 }
-#vs {
+#p4-vs {
 	background-color: white;
     border: 0;
     border-radius: 5px;

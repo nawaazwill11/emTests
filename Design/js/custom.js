@@ -14,6 +14,13 @@ function rightCloseNav() {
     document.getElementById("rightSidenav").style.width = "0";
 }
 
-$(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip();   
-});
+function navigante(main,a,b,c) {
+	document.getElementById(main).style.display = "block";
+	document.getElementById(a).style.display = "none";
+	document.getElementById(b).style.display = "none";
+	document.getElementById(c).style.display = "none";
+}
+
+function publish() {
+	location.href = "mytrip.html";
+}

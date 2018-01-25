@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
-  <link rel="stylesheet" type="text/css" href="css/plan2-style.css">
+  <link rel="stylesheet" type="text/css" href="css/plan-style.css">
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="../css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="css/fontawesome-all.css">
@@ -119,13 +119,13 @@
   				</div>
   			</div>
   			<div class="plan-body">
-  				<div class="layer-1 col-lg-10 col-lg-offset-1">
-  					<div class="l1-options col-lg-12">
-  						<div id="l1-op" class="source l1-op col-lg-10 col-lg-offset-1">
+  				<div class="p2-layer-1 col-lg-10 col-lg-offset-1">
+  					<div class="p2-l1-options col-lg-12">
+  						<div id="p2-l1-op" class="source l1-op col-lg-10 col-lg-offset-1">
   							<label><span>From:</span><input type="text" name="source"></label>
   						</div>
   							
-  						<div id="l1-op" class="dest l1-op col-lg-10 col-lg-offset-1">
+  						<div id="p2-l1-op" class="dest l1-op col-lg-10 col-lg-offset-1">
   							<label><span>To:</span><input type="text" name="dest" style="flex: 9;"></label>
   						</div>
   						<br>
@@ -134,7 +134,7 @@
   					<div class="vehicle l1-op  col-lg-7 col-lg-offset-4">
   						<div class="veh-club">
   							<span>Mode:</span>
-  							<select id="vs" class="vehicle-select">
+  							<select id="p2-vs" class="vehicle-select">
 								<option>-----</option>
 								<option value="car">Car</option>
 								<option value="motorbike">Motorbike</option>
@@ -150,18 +150,18 @@
   					</div>
   					
   				</div>
-  				<div class="layer-2 col-lg-offset-1 col-lg-10">
-					<div class="sub-layer-1">
+  				<div class="p2-layer-2 col-lg-offset-1 col-lg-10">
+					<div class="p2-sub-layer-1">
 						<div class="add-stop">
 							<button class="btn btn-success"><span>+</span>AddStop</button>
 						</div>
 					</div>
-					<div class="sub-layer-2">
+					<div class="p2-sub-layer-2">
 						<div class="pits-handler">
 							<div class="pitstops pb">
 								<div class="pitstops-club">
 									<span class="s1">Pitstops:</span>
-									<select id="vs" class="select-pitstops">
+									<select id="p2-vs" class="select-pitstops">
 										<option>--------</option>
 										<option value="0">0</option>
 										<option value="1">1</option>
@@ -182,7 +182,7 @@
 							<div class="time-per-pitstop pb">
 								<div class="pitstime-club">
 									<span>Time Per Pitstop:</span>
-									<select id="vs" class="select-pitstime">
+									<select id="p2-vs" class="select-pitstime">
 										<option>--------</option>
 										<option value="five">5 min</option>
 										<option value="ten">10 min</option>
@@ -193,7 +193,7 @@
 									</select>	
 									<span style="display: flex; flex: 1;">
 										<input type="text" name="custom-time">
-										<select id="vs" class="custom-time-unit">
+										<select id="p2-vs" class="custom-time-unit">
 											<option value="minutes">mins</option>
 											<option value="hours">hours</option>
 											<option value="days">days</option>
@@ -203,22 +203,22 @@
 								</div>
 							</div>
 						</div>
-						<div class="time-distance pb">
-							<div class="distance">
+						<div class="p2-time-distance pb">
+							<div class="p2-distance">
 									<span>Distance:</span>
 									<span>300 km</span>
 							</div>
-							<div class="time">
+							<div class="p2-time">
 									<span>Travel Time:</span>
 									<span>8 hours 15 min</span>
 							</div>
 						</div>
-						<div class="total-time-distance pb">
-							<div class="total-time">
+						<div class="p2-total-time-distance pb">
+							<div class="p2-total-time">
 								<span style="display: flex; flex: 1;">Total Journey Time:</span>
 								<span>9 hours 20 min</span>
 							</div>
-							<div class="total-distance">
+							<div class="p2-total-distance">
 								<span style="display: flex; flex: 1;">Total Distance:</span>
 								<span>310 km</span>
 							</div>
@@ -326,7 +326,7 @@
 		            </div>
   					
   				</div>
-  				<div class="layer-3">
+  				<div class="p2-layer-3">
   					<div class="navigante">
   						<div id="btn-cancel" class="btn-cancel">
   							<button class="btn btn-danger" onclick="abort()"><a href="mytrip.html">x</a></button>

@@ -1,8 +1,8 @@
-.main{
+ .main{
     position: relative;
     top: 100px;
-    height: auto;  
-    margin-bottom: 20px;
+    height: auto;
+    margin-bottom: 20px;  
 }
 #one, #two {
 	osition: absolute;
@@ -14,7 +14,7 @@
 .plan-title {
 	text-align: center;
 }
-.layer-1 {
+.p2-layer-1 {
 	display: flex;
 	flex-direction: column;
 	padding-left: 60px;
@@ -22,23 +22,23 @@
 	border-radius: 5px;
 	margin-bottom: 20px;
 }
-.l1-options {
+.p2-l1-options {
 	display: flex;
 	flex-direction: column;
 	padding: 15px 0 0 15px; 
 }
-#l1-op {
+#p2-l1-op {
 	padding: 0;
 	margin-bottom: 12px;
 }
-#l1-op > label {
+#p2-l1-op > label {
 	display: flex;
 }
-#l1-op > label > span {
+#p2-l1-op > label > span {
 	display: flex;
 	flex: 1;
 }
-#l1-op > label > input {
+#p2-l1-op > label > input {
 	display: flex;
 	flex: 10;
 }
@@ -49,7 +49,7 @@
 }
 .veh-club {
 }
-#vs {
+#p2-vs {
 	background-color: white;
     border: 0;
     border-radius: 5px;
@@ -70,7 +70,7 @@
 .map > img {
 	width: 473px;
 }
-.sub-layer-1 {
+.p2-sub-layer-1 {
 	margin-bottom: 15px;
 	margin-top: 5px;
 }
@@ -78,7 +78,7 @@
 	width: 90px;
     height: 35px;
 }
-.sub-layer-2 {
+.p2-sub-layer-2 {
 	position: relative;
 	display: flex;
 	flex-direction: column;
@@ -125,21 +125,21 @@
 	display: flex;
 	flex: 1;
 }
-.time-distance {
+.p2-time-distance {
 	display: flex;
 }
-.distance, .time {
+.p2-distance, .p2-time {
 	display: flex;
 	flex: 1;
 }
 
-.total-time-distance {
+.p2-total-time-distance {
 	display: flex;
 	border-bottom: 0;
 	padding-bottom: 0;  
 	flex-direction: column;	
 }
-.total-time, .total-distance {
+.p2-total-time, .p2-total-distance {
 	display: flex;
 	flex: 1;
 	font-weight: 600;

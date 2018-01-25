@@ -17,35 +17,38 @@ function rightCloseNav() {
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();   
 });
-/*
+function do(a) {
+    document.getElementById(a).innerHTML = "sfsdfsdf";
+}
 function one() {
-    document.getElementById("one").style.zIndex = "20";
-    document.getElementById("two").style.zIndex = "19";
-    document.getElementById("three").style.zIndex = "19";
-    document.getElementById("four").style.zIndex = "19";
+    var one = document.getElementById("one");
+    var two = document.getElementById("two");
+    var three = document.getElementById("three");
+    var four = document.getElementById("four");
+
 }
 
 function two() {
-    document.getElementById("one").style.zIndex = "19";
-    document.getElementById("two").style.zIndex = "20";
-    document.getElementById("three").style.zIndex = "19";
-    document.getElementById("four").style.zIndex = "19";
+    document.getElementById("one");
+    document.getElementById("two");
+    document.getElementById("three");
+    document.getElementById("four");
 }
 
 function Three() {
-    document.getElementById("one").style.zIndex = "19";
-    document.getElementById("two").style.zIndex = "19";
-    document.getElementById("three").style.zIndex = "20";
-    document.getElementById("four").style.zIndex = "19";
+    document.getElementById("one");
+    document.getElementById("two");
+    document.getElementById("three");
+    document.getElementById("four");
 }
 
 function four() {
-    document.getElementById("one").style.zIndex = "19";
-    document.getElementById("two").style.zIndex = "19";
-    document.getElementById("three").style.zIndex = "19";
-    document.getElementById("four").style.zIndex = "20";
+    document.getElementById("one");
+    document.getElementById("two");
+    document.getElementById("three");
+    document.getElementById("four");
 }
-*/
+/*
 function save() {
 	location.href = "mytrip.html";
 }
@@ -72,3 +75,4 @@ $(document).ready(function(e){
         $(this).toggleClass("check");
       });
   });
+*/

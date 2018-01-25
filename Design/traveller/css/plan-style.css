@@ -4,8 +4,9 @@
     height: auto;
     margin-bottom: 20px;  
 }
-#one, #two {
-	osition: absolute;
+#one, #two, #three, #four {
+	position: absolute;
+	display: none;
 }
 .plan-container {
 	background-color: white;
@@ -169,4 +170,308 @@
 .op {
 	display: flex;
 	border-radius: 5px;
+}
+
+/*plan-2*/
+
+.p2-layer-1 {
+	display: flex;
+	flex-direction: column;
+	padding-left: 60px;
+	background-color: #edf2f7;
+	border-radius: 5px;
+	margin-bottom: 20px;
+}
+.p2-l1-options {
+	display: flex;
+	flex-direction: column;
+	padding: 15px 0 0 15px; 
+}
+#p2-l1-op {
+	padding: 0;
+	margin-bottom: 12px;
+}
+#p2-l1-op > label {
+	display: flex;
+}
+#p2-l1-op > label > span {
+	display: flex;
+	flex: 1;
+}
+#p2-l1-op > label > input {
+	display: flex;
+	flex: 10;
+}
+
+.vehicle {
+	padding-bottom: 15px;
+	margin-top: -20px;
+}
+.veh-club {
+}
+#p2-vs {
+	background-color: white;
+    border: 0;
+    border-radius: 5px;
+    height: 30px;
+    margin-left: 5px;
+}
+.map-container {
+	position: relative;
+	padding-left: 22px;
+}
+.map {
+	position: relative;
+	height: 300px;
+	padding: 0;
+	margin-left: 5px;
+}
+
+.map > img {
+	width: 473px;
+}
+.p2-sub-layer-1 {
+	margin-bottom: 15px;
+	margin-top: 5px;
+}
+.add-stop > button {
+	width: 90px;
+    height: 35px;
+}
+.p2-sub-layer-2 {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+    background-color: #edf2f6;
+    padding: 15px;
+    border-radius: 5px;
+
+}
+.pb {
+	padding: 15px 0;
+    border-bottom: 1px solid #888da6;
+}
+
+.pits-handler {
+
+}
+.pitstops {
+	
+}
+.pitstops, .time-per-pitstop {
+	display: flex;
+}
+
+.pitstops-club, .pitstime-club {
+	display: flex;
+	flex: 2;
+}
+.pitstops-club > input, .pitstime-club > input {
+	display: flex;
+	flex: 2;
+}
+.pitstops-club .s1 {
+	display: flex;
+	flex: 2;
+}
+.pitstops-club .s2 {
+	display: flex;
+	flex: 4;
+}
+.pitstops-club .s3 {
+	display: flex;
+}
+.pitstops-club > select {
+	display: flex;
+	flex: 1;
+}
+.select-pitstime {
+	margin-left: 14px;
+}
+.p2-time-distance {
+	display: flex;
+}
+.p2-distance, .p2-time {
+	display: flex;
+	flex: 1;
+}
+
+.p2-total-time-distance {
+	display: flex;
+	border-bottom: 0;
+	padding-bottom: 0;  
+	flex-direction: column;	
+}
+.p2-total-time, .p2-total-distance {
+	display: flex;
+	flex: 1;
+	font-weight: 600;
+}
+
+.details-click > h4 {
+	margin-left: 300px; 
+}
+
+.btnt {
+	border-radius: 3px;
+    border: 0;
+    background-color: blueviolet;
+    color: white;
+    width: 70px;
+    height: 30px;
+}
+/*plan 3*/
+
+.p3-layer-1 {
+	display: flex;
+	flex-direction: column;
+	padding-left: 60px;
+	background-color: #edf2f7;
+	border-radius: 5px;
+	margin-bottom: 20px;
+}
+.p3-l1-options {
+	display: flex;
+	flex-direction: column;
+	padding: 15px 0 0 15px; 
+}
+#p3-l1-op {
+	padding: 0;
+	margin-bottom: 12px;
+	display: flex;
+}
+#p3-l1-op > label {
+	display: flex;
+}
+#p3-1-op > label > span {
+	display: flex;
+	flex: 1;
+}
+#p3-l1-op > label > input {
+	display: flex;
+	flex: 10;
+}
+#p3-l1-op > button {
+	margin-top: 4px;
+    height: 27px;
+    padding: 0;
+    width: 47px;
+    border-radius: 0;
+
+}
+.date-select{
+	display: flex;
+	flex: 3;
+}
+.time-select {
+	display: flex;
+    flex: 3;
+}
+#p3-vs {
+	background-color: white;
+    border: 0;
+    border-radius: 5px;
+    height: 30px;
+    margin-left: 5px;
+    width: 90px;
+}
+.age-group {
+	display: flex;
+}
+.age-select {
+	flex: 4 0 auto;
+}
+.ag > button, .eq {
+	height: 27px;
+    padding: 0;
+    width: 47px;
+    border-radius: 0;s
+}
+.p3-button-group {
+	display: flex;
+	margin-top: 2px;
+}
+.intbtn {
+	font-size: 18px;
+}
+.nop {
+	display: flex;
+	flex: 1;
+	margin-top: 5px;
+}
+.nop > label > input {
+	width: 80px;
+}
+.nop-radio {
+	margin-right: 9px;
+}
+
+textarea{
+	border-radius: 5px;
+}
+/*plan-4*/
+
+.p4-layer-1 {
+	display: flex;
+	flex-direction: column;
+	padding-left: 60px;
+	background-color: #edf2f7;
+	border-radius: 5px;
+	margin-bottom: 20px;
+}
+.p4-l1-options {
+	display: flex;
+	flex-direction: column;
+	padding: 15px 0 0 15px; 
+	margin-bottom: 10px;
+}
+#p4-l1-op {
+	padding: 0;
+	margin-bottom: 12px;
+	display: flex;
+}
+#p4-l1-op > label {
+	display: flex;
+}
+#p4-l1-op > label > span {
+	display: flex;
+	flex: 1;
+}
+#p4-l1-op > label > input {
+	display: flex;
+	flex: 10;
+}
+.heads {
+	 border-bottom: 1px solid white;
+}
+.heads > h3 {
+	
+}
+#club {
+	display: flex;
+    flex-direction: column;
+    padding-top: 15px;
+    border-radius: 5px;
+    border: 2px solid white;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.fuel, .get-rate {
+	flex: 1;
+}
+#p4-vs {
+	background-color: white;
+    border: 0;
+    border-radius: 5px;
+    height: 30px;
+    margin-left: 5px;
+    width: 100px;
+}
+
+.fuel, .get-rate {
+	display: flex;
+}
+
+.p4-l1-op > span > input {
+	width: 100px;
 }
