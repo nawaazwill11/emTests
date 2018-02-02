@@ -1,0 +1,94 @@
+.main{
+    position: relative;
+    top: 100px;
+    height: auto;  
+} /*Parent of all parents*/
+
+.search-top {
+    background-color: white;
+    border-radius: 5px; 
+    padding: 10px;
+}
+.sub-title {
+    text-align: center;
+    padding: 1px 0 10px;
+}
+.search-belt {
+    background-color: #edf2f7;
+    padding-bottom: 10px;
+}
+.search-layer{
+    display: flex;
+    padding-left: 55px;
+    margin-bottom: 15px;
+}
+.search-op {
+
+}
+.search-op > h3 {
+    text-align: center;
+}
+.search-layer .ttl {
+    flex: 1;
+}
+.search-op > select {
+    border: 0;
+    border-radius: 5px;
+    height: 29px;
+}
+.l0 {
+    border-bottom: 1px solid white;
+    padding: 0;
+}
+.l1 .search-op {
+    flex: 1;
+}
+.l1-o1 > input, .l1-o2 > input{
+    border: none;
+    border-radius: 5px;
+    height: 29px;
+}
+.l1 .search-op > label {
+    margin-right: 14px;
+}
+.l1-o1 > input {
+    width: 398px;
+}
+.l1-o2 > input {
+    width: 414px;
+}
+.l2 .search-op {
+    flex: 1;
+}
+.l2 .search-op > select {
+    border: 0;
+    border-radius: 5px;
+    height: 29px;
+}
+.l2-o1 > label {
+    margin-right: 4px;
+}
+.l2-o3 > label {
+    margin-right: 11px;
+}
+.l2-o4 > select {
+    width: 81px;
+}
+.l3 .search-op {
+    flex: 1;
+}
+.l3-o1 > select {
+    width: 59px;
+}
+.l3-o2 > label {
+    margin-right: 11px;
+}
+.l3-o2 > select {
+    width: 57px;
+}
+.l3-o3 > select {
+    width: 86px;
+}
+.l3-o4 > label {
+    margin-right: 6.3px;
+}
