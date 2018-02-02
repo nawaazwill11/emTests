@@ -409,6 +409,7 @@
 textarea{
 	border-radius: 5px;
 	width: 400px;
+	border: 0;
 }
 /*plan-4*/
 
@@ -475,4 +476,7 @@ textarea{
 
 .p4-l1-op > span > input {
 	width: 100px;
+}
+::-webkit-input-placeholder { /* Chrome */
+  color: #888da6;
 }

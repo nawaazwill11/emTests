@@ -10,22 +10,45 @@
   <link rel="stylesheet" type="text/css" href="css/fontawesome-all.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <style type="text/css">
-    .check {
-      opacity: 0.3;
-      color: #996;
+    body { 
+      padding: 1em; 
     }
-
+    #test {
+      width: 200px;
+      height: 200px;
+      background: gray;
+      margin: 1em;
+    }
   </style>
- 
-</head>
-<body>
-  
-
-<div class="container">
-  <div id="a" class="row">
-      <button onclick="dod('a')">vlivk</button>
+  <body>
+    <div class="container">
+      <button id="open" >Open</button>
+      <div id="test" hidden="hidden">Lorem ipsum</div>
     </div>
-  </div>
-<script type="text/javascript" src="js/custom.js"></script>
-</body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/custom.js"></script>
+    <script type="text/javascript">
+      var button = $( '#open' )[0];
+      var elem = $( '#test' )[0];
+
+      $( button ).on( 'click', function ( e ) {
+          $( elem ).toggle();
+          e.stopPropagation();
+      });
+
+      $( document ).on( 'click', function ( e ) {
+          if ( $( e.target ).closest( elem ).length === 0 ) {
+              $( elem ).hide();
+          }
+      });
+                      
+      $( document ).on( 'keydown', function ( e ) {
+          if ( e.keyCode === 27 ) {
+              $( elem ).hide();
+          }
+      });
+
+</script>
+  </body>
 </html>

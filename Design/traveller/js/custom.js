@@ -76,3 +76,22 @@ $(document).ready(function(e){
       });
   });
 */
+var button = $( '#open' )[0];
+      var elem = $( '#test' )[0];
+
+      $( button ).on( 'click', function ( e ) {
+          $( elem ).show();
+          e.stopPropagation();
+      });
+
+      $( document ).on( 'click', function ( e ) {
+          if ( $( e.target ).closest( elem ).length === 0 ) {
+              $( elem ).hide();
+          }
+      });
+                      
+      $( document ).on( 'keydown', function ( e ) {
+          if ( e.keyCode === 27 ) {
+              $( elem ).hide();
+          }
+      });
