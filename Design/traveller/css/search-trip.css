@@ -99,8 +99,10 @@
 }
 .result-container {
     padding: 15px 10px;
-    display: flex;
 
+}
+.result-layer {
+	display: flex;
 }
 .result-box {
     box-shadow: 0px 0px 4px 1px #888da6;
@@ -142,12 +144,15 @@
 }
 .join-button {
     padding: 0;
+    border: 0;
 }
 .join-button > button {
     width: 100%;
     border: 0;
     background-color: #ef0707;
     height: 40px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
 }
 
 
@@ -172,8 +177,9 @@
     background-color: white;
     width: 40%;
     margin-left: 30%;
-    height: 80%;
+    height: 84%;
     border-radius: 5px;
+    margin-top: -10px;
 }
 .trip-box-big {
     
