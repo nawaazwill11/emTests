@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
-  <link rel="stylesheet" type="text/css" href="../traveller/css/search-trip.css">
+  <link rel="stylesheet" type="text/css" href="css/search-event.css">
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="../css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="css/fontawesome-all.css">
@@ -118,58 +118,88 @@
         </div>
         <div class="search-layer l1">
           <div class="search-op l1-o1">
-            <label>Source:</label>
-            <input type="text" name="source">
+            <label>Event Location:</label>
+            <select>
+              <option>Any</option>
+              <option>Venue</option>
+              <option>Online</option>
+            </select>
           </div>
-          <div class="search-op l1-o2">
-            <label>Destination:</label>
-            <input type="text" name="dest">
+          <div class="search-op l1-o2" style="flex: 2;">
+            <label>Place:</label>
+            <input type="text" name="location" placeholder="Eg. Daman, Daman & Diu">
+          </div>
+          <div class="search-op l1-o3">
+            <label>/</label>
+            <a href="#">(Locate on Maps)</a>
+            <!--<button class="btn btn-success">Locate on maps</button> -->
           </div>
         </div>
-        <div class="search-layer l2">
-          <div class="search-op l2-o1">
-            <label>Company:</label>
-            <select>
-              <option>Any</option>
-              <option>Solo</option>
-              <option>Group</option>
-            </select>
+      <div class="search-layer l1" style="display: flex;">
+          <div class="search-op cat-search" style="flex: 15;">
+            <label style="margin-right: 35px;">Type:</label>
+            <div class="rad-club">
+              <div class="rads" style="flex: 4;">
+                <input type="radio" name="cs" value="cs-sel" style="margin-right: 10px;" checked>
+                <label style="font-weight: 400">Select</label>
+              </div>
+              <div class="rads" style="flex: 4;">
+                <input type="radio" name="cs" value="cs-sr" style="margin-right: 10px;">
+                <label style="font-weight: 400">Search</label>
+              </div>
+            </div>
           </div>
-          <div class="search-op l2-o2">
-            <label>Travel Moto:</label>
-            <select>
-              <option>Any</option>
-              <option>Adventure</option>
-              <option>Exploring</option>
-              <option>Photography</option>
-              <option>Sport Events</option>
-              <option>Food & Cuisine</option>
-              <option>Exercise</option>
-              <option>Shopping</option>
-              <option>Travel Blogging</option>
-              <option>Partying</option>
-              <option>Backtracking</option>
-            </select>
-          </div>
-          <div class="search-op l2-o3">
-            <label>Mode:</label>
-            <select>
-              <option>Any</option>
-              <option>Car</option>
-              <option>Motorbike</option>
-              <option>Cycle</option>
-              <option>On-Foot</option>
-            </select>
-          </div>
-          <div class="search-op l2-o4">
-            <label>Participants:</label>
-            <select>
-              <option>Any</option>
-              <option>Open</option>
-              <option>Limited</option>
-            </select>
-          </div>
-        </div>
+          <div class="cat-show">
+            <div class="gayab-sel" style="margin-left: 22px;"> 
+              <select class="selects">
+                <option selected disabled>Event Segment</option>
+                <option>Any</option>
+                <option>Adventure</option>
+                <option>Exploring</option>
+                <option>Photography</option>
+                <option>Sport Events</option>
+                <option>Food & Cuisine</option>
+                <option>Exercise</option>
+                <option>Shopping</option>
+                <option>Travel Blogging</option>
+                <option>Partying</option>
+                <option>Backtracking</option>
+              </select> 
+              <select class="selects">
+                <option selected disabled>Event Category</option>
+                <option>Any</option>
+                <option>Adventure</option>
+                <option>Exploring</option>
+                <option>Photography</option>
+                <option>Sport Events</option>
+                <option>Food & Cuisine</option>
+                <option>Exercise</option>
+                <option>Shopping</option>
+                <option>Travel Blogging</option>
+                <option>Partying</option>
+                <option>Backtracking</option>
+              </select>
+              <select class="selects">
+                <option selected disabled>Event Segment</option>
+                <option>Any</option>
+                <option>Adventure</option>
+                <option>Exploring</option>
+                <option>Photography</option>
+                <option>Sport Events</option>
+                <option>Food & Cuisine</option>
+                <option>Exercise</option>
+                <option>Shopping</option>
+                <option>Travel Blogging</option>
+                <option>Partying</option>
+                <option>Backtracking</option>
+              </select>
+            </div>
+            <div class="search-op cat-search">
+                <input class="gayab-sr cat-search-input" type="text" name="location" placeholder="Eg. Daman, Daman & Diu">
+            </div>
+          </div>  
+            
+      </div> 
         <div class="search-layer l3">
           <div class="search-op l3-o1">
             <label>Start Date:</label>
@@ -239,7 +269,7 @@
               <option>31</option>
             </select>
           </div>
-          <div class="search-op l3-o2">
+          <div class="search-op l3-o2" style="margin-left: 71px;">
             <label>Start Time:</label>
             <select>
               <option>Any</option>
@@ -262,16 +292,25 @@
               <option>pm</option>
             </select>
           </div>
-          <div class="search-op l3-o3">
-            <label>Gender:</label>
-            <select>
+          <div class="search-op" style="margin-left: 70px;">
+            <label style="margin-right: 16px;">Deadline:</label>
+            <select style="width: 86px;">
               <option>Any</option>
-              <option>Male</option>
-              <option>Female</option>
-              <option>Others</option>
+              <option>Anytime</option>
+              <option>Limit</option>
             </select>
           </div>
-          <div class="search-op l3-o4">
+          <div class="search-op" style="margin-left: 55px;">
+            <label>Privacy:</label>
+            <select style="width: 90px;">
+              <option>Any</option>
+              <option>Public</option>
+              <option>Private</option>
+            </select>
+          </div>
+        </div>
+        <div class="search-layer l4">
+          <div class="search-op l3-o3">
             <label>Age Group:</label>
             <select>
               <option disabled selected>From</option>
@@ -286,6 +325,31 @@
               <option>18-30</option>
               <option>30-50</option>
               <option>Above 50</option>
+            </select>
+          </div>
+          <div class="search-op l3-o3" style="margin-left: 70px;">
+            <label>Limit Participants:</label>
+            <select>
+              <option>Any</option>
+              <option>Yes</option>
+              <option>No</option>
+            </select>
+          </div>
+          <div class="search-op l3-o3" style="margin-left: 70px;">
+            <label style="margin-right: 5px;">Entry Fees:</label>
+            <select style="width: 86px">
+              <option>Any</option>
+              <option>Free</option>
+              <option>Payable</option>
+            </select>
+          </div>
+          <div class="search-op l3-o3" style="margin-left: 54px;">
+            <label>Gender:</label>
+            <select>
+              <option>Any</option>
+              <option>Male</option>
+              <option>Female</option>
+              <option>Others</option>
             </select>
           </div>
         </div>
@@ -461,8 +525,9 @@
 	              </div>
 	            </div>
 	            <div class="tb-layer" style="padding: 0;">
-	              <div class="tb-op">
-	                <img src="img/adventure.jpg" style=" width: 100%;">
+	              <div class="tb-op" style="display: flex;">
+	                <img src="img/adventure.jpg" style=" width: 50%;">
+                  <img src="img/adventure.jpg" style=" width: 50%;">
 	              </div> 
 	            </div>
 	            <div class="tb-layer">
@@ -1033,5 +1098,21 @@
           }
       });
     </script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('input[type=radio][name=cs]').change(function() {
+        if (this.value == 'cs-sel') {
+            $(".gayab-sr").hide();
+            $(".gayab-sel").show();
+            
+        }
+        else if (this.value == 'cs-sr') {
+            $(".gayab.sel").hide();
+            $(".gayab-sr").show()
+            
+        }
+    });
+  });
+</script>
 </body>
 </html>
