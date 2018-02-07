@@ -9,46 +9,40 @@
   <link rel="stylesheet" href="css/bootstrap.css">
   <link rel="stylesheet" type="text/css" href="css/fontawesome-all.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <style type="text/css">
-    body { 
-      padding: 1em; 
-    }
-    #test {
-      width: 200px;
-      height: 200px;
-      background: gray;
-      margin: 1em;
-    }
-  </style>
-  <body>
-    <div class="container">
-      <button id="open" >Open</button>
-      <div id="test" hidden="hidden">Lorem ipsum</div>
-    </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ <link rel="stylesheet" type="text/css" href="css/jquery.qtip.min.css">
+
+</head>
+<body>
+  <div class="container">
+    <div title="Hello" class="something" style="border:1px solid red; height:150px; width:300px;"></div>
+  </div>
+  
+
+
+
+
+
+    
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+  <script src='js/jquery-ui.min.js'></script>
+    <script type="text/javascript" src="js/jquery.qtip.min.js"></script>
     <script type="text/javascript" src="js/custom.js"></script>
-    <script type="text/javascript">
-      var button = $( '#open' )[0];
-      var elem = $( '#test' )[0];
-
-      $( button ).on( 'click', function ( e ) {
-          $( elem ).toggle();
-          e.stopPropagation();
-      });
-
-      $( document ).on( 'click', function ( e ) {
-          if ( $( e.target ).closest( elem ).length === 0 ) {
-              $( elem ).hide();
+    <script>
+      $('.something').qtip({
+          show: {
+              effect: function() {
+                $(this).show('slide', 300);
+              }
+          },
+          hide: {
+              effect: function() {
+                $(this).hide('slide', 500);
+              }
           }
-      });
-                      
-      $( document ).on( 'keydown', function ( e ) {
-          if ( e.keyCode === 27 ) {
-              $( elem ).hide();
-          }
-      });
-
-</script>
+       });
+    </script>
   </body>
 </html>

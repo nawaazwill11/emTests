@@ -1,0 +1,156 @@
+.plan-layer {
+  margin-left: 91px;
+}
+.plan-layer {
+  padding: 10px;
+  margin-top: 30px;
+}
+.pl-op {
+  border-bottom: 1px solid lightgrey;
+  padding-bottom: 10px;
+  max-width: 80%;
+  margin-bottom: 20px;
+
+}
+
+.lI-group {
+  position:relative;  
+
+  & + .lI-group {
+    margin-top: 30px;
+  }
+}
+.lI-group {
+  max-width: 100%;
+
+}
+
+.lI-label {
+  position: absolute;
+  left: 0;
+  top: 10px;
+  color: #999;
+  background-color: #fff;
+  z-index: 10;
+  transition: transform 150ms ease-out, font-size 150ms ease-out;
+}
+
+.focused .lI-label {
+  transform: translateY(-125%);
+  font-size: .75em;
+}
+
+.lI-input {
+  position: relative;
+  padding: 12px 0px 5px 0;
+  width: 100%;
+  outline: 0;
+  border: 0;
+  box-shadow: 0 1px 0 0 #e5e5e5;
+  transition: box-shadow 150ms ease-out;
+  
+  &:focus {
+    box-shadow: 0 2px 0 0 blue;
+  }
+}
+
+.lI-input.filled {
+  box-shadow: 0 2px 0 0 lightgreen;
+}
+#ta-desc {
+  border: 1px solid lightgray;
+  resize: none;
+  width: 100%;
+}
+.td {
+  display: flex;
+}
+.td-date {
+  flex: 1;
+}
+.selects > select, .td-time > select {
+  border: 0;
+  background-color: #edf2f7;
+  border-radius: 5px;
+  height: 29px;
+  width: 60px;
+}
+select {
+  border: 0;
+  background-color: #edf2f7;
+  border-radius: 5px;
+  height: 29px;
+}
+.pl-op .glyphicon {
+  font-size: 15px;
+  margin-left: 5px;
+}
+.rad-club {
+  display: flex;
+}
+.rads > input {
+  margin-right: 10px;
+}
+.nobo {
+  border: 0;
+}
+.divide {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin-bottom: 10px;
+}
+.logo-up {
+  border: 1px dashed;
+  background-color: #d3d3d361;
+  height: 100px;
+  padding: 30px 0 27px 23px;
+  width: 45%;
+  margin-bottom: 10px;
+}
+.cover-up {
+  background-color: #d3d3d361;
+    width: 70%;
+    height: 150px;
+    padding: 30px;
+    border: 1px dashed;
+    margin-bottom: 10px;
+}
+.logo-up:hover, .logo-up > label:hover, .cover-up:hover, .cover-up > label:hover {
+  cursor: pointer;
+}
+.logo-up > label, .cover-up > label {
+  margin-bottom: 0;
+  width: 100%;
+  height: 100px;
+  font-weight: 400;
+}
+
+.cover-up > label {
+  font-size: larger;
+  margin-right: 14px;
+}
+.search-cat {
+  margin-top: 15px;
+}
+.tupac {
+  display: flex;
+}
+.sub-pl-op {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.sub-pl-op > select {
+  width: 80px;
+}
+.sub2-pl-op {
+  display: flex;
+}
+.sub2-pl-op > select {
+  width: 80px;
+  margin-right: 10px;
+}
+.limit-part, .charge {
+  margin-top: 10px;
+}

@@ -135,10 +135,14 @@
 	display: flex;
 }
 .hash-content-left {
-	flex: 4;
+	flex: 5;
+	font-weight: 600;
 }
 .hash-content-right {
 	flex: 5;
+	text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 .p-bot {
 	padding: 10px;
@@ -171,7 +175,13 @@
 	display: flex;
 	border-radius: 5px;
 }
-
+.prog-focus {
+	background-color: white;
+    border-radius: 5px;
+    padding: 0px 1px 1px 1px;
+    border: 1px solid red;
+    cursor: pointer;
+}
 /*plan-2*/
 
 .p2-layer-1 {
@@ -479,4 +489,10 @@ textarea{
 }
 ::-webkit-input-placeholder { /* Chrome */
   color: #888da6;
+}
+.hash * {
+	cursor: pointer;
+}
+.first {
+	border: 1px solid red;
 }
