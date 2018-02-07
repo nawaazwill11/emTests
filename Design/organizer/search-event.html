@@ -10,6 +10,7 @@
 	<link rel="stylesheet" href="../css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="css/fontawesome-all.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="../css/jquery.qtip.min.css"> 
 </head>
 <body >
 	<nav class="navbar navbar-inverse navbar-fixed-top">
@@ -365,36 +366,41 @@
 	          <div class="trip-box">
 	            <div class="tb-layer layer-zero">
 	              <div class="tb-title">
-	                <h4><b>Around the state in 7 Days</b></h4></label>
+	                <label>Around the state in 7 Days</label>
 	              </div>
 	              <div class="tb-credit">
-	                <h4>By:</h4>
+	                <label>By:</label>
 	                <a href=""><img src="img/obama-face.png"></a>
 	              </div>
 	            </div>
 	            <div class="tb-layer" style="padding: 0;">
-	              <div class="tb-op">
-	                <img src="img/adventure.jpg" style=" width: 100%;">
+	              <div class="tb-op" style="display: flex;">
+	                <img src="img/adventure.jpg" style=" width: 50%;">
+                  <img src="img/adventure.jpg" style=" width: 50%;">
 	              </div> 
 	            </div>
 	            <div class="tb-layer">
 	              <div class="tb-op">
-	                <label>From:</label>
-	                <span>Daman</span>
-	              </div>
-	              <div class="tb-op">
-	                <label>To:</label>
-	                <span>Pune</span>
+	                <label>Type:</label>
+	                <span>Venue</span>
 	              </div>
 	            </div>
+              <div class="tb-layer">
+                <div class="tb-op" style="flex: 2;">
+                  <label>Place:</label>
+                  <span title="Daman, Daman & Diu">Daman, Daman & Diu</span>
+                </div>
+              </div>
 	            <div class="tb-layer">
+                <div class="tb-op">
+                  <label>Activity:</label>
+                  <span title="Backpacking">Backpacking, Adventure</span>
+                </div>
+              </div>
+              <div class="tb-layer">
 	              <div class="tb-op">
 	                <label>Date:</label>
-	                <span>28-2-2018</span>
-	              </div>
-	              <div class="tb-op">
-	                <label>Mode:</label>
-	                <span>Motorbike</span>
+	                <span>28-02-2018</span>
 	              </div>
 	            </div>
 	            <div class="tb-layer">
@@ -403,9 +409,15 @@
 	                <span>11</span>
 	              </div>
 	              <div class="tb-op">
-	                <a id="dlink" href="#!">+More Details</a>
+	                <label>Entry Fee:</label>
+                  <span>Free</span>
 	              </div>
 	            </div>
+              <div class="tb-layer">
+                <div class="tb-op">
+                  <a id="dlink" href="#!">+More Details</a>
+                </div>
+              </div>
 	            <div class="tb-layer join-button">
 	              <button>Join</button>
 	            </div>
@@ -527,7 +539,6 @@
 	            <div class="tb-layer" style="padding: 0;">
 	              <div class="tb-op" style="display: flex;">
 	                <img src="img/adventure.jpg" style=" width: 50%;">
-                  <img src="img/adventure.jpg" style=" width: 50%;">
 	              </div> 
 	            </div>
 	            <div class="tb-layer">
@@ -979,7 +990,7 @@
       
     </div>
   </div>
-  <div id="TD" class="trip-details" hidden="hidden">
+  <div id="TD" class="trip-details">
       <div class="trip-box-big"> 
         <div class="tbb-layer tbb-zero">
           <div class="tbb-op tbb-title">
@@ -1016,28 +1027,28 @@
         <div class="tbb-layer">
           <div class="tbb-op" style="text-align: center; margin-bottom: 20px;">
             <label>Vacancy:</label>
-            <span>7</span>
+            <span>11</span>
           </div>
         </div>
         <div class="tbb-low">
           <div class="tbb-layer lw">
             <div class="tbb-op">
-              <label>Source:</label>
-              <span>Daman, Daman & Diu</span>
+              <label>Type:</label>
+              <span>Online</span>
             </div>
             <div class="tbb-op">
-              <label>Destination:</label>
-              <span>Calungute, Goa</span>
+              <label>Place:</label>
+              <span>Daman, Daman & Diu</span>
             </div>
           </div>
           <div class="tbb-layer lw">
             <div class="tbb-op">
-              <label>Travel Moto:</label>
-              <span>Adventure</span>
+              <label>Activity:</label>
+              <span>Backpacking, Adventure</span>
             </div>
             <div class="tbb-op">
-              <label>Travelling Mode:</label>
-              <span>Motorbike</span>
+              <label>Deadline:</label>
+              <span>01-03-2018</span>
             </div>
           </div>
           <div class="tbb-layer lw">
@@ -1052,6 +1063,16 @@
           </div>
           <div class="tbb-layer lw">
             <div class="tbb-op">
+              <label>End Date:</label>
+              <span>01-03-2018</span>
+            </div>
+            <div class="tbb-op">
+              <label>End Time:</label>
+              <span>11:00 am</span>
+            </div>
+          </div>
+          <div class="tbb-layer lw">
+            <div class="tbb-op">
               <label>Gender:</label>
               <span>Any</span>
             </div>
@@ -1061,19 +1082,21 @@
             </div>
           </div>
           <div class="tbb-layer lw" style="border: 0;">
-            <div class="tbb-op tbb-route">
-              <label>Route Info:</label>
-              <span><a href="#!">Click to View</a></span>
+            <div class="tbb-op">
+              <label>Description:</label>
+              <span><p>Tour the beautiful streets of Daman to find some memarizing momuments and sculptures of the Portuguese era. Tour the beautiful streets of Daman to find some memarizing momuments and sculptures of the Portuguese era.</p></span>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/custom.js"></script>
-<script type="text/javascript">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src='../js/jquery-ui.min.js'></script>
+  <script type="text/javascript" src="../js/jquery.qtip.min.js"></script>
+  <script type="text/javascript" src="js/custom.js"></script>
+  <script type="text/javascript">
       var link = $( '#dlink' )[0];
       var overlay = $( '#olay' )[0];
       var TD = $( '#TD' )[0];
@@ -1113,6 +1136,20 @@
         }
     });
   });
+</script>
+<script type="text/javascript" name="qtip">
+   $('.help').qtip({
+      show: {
+          effect: function() {
+              $(this).show('slide', 500);
+          }
+      },
+      hide: {
+          effect: function() {
+              $(this).hide('slide', 500);
+          }
+      }
+   });
 </script>
 </body>
 </html>
