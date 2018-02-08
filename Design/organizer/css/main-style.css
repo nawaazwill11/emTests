@@ -1,0 +1,169 @@
+.main{
+    position: relative;
+    top: 100px;
+    height: auto;  
+    display: flex;
+    flex-direction: column;
+} /*Parent of all parents*/
+.current-page{
+    position: relative;
+    padding: 5px 20px 11px;
+    background-color: white;
+    border-radius: 5px;  
+    margin-bottom: 15px;
+}
+.current-page-title {
+    text-align: center;
+}
+.current-page-title-text {
+    padding: 0 10px;
+}
+.top-section{
+    position: relative;
+    margin: 25px 0 30px 0; 
+    background-color: white;
+    padding: 25px; 
+    border-radius: 5px;
+}/*Top parent*/
+
+.pjt{
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    height: auto;
+}/*create join top collaborate*/
+.plan-trip-top-left {
+    border-right: 1px solid #888da6;
+}
+.plan-trip-body, .join-trip-body {
+    position: relative;
+    display: flex;
+    background-color: white;
+    border-radius: 4px;
+}
+.plan-trip-body-main, .join-trip-body-main {
+    margin: 5px 0 10px 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    left: 6%;
+    text-align: center;
+}
+.pjt-heading {
+    position: relative;
+    left: 25%;
+    width: fit-content;
+}
+.pjt-desc {
+    margin-bottom: 10px;
+    padding-right: 40px;
+    text-align: center;
+}
+.pjt-push {
+    position: relative;
+    left: 31%;
+}
+.pjt-push-join {
+    left: 21%;
+}
+.btn-plan {
+    margin-top: 10px;
+    width: 147px;
+    margin-left: 44px;
+    margin-top: 10px;
+}
+.btn-join {
+    width: 147px;
+    margin-left: 54px;
+    margin-top: 10px;
+}
+/*Top section ends*/
+.low-section{
+    position: relative;
+    background-color: transparent;
+}
+.lsc-head {
+    display: block;
+    position: relative;
+    background-color: white;
+}
+.lsc-title{
+    position: relative;
+    display: inline-block;
+    margin: 10px auto;  
+}
+.lsc-title > span > h4 {
+    font-size: 25px;
+    padding-left: 35px;
+}
+.lsc-title > span > h4 > a {
+    border-bottom: 1px solid #888da6;
+    color: #888da6;
+}
+.lsc-body {
+    display: flex;
+    background-color: white;
+    margin-bottom: 10px;
+}
+.lsc-body-main{
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+}
+.lsc-panel-top {
+    display: flex;
+    flex-direction: column;
+    background-color: blueviolet;
+    border-radius: 4px;
+    border-bottom: 0;
+    padding: 3px;
+    margin: 15px 0
+}
+.lsc-panel-low {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    margin-top: 2px;
+}
+.lsc-place-name {
+    display: flex;
+    position: relative;
+    flex: 1;
+    padding: 10px;
+}
+.lsc-people-count {
+    display: flex;
+    flex: 1;
+    position: relative;
+    padding: 10px; 
+}
+.lsc-action {
+    display: flex;
+    position: relative;
+    background-color: blueviolet;
+    
+}
+.lsc-action-plan {
+    display: flex;
+    flex: 1;
+}
+#lsc-action-plan .glyphicon, #lsc-action-join .glyphicon{
+    color: white;
+}
+
+.lsc-action-plan:hover, .lsc-action-join:hover {
+    background-color: #ef0707;
+    color: white;
+}
+.lsc-action-plan > span {
+    margin: 10px 0 10px 30%;
+    padding: 10px;
+}
+.lsc-action-join {
+    display: flex;
+    flex: 1;
+}
+.lsc-action-join > span {
+    margin: 10px 0 10px 30%;
+    padding: 10px;
+}

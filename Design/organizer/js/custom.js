@@ -17,9 +17,7 @@ function rightCloseNav() {
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();   
 });
-function do(a) {
-    document.getElementById(a).innerHTML = "sfsdfsdf";
-}
+
 function one() {
     var one = document.getElementById("one");
     var two = document.getElementById("two");

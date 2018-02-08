@@ -24,16 +24,9 @@ function navigante(main,a,b,c) {
 function publish() {
 	location.href = "mytrip.html";
 }
-$( function() {
-    $( "#slider-range" ).slider({
-      range: true,
-      min: 0,
-      max: 500,
-      values: [ 75, 300 ],
-      slide: function( event, ui ) {
-        $( "#dist-range" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
-      }
-    });
-    $( "#dist-range" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
-      " - $" + $( "#slider-range" ).slider( "values", 1 ) );
-  } );
+function redirect (url) {
+  location.href = url;
+}
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+});
