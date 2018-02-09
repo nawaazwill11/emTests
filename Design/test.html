@@ -1,48 +1,78 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Test Page</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="traveller/css/style.css">
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/bootstrap.css">
-  <link rel="stylesheet" type="text/css" href="css/fontawesome-all.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
- <link rel="stylesheet" type="text/css" href="css/jquery.qtip.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 </head>
 <body>
-  <div class="container">
-    <div title="Hello" class="something" style="border:1px solid red; height:150px; width:300px;"></div>
-  </div>
+
+<div id="myDIV" class="header">
+  <h2 style="margin:5px">My To Do List</h2>
+  <input type="text" id="myInput" placeholder="Title...">
+  <span onclick="newElement()" class="addBtn">Add</span>
+</div>
+
+<ol id="myUL">
   
+</ol>
 
+<script>
+ // Create a "close" button and append it to each list item
+    var myNodelist = document.getElementsByTagName("LI");
+    var i;
+    for (i = 0; i < myNodelist.length; i++) {
+    var span = document.createElement("SPAN");
+    var txt = document.createTextNode("\u00D7");
+    span.className = "close";
+    span.appendChild(txt);
+    myNodelist[i].appendChild(span);
+    }
 
+    // Click on a close button to hide the current list item
+    var close = document.getElementsByClassName("close");
+    var i;
+    for (i = 0; i < close.length; i++) {
+    close[i].onclick = function() {
+      var div = this.parentElement;
+      div.remove();
+    }
+    }
 
+    // Add a "checked" symbol when clicking on a list item
+    var list = document.querySelector('ul');
+    list.addEventListener('click', function(ev) {
+    if (ev.target.tagName === 'LI') {
+      ev.target.classList.toggle('checked');
+    }
+    }, false);
 
+    // Create a new list item when clicking on the "Add" button
+    function newElement() {
+    var li = document.createElement("li");
+    var inputValue = document.getElementById("myInput").value;
+    var t = document.createTextNode(inputValue);
+    li.appendChild(t);
+    if (inputValue === '') {
+      alert("You must write something!");
+    } else {
+      document.getElementById("myUL").appendChild(li);
+    }
+    document.getElementById("myInput").value = "";
 
-    
-    <script
-  src="https://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous"></script>
-  <script src='js/jquery-ui.min.js'></script>
-    <script type="text/javascript" src="js/jquery.qtip.min.js"></script>
-    <script type="text/javascript" src="js/custom.js"></script>
-    <script>
-      $('.something').qtip({
-          show: {
-              effect: function() {
-                $(this).show('slide', 300);
-              }
-          },
-          hide: {
-              effect: function() {
-                $(this).hide('slide', 500);
-              }
-          }
-       });
-    </script>
-  </body>
+    var span = document.createElement("SPAN");
+    var txt = document.createTextNode("\u00D7");
+    span.className = "close";
+    span.appendChild(txt);
+    li.appendChild(span);
+
+    for (i = 0; i < close.length; i++) {
+      close[i].onclick = function() {
+        var div = this.parentElement;
+        div.remove();
+      }
+    }
+  }
+</script>
+
+</body>
 </html>

@@ -30,3 +30,19 @@ function redirect (url) {
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();   
 });
+
+function addItem(){
+  var ul = document.getElementById("loc-attr");
+  var candidate = document.getElementById("add-attr");
+  var li = document.createElement("li");
+  li.setAttribute('id',candidate.value);
+  li.appendChild(document.createTextNode(candidate.value));
+  ul.appendChild(li);
+}
+
+function removeItem(){
+  var ul = document.getElementById("loc-attr");
+  var candidate = document.getElementById("add-attr");
+  var item = document.getElementById(candidate.value);
+  ul.removeChild(item);
+}

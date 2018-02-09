@@ -21,6 +21,11 @@
 	padding: 0 133px;
 	margin-top: 20px;
 }
+.mini-head > h3 {
+	border-bottom: 1px solid lightgray;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
 .colt-op {
 	margin-left: 10px;	
 }
@@ -40,9 +45,22 @@
     margin-bottom: 10px;
 }
 .media-holder > label {
-	margin-top: 4px;
     margin-left: 10px;
+    &:hover {
+    	cursor: pointer;
+    }
+    &:nth-child(2) {
+    	position: relative;
+    	bottom: 7px;
+    }
 }
+.media-holder > label:hover {
+	cursor: pointer;
+}
+.media-holder > label > span:nth-child(2) {
+    	position: relative;
+    	bottom: 7px;
+    }
 .media-desc > p {
 	max-width: 90%;
 	word-break: break-word;
@@ -50,7 +68,26 @@
 .colt-photo, .colt-video {
 	flex: 1;
 }
+.colt-photo > ol {
+	margin-top: 15px;
+}
 
+.colt-op > ol > li > span {
+	color: red;
+    font-size: small;
+    float: right;
+    margin-top: 3px;
+}
+
+.loc-attr{
+	width: 30%;
+	margin-top: 15px;
+}
+.contrib-submit > button {
+	width: 300px;
+    height: 45px;
+    margin-left: 32%;
+}
 /***** lI-group *****/
 .lI-group {
   position:relative;  

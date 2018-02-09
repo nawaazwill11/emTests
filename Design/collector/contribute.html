@@ -115,14 +115,17 @@
 		</div>
 		<div class="colt-body-low">
 			<div class="colt-content">
+				<div class="mini-head">
+					<h3>Fill Details</h3>
+				</div>
 				<ol class="colt-list">
           <li>
             <div class="colt-layer">
               <div class="colt-op">
                 <div class="lI-group">
-                          <label class="lI-label">Location Name <span style="color: red">*</span></label>
-                          <input type="text" class="lI-input" style="margin-left: 0">
-                        </div>  
+                  <label class="lI-label">Location Name <span style="color: red">*</span></label>
+                  <input type="text" class="lI-input" style="margin-left: 0">
+                </div>  
               </div>
             </div>
           </li>
@@ -175,14 +178,41 @@
           </li>
           <li>
             <div class="colt-layer">
+              <div class="colt-op" >
+                <div class="lI-group" style="display: flex;">
+                  <label class="lI-label">Local Attractions</label>
+                  <input type="text" class="lI-input" style="margin-left: 0" list="attractions" data-list-focus="true" autocomplete="off">
+                  <datalist id="attractions">
+                    <select>
+                        <option value="Hill Climbing"></option>
+                        <option value="Sight Seeing"></option>
+                        <option value="Romance"></option>
+                        <option value="Meditation"></option>
+                        <option value="Cycling"></option>
+                        <option value="Temple"></option>
+                    </select>
+                   </datalist>
+                   <button>Add</button>
+                </div>
+                <ol class="loc-attr" type="i" >
+                   		<li>
+                   			Rafting <span class="glyphicon glyphicon-minus"></span>
+                   		</li>
+                   		<li>Scuba Diving <span class="glyphicon glyphicon-minus"></span></li>
+                   </ol>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="colt-layer">
               <div class="colt-op">
                 <label>Upload Media</label>
                 <div class="colt-media">
                   <div class="colt-photo">
                     <div class="media-holder">
                       <input class="file-upload-input" id="logo-up-inp" type="file" accept="image/*" style="display: none;">
-                      <span class="glyphicon glyphicon-plus"></span>
-                      <label for="logo-up-inp">Add Photos</label> 
+                      
+                      <label for="logo-up-inp"><span class="glyphicon glyphicon-plus"></span><span>Add Photos</span></label> 
                     </div>
                     <div class="media-desc">
                       <p>
@@ -193,8 +223,7 @@
                   <div class="colt-video">
                     <div class="media-holder">
                       <input class="file-upload-input" id="logo-up-inp" type="file" accept="image/*" style="display: none;">
-                      <span class="glyphicon glyphicon-plus"></span>
-                      <label for="logo-up-inp">Add Videos</label> 
+                      <label for="logo-up-inp"><span class="glyphicon glyphicon-plus"></span><span>Add Videos</span></label> 
                     </div>
                     <div class="media-desc">
                       <p>
@@ -205,38 +234,20 @@
                  </div>
                 </div>
               </div>
-            </li>
-          <li>
-          	<div class="colt-layer">
-          		<div class="colt-op">
-          			<label>Local Attractions</label>
-          			<div>
-          				<ol type="i">
-          					<li>
-          						
-          					</li>
-          				</ol>
-          			</div>
-          		</div>
-          	</div>
+            </div>
           </li>
-          <li></li>
   			</ol>
+  			<div class="contrib-submit">
+  				<button type="submit" class="btn btn-success">Submit</button>
+  			</div>
 			</div>
 		</div>
 	</div>
-
-
-
-
-
-
-
-
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
   	<script src='../js/jquery-ui.min.js'></script>
   	<script type="text/javascript" src="../js/jquery.qtip.min.js"></script>	
+  	<script type="text/javascript" src="js/custom.js"></script>
   	<script type="text/javascript" name="hide-show">
 	  $('input').focus(function(){
 	   $(this).parents('.lI-group').addClass('focused');
@@ -263,6 +274,6 @@
 	      $(this).addClass('filled');
 	    }
 	  })  
-	</script>
+		</script>
 </body>
 </html>
