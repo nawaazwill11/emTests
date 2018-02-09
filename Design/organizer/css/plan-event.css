@@ -12,7 +12,7 @@
   margin-bottom: 20px;
 
 }
-
+/***** lI-group *****/
 .lI-group {
   position:relative;  
 
@@ -57,6 +57,7 @@
 .lI-input.filled {
   box-shadow: 0 2px 0 0 lightgreen;
 }
+/***** lI-group end*****/
 #ta-desc {
   border: 1px solid lightgray;
   resize: none;
