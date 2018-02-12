@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Collector - Contribute</title>
+	<title>Collector - Feedback</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
@@ -104,13 +104,160 @@
 		</ul>
 	</div>
 	<div class="container main col-lg-offset-2 col-lg-8">
+		<div class="colt-body-top">
+			<div class="colt-heading">
+				<h1>Feedback</h1>
+			</div>
+			<div class="head-desc">
+				<p>
+					By providing feedback, you contribute in the improvement and enhancement our services which in-turn benefits you and other users in terms of user experience and helps us serve you better. We request you to provide honest feedback as it is crutial for use to know how we need to improve.
+				</p>
+			</div>
+		</div>
+		<div class="colt-body-low feed-bl">
+			<div class="colt-content">
+				<div class="mini-head">
+					<h3>Provide Feedback</h3>
+				</div>
+			</div>
+			<table class="table table-responsive feed-table" cellspacing="50">
+				<col width="30">
+				<col width="250">
+				<col width="140">
+				<col width="120">
+				<col width="120">
+				<col width="120">
+				<col width="140">
+				<thead>
+					<th>#</th>
+					<th>Questions</th>
+					<th colspan="5">Remarks</th>
+				</thead>
+				<tbody>
+					<tr class="active">
+						<td>1</td>
+						<td id="keep-left">Did you like using Endless Miles?</td>
+						<td><input type="radio" name="one">Absolutely Not</td>
+						<td><input type="radio" name="one">Somewhat</td>
+						<td><input type="radio" name="one">50-50</td>
+						<td><input type="radio" name="one">Alot</td>
+						<td><input type="radio" name="one">Super Yes</td>
+					</tr>
+					<tr class="">
+						<td>2</td>
+						<td id="keep-left">How much did Endless Miles assist you?</td>
+						<td><input type="radio" name="two">Absolutely Not</td>
+						<td><input type="radio" name="two">Somewhat</td>
+						<td><input type="radio" name="two">50-50</td>
+						<td><input type="radio" name="two">Alot</td>
+						<td><input type="radio" name="two">Super Yes</td>
+					</tr>
+					<tr class="active">
+						<td>3</td>
+						<td id="keep-left">Will you recommend a friend<?/td>
+						<td><input type="radio" name="one">Absolutely Not</td>
+						<td><input type="radio" name="one">Somewhat</td>
+						<td><input type="radio" name="one">50-50</td>
+						<td><input type="radio" name="one">Alot</td>
+						<td><input type="radio" name="one">Super Yes</td>
+					</tr>
+					<tr>
+						<div class="input-group">
+						<td>4</td>
+						<td id="keep-left">What did you liked most?</td>
+						<td><input type="checkbox"  class="" name="one">Look and Feel</td>
+						<td><input type="checkbox" name="two">Concept</td>
+						<td><input type="checkbox" name="three">Usablity</td>
+						<td><input type="checkbox" name="four">Performance</td>
+						</div>
+						<td><input type="checkbox" name="five">Everything</td>
+					</tr>
+					<tr class="active">
+						<div class="input-group">
+						<td>5</td>
+						<td id="keep-left">What needs improvement?</td>
+						<td><input type="checkbox"  class="" name="one">Look and Feel</td>
+						<td><input type="checkbox" name="two">Concept</td>
+						<td><input type="checkbox" name="three">Performance</td>
+						<td><input type="checkbox" name="four">Everything</td>
+						<td><input type="checkbox" class="other-check" name="five" onchange="showOther()">Other</td>
+						</div>
+					</tr>
+					<tr>
+						<td>7</td>
+						<td id="keep-left">Will you use it again?</td>
+						<td><input type="radio" name="two">Never</td>
+						<td><input type="radio" name="two">Maybe</td>
+						<td><input type="radio" name="two">Sometimes</td>
+						<td><input type="radio" name="two">Frequent</td>
+						<td><input type="radio" name="two">Very Frequent</td>
+					</tr>
+					<tr class="active">
+						<td>6</td>
+						<td id="keep-left">Over-all Experience</td>
+						<td><input type="radio" name="two">Amazing</td>
+						<td><input type="radio" name="two">Good</td>
+						<td><input type="radio" name="two">Okay-Okay</td>
+						<td><input type="radio" name="two">Poor</td>
+						<td><input type="radio" name="two">Very Poor</td>
+					</tr>
+					
+				</tbody>
+			</table>
+			<div class="feed-text">
+				<label>Write what you feel..</label>
+				<textarea>
+					
+				</textarea>
+			</div>
+			<div class="feed-submit">
+				<button class="btn btn-success"> Submit</button>
+			</div>
+		</div>
 	</div>
 
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<s<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
   	<script src='../js/jquery-ui.min.js'></script>
   	<script type="text/javascript" src="../js/jquery.qtip.min.js"></script>	
   	<script type="text/javascript" src="js/custom.js"></script>
+  	<script type="text/javascript" name="hide-show">
+  	  $('input').focus(function(){
+  	   $(this).parents('.lI-group').addClass('focused');
+  	  });
+  	  $('textarea').focus(function(){
+  	   $(this).parents('.lI-group').addClass('focused');
+  	  });
+
+  	  $('input').blur(function(){
+  	    var inputValue = $(this).val();
+  	    if ( inputValue == "" ) {
+  	      $(this).removeClass('filled');
+  	      $(this).parents('.lI-group').removeClass('focused');  
+  	    } else {
+  	      $(this).addClass('filled');
+  	    }
+  	  })  
+  	  $('textarea').blur(function(){
+  	    var inputValue = $(this).val();
+  	    if ( inputValue == "" ) {
+  	      $(this).removeClass('filled');
+  	      $(this).parents('.lI-group').removeClass('focused');  
+  	    } else {
+  	      $(this).addClass('filled');
+  	    }
+  	  })  
+		</script>
+	</script>
+	<script type="text/javascript" name=others>
+		function showOther()
+		{
+		    if($('.other-check').is(":checked"))   
+		        $(".otherz").show();
+		    else
+		        $(".otherz").hide();
+		}
+	</script>
 </body>
 </html>

@@ -4,7 +4,7 @@
     height: auto;  
 } 
 
-.colt-body-top, .colt-body-low {
+.colt-body, .colt-body-top, .colt-body-low {
 	background-color: white;
 	padding: 30px;
 	border-radius: 3px;
@@ -20,6 +20,9 @@
 .head-desc {
 	padding: 0 133px;
 	margin-top: 20px;
+}
+.head-desc > p {
+  line-height: 30px;
 }
 .mini-head > h3 {
 	border-bottom: 1px solid lightgray;
@@ -83,7 +86,7 @@
 	width: 30%;
 	margin-top: 15px;
 }
-.contrib-submit > button {
+.contrib-submit > button, .feed-submit > button {
 	width: 300px;
     height: 45px;
     margin-left: 32%;
@@ -135,3 +138,58 @@
   box-shadow: 0 2px 0 0 lightgreen;
 }
 /***** lI-group end*****/
+/*****Feedback.html****/
+.feed-bl {
+  padding: 50px;
+}
+.feed-table > thead > tr th {
+  
+}
+tr {
+  border: 1px solid #d4d4d4;
+}
+td {
+  text-align: left;
+  border-right: 1px solid #d4d4d4;
+}
+#keep-left {
+  text-align: left;
+  border-right: 1px solid #d4d4d4;
+  height: 60px;
+}
+
+::placeholder {
+  color: #888da6;
+}
+.other {
+  position: absolute;
+  right: 47px;
+}
+.other .lI-group {
+  width: 100%;
+}
+.otherz {
+  display: none;
+}
+.keep-left {
+  border-right: 1px solid #d4d4d4;
+}
+.feed-text {
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
+  padding-left: 0;
+  margin-bottom: 20px;
+}
+.feed-text > label {
+  font-size: larger;
+  margin-bottom: 10px;
+}
+.feed-text > textarea {
+    border-color: #edf2f7;
+    resize: none;
+    width: 50%;
+    border-radius: 5px;
+    border-width: 2px;
+    height: 150px;
+}

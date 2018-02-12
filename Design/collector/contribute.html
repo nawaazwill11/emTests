@@ -249,31 +249,31 @@
   	<script type="text/javascript" src="../js/jquery.qtip.min.js"></script>	
   	<script type="text/javascript" src="js/custom.js"></script>
   	<script type="text/javascript" name="hide-show">
-	  $('input').focus(function(){
-	   $(this).parents('.lI-group').addClass('focused');
-	  });
-	  $('textarea').focus(function(){
-	   $(this).parents('.lI-group').addClass('focused');
-	  });
+  	  $('input').focus(function(){
+  	   $(this).parents('.lI-group').addClass('focused');
+  	  });
+  	  $('textarea').focus(function(){
+  	   $(this).parents('.lI-group').addClass('focused');
+  	  });
 
-	  $('input').blur(function(){
-	    var inputValue = $(this).val();
-	    if ( inputValue == "" ) {
-	      $(this).removeClass('filled');
-	      $(this).parents('.lI-group').removeClass('focused');  
-	    } else {
-	      $(this).addClass('filled');
-	    }
-	  })  
-	  $('textarea').blur(function(){
-	    var inputValue = $(this).val();
-	    if ( inputValue == "" ) {
-	      $(this).removeClass('filled');
-	      $(this).parents('.lI-group').removeClass('focused');  
-	    } else {
-	      $(this).addClass('filled');
-	    }
-	  })  
+  	  $('input').blur(function(){
+  	    var inputValue = $(this).val();
+  	    if ( inputValue == "" ) {
+  	      $(this).removeClass('filled');
+  	      $(this).parents('.lI-group').removeClass('focused');  
+  	    } else {
+  	      $(this).addClass('filled');
+  	    }
+  	  })  
+  	  $('textarea').blur(function(){
+  	    var inputValue = $(this).val();
+  	    if ( inputValue == "" ) {
+  	      $(this).removeClass('filled');
+  	      $(this).parents('.lI-group').removeClass('focused');  
+  	    } else {
+  	      $(this).addClass('filled');
+  	    }
+  	  })  
 		</script>
 </body>
 </html>
