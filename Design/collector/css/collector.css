@@ -14,8 +14,8 @@
 .colt-heading {
 	text-align: center;
 	padding: 1px;
-    border-bottom: 1px solid lightgrey;
-    margin: 0 30px;
+  border-bottom: 1px solid lightgrey;
+  margin: 0 30px;
 }
 .head-desc {
 	padding: 0 133px;
@@ -75,6 +75,7 @@
 	margin-top: 15px;
 }
 
+
 .colt-op > ol > li > span {
 	color: red;
     font-size: small;
@@ -87,7 +88,7 @@
 	margin-top: 15px;
 }
 .contrib-submit > button, .feed-submit > button {
-	width: 300px;
+	  width: 300px;
     height: 45px;
     margin-left: 32%;
 }
@@ -95,14 +96,13 @@
 .lI-group {
   position:relative;  
 
-  & + .lI-group {
+  &+.lI-group {
     margin-top: 30px;
   }
 }
 .lI-group {
   max-width: 100%;
   width: 50%;
-
 }
 
 .lI-label {

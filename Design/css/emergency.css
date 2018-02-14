@@ -1,0 +1,156 @@
+.main{
+    position: relative;
+    top: 100px;
+    height: auto;  
+    display: flex;
+} /*Parent of all parents*/
+
+.emer-body-top, .emer-body-low {
+	background-color: white;
+	padding: 30px;
+	border-radius: 3px;
+	margin-bottom: 20px;
+	box-shadow: 0px 0px 10px 1px lightgrey;
+}
+.emer-heading {
+	text-align: center;
+	padding: 1px;
+    border-bottom: 1px solid lightgrey;
+    margin: 0 30px;
+}
+.head-desc {
+	padding: 0 133px;
+	margin-top: 20px;
+}
+.head-desc > p  {
+
+}
+.mini-head {
+	margin: 0 20px;
+	border: 1px solid lightgray
+}
+.emer-op {
+
+}
+.emer-op > textarea {
+	resize: none;
+	border-radius: 5px;
+	border: 1px solid lightgray;
+	width: 56%;
+}
+.emer-list > li {
+	margin: 30px 0;
+}
+.emer-check {
+	display: flex;
+	width: 500px;
+
+}
+.emer-check > label {
+	margin-left: 5px;
+	flex: 1;	
+} 
+
+.alt-show {
+	display: flex;
+	width: 700px;
+
+}
+.alt-show > div {
+	flex: 1;
+	margin-right: 10px;
+}
+
+/***** lI-group *****/
+.lI-group {
+  position:relative;  
+
+  &+.lI-group {
+    margin-top: 30px;
+  }
+}
+.lI-group {
+  max-width: 100%;
+  width: 56%;
+}
+
+.lI-label {
+  position: absolute;
+  left: 0;
+  top: 10px;
+  color: #888da6;
+  background-color: #fff;
+  z-index: 10;
+  transition: transform 150ms ease-out, font-size 150ms ease-out;
+}
+
+.focused .lI-label {
+  transform: translateY(-125%);
+  font-size: .75em;
+}
+
+.lI-input {
+  position: relative;
+  padding: 12px 0px 5px 0;
+  width: 100%;
+  outline: 0;
+  border: 0;
+  box-shadow: 0 1px 0 0 #e5e5e5;
+  transition: box-shadow 150ms ease-out;
+  
+  &:focus {
+    box-shadow: 0 2px 0 0 blue;
+  }
+}
+
+.lI-input.filled {
+  box-shadow: 0 2px 0 0 lightgreen;
+}
+/***** lI-group end*****/
+
+.emer-submit > button {
+	width: 300px;
+    height: 45px;
+    margin-left: 32%;
+}
+::placeholder {
+	color: lightgrey;
+}
+
+/*************/
+.left-panel, .right-panel {
+    position: relative;
+    background-color: white;
+    border-radius: 5px;
+    padding: 20px;
+    padding-top: 10px;
+}
+.left-panel {
+	height: 350px;
+}
+.left-panel-body-low {
+    margin-bottom: 60px;
+}
+.left-panel-body-low > ul > li > span{
+    margin-left: 10px;
+}
+
+/*****Left Panel end*****/
+#box {
+	width: 450px;
+    height: 200px;
+}
+#sb {
+	margin-top: 7px;
+}
+#tbl1 {
+	background-color: #e83f3a;
+	color: white;
+}
+.section {
+	padding-left: 90px;
+}
+#rp-head {
+	padding-left: 5px;
+	margin-bottom: 30px;
+}
