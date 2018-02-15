@@ -1,0 +1,125 @@
+.cap {
+	width: 30%;
+	height: fit-content;
+	background-color: transparent;
+}
+.cap-layer {
+	padding: 15px;
+}
+.cap-layer > h4 {
+	color: #5d5d5d;
+	font-weight: 600;
+}
+.cap-content {
+	background-color: white;
+  background-color: white;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+.cap-content hr {
+	margin: 0;
+}
+.cap-edit, .marker-edit {
+	position: absolute;
+}
+.cap-edit-pi{
+	top: 33%;
+	left: 27%;
+}
+.cap-edit-os {
+	top: 83.35%;
+    left: 27%;
+}
+.cap-edit-button, .marker-edit-button {
+	border: none;
+	background-color: transparent;
+
+}
+.cap-edit-button .glyphicon:hover, .marker-edit-button .glyphicon:hover {
+	color: #5d5d5d;
+}
+.cap-edit-button > span, .marker-edit-button > span {
+	font-size: large;
+}
+.cap-op {
+	display: flex;
+	flex-direction: row;
+	margin-bottom: 30px; 
+}
+.cap-subop {
+	flex: 1;
+}
+.cap-subop-right {
+	flex: 2;
+}
+.marker {
+	width: 66%;
+	margin-left: 4%;
+}
+.marker-content {
+	background-color: white;
+	border-radius: 5px;
+	margin-bottom: 20px;
+}
+.marker-op {
+	display: flex;
+	flex-direction: column;
+}
+.marker h4 {
+	color: #5d5d5d;	
+	font-weight: 600;
+}
+.marker-layer {
+	display: flex;
+	flex-direction: row;
+	padding: 15px;
+}
+.marker-content-main {
+	display: flex;
+}
+.marker-div {
+
+}
+.marker-div-left {
+	width: 64.88%;
+    border-right: 1px solid lightgrey;
+}
+.marker-div-right {
+	width: 35%;
+	
+}
+.marker-layer-low {
+	display: flex;
+	flex-direction: row;
+}
+.marker-op-head-left {
+	flex: 2;
+	border-right: 1px solid #e0e0e0bf;
+}
+.marker-op-head-right {
+	flex: 1;
+	padding-left: 15px;
+}
+.marker-content > hr {
+	margin: 0;
+}
+.marker-layer-low .marker-op {
+	flex: 1;
+}
+.marker-op-row {
+	display: block;
+}
+.marker-div-right .marker-layer-low .marker-op{
+	flex: 1 60px;
+}
+.marker-edit-tp {
+	top: 33%;
+    left: 73%;
+}
+.marker-edit-hi {
+	top: 33%;
+    left: 96%;
+}
+.marker-div-low-2 {
+	width: 100%;
+}
