@@ -1,17 +1,17 @@
 #main{
     position: relative;
     display: flex;
+    flex-direction: column;
     top: 100px;
     height: auto;  
     margin-left: 6%;
     width: 88%
 } /*Parent of all parents*/
 
-.root, .boot, .canine, .rabbit {
+.root, .canine, .rabbit {
 	position: relative;
 	background-color: white;
 	border-radius: 5px;
-	position: relative;
 }
 .root {
 	width: 100%;
@@ -105,6 +105,30 @@
     left: -150px;
 }
 #root-content-set > li > a {
-	color: #888da6;
-	font-weight: 400;
+	color: #9ea5cb;
+	font-weight: 500;
+}
+.boot {
+	display: flex;
+	margin-top: 20px;
+	margin-bottom: 30px;
+}
+.canine {
+	width: 22%;
+}
+.rabbit {
+}
+div.boot div:nth-child(2),
+div.boot div:nth-child(3) {
+	margin-left: 3%;
+}
+.canine-layer {
+	padding: 15px;
+}
+.canine-content hr {
+	margin: 0;
+}
+.canine-op {
+	display: flex;
+	flex-direction: column;
 }
