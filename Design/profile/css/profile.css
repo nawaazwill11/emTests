@@ -141,16 +141,14 @@
 	flex-direction: column;
 	margin-bottom: 30px; 
 }
-.canine-op > label {
-	color: #5d5d5d;
-}
+
 .rabbit {
   width: 50.5%;
   margin-left: 2%;
   margin-right: 3.5%;
 }
 .canine-right {
-	color: transparent;	
+	background-color: transparent;	
 	height: fit-content;
 }
 
@@ -162,8 +160,35 @@ td {
 	height: 70px;
 }
 
-
-
+#canine-ul {
+	padding: 0;
+	padding-right: 15px;
+	margin-top: -20px;
+}
+#canine-ul > li {
+  padding: 5px 10px;
+  margin-bottom: 5px;
+}
+.canine-op-right {
+}
+.label-dark {
+	color: #5d5d5d;
+}
+.label-light {
+	color: #888da6;
+}
+.ul-op {
+	padding-left: 15px;
+	display: flex;
+	flex-direction: row;
+	margin: 0;
+}
+.ul-op > label {
+	flex: 1;
+}
+.low-pad {
+	padding-bottom: 1px;
+}
 
 
 #wall-feed-main {
