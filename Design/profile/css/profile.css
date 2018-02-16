@@ -105,7 +105,7 @@
     left: -150px;
 }
 #root-content-set > li > a {
-	color: #5d5d5d;
+	color: #8e8e8e;
 	font-weight: 600;
 }
 .boot {
@@ -117,5 +117,16 @@
 	color: #828181;
 }
 .label-light {
+	color: #888da6;
+}
+.Rflex{
+	display: flex;
+	flex-direction: row;
+}
+.Cflex {
+	display: flex;
+	flex-direction: column;
+}
+::placeholder {
 	color: #888da6;
 }

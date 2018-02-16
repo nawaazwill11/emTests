@@ -84,15 +84,239 @@
     position: fixed;
     align-items: center;
     justify-content: center;
-    top: 100px;
+    top: 85px;
     left: -200px;
     bottom: 0;
     right: 0;
     background-color: white;
-    width: 70%;
-    margin-left: 30%;
-    height: 90%;
+    width: 1200px;
+    margin-left: 23%;
+    height: 95%;
     border-radius: 5px;
     margin-top: -70px;
     z-index: 1031;
+}
+.album-overlay-container {
+	display: flex;
+	height: 100%;
+}
+.album-photo-container {
+	width: 800px;
+	height: 100%;
+	background-color: black;
+}
+.album-photo-credit {
+	width: 400px;
+	height: 50%;
+}
+.discrete-photo {
+	margin-top: 46.5px;
+}
+.car-left {
+	position: absolute;
+    z-index: 1041;
+    top: 47%;
+    left: 0px;
+    background-color: black;
+    width: 40px;
+    text-align: center;
+    height: 40px;
+    padding: 5px;
+}
+.car-left .glyphicon, .car-right .glyphicon {
+	color: white;
+}
+.car-right {
+	    position: absolute;
+    z-index: 1041;
+    top: 47%;
+    right: 0px;
+    background-color: black;
+    width: 40px;
+    text-align: center;
+    height: 40px;
+    padding: 5px;
+}
+.album-photo-credits {
+	width: 400px;
+}
+.photo-credits-holder {
+	padding: 25px;
+	border-bottom: 1px solid lightgrey;
+	padding-bottom: 0;
+}
+.credits-layer {
+	margin-bottom: 25px;
+    word-break: break-word;
+}
+.credits-user-img {
+	margin-top: 3px;
+}
+.credits-user-img > img {
+	width: 40px;
+    height: 40px;
+    border-radius: 100%;
+}
+.credits-user-info {
+	margin-left: 15px;
+}
+.credits-user-info > label {
+	margin-bottom: 0;
+}
+.credits-op .glyphicon {
+	color: #888da6;
+}
+.credits-op .glyphicon:hover {
+	color: #5d5d5d;
+}
+.credits-edit-post {
+	position: absolute;
+    right: 40px;
+    top: 30px;
+}
+.post-edit-button {
+	border: none;
+	background-color: transparent;
+}
+.post-edit-button > span {
+	font-size: large;
+	color: #8e8e8e;
+}
+.tagged {
+	border-bottom: 1px dashed lightgrey;
+}
+.tagged > label {
+	color: #ef0707;
+	margin-right: 3px;
+}
+.fames {
+	display: flex;
+	margin-bottom: 5px;
+}
+.fame {
+	display: flex;
+	margin-right: 30px;
+}
+.fame > a {
+	display: flex;
+	text-decoration: none;
+}
+.fame a* {
+
+}
+.fame > a > span {
+	font-size: 22px;
+	cursor: pointer;
+}
+.fame > a > label {
+    margin-left: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.album-post-comments {
+	background-color: #eae9e9b5;
+	width: 400px;
+	height: 48%;
+	overflow-y: scroll;
+}
+.album-post-comments {
+}
+.write-comment {
+	display: flex;
+	width: 100%;
+	padding: 20px;
+	background-color: white;
+}
+.comment-input {
+	margin-left: 10px;
+}
+.comment-input > input {
+	width: 270px;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    height: 40px;
+    padding: 10px;
+}
+.user-img > img {
+	width: 40px;
+	height: 40px;
+}
+
+
+
+.post-comment {
+	margin-bottom: 15px;
+}
+.comment-section {
+	display: flex;
+}
+.comment-sub-section {
+	display: flex;
+	flex: 1;
+}
+.cs-left{
+    margin-left: 40px;
+
+}
+.comment-holder {
+	padding: 20px;
+}
+.comment-user-img {
+	margin-top: 5px;
+}
+.comment-user-img > img {
+	width: 40px;
+	height: 40px;
+	border-radius: 100%;
+}
+.comment-bubble {
+	position: relative;
+    background: white;
+    border-radius: .4em;
+    margin-left: 15px;
+    min-width: 280px;
+    max-width: 280px;
+}
+.comment-bubble:after {
+	content: '';
+    position: absolute;
+    left: 12px;
+    top: 75%;
+    width: 0;
+    height: 0;
+    border: 7px solid transparent;
+    border-right-color: white;
+    border-left: 0;
+    margin-top: -19px;
+    margin-left: -19px;
+}
+.comment-bubble > p {
+	padding: 15px;
+    padding-bottom: 5px;
+}
+.comment-time {
+	position: relative;
+    margin-left: 70px;
+}
+.comment-time > span {
+	font-size: 10px;
+}
+.comment-like {
+    display: flex;
+	margin-left: 16%;
+    margin-top: 3px;
+}
+.comment-like .glyphicon {
+	font-size: 15px;
+    margin-top: 1px;
+    margin-right: 5px;
+}
+.comment-options {
+	position: relative;
+    margin-left: 10px;
+    margin-top: 1px;
+}
+#comment-edit-button > span {
+	font-size: 13px;
+	color: #888da6;
 }
