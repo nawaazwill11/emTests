@@ -26,7 +26,7 @@
     background-color: white;
     border-radius: 5px;
 }
-.album-card-cover > img {
+.album-card-cover > a > img {
 	width: 100%;	
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
@@ -65,4 +65,34 @@
 .album-popular-case {
 	flex: 1;
 	text-align: center;
+}
+.album-overlay {
+	position: absolute;
+}
+#olay {
+    top: 0;
+    left: 0;
+    background-color: grey;
+    opacity: 0.6;
+    position: fixed;
+    width: 100%;
+    min-height: 100%;
+    overflow: hidden;
+    z-index: 1030;
+}
+#album-selected {
+    position: fixed;
+    align-items: center;
+    justify-content: center;
+    top: 100px;
+    left: -200px;
+    bottom: 0;
+    right: 0;
+    background-color: white;
+    width: 70%;
+    margin-left: 30%;
+    height: 90%;
+    border-radius: 5px;
+    margin-top: -70px;
+    z-index: 1031;
 }
