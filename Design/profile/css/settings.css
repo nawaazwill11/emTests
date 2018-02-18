@@ -1,0 +1,126 @@
+#main{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    top: 100px;
+    height: auto;  
+    padding: 0;
+} /*Parent of all parents*/
+::placeholder {
+	color: #888da6;
+}
+.setting-main {
+	margin: 10px 0;
+}
+.container {
+	border-radius: 5px;
+}
+.general-setting, .privacy-setting {
+	background-color: white;
+	padding: 15px;
+}
+.general-setting > hr, .privacy-setting > hr {
+	margin: 0;
+	border-top: 2px solid #eee;
+}
+.setting-head, .privacy-head {
+	padding-bottom: 0;
+	padding-left: 15px;
+}
+.setting-layer, .setting-layer {
+	padding: 20px;
+}
+
+.lists {
+	width: 95%;
+	margin-top: 30px;
+}
+.lists > hr {
+	margin: 0;
+	padding: 5px 0;
+}
+
+.list-item {
+	display: flex;
+}
+.li-1 {
+	flex: 3;
+}
+.li-2 {
+	flex: 6;
+}
+.li-2 > input {
+	border: 0;
+	cursor: default;
+	margin: 0;
+	width: 100%;
+	text-overflow: ellipsis;
+}
+.li-2 > button {
+	display: none;
+	height: 30px;
+    padding: 0 15px;
+    margin-top: -2px;
+    position: relative;
+}
+
+.li-3 {
+	flex: 1;
+	position: relative;
+    right: -40px;
+}
+
+.dact {
+	display: none;
+	margin-right: 40px;
+}
+.privacy-setting {
+	margin-top: 20px;
+	margin-bottom: 15px;
+		
+}
+select.priv-select {
+	-webkit-appearance: none;
+    margin-bottom: 10px;
+    width: 143px;
+    padding: 5px;
+    color: #888da6;
+    background-color: white;
+    border: none;
+    margin-top: -5px;
+}
+.pli-1 {
+	flex: 2;
+}
+.pli-2 {
+	flex: 3;
+	margin-top: 3px;
+}
+.pli-3 {
+	flex: 2;
+}
+.pli-4 {
+
+}
+.edit-done, .edit-cancel {
+	display: none;
+	height: 30px;
+    padding: 0 15px;
+    margin-top: -2px;
+    position: relative;
+}
+
+
+
+
+
+.label-dark {
+	color: #828181;
+}
+.label-light {
+	color: #888da6;
+	font-weight: 500;
+}
+.label-small {
+	font-size: smaller;
+}
