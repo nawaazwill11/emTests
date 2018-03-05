@@ -109,10 +109,14 @@ select.priv-select {
     margin-top: -2px;
     position: relative;
 }
-
-
-
-
+.complete {
+	width: 100%;
+	text-align: center;
+}
+.complete > a {
+	font-size: large;
+	width: 40%;
+}
 
 .label-dark {
 	color: #828181;
