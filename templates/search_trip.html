@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head>
+	<title>Traveller - Suggestions</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="{% static "css/custom/page-style.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "css/custom/search-trip.css" %}">
+	<link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
+	<link rel="stylesheet" href="{% static "css/bootstrap.css" %}">
+	<link rel="stylesheet" type="text/css" href="{% static "css/fontawesome/fontawesome-all.css" %}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body >
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navBar">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="../story/story.html"><img class="img-responsive pull-left" src="{% static "img/emLogo-1.png" %}" alt="..."></a>
+				<div class="page-title col-lg-1" style="right: 8px;"><h1 style="margin-left: 0;s"><i>Traveller</i></h1></div>
+				<div class="input-group input-group-md col-lg-offset-2 col-lg-3" id="nav-search">
+					<input type="text" name="search" class="form-control search-input-top" placeholder="Search places or events">
+					<span class="input-group-btn">
+						<button class="btn btn-danger search-button-top"><span class="glyphicon glyphicon-search"></span></button>
+					</span>
+			</div>
+			</div>
+			<div id="user-info-nav" class="user-info-nav col-lg-offset-6">
+				<button class="btn btn-default dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+					<a href="#">
+						<span style="font-size: 13px;">
+							<img src="{% static "img/user-white.png" %}" style="width: 30px">
+						</span>
+						<span style="margin-left: 8px;">
+							<u>Willo Walker</u></a>
+						</span>
+					<span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu">
+					<li><a href="#">Settings</a></li>
+					<li><a href="#">Help</a></li>
+					<li role="separator" class="divider"></li>
+					<li><a href="#">Logout</a></li>
+				</ul>
+			</div>
+			
+			<div class="col-lg-offset-7 nav-fmn" >
+				<ul class="nav navbar-nav navbar-right" id="navMenu">
+					<li><a class="text-center" href="#">Friend Requests</a></li>
+					<li><a class="text-center" href="#">Messages</a></li>
+					<li><a class="text-center" href="#">Notifications</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div id="leftSidenav" class="left-sidenav">
+  		<a href="javascript:void(0)" class="left-closebtn" onclick="leftCloseNav()">&times;</a>
+  		<ul class="leftSidenav-content-ul-open sidenav-content-ul-open">
+	   		<li><h1><u> Main Options</u></h1></li>
+		  	<li><a href="../story/story.html"><span class="glyphicon glyphicon-th" style="font-size: 25px">&nbsp</span>Story</a></li>
+  			<li><a href="#"><span class="glyphicon glyphicon-sunglasses">&nbsp</span>Profile</a></li>
+  			<li><a href="#"><span class="glyphicon glyphicon-road"">&nbsp</span>Traveller</a></li>
+  			<li><a href="#"><span class="glyphicon glyphicon-pushpin">&nbsp</span>Organizer</a></li>
+  			<li><a href="#"><span class="glyphicon glyphicon-list-alt">&nbsp</span>Estimator</a></li>
+  			<li><a href="#"><span class="glyphicon glyphicon-warning-sign">&nbsp</span>Emergency</a></li>
+		  </ul>
+	</div>
+	<div class="leftSidenav-content">
+		<ul class="leftSidenav-content-ul">
+			<li id="t-ham"><span  data-toggle="tooltip" data-placement="right" data-original-title="Menu"  class="glyphicon glyphicon-menu-hamburger ham" style=";cursor:pointer;"   onclick="leftOpenNav()"></span></li>
+			<li><a href="../story/story.html"><span data-toggle="tooltip" data-placement="right" data-original-title="Story" class="glyphicon glyphicon-th" style=""></span></a></li>
+			<li><a href="#"><span data-toggle="tooltip" data-placement="right" data-original-title="Profile" class="glyphicon glyphicon-sunglasses" style=""></span></a></li>
+			<li><a href="traveller_main.html"><span data-toggle="tooltip" data-placement="right" data-original-title="Traveller" class="glyphicon glyphicon-road" style=""></span></a></li>
+			<li><a href="#"><span data-toggle="tooltip" data-placement="right" data-original-title="Organizer" class="glyphicon glyphicon-pushpin" style=""></span></a></li>
+			<li><a href="#"><span data-toggle="tooltip" data-placement="right" data-original-title="Estimator" class="glyphicon glyphicon-list-alt" style="
+			"></span></a></li>
+			<li><a href="#"><span data-toggle="tooltip" data-placement="right" data-original-title="Emergency" class="glyphicon glyphicon-warning-sign" style="font-size: 35p"></span></a></li>		
+
+		</ul>
+	</div>
+
+  <div id="rightSidenav" class="right-sidenav">
+  		<a href="javascript:void(0)" class="right-closebtn" onclick="rightCloseNav()">&times;</a>
+		<ul class="rightSidenav-content-ul-open sidenav-content-ul-open" style="list-style: none;">
+			<li style="color: #ef0707"><h1><u> Page Options</u></h1></li>
+			<li><a href="traveller_main.html"><span class="glyphicon glyphicon-th-list">&nbsp</span>Guide</a></li>
+			<li><a href="mytrip.html"><span><i class="fa fa-suitcase fai" aria-hidden="true" style="color: #ef0707"></i></span>My Trips</a></li>
+      <li><a href="plan.html"><span class="glyphicon glyphicon-pencil"">&nbsp</span>Plan a Trip</a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-plus" >&nbsp</span>Join a Trip</a></li>
+			<li><a href="#"><span><i class="fas fa-comments fai"  style="color: #ef0707" ></i></span>Chat</a></li>
+		</ul>
+	</div>
+
+	<div class="rightSidenav-content ">
+		<ul class="rightSidenav-content-ul">
+			<li id="t-ham"><span data-toggle="tooltip" data-placement="top" data-original-title="Menu" class="glyphicon glyphicon-menu-hamburger" onclick="rightOpenNav()"></span></li>
+      <li><a href="traveller_main.html"><span data-toggle="tooltip" data-placement="top" data-original-title="Suggestions" class="glyphicon glyphicon-th-list"></span></a></li>
+			<li style="margin-top: 20px"><a href="mytrip.html"><span data-toggle="tooltip" data-placement="top" data-original-title="My Trips" ><i class="fa fa-suitcase" aria-hidden="true"></i></span></a></li>
+      <li><a href="plan.html"><span data-toggle="tooltip" data-placement="top" data-original-title="Plan a Trip" class="glyphicon glyphicon-pencil"></span></a></li>
+			<li><a href="#"><span data-toggle="tooltip" data-placement="top" data-original-title="Join a Trip" class="glyphicon glyphicon-plus"></span></a></li>
+			<li><a href="#"><span data-toggle="tooltip" data-placement="top" data-original-title="Chat" ><i class="fas fa-comments"></i></span></a></li>
+		</ul>
+	</div>
+  <div class="container main">
+    <div class="search-top">
+      <div class="sub-title">
+        <h1>Search Trip</h1>
+      </div>
+      <div class="search-belt">
+        <div class="search-layer l0">
+          <div class="search-op ttl">
+            <h3>Refine Search</h3>  
+          </div>
+        </div>
+        <div class="search-layer l1">
+          <div class="search-op l1-o1">
+            <label>Source:</label>
+            <input type="text" name="source">
+          </div>
+          <div class="search-op l1-o2">
+            <label>Destination:</label>
+            <input type="text" name="dest">
+          </div>
+        </div>
+        <div class="search-layer l2">
+          <div class="search-op l2-o1">
+            <label>Company:</label>
+            <select>
+              <option>Any</option>
+              <option>Solo</option>
+              <option>Group</option>
+            </select>
+          </div>
+          <div class="search-op l2-o2">
+            <label>Travel Moto:</label>
+            <select>
+              <option>Any</option>
+              <option>Adventure</option>
+              <option>Exploring</option>
+              <option>Photography</option>
+              <option>Sport Events</option>
+              <option>Food & Cuisine</option>
+              <option>Exercise</option>
+              <option>Shopping</option>
+              <option>Travel Blogging</option>
+              <option>Partying</option>
+              <option>Backtracking</option>
+            </select>
+          </div>
+          <div class="search-op l2-o3">
+            <label>Mode:</label>
+            <select>
+              <option>Any</option>
+              <option>Car</option>
+              <option>Motorbike</option>
+              <option>Cycle</option>
+              <option>On-Foot</option>
+            </select>
+          </div>
+          <div class="search-op l2-o4">
+            <label>Participants:</label>
+            <select>
+              <option>Any</option>
+              <option>Open</option>
+              <option>Limited</option>
+            </select>
+          </div>
+        </div>
+        <div class="search-layer l3">
+          <div class="search-op l3-o1">
+            <label>Start Date:</label>
+            <select>
+              <option>Any</option>
+              <option>2018</option>
+              <option>2019</option>
+              <option>2020</option>
+              <option>2021</option>
+              <option>2022</option>
+              <option>2023</option>
+              <option>2024</option>
+              <option>2025</option>
+              <option>2026</option>
+              <option>2027</option>
+              <option>2028</option>
+              <option>2029</option>
+              <option>2030</option>
+            </select>
+            <select>
+              <option>Any</option>
+              <option>Jan</option>
+              <option>Feb</option>
+              <option>March</option>
+              <option>April</option>
+              <option>May</option>
+              <option>June</option>
+              <option>July</option>
+              <option>Aug</option>
+              <option>Sep</option>
+              <option>Oct</option>
+              <option>Nov</option>
+              <option>Dec</option>
+            </select>
+            <select>
+              <option>Any</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+              <option>7</option>
+              <option>8</option>
+              <option>9</option>
+              <option>10</option>
+              <option>11</option>
+              <option>12</option>
+              <option>13</option>
+              <option>14</option>
+              <option>15</option>
+              <option>16</option>
+              <option>17</option>
+              <option>18</option>
+              <option>19</option>
+              <option>20</option>
+              <option>21</option>
+              <option>21</option>
+              <option>23</option>
+              <option>24</option>
+              <option>25</option>
+              <option>26</option>
+              <option>27</option>
+              <option>28</option>
+              <option>29</option>
+              <option>30</option>
+              <option>31</option>
+            </select>
+          </div>
+          <div class="search-op l3-o2">
+            <label>Start Time:</label>
+            <select>
+              <option>Any</option>
+              <option>12</option>
+              <option>11</option>
+              <option>10</option>
+              <option>9</option>
+              <option>8</option>
+              <option>7</option>
+              <option>6</option>
+              <option>5</option>
+              <option>4</option>
+              <option>3</option>
+              <option>2</option>
+              <option>1</option>
+            </select>
+            <select>
+              <option></option>
+              <option>am</option>
+              <option>pm</option>
+            </select>
+          </div>
+          <div class="search-op l3-o3">
+            <label>Gender:</label>
+            <select>
+              <option>Any</option>
+              <option>Male</option>
+              <option>Female</option>
+              <option>Others</option>
+            </select>
+          </div>
+          <div class="search-op l3-o4">
+            <label>Age Group:</label>
+            <select>
+              <option disabled selected>From</option>
+              <option>Under 18</option>
+              <option>18-30</option>
+              <option>30-50</option>
+              <option>Above 50</option>
+            </select>
+            <select>
+              <option disabled selected>To</option>
+              <option>Under 18</option>
+              <option>18-30</option>
+              <option>30-50</option>
+              <option>Above 50</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="search-low col-lg-12">
+      <div class="search-low-header">
+        <h3>Results - Choose And Join</h3>    
+      </div>
+      <div class="result-container">
+        <div class="result-layer">
+	        <div class="result-box">
+	          <div class="trip-box">
+	            <div class="tb-layer layer-zero">
+	              <div class="tb-title">
+	                <h4><b>Around the state in 7 Days</b></h4></label>
+	              </div>
+	              <div class="tb-credit">
+	                <h4>By:</h4>
+	                <a href=""><img src="{% static "img/obama-face.png" %}"></a>
+	              </div>
+	            </div>
+	            <div class="tb-layer" style="padding: 0;">
+	              <div class="tb-op">
+	                <img src="{% static "img/adventure.jpg" %}" style=" width: 100%;">
+	              </div> 
+	            </div>
+	            <div class="tb-layer">
+	              <div class="tb-op">
+	                <label>From:</label>
+	                <span>Daman</span>
+	              </div>
+	              <div class="tb-op">
+	                <label>To:</label>
+	                <span>Pune</span>
+	              </div>
+	            </div>
+	            <div class="tb-layer">
+	              <div class="tb-op">
+	                <label>Date:</label>
+	                <span>28-2-2018</span>
+	              </div>
+	              <div class="tb-op">
+	                <label>Mode:</label>
+	                <span>Motorbike</span>
+	              </div>
+	            </div>
+	            <div class="tb-layer">
+	              <div class="tb-op">
+	                <label>Vacancy:</label>
+	                <span>11</span>
+	              </div>
+	              <div class="tb-op">
+	                <a id="dlink" href="#!">+More Details</a>
+	              </div>
+	            </div>
+	            <div class="tb-layer join-button">
+	              <button>Join</button>
+	            </div>
+	          </div>
+	        </div>
+	        <div class="result-box">
+	          <div class="trip-box">
+	            <div class="tb-layer layer-zero">
+	              <div class="tb-title">
+	                <h4><b>Around the state in 7 Days</b></h4></label>
+	              </div>
+	              <div class="tb-credit">
+	                <h4>By:</h4>
+	                <a href=""><img src="{% static "img/obama-face.png" %}"></a>
+	              </div>
+	            </div>
+	            <div class="tb-layer" style="padding: 0;">
+	              <div class="tb-op">
+	                <img src="{% static "img/adventure.jpg" %}" style=" width: 100%;">
+	              </div> 
+	            </div>
+	            <div class="tb-layer">
+	              <div class="tb-op">
+	                <label>From:</label>
+	                <span>Daman</span>
+	              </div>
+	              <div class="tb-op">
+	                <label>To:</label>
+	                <span>Pune</span>
+	              </div>
+	            </div>
+	            <div class="tb-layer">
+	              <div class="tb-op">
+	                <label>Date:</label>
+	                <span>28-2-2018</span>
+	              </div>
+	              <div class="tb-op">
+	                <label>Mode:</label>
+	                <span>Motorbike</span>
+	              </div>
+	            </div>
+	            <div class="tb-layer">
+	              <div class="tb-op">
+	                <label>Vacancy:</label>
+	                <span>11</span>
+	              </div>
+	              <div class="tb-op">
+	                <a id="dlink" href="#!">+More Details</a>
+	              </div>
+	            </div>
+	            <div class="tb-layer join-button">
+	              <button>Join</button>
+	            </div>
+	          </div>
+	        </div>
+	        <div class="result-box">
+	          <div class="trip-box">
+	            <div class="tb-layer layer-zero">
+	              <div class="tb-title">
+	                <h4><b>Around the state in 7 Days</b></h4></label>
+	              </div>
+	              <div class="tb-credit">
+	                <h4>By:</h4>
+	                <a href=""><img src="{% static "img/obama-face.png" %}"></a>
+	              </div>
+	            </div>
+	            <div class="tb-layer" style="padding: 0;">
+	              <div class="tb-op">
+	                <img src="{% static "img/adventure.jpg" %}" style=" width: 100%;">
+	              </div> 
+	            </div>
+	            <div class="tb-layer">
+	              <div class="tb-op">
+	                <label>From:</label>
+	                <span>Daman</span>
+	              </div>
+	              <div class="tb-op">
+	                <label>To:</label>
+	                <span>Pune</span>
+	              </div>
+	            </div>
+	            <div class="tb-layer">
+	              <div class="tb-op">
+	                <label>Date:</label>
+	                <span>28-2-2018</span>
+	              </div>
+	              <div class="tb-op">
+	                <label>Mode:</label>
+	                <span>Motorbike</span>
+	              </div>
+	            </div>
+	            <div class="tb-layer">
+	              <div class="tb-op">
+	                <label>Vacancy:</label>
+	                <span>11</span>
+	              </div>
+	              <div class="tb-op">
+	                <a id="dlink" href="#!">+More Details</a>
+	              </div>
+	            </div>
+	            <div class="tb-layer join-button">
+	              <button>Join</button>
+	            </div>
+	          </div>
+	        </div>	
+        </div>
+        <div class="result-layer">
+	        <div class="result-box">
+	          <div class="trip-box">
+	            <div class="tb-layer layer-zero">
+	              <div class="tb-title">
+	                <h4><b>Around the state in 7 Days</b></h4></label>
+	              </div>
+	              <div class="tb-credit">
+	                <h4>By:</h4>
+	                <a href=""><img src="{% static "img/obama-face.png" %}"></a>
+	              </div>
+	            </div>
+	            <div class="tb-layer" style="padding: 0;">
+	              <div class="tb-op">
+	                <img src="{% static "img/adventure.jpg" %}" style=" width: 100%;">
+	              </div> 
+	            </div>
+	            <div class="tb-layer">
+	              <div class="tb-op">
+	                <label>From:</label>
+	                <span>Daman</span>
+	              </div>
+	              <div class="tb-op">
+	                <label>To:</label>
+	                <span>Pune</span>
+	              </div>
+	            </div>
+	            <div class="tb-layer">
+	              <div class="tb-op">
+	                <label>Date:</label>
+	                <span>28-2-2018</span>
+	              </div>
+	              <div class="tb-op">
+	                <label>Mode:</label>
+	                <span>Motorbike</span>
+	              </div>
+	            </div>
+	            <div class="tb-layer">
+	              <div class="tb-op">
+	                <label>Vacancy:</label>
+	                <span>11</span>
+	              </div>
+	              <div class="tb-op">
+	                <a id="dlink" href="#!">+More Details</a>
+	              </div>
+	            </div>
+	            <div class="tb-layer join-button">
+	              <button>Join</button>
+	            </div>
+	          </div>
+	        </div>
+	        <div class="result-box">
+	          <div class="trip-box">
+	            <div class="tb-layer layer-zero">
+	              <div class="tb-title">
+	                <h4><b>Around the state in 7 Days</b></h4></label>
+	              </div>
+	              <div class="tb-credit">
+	                <h4>By:</h4>
+	                <a href=""><img src="{% static "img/obama-face.png" %}"></a>
+	              </div>
+	            </div>
+	            <div class="tb-layer" style="padding: 0;">
+	              <div class="tb-op">
+	                <img src="{% static "img/adventure.jpg" %}" style=" width: 100%;">
+	              </div> 
+	            </div>
+	            <div class="tb-layer">
+	              <div class="tb-op">
+	                <label>From:</label>
+	                <span>Daman</span>
+	              </div>
+	              <div class="tb-op">
+	                <label>To:</label>
+	                <span>Pune</span>
+	              </div>
+	            </div>
+	            <div class="tb-layer">
+	              <div class="tb-op">
+	                <label>Date:</label>
+	                <span>28-2-2018</span>
+	              </div>
+	              <div class="tb-op">
+	                <label>Mode:</label>
+	                <span>Motorbike</span>
+	              </div>
+	            </div>
+	            <div class="tb-layer">
+	              <div class="tb-op">
+	                <label>Vacancy:</label>
+	                <span>11</span>
+	              </div>
+	              <div class="tb-op">
+	                <a id="dlink" href="#!">+More Details</a>
+	              </div>
+	            </div>
+	            <div class="tb-layer join-button">
+	              <button>Join</button>
+	            </div>
+	          </div>
+	        </div>
+	        <div class="result-box">
+	          <div class="trip-box">
+	            <div class="tb-layer layer-zero">
+	              <div class="tb-title">
+	                <h4><b>Around the state in 7 Days</b></h4></label>
+	              </div>
+	              <div class="tb-credit">
+	                <h4>By:</h4>
+	                <a href=""><img src="{% static "img/obama-face.png" %}"></a>
+	              </div>
+	            </div>
+	            <div class="tb-layer" style="padding: 0;">
+	              <div class="tb-op">
+	                <img src="{% static "img/adventure.jpg" %}" style=" width: 100%;">
+	              </div> 
+	            </div>
+	            <div class="tb-layer">
+	              <div class="tb-op">
+	                <label>From:</label>
+	                <span>Daman</span>
+	              </div>
+	              <div class="tb-op">
+	                <label>To:</label>
+	                <span>Pune</span>
+	              </div>
+	            </div>
+	            <div class="tb-layer">
+	              <div class="tb-op">
+	                <label>Date:</label>
+	                <span>28-2-2018</span>
+	              </div>
+	              <div class="tb-op">
+	                <label>Mode:</label>
+	                <span>Motorbike</span>
+	              </div>
+	            </div>
+	            <div class="tb-layer">
+	              <div class="tb-op">
+	                <label>Vacancy:</label>
+	                <span>11</span>
+	              </div>
+	              <div class="tb-op">
+	                <a id="dlink" href="#!">+More Details</a>
+	              </div>
+	            </div>
+	            <div class="tb-layer join-button">
+	              <button>Join</button>
+	            </div>
+	          </div>
+	        </div>	
+        </div>
+        <div class="result-layer">
+	        <div class="result-box">
+	          <div class="trip-box">
+	            <div class="tb-layer layer-zero">
+	              <div class="tb-title">
+	                <h4><b>Around the state in 7 Days</b></h4></label>
+	              </div>
+	              <div class="tb-credit">
+	                <h4>By:</h4>
+	                <a href=""><img src="{% static "img/obama-face.png" %}"></a>
+	              </div>
+	            </div>
+	            <div class="tb-layer" style="padding: 0;">
+	              <div class="tb-op">
+	                <img src="{% static "img/adventure.jpg" %}" style=" width: 100%;">
+	              </div> 
+	            </div>
+	            <div class="tb-layer">
+	              <div class="tb-op">
+	                <label>From:</label>
+	                <span>Daman</span>
+	              </div>
+	              <div class="tb-op">
+	                <label>To:</label>
+	                <span>Pune</span>
+	              </div>
+	            </div>
+	            <div class="tb-layer">
+	              <div class="tb-op">
+	                <label>Date:</label>
+	                <span>28-2-2018</span>
+	              </div>
+	              <div class="tb-op">
+	                <label>Mode:</label>
+	                <span>Motorbike</span>
+	              </div>
+	            </div>
+	            <div class="tb-layer">
+	              <div class="tb-op">
+	                <label>Vacancy:</label>
+	                <span>11</span>
+	              </div>
+	              <div class="tb-op">
+	                <a id="dlink" href="#!">+More Details</a>
+	              </div>
+	            </div>
+	            <div class="tb-layer join-button">
+	              <button>Join</button>
+	            </div>
+	          </div>
+	        </div>
+	        <div class="result-box">
+	          <div class="trip-box">
+	            <div class="tb-layer layer-zero">
+	              <div class="tb-title">
+	                <h4><b>Around the state in 7 Days</b></h4></label>
+	              </div>
+	              <div class="tb-credit">
+	                <h4>By:</h4>
+	                <a href=""><img src="{% static "img/obama-face.png" %}"></a>
+	              </div>
+	            </div>
+	            <div class="tb-layer" style="padding: 0;">
+	              <div class="tb-op">
+	                <img src="{% static "img/adventure.jpg" %}" style=" width: 100%;">
+	              </div> 
+	            </div>
+	            <div class="tb-layer">
+	              <div class="tb-op">
+	                <label>From:</label>
+	                <span>Daman</span>
+	              </div>
+	              <div class="tb-op">
+	                <label>To:</label>
+	                <span>Pune</span>
+	              </div>
+	            </div>
+	            <div class="tb-layer">
+	              <div class="tb-op">
+	                <label>Date:</label>
+	                <span>28-2-2018</span>
+	              </div>
+	              <div class="tb-op">
+	                <label>Mode:</label>
+	                <span>Motorbike</span>
+	              </div>
+	            </div>
+	            <div class="tb-layer">
+	              <div class="tb-op">
+	                <label>Vacancy:</label>
+	                <span>11</span>
+	              </div>
+	              <div class="tb-op">
+	                <a id="dlink" href="#!">+More Details</a>
+	              </div>
+	            </div>
+	            <div class="tb-layer join-button">
+	              <button>Join</button>
+	            </div>
+	          </div>
+	        </div>
+	        <div class="result-box">
+	          <div class="trip-box">
+	            <div class="tb-layer layer-zero">
+	              <div class="tb-title">
+	                <h4><b>Around the state in 7 Days</b></h4></label>
+	              </div>
+	              <div class="tb-credit">
+	                <h4>By:</h4>
+	                <a href=""><img src="{% static "img/obama-face.png" %}"></a>
+	              </div>
+	            </div>
+	            <div class="tb-layer" style="padding: 0;">
+	              <div class="tb-op">
+	                <img src="{% static "img/adventure.jpg" %}" style=" width: 100%;">
+	              </div> 
+	            </div>
+	            <div class="tb-layer">
+	              <div class="tb-op">
+	                <label>From:</label>
+	                <span>Daman</span>
+	              </div>
+	              <div class="tb-op">
+	                <label>To:</label>
+	                <span>Pune</span>
+	              </div>
+	            </div>
+	            <div class="tb-layer">
+	              <div class="tb-op">
+	                <label>Date:</label>
+	                <span>28-2-2018</span>
+	              </div>
+	              <div class="tb-op">
+	                <label>Mode:</label>
+	                <span>Motorbike</span>
+	              </div>
+	            </div>
+	            <div class="tb-layer">
+	              <div class="tb-op">
+	                <label>Vacancy:</label>
+	                <span>11</span>
+	              </div>
+	              <div class="tb-op">
+	                <a id="dlink" href="#!">+More Details</a>
+	              </div>
+	            </div>
+	            <div class="tb-layer join-button">
+	              <button>Join</button>
+	            </div>
+	          </div>
+	        </div>	
+        </div>
+        <div class="result-layer">
+	        <div class="result-box">
+	          <div class="trip-box">
+	            <div class="tb-layer layer-zero">
+	              <div class="tb-title">
+	                <h4><b>Around the state in 7 Days</b></h4></label>
+	              </div>
+	              <div class="tb-credit">
+	                <h4>By:</h4>
+	                <a href=""><img src="{% static "img/obama-face.png" %}"></a>
+	              </div>
+	            </div>
+	            <div class="tb-layer" style="padding: 0;">
+	              <div class="tb-op">
+	                <img src="{% static "img/adventure.jpg" %}" style=" width: 100%;">
+	              </div> 
+	            </div>
+	            <div class="tb-layer">
+	              <div class="tb-op">
+	                <label>From:</label>
+	                <span>Daman</span>
+	              </div>
+	              <div class="tb-op">
+	                <label>To:</label>
+	                <span>Pune</span>
+	              </div>
+	            </div>
+	            <div class="tb-layer">
+	              <div class="tb-op">
+	                <label>Date:</label>
+	                <span>28-2-2018</span>
+	              </div>
+	              <div class="tb-op">
+	                <label>Mode:</label>
+	                <span>Motorbike</span>
+	              </div>
+	            </div>
+	            <div class="tb-layer">
+	              <div class="tb-op">
+	                <label>Vacancy:</label>
+	                <span>11</span>
+	              </div>
+	              <div class="tb-op">
+	                <a id="dlink" href="#!">+More Details</a>
+	              </div>
+	            </div>
+	            <div class="tb-layer join-button">
+	              <button>Join</button>
+	            </div>
+	          </div>
+	        </div>
+	        <div class="result-box">
+	          <div class="trip-box">
+	            <div class="tb-layer layer-zero">
+	              <div class="tb-title">
+	                <h4><b>Around the state in 7 Days</b></h4></label>
+	              </div>
+	              <div class="tb-credit">
+	                <h4>By:</h4>
+	                <a href=""><img src="{% static "img/obama-face.png" %}"></a>
+	              </div>
+	            </div>
+	            <div class="tb-layer" style="padding: 0;">
+	              <div class="tb-op">
+	                <img src="{% static "img/adventure.jpg" %}" style=" width: 100%;">
+	              </div> 
+	            </div>
+	            <div class="tb-layer">
+	              <div class="tb-op">
+	                <label>From:</label>
+	                <span>Daman</span>
+	              </div>
+	              <div class="tb-op">
+	                <label>To:</label>
+	                <span>Pune</span>
+	              </div>
+	            </div>
+	            <div class="tb-layer">
+	              <div class="tb-op">
+	                <label>Date:</label>
+	                <span>28-2-2018</span>
+	              </div>
+	              <div class="tb-op">
+	                <label>Mode:</label>
+	                <span>Motorbike</span>
+	              </div>
+	            </div>
+	            <div class="tb-layer">
+	              <div class="tb-op">
+	                <label>Vacancy:</label>
+	                <span>11</span>
+	              </div>
+	              <div class="tb-op">
+	                <a id="dlink" href="#!">+More Details</a>
+	              </div>
+	            </div>
+	            <div class="tb-layer join-button">
+	              <button>Join</button>
+	            </div>
+	          </div>
+	        </div>
+	        <div class="result-box">
+	          <div class="trip-box">
+	            <div class="tb-layer layer-zero">
+	              <div class="tb-title">
+	                <h4><b>Around the state in 7 Days</b></h4></label>
+	              </div>
+	              <div class="tb-credit">
+	                <h4>By:</h4>
+	                <a href=""><img src="{% static "img/obama-face.png" %}"></a>
+	              </div>
+	            </div>
+	            <div class="tb-layer" style="padding: 0;">
+	              <div class="tb-op">
+	                <img src="{% static "img/adventure.jpg" %}" style=" width: 100%;">
+	              </div> 
+	            </div>
+	            <div class="tb-layer">
+	              <div class="tb-op">
+	                <label>From:</label>
+	                <span>Daman</span>
+	              </div>
+	              <div class="tb-op">
+	                <label>To:</label>
+	                <span>Pune</span>
+	              </div>
+	            </div>
+	            <div class="tb-layer">
+	              <div class="tb-op">
+	                <label>Date:</label>
+	                <span>28-2-2018</span>
+	              </div>
+	              <div class="tb-op">
+	                <label>Mode:</label>
+	                <span>Motorbike</span>
+	              </div>
+	            </div>
+	            <div class="tb-layer">
+	              <div class="tb-op">
+	                <label>Vacancy:</label>
+	                <span>11</span>
+	              </div>
+	              <div class="tb-op">
+	                <a id="dlink" href="#!">+More Details</a>
+	              </div>
+	            </div>
+	            <div class="tb-layer join-button">
+	              <button>Join</button>
+	            </div>
+	          </div>
+	        </div>	
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <div id="olay" class="overlay" hidden="hidden">
+    
+    <div class="route-details">
+      
+    </div>
+  </div>
+  <div id="TD" class="trip-details" hidden="hidden">
+      <div class="trip-box-big"> 
+        <div class="tbb-layer tbb-zero">
+          <div class="tbb-op tbb-title">
+            <h3>Around the state in 7 Days</h3>
+          </div>
+          <div class="tbb-op join-btn">
+            <button>Join</button>
+          </div>
+        </div>
+        <div class="tbb-layer tbb-bck-main">
+          <div class="tbb-bck">
+            <img src="{% static "img/food.jpg" %}">
+          </div>
+        </div>
+        <div class="tbb-layer">
+          
+          <div class="tbb-op creator">
+            <label>Created By</label>
+            <img src="{% static "img/user-black.png" %}">
+          </div>
+        </div>
+        <div class="tbb-layer">
+          <div class="part">
+            <label>Participants: 23</label>
+            <div class="tbb-subop">
+              <img src="{% static "img/user-black.png" %}">
+              <img src="{% static "img/user-black.png" %}">
+              <img src="{% static "img/user-black.png" %}">
+              <img src="{% static "img/user-black.png" %}">
+              <img src="{% static "img/user-black.png" %}">
+            </div>
+          </div>
+        </div>
+        <div class="tbb-layer">
+          <div class="tbb-op" style="text-align: center; margin-bottom: 20px;">
+            <label>Vacancy:</label>
+            <span>7</span>
+          </div>
+        </div>
+        <div class="tbb-low">
+          <div class="tbb-layer lw">
+            <div class="tbb-op">
+              <label>Source:</label>
+              <span>Daman, Daman & Diu</span>
+            </div>
+            <div class="tbb-op">
+              <label>Destination:</label>
+              <span>Calungute, Goa</span>
+            </div>
+          </div>
+          <div class="tbb-layer lw">
+            <div class="tbb-op">
+              <label>Travel Moto:</label>
+              <span>Adventure</span>
+            </div>
+            <div class="tbb-op">
+              <label>Travelling Mode:</label>
+              <span>Motorbike</span>
+            </div>
+          </div>
+          <div class="tbb-layer lw">
+            <div class="tbb-op">
+              <label>Start Date:</label>
+              <span>28-02-2018</span>
+            </div>
+            <div class="tbb-op">
+              <label>Start Time:</label>
+              <span>10:00 am</span>
+            </div>
+          </div>
+          <div class="tbb-layer lw">
+            <div class="tbb-op">
+              <label>Gender:</label>
+              <span>Any</span>
+            </div>
+            <div class="tbb-op">
+              <label>Age Group:</label>
+              <span>18-35</span>
+            </div>
+          </div>
+          <div class="tbb-layer lw" style="border: 0;">
+            <div class="tbb-op tbb-route">
+              <label>Route Info:</label>
+              <span><a href="#!">Click to View</a></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="{% static "js/custom.js" %}"></script>
+<script type="text/javascript">
+      var link = $( '#dlink' )[0];
+      var overlay = $( '#olay' )[0];
+      var TD = $( '#TD' )[0];
+
+      $( link ).on( 'click', function ( e ) {
+          $( overlay ).show();
+          $( TD ).show();
+          e.stopPropagation();
+      });
+
+      $( document ).on( 'click', function ( e ) {
+          if ( $( e.target ).closest( TD ).length === 0 ) {
+              $( overlay ).hide();
+              $( TD ).hide();
+          }
+      });
+                      
+      $( document ).on( 'keydown', function ( e ) {
+          if ( e.keyCode === 27 ) {
+              $( overlay ).hide();
+              $( TD ).hide();
+          }
+      });
+</script>
+</body>
+</html>

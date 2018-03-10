@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head>
+	<title>Traveller - Suggestions</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="{% static "css/custom/page-style.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "css/custom/plan-style.css" %}">
+	<link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
+	<link rel="stylesheet" href="{% static "css/bootstrap.css" %}">
+	<link rel="stylesheet" type="text/css" href="{% static "css/fontawesome/fontawesome-all.css" %}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body >
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navBar">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="../story/story.html"><img class="img-responsive pull-left" src="{% static "img/emLogo-1.png" %}" alt="..."></a>
+				<div class="page-title col-lg-1" style="right: 8px;"><h1 style="margin-left: 0;s"><i>Traveller</i></h1></div>
+				<div class="input-group input-group-md col-lg-offset-2 col-lg-3" id="nav-search">
+					<input type="text" name="search" class="form-control search-input-top" placeholder="Search places or events">
+					<span class="input-group-btn">
+						<button class="btn btn-danger search-button-top"><span class="glyphicon glyphicon-search"></span></button>
+					</span>
+			</div>
+			</div>
+			<div id="user-info-nav" class="user-info-nav col-lg-offset-6">
+				<button class="btn btn-default dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+					<a href="#">
+						<span style="font-size: 13px;">
+							<img src="stimg/user-white.png" style="width: 30px">
+						</span>
+						<span style="margin-left: 8px;">
+							<u>Willo Walker</u></a>
+						</span>
+					<span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu">
+					<li><a href="#">Settings</a></li>
+					<li><a href="#">Help</a></li>
+					<li role="separator" class="divider"></li>
+					<li><a href="#">Logout</a></li>
+				</ul>
+			</div>
+			
+			<div class="col-lg-offset-7 nav-fmn" >
+				<ul class="nav navbar-nav navbar-right" id="navMenu">
+					<li><a class="text-center" href="#">Friend Requests</a></li>
+					<li><a class="text-center" href="#">Messages</a></li>
+					<li><a class="text-center" href="#">Notifications</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div id="leftSidenav" class="left-sidenav">
+  		<a href="javascript:void(0)" class="left-closebtn" onclick="leftCloseNav()">&times;</a>
+  		<ul class="leftSidenav-content-ul-open sidenav-content-ul-open">
+	   		<li><h1><u> Main Options</u></h1></li>
+		  	<li><a href="../story/story.html"><span class="glyphicon glyphicon-th" style="font-size: 25px">&nbsp</span>Story</a></li>
+  			<li><a href="#"><span class="glyphicon glyphicon-sunglasses">&nbsp</span>Profile</a></li>
+  			<li><a href="#"><span class="glyphicon glyphicon-road"">&nbsp</span>Traveller</a></li>
+  			<li><a href="#"><span class="glyphicon glyphicon-pushpin">&nbsp</span>Organizer</a></li>
+  			<li><a href="#"><span class="glyphicon glyphicon-list-alt">&nbsp</span>Estimator</a></li>
+  			<li><a href="#"><span class="glyphicon glyphicon-warning-sign">&nbsp</span>Emergency</a></li>
+		  </ul>
+	</div>
+	<div class="leftSidenav-content">
+		<ul class="leftSidenav-content-ul">
+			<li id="t-ham"><span  data-toggle="tooltip" data-placement="right" data-original-title="Menu"  class="glyphicon glyphicon-menu-hamburger ham" style=";cursor:pointer;"   onclick="leftOpenNav()"></span></li>
+			<li><a href="../story/story.html"><span data-toggle="tooltip" data-placement="right" data-original-title="Story" class="glyphicon glyphicon-th" style=""></span></a></li>
+			<li><a href="#"><span data-toggle="tooltip" data-placement="right" data-original-title="Profile" class="glyphicon glyphicon-sunglasses" style=""></span></a></li>
+			<li><a href="traveller-main.html"><span data-toggle="tooltip" data-placement="right" data-original-title="Traveller" class="glyphicon glyphicon-road" style=""></span></a></li>
+			<li><a href="#"><span data-toggle="tooltip" data-placement="right" data-original-title="Organizer" class="glyphicon glyphicon-pushpin" style=""></span></a></li>
+			<li><a href="#"><span data-toggle="tooltip" data-placement="right" data-original-title="Estimator" class="glyphicon glyphicon-list-alt" style="
+			"></span></a></li>
+			<li><a href="#"><span data-toggle="tooltip" data-placement="right" data-original-title="Emergency" class="glyphicon glyphicon-warning-sign" style="font-size: 35p"></span></a></li>		
+
+		</ul>
+	</div>
+
+  <div id="rightSidenav" class="right-sidenav">
+  		<a href="javascript:void(0)" class="right-closebtn" onclick="rightCloseNav()">&times;</a>
+		<ul class="rightSidenav-content-ul-open sidenav-content-ul-open" style="list-style: none;">
+			<li style="color: #ef0707"><h1><u> Page Options</u></h1></li>
+			<li><a href="traveller-main.html"><span class="glyphicon glyphicon-th-list">&nbsp</span>Guide</a></li>
+			<li><a href="mytrip.html"><span><i class="fa fa-suitcase fai" aria-hidden="true" style="color: #ef0707"></i></span>My Trips</a></li>
+      <li><a href="plan.html"><span class="glyphicon glyphicon-pencil"">&nbsp</span>Plan a Trip</a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-plus" >&nbsp</span>Join a Trip</a></li>
+			<li><a href="#"><span></span>Chat</a></li>
+		</ul>
+	</div>
+
+	<div class="rightSidenav-content ">
+		<ul class="rightSidenav-content-ul">
+			<li id="t-ham"><span data-toggle="tooltip" data-placement="top" data-original-title="Menu" class="glyphicon glyphicon-menu-hamburger" onclick="rightOpenNav()"></span></li>
+      <li><a href="traveller-main.html"><span data-toggle="tooltip" data-placement="top" data-original-title="Suggestions" class="glyphicon glyphicon-th-list"></span></a></li>
+			<li style="margin-top: 20px"><a href="mytrip.html"><span data-toggle="tooltip" data-placement="top" data-original-title="My Trips" ><i class="fa fa-suitcase" aria-hidden="true"></i></span></a></li>
+      <li><a href="plan.html"><span data-toggle="tooltip" data-placement="top" data-original-title="Plan a Trip" class="glyphicon glyphicon-pencil"></span></a></li>
+			<li><a href="#"><span data-toggle="tooltip" data-placement="top" data-original-title="Join a Trip" class="glyphicon glyphicon-plus"></span></a></li>
+			<li><a href="#"><span data-toggle="tooltip" data-placement="top" data-original-title="Chat" ></span></a></li>
+		</ul>
+	</div>
+
+  	<div class="container main col-lg-offset-2 col-lg-9">
+  		<div id="one" class="plan-container col-lg-8" style="display: block;">
+  			<div class="plan-head">
+  				<div class="plan-title">
+  					<div class="title-top">
+  						<h2>Create Trip Plan</h2>
+  					</div>
+  					<div class="title-low">
+  						<h3>#1: Type</h3>
+  					</div>
+  				</div>
+  			</div>
+  			<div class="plan-body">
+  				<div class="layer-1">
+  					<div class="l1-head">
+  						<div class="l1-title">
+  							<h4><b>Company:</b></h4>
+  						</div>
+  					</div>
+  					<div class="l1-options">
+  						<div class="option-solo op-ty">
+  							<img src="{% static "img/solo-traveller.jpg" %}">
+  							<span><h3>SOLO</h3></span>
+  						</div>
+  							
+  						<div class="option-group op-ty">
+  							<img src="{% static "img/group-traveller.jpg" %}">
+  							<span><h3>GROUP</h3></span>
+  						</div>
+  					</div>
+
+  				</div>
+  				<div class="layer-2">
+  					<div class="l2-head">
+  						<div class="l2-title">
+  							<h4>Travel Moto:</h4>
+  						</div>
+  					</div>
+  					<div class="l2-options">
+  						<div class="sub-layer-1 sl">
+  							<div class="sl1 op">
+  								<div class="sl1-op1 sop">
+  									<img src="{% static "img/adventure.jpg" %}">
+  									<span><h3>Adventure</h3></span>
+  								</div>
+  							
+  								<div class="sl1-op2 sop">
+		  							<img src="{% static "img/explore.jpg" %}">
+		  							<span><h3>Exploring</h3></span>
+  								</div>
+  							</div>
+  							<div class="sl2 op">
+  								<div class="sl2-op1 sop">
+  									<img src="{% static "img/photography.jpg" %}">
+  									<span><h3>Photography</h3></span>
+  								</div>
+  							
+  								<div class="sl2-op2 sop">
+		  							<img src="{% static "img/sports.jpg" %}">
+		  							<span><h3>Sport Event</h3></span>
+  								</div>
+  							</div>
+  							<div class="sl3 op">
+  								<div class="sl3-op1 sop">
+  									<img src="{% static "img/food.jpg" %}">
+  									<span><h3>Food & Cuisine</h3></span>
+  								</div>
+  							
+  								<div class="sl3-op2 sop">
+		  							<img src="{% static "img/exercise.jpg" %}">
+		  							<span><h3>Exercise</h3></span>
+  								</div>
+  							</div>
+  							<div class="sl4 op">
+  								<div class="sl4-op1 sop">
+  									<img src="{% static "img/shopping.jpg" %}">
+  									<span><h3>Shopping</h3></span>
+  								</div>
+  							
+  								<div class="sl4-op2 sop">
+		  							<img src="{% static "img/travel-blog.jpg" %}">
+		  							<span><h3>Travel Blogging</span>
+  								</div>
+  							</div>
+  							<div class="sl5 op">
+  								<div class="sl5-op1 sop">
+  									<img src="{% static "img/party.jpg" %}">
+  									<span><h3>Partying</h3></span>
+  								</div>
+  							
+  								<div class="sl5-op2 sop">
+		  							<img src="{% static "img/backpacking.jpg" %}">
+		  							<span><h3>Backtracking</h3></span>
+  								</div>
+  							</div>
+  						</div>
+  					</div>
+  				</div>
+  				<div class="layer-3">
+  					<div class="navigante">
+  						<div id="btn-cancel" class="btn-cancel">
+  							<button class="btn btn-danger" onclick="abort()"><a href="mytrip.html">x</a></button>
+  						</div>
+  						<div id="btn-save" class="btn-save">
+  							<button class="btn btn-success glyphicon glyphicon-floppy-disk" onclick="save()"><a href="mytrip.html"></a></button>
+  						</div>
+  						<div id=btn-prev class="btn-prev" style="visibility: hidden;">
+  							<button class="btn btn-primary">Prev</button>
+  						</div>
+  						<div id="btn-next" class="btn-next">
+  							<button class="btn btn-primary" onclick="navigante('two','one','three','four')">Next</button>
+  						</div>
+  					</div>
+  				</div>
+  			</div>
+  		</div>
+      <div id="two" class="plan-container col-lg-8">
+        <div class="plan-head">
+          <div class="plan-title">
+            <div class="title-top">
+              <h2>Create Trip Plan</h2>
+            </div>
+            <div class="title-low">
+              <h3>#2: Route Info</h3>   
+            </div>
+          </div>
+        </div>
+        <div class="plan-body">
+          <div class="p2-layer-1 col-lg-10 col-lg-offset-1">
+            <div class="p2-l1-options col-lg-12">
+              <div id="p2-l1-op" class="source l1-op col-lg-10 col-lg-offset-1">
+                <label><span>From:</span><input id="p3-vs" type="text" name="source"></label>
+              </div>
+                
+              <div id="p2-l1-op" class="dest l1-op col-lg-10 col-lg-offset-1">
+                <label><span>To:</span><input id="p3-vs" type="text" name="dest" style="flex: 9;"></label>
+              </div>
+              <br>
+              
+            </div>
+            <div class="vehicle l1-op  col-lg-7 col-lg-offset-4">
+              <div class="veh-club">
+                <span>Mode:</span>
+                <select id="p2-vs" class="vehicle-select">
+                <option>-----</option>
+                <option value="car">Car</option>
+                <option value="motorbike">Motorbike</option>
+                <option value="cycle">Cycling</option>
+                <option value="walking">Walking</option>
+              </select>
+              </div>
+            </div>
+          </div>
+          <div class="map-container col-lg-offset-1 col-lg-10">
+            <div class="map col-lg-12" style="padding: 0;">
+              <img src="{% static "img/maps.png" %}" >
+            </div>
+            
+          </div>
+          <div class="p2-layer-2 col-lg-offset-1 col-lg-10">
+          <div class="p2-sub-layer-1">
+            <div class="add-stop">
+              <button class="btn btn-success"><span>+</span>AddStop</button>
+            </div>
+          </div>
+          <div class="p2-sub-layer-2">
+            <div class="pits-handler">
+              <div class="pitstops pb">
+                <div class="pitstops-club">
+                  <span class="s1">Pitstops:</span>
+                  <select id="p2-vs" class="select-pitstops">
+                    <option>--------</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="custom">custom</option>
+                  </select>
+                  <span class="s2"><input id="p3-vs" type="text" name="custom-pitstop"></span>
+                  <span class="s3"><button class="edit-pitstop btnt">Check</button></span>
+                </div>
+              </div>
+              <div class="time-per-pitstop pb">
+                <div class="pitstime-club">
+                  <span>Time Per Pitstop:</span>
+                  <select id="p2-vs" class="select-pitstime" style="margin-left: 14px;">
+                    <option>--------</option>
+                    <option value="five">5 min</option>
+                    <option value="ten">10 min</option>
+                    <option value="fifteen">15 min</option>
+                    <option value="thirty">30 min</option>
+                    <option value="hour">1 hour</option>
+                    <option value="custom">custom</option>
+                  </select> 
+                  <span style="display: flex; flex: 1;">
+                    <input id="p3-vs" type="text" name="custom-time">
+                    <select id="p2-vs" class="custom-time-unit">
+                      <option value="minutes">mins</option>
+                      <option value="hours">hours</option>
+                      <option value="days">days</option>
+                    </select>
+                  </span>
+                  <button class="edit-pitstime btnt">Check</button>
+                </div>
+              </div>
+            </div>
+            <div class="p2-time-distance pb">
+              <div class="p2-distance">
+                  <span>Distance:</span>
+                  <span>300 km</span>
+              </div>
+              <div class="p2-time">
+                  <span>Travel Time:</span>
+                  <span>8 hours 15 min</span>
+              </div>
+            </div>
+            <div class="p2-total-time-distance pb">
+              <div class="p2-total-time">
+                <span style="display: flex; flex: 1;">Total Journey Time:</span>
+                <span>9 hours 20 min</span>
+              </div>
+              <div class="p2-total-distance">
+                <span style="display: flex; flex: 1;">Total Distance:</span>
+                <span>310 km</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="details-click">
+                    <h4>
+                      <a href="#subtrip-coll" data-toggle="collapse">View Journey Details</a>
+                    </h4> 
+                </div>
+                <div id="subtrip-coll" class="collapse">
+                  <div class="subtrip-layers">
+                    <div class="subtrip-layer-top">
+                        <div class="coll-trip-header">
+                          <h3><u>Trip: 1</u></h3>
+                        </div>
+                    </div><br>
+                    <div class="subtrip-layer-bottom">
+                      <div class="bottom-sublayer col-lg-11 sts">
+                          <div class="subtrip-src st">
+                            <b>From: </b>
+                            <span>Pune</span>
+                          </div>
+                          <div class="subtrip-dest st">
+                            <b>To: </b>
+                            <span>Goa</span>
+                          </div>
+                          <div class="subtrip-route-info st">
+                            <b>Route Info: </b>
+                            <span><a href="#"><u>Click Here</u></a></span>
+                          </div>
+                      </div>
+                      <div class="bottom-sublayer col-lg-11 sts">
+                          <div class="subtrip-pitstop st">
+                            <b>Pitstop: </b>
+                            <span>4</span>
+                          </div>
+                          <div class="subtrip-pitstime st">
+                            <b>Time/Pitstop:</b>
+                            <span>15 min</span>
+                          </div>
+                      </div>
+                      <div class="bottom-sublayer col-lg-11 sts">
+                          <div class="subtrip-ttime st">
+                            <b>Trip Distance: </b>
+                            <span>300 km</span>
+                          </div>
+                          <div class="subtrip-tdist st">
+                            <b>Trip Time:</b>
+                            <span>6 hour 20 min</span>
+                          </div>
+                      </div>
+                      <div class="subtrip-edit">
+                        <button class="st-btn-edit btnt">Edit</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="subtrip-layers">
+                    <div class="subtrip-layer-top">
+                        <div class="coll-trip-header">
+                          <h3><u>Trip: 2</u></h3>
+                        </div>
+                    </div><br>
+                    <div class="subtrip-layer-bottom">
+                      <div class="bottom-sublayer col-lg-11 sts">
+                          <div class="subtrip-src st">
+                            <b>From: </b>
+                            <span>Goa</span>
+                          </div>
+                          <div class="subtrip-dest st">
+                            <b>To: </b>
+                            <span>Mangalore</span>
+                          </div>
+                          <div class="subtrip-route-info st">
+                            <b>Route Info: </b>
+                            <span><a href="#"><u>Click Here</u></a></span>
+                          </div>
+                      </div>
+                      <div class="bottom-sublayer col-lg-11 sts">
+                          <div class="subtrip-pitstop st">
+                            <b>Pitstop: </b>
+                            <span>3</span>
+                          </div>
+                          <div class="subtrip-pitstime st">
+                            <b>Time/Pitstop:</b>
+                            <span>5 min</span>
+                          </div>
+                      </div>
+                      <div class="bottom-sublayer col-lg-11 sts">
+                          <div class="subtrip-ttime st">
+                            <b>Trip Distance: </b>
+                            <span>180 km</span>
+                          </div>
+                          <div class="subtrip-tdist st">
+                            <b>Trip Time:</b>
+                            <span>3 hour</span>
+                          </div>
+                      </div>
+                      <div class="subtrip-edit">
+                        <button class="st-btn-edit btnt">Edit</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            
+          </div>
+          <div class="p2-layer-3">
+            <div class="navigante">
+              <div id="btn-cancel" class="btn-cancel">
+                <button class="btn btn-danger" onclick="abort()"><a href="mytrip.html">x</a></button>
+              </div>
+              <div id="btn-save" class="btn-save">
+                <button class="btn btn-success glyphicon glyphicon-floppy-disk" onclick="save()"><a href="mytrip.html"></a></button>
+              </div>
+              <div id=btn-prev class="btn-prev">
+                <button class="btn btn-primary" onclick="navigante('one','two','three','four')">Prev</button>
+              </div>
+              <div id=btn-next class="btn-next">
+                <button class="btn btn-primary" onclick="navigante('three','one','two','four')">Next</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="three" class="plan-container col-lg-8">
+        <div class="plan-head">
+          <div class="plan-title">
+            <div class="title-top">
+              <h2>Create Trip Plan</h2>
+            </div>
+            <div class="title-low">
+              <h3>#3: Date and Other Info</h3>   
+            </div>
+          </div>
+        </div>
+        <div class="plan-body">
+          <div class="p3-layer-1 col-lg-10 col-lg-offset-1">
+            <div class="p3-l1-options col-lg-12">
+              <div id="p3-l1-op" class="sl1-op col-lg-10 col-lg-offset-1">
+                <span style="display: lex; flex: 1;">Starting Date:</span>
+                <div class="date-select slt-div">
+                  <select id="p3-vs" class="year slt">
+                    <option>----------------</option>
+                    <option>2018</option>
+                    <option>2019</option>
+                    <option>2020</option>
+                    <option>2021</option>
+                    <option>2022</option>
+                    <option>2023</option>
+                    <option>2024</option>
+                    <option>2025</option>
+                    <option>2026</option>
+                    <option>2027</option>
+                    <option>2028</option>
+                    <option>2029</option>
+                    <option>2030</option>
+                  </select>
+                  <select id="p3-vs" class="month slt">
+                    <option>----------------</option>
+                    <option>Jan</option>
+                    <option>Feb</option>
+                    <option>March</option>
+                    <option>April</option>
+                    <option>May</option>
+                    <option>June</option>
+                    <option>July</option>
+                    <option>Aug</option>
+                    <option>Sep</option>
+                    <option>Oct</option>
+                    <option>Nov</option>
+                    <option>Dec</option>
+                  </select>
+                  <select id="p3-vs" class="date slt">
+                    <option>----------------</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                    <option>11</option>
+                    <option>12</option>
+                    <option>13</option>
+                    <option>14</option>
+                    <option>15</option>
+                    <option>16</option>
+                    <option>17</option>
+                    <option>18</option>
+                    <option>19</option>
+                    <option>20</option>
+                    <option>21</option>
+                    <option>21</option>
+                    <option>23</option>
+                    <option>24</option>
+                    <option>25</option>
+                    <option>26</option>
+                    <option>27</option>
+                    <option>28</option>
+                    <option>29</option>
+                    <option>30</option>
+                    <option>31</option>
+                  </select>
+                </div>
+              </div>
+                
+              <div id="p3-l1-op" class="l1-op col-lg-10 col-lg-offset-1">
+                <span style="display: flex;flex: 1;">Starting Time:</span>
+                <div class="time-select slt-div">
+                  <select id="p3-vs" class="hour slt">
+                    <option>----------------</option>
+                    <option>12</option>
+                    <option>11</option>
+                    <option>10</option>
+                    <option>9</option>
+                    <option>8</option>
+                    <option>7</option>
+                    <option>6</option>
+                    <option>5</option>
+                    <option>4</option>
+                    <option>3</option>
+                    <option>2</option>
+                    <option>1</option>
+                  </select>
+                  <select id="p3-vs" class="meridiem slt">
+                    <option>----------------</option>
+                    <option>am</option>
+                    <option>pm</option>
+                  </select>
+                </div>
+              </div>
+              <div id="p3-l1-op" class="l1-op col-lg-10 col-lg-offset-1">
+                <span style="flex: 1;">Gender:</span>
+                <div class="gender-select slt-div" style="display:flex;flex: 3;">
+                  <select id="p3-vs" class="gender slt">
+                    <option>----------------</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                    <option>Others</option>
+                    <option>Any</option>
+                  </select>
+                  
+                </div>
+              </div>
+              <div id="p3-l1-op" class="l1-op col-lg-11 col-lg-offset-1 age-group">
+                <span class="ag" style="flex: 2 30px;">Age Group:</span>
+                <div class="age-select ag slt-div">
+                  <select id="p3-vs" class="age slt">
+                    <option>-------------------</option>
+                    <option>Under 18</option>
+                    <option>18-30</option>
+                    <option>30-50</option>
+                    <option>Above 50</option>
+                    <option>Any</option>
+                  </select>
+                </div>
+                <div class="p3-button-group">
+                  <div class="age-add ag">
+                    <button class="btn btn-success"><span class="intbtn">+</span></button>
+                  </div>
+                  <div class="age-remove ag">
+                    <button class="btn btn-danger"><span class="intbtn">-</span></button>
+                  </div>
+                </div>
+              </div>
+              <div id="p3-l1-op" class="l1-op col-lg-11 col-lg-offset-1">
+                <div class="nop">
+                  <div class="nop-radio">
+
+                    <label><span style="margin-right: 10px;">Limit Participants:</span><input type="radio" name="nop">Yes</label>
+                    <label><input type="radio" name="nop">No</label>
+                  </div>
+                  <label><input type="text" name="limit" placeholder="Eg. 10" style="border: 0; border-radius: 5px; font-weight: 400; padding: 5px;"></label>
+                  <br>
+                </div>
+                <button class="btn btn-success"><span class="intbtn">+</span></button>
+              </div>
+              <div id="p3-l1-op" class="l1-op col-lg-10 col-lg-offset-1">
+                <label>Title:</label>
+                <input type="text" name="trip-title" placeholder="Eg. Around the state in 7 days" maxlength="30" style="border: 0; border-radius: 5px; width: 400px; padding: 5px;">
+              </div>
+              <div id="p3-l1-op" class="l1-op col-lg-10 col-lg-offset-1">
+                <div class="description">
+                  <span><b>Tell Something About It:</b></span>
+                  <textarea id="desc" cols="43" rows="4" maxlength="160" placeholder="Enter a short description. Max character: 160" style="margin-top: 3px; color: #888da6; resize: none; padding: 5px;"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="p3-layer2">
+            <div class="navigante">
+              <div id="btn-cancel" class="btn-cancel">
+                <button class="btn btn-danger" onclick="abort()"><a href="mytrip.html">x</a></button>
+              </div>
+              <div id="btn-save" class="btn-save">
+                <button class="btn btn-success glyphicon glyphicon-floppy-disk" onclick="save()"><a href="mytrip.html"></a></button>
+              </div>
+              <div>
+              <div id=btn-prev class="btn-prev">
+                <button class="btn btn-primary" onclick="navigante('two','one','three','four')">Prev</button>
+              </div>
+              <div id=btn-next class="btn-next">
+                <button class="btn btn-primary" onclick="navigante('four','one','two','three')">Next</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      <div id="four" class="plan-container col-lg-8">
+        <div class="plan-head">
+          <div class="plan-title">
+            <div class="title-top">
+              <h2>Create Trip Plan</h2>
+            </div>
+            <div class="title-low">
+              <h3>#4: Costings</h3>   
+            </div>
+          </div>
+        </div>
+        <div class="plan-body">
+          <div class="p4-layer-1 col-lg-10 col-lg-offset-1">
+            <div class="p4-l1-options col-lg-12">
+              <div id="p4-l1-op" class=" l1-op col-lg-12  heads">
+                <h3 style="margin-top: 0">Fuel</h3>
+              </div>
+              <div id="club" class="col-lg-offset-2 col-lg-8">
+               <div id="p4-l1-op" class=" l1-op col-lg-10 col-lg-offset-1">
+                  <span>Mileage:</span>
+                  <span style="margin-left: 20px;"><input id="p4-vs" type="text" name="mileage"></span> 
+                </div>
+                <div id="p4-l1-op" class=" l1-op col-lg-11 col-lg-offset-1">
+                  <div class="fuel">
+                    <span class="tag-fuel">Price/Litre:</span>
+                    <span class="inp-fuel" style="margin-left: 4px;"><input id="p4-vs" type="text" name="mileage"></span>
+                  </div>
+                  <div class="get-rate">
+                    <span class="a-rate"><a href="#">Get Rate</a></span>
+                    
+                  </div>
+                </div>
+                <div id="p4-l1-op" class=" l1-op col-lg-10 col-lg-offset-1">
+                  <span><b>Fuel Cost:</b></span>
+                  <span style="margin-left: 8px;"><input id="p4-vs" type="text" name="fuel-cost"></span> 
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="p4-layer-1 col-lg-10 col-lg-offset-1">
+            <div class="p4-l1-options col-lg-12">
+              <div id="p4-l1-op" class=" l1-op col-lg-12 heads" style="margin-top: -10px">
+                <h3>Vehicel Rental</h3>
+              </div>
+              <div id="club" class="col-lg-offset-2 col-lg-8">
+                <div id="p4-l1-op" class=" l1-op col-lg-10  col-lg-offset-1">
+                  <div>
+                  
+                    <span><a href="#"><b>Click to Get-Estimate/Book</b></a></span>
+                  </div>
+                </div>
+                <div id="p4-l1-op" class=" l1-op col-lg-10 col-lg-offset-1">
+                  <span><b>Vehicle Cost:</b></span>
+                  <span><input id="p4-vs" type="text" name="fuel-cost"></span> 
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="p4-layer-1 col-lg-10 col-lg-offset-1">
+            <div class="p4-l1-options col-lg-12">
+              <div id="p4-l1-op" class=" l1-op col-lg-12 heads" style="margin-top: -10px">
+                <h3>Hotel Booking</h3>
+              </div>
+              <div id="club" class="col-lg-offset-2 col-lg-8">
+                <div id="p4-l1-op" class=" l1-op col-lg-10  col-lg-offset-1" style="margin-top: -10px">
+                  <div class="rent">
+                    <span><a href="#"><b>Click to Get-Estimate/Book</b></a></span>
+                  </div>
+                </div>
+                <div id="p4-l1-op" class=" l1-op col-lg-10 col-lg-offset-1" style="margin-top: -10px">
+                  <span><b>Hotel Cost:</b></span>
+                  <span><input id="p4-vs" type="text" name="fuel-cost"></span> 
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="p4-layer-1 col-lg-10 col-lg-offset-1">
+            <div class="p4-l1-options col-lg-12">
+              <div id="club" class="col-lg-offset-1 col-lg-10">
+                <div id="p4-l1-op" class=" l1-op col-lg-9" style="margin-top: -10px; margin-left: 50px;">
+                  <h3><span>Total Cost:</span><span><input id="p4-vs" type="text" name="total-cost"></span></h3>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="p4-layer-4">
+            <div class="navigante">
+              <div id="btn-cancel" class="btn-cancel">
+                <button class="btn btn-danger" onclick="abort()"><a href="mytrip.html">x</a></button>
+              </div>
+              <div id="btn-save" class="btn-save">
+                <button class="btn btn-success glyphicon glyphicon-floppy-disk" onclick="save()"><a href="mytrip.html"></a></button>
+              </div>
+              <div id=btn-prev class="btn-prev">
+                <button class="btn btn-primary" onclick="navigante('three','one','two','four')">Prev</button>
+              </div>
+              <div id=btn-next class="btn-next">
+                <button class="btn btn-primary" onclick="publish()">Publish</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  		
+  		<div id="progress-container" class="progress-container col-lg-offset-1 col-lg-3">
+    		<div class="progress-main">
+          <div class="prog-head">
+            <div class="prog-title">
+              <h2>Progress Bar</h2>
+            </div>
+          </div>
+          <div class="prog-body">
+            <div class="club">
+              <div class="prog-layer" style="margin-top: 10px;">
+                <div class="hash">
+                  <div class="sub-hash p-heads">
+                    <h4><b>#1 Type</b></h4>
+                  </div>
+                  <div class="sub-hash p-bot">
+                    <div class="s-sh">
+                      <span class="hash-content-left"><b>Company:</b></span>
+                      <span class="hash-content-right">Group</span>
+                    </div>
+                    <div class="s-sh">
+                      <span class="hash-content-left"><b> Travel Moto:</b></span>
+                      <span class="hash-content-right">Photography</span>
+                    </div>
+                  </div>  
+                </div>
+              </div>
+              <div class="prog-layer">
+                <div class="hash">
+                  <div class="sub-hash p-heads">
+                    <h4><b>#2 Route Info</b></h4>
+                  </div>
+                  <div class="sub-hash p-bot">
+                    <div class="s-sh">
+                      <span class="hash-content-left"><b>From:</b></span>
+                      <span class="hash-content-right">Daman</span>
+                    </div>
+                    <div class="s-sh">
+                      <span class="hash-content-left"><b>To:</b></span>
+                      <span class="hash-content-right">Goa</span>
+                    </div>
+                    <div class="s-sh">
+                      <span class="hash-content-left"><b>Mode:</b></span>
+                      <span class="hash-content-right">Motorbike</span>
+                    </div>
+                    <div class="s-sh">
+                      <span class="hash-content-left"><b>T. Dist.:</b></span>
+                      <span class="hash-content-right">550 km</span>
+                    </div>
+                    <div class="s-sh">
+                      <span class="hash-content-left"><b>T. Time:</b></span>
+                      <span class="hash-content-right">9 hr 20 min</span>
+                    </div>
+                  </div>   
+                </div>
+              </div>
+            </div>
+            <div class="club">
+              <div class="prog-layer">
+                <div class="hash">
+                  <div class="sub-hash p-heads">
+                    <h4><b>#3 Date and Other Info</b></h4>
+                  </div>
+                  <div class="sub-hash p-bot">
+                    <div class="s-sh">
+                      <span class="hash-content-left"><b>Start Date:</b></span>
+                      <span class="hash-content-right">25 FEB 2018</span>
+                    </div>
+                    <div class="s-sh">
+                      <span class="hash-content-left"><b>Start Time:</b></span>
+                      <span class="hash-content-right">10:00 am</span>
+                    </div>
+                    <div class="s-sh">
+                      <span class="hash-content-left"><b>Gender:</b></span>
+                      <span class="hash-content-right">Men Only</span>
+                    </div>
+                    <div class="s-sh">
+                      <span class="hash-content-left"><b>Age Group:</b></span>
+                      <span class="hash-content-right">U-18, 18-30</span>
+                    </div>
+                    <div class="s-sh">
+                      <span class="hash-content-left"><b>Limit:</b></span>
+                      <span class="hash-content-right">Any</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="prog-layer">
+              <div class="hash">
+                <div class="sub-hash p-heads">
+                  <h4><b>#4 Cost Info</b></h4>
+                </div>
+                <div class="sub-hash p-bot">
+                  <div class="s-sh">
+                    <span class="hash-content-left"><b>Fuel Cost:</b></span>
+                    <span class="hash-content-right">2000</span>
+                  </div>
+                  <div class="s-sh">
+                    <span class="hash-content-left"><b>Vehicle Cost:</b></span>
+                    <span class="hash-content-right">1000</span>
+                  </div>
+                  <div class="s-sh">
+                    <span class="hash-content-left"><b>Hotel Cost:</b></span>
+                    <span class="hash-content-right">10000</span>
+                  </div>
+                  <div class="s-sh">
+                    <span class="hash-content-left"><b>Total Cost:</b></span>
+                    <span class="hash-content-right">13000</span>
+                  </div>
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  		</div>
+  	</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="{% static "js/custom.js" %}"></script>
+</body>
+</html>

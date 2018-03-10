@@ -1,0 +1,409 @@
+/*.container{
+    display: flex;
+    justify-content: center;
+}
+*/ 
+body{
+    background-color: #edf2f6;
+    font-family: sans-serif;
+
+}
+.containerLogin{
+    padding: 5px;
+    position: fixed;
+    width: 21%; /* Set your desi#ef0707 width */
+    z-index: 2; /* Make sure its above other items. */
+    top: 40%;
+    left: 50%;
+    margin-top: -10%; /* Changes with height. */
+    margin-left: -10%;
+    box-shadow: 0px 1px 10px 2px darkgrey;
+}
+
+.containerReg{
+    padding: 5px;
+    position: fixed;
+    width: 25%; /* Set your desi#ef0707 with */
+    z-index: 2; /* Make sure its above other items. */
+    top: 40%;
+    left: 50%;
+    margin-top: -10%; /* Changes with height. */
+    margin-left: -10%;
+    box-shadow: 0px 1px 10px 2px darkgrey;
+}
+
+.containerForgot{
+    padding: 5px;
+    position: fixed;
+    width: auto; /* Set your desi#ef0707 with */
+    z-index: 2; /* Make sure its above other items. */
+    top: 40%;
+    left: 50%;
+    margin-top: -10%; /* Changes with height. */
+    margin-left: -10%;
+    box-shadow: 0px 1px 10px 2px darkgrey;
+}
+
+.containerResetSent{
+    padding: 5px;
+    position: fixed;
+    width: auto; /* Set your desi#ef0707 with */
+    z-index: 2; /* Make sure its above other items. */
+    top: 26%;
+    left: 11%;
+    margin-top: -10%; /* Changes with height. */
+    margin-left: -10%;
+    box-shadow: 0px 1px 10px 2px darkgrey;
+}
+.btnLoginLogin{
+    text-align: center;
+}
+
+.btnLoginLogin button{
+    width: 110px;
+}
+
+.btnLoginLogin a, .btnRegReg a{
+    color: black
+}
+.btnRegReg button{
+
+}
+.navbar{
+        margin-bottom: 0;
+        border-radius: 0;
+        color: #FFF;
+        font-size: 1.2em;
+        border: 0;
+}
+margin-bottom: 14px;
+    background-color: #ef0707;
+    width: 85.4px;
+    padding: 24px 0 0 15px
+.navbar-brand > img {
+    width: 3.9em;
+    background-color: #ef0707;
+    height: 3.5em;
+    
+}
+.navbar-inverse .navbar-nav>li>a {
+    color: #ffffff;
+}
+.navbar-inverse .navbar-nav>li>a:hover {
+    color: #b2b2b2;
+}   
+#navMenu {
+    margin-top: 9px;
+}
+.search-input-top{
+    height: 82px;
+    border-radius: 0;
+    background-color: #494b62;
+    border: 0;
+
+}
+.search-input-top::placeholder{
+    color: #6a6169;
+}
+.search-button-top{
+    height: 82px;
+    border-radius: 0;
+}
+
+.nav-fmn {
+    float: left;
+    position: relative;
+    top: 7px;
+    left: 35px;
+}
+
+/******End NavBar******/
+.searches{
+    float: left;
+    margin-top: 12px;
+}
+.em-name{
+    float: left;
+    font-size: 35px;
+    color: white;
+    margin-right: 20px;
+}
+
+.left-sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+.right-sidenav{
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 5px;   
+}
+.right-sidenav > a{
+    font-size: 40px;
+    padding: 1px 8px 0px 38px;
+}
+.left-sidenav a, .right-sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.left-sidenav a:hover, .right-sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.left-sidenav .left-closebtn, .left-sidenav .left-closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .left-sidenav {padding-top: 15px;}
+  .left-sidenav a {font-size: 18px;}
+  .right-sidenav {padding-top: 15px;}
+  .right-sidenav a {font-size: 18px;}
+}
+#leftSidenav{
+    position: fixed;
+    z-index: 1031;
+    width: 0px;
+    min-height: 1000vh
+}
+
+#rightSidenav{
+    position: fixed;
+    z-index: 1031;
+    width: 0px;
+    min-height: 1000vh
+}
+
+.leftSidenav-content {
+    position: fixed;
+    z-index: 22;
+    width: 70px;
+    min-height: 1000vh;
+    background-color: white;
+    box-shadow: -7px 24px 47px -2px #888da6;
+}
+
+.leftSidenav-content > span{
+    font-size: 25px;
+}
+
+.rightSidenav-content{
+    position: fixed;
+    right: 0;
+    z-index: 21; 
+    width: 70px;
+    min-height: 1000vh;
+    background-color: white;
+    margin-right: 0;
+    overflow: hidden;
+    box-shadow: 7px 42px 47px -2px #888da6
+}
+.leftSidenav-content-ul {
+    list-style: none;
+    margin-left: -18px;
+    margin-top: 125px;
+}
+.rightSidenav-content-ul{
+    list-style: none;
+    margin-right: 20px;
+    padding: 0 0 0 20px;
+    margin-top: 125px;
+
+}
+
+.leftSidenav-content-ul > li, .rightSidenav-content-ul > li {
+    margin-top: 33px;
+    margin-bottom: 40px;
+}
+.leftsidenav-content-ul-open {
+    padding-left: 20px;
+}
+.sidenav-content-ul-open > li > a > span{
+    color: #ef0707;
+    font-size: 25px;
+}
+.sidenav-content-ul-open > li {
+    
+}
+.sidenav-content-ul-open {
+    list-style: none;
+    padding-left: 20px;
+}
+.rightSidenav-content-ul > li {
+    margin-bottom: 45px;
+}
+.rightSidenav-content-ul > li > a > span {
+    font-size: 27px;
+    color: #888da6;
+}
+.rightSidenav-content-ul > li > a > span > i:hover{
+    color: #ef0707;
+}
+
+.rightSidenav-content-ul-open > li {
+    margin-top: 35px
+}
+.leftSidenav-content-ul-open > li {
+    margin-top: 17px;
+}
+.leftSidenav-content-ul-open > li > a, .rightSidenav-content-ul-open >li >a {
+    color: white;
+}
+.leftSidenav-content-ul-open > li > a:hover, .rightSidenav-content-ul-open >li >a:hover {
+    color: #888da6;
+}
+.leftSidenav-content-ul-open > li > h1, .rightSidenav-content-ul-open >li >a:hover {
+    color: white;
+    margin-bottom: 35px;
+}
+
+.glyphicon{
+    color: #888da6;
+}
+
+.glyphicon:hover{
+    color: #ef0707;
+}
+#t-ham .glyphicon:hover{
+    color: #888da6;
+}
+#t-ham .glyphicon{
+    color: #ef0707;
+}
+
+@media screen and (min-width: 845px) {
+  .navbar-brand {margin-left: -15px;}
+}
+#nav-search{
+    position: fixed;
+    float: left;
+    top: 2px;
+}
+#nav-search > input{
+    height: 82px;
+    border-radius: 0;
+    background-color: #494b62;
+    border: 0;
+    color: white;
+}
+#nav-search > span > button{
+    border-radius: 0;
+}
+#nav-search .glyphicon{
+    color: white;
+    font-size: inherit;
+}
+#nav-search .glyphicon:hover{
+    color: black;
+}
+.navbar-toggle{
+    margin-top: 16px
+}
+@media (max-width: 845px){
+ .navbar-search{
+    margin-left: 14px;
+  }
+}
+.page-title{
+
+}
+.page-title > h1{
+    font-weight: bolder;
+    position: fixed;
+    display: inline-flex;
+    margin-left: 15px;
+}
+.user-info-nav{
+    position: fixed;
+    top: 2px
+}
+.user-info-nav .glyphicon{
+    color: black;
+}
+#user-info-nav > button {
+    border-radius: 0;
+    height: 82px;
+    border: 0;
+    color: white;
+    width: 156px;
+    background-color: #494a62;
+    font-weight: bold;
+}
+#user-info-nav > button > a {
+    color: white;
+}
+
+/**********All nav-bar ends***************/
+
+#progress-container {
+    background-color: white;
+    border: 3px solid white;
+    position: fixed;
+    right: 130px;
+    width: fit-content;
+    height: 82%;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+.prog-layer {
+    margin: 0 -14px;
+    padding: 10px 5px 0px 5px;
+}
+.hash {
+    background-color: white;
+    border-radius: 5px;
+    padding: 0px 1px 1px 1px;
+    border: 1px solid lightgrey;
+}
+.prog-head {
+    border-bottom: 1px solid lightgrey;
+}
+.sub-hash > h3 {
+    border-bottom: 1px solid lightgrey;
+}
+.p-heads {
+    padding: 0;
+}
+.p-heads > h4 {
+    background-color: #edf2f7;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    margin: 0; 
+    padding-top: 5px;
+}
+.s-sh {
+    display: flex;
+}
+.hash-content-left {
+    flex: 4;
+}
+.hash-content-right {
+    flex: 5;
+}
+.p-bot {
+    padding: 10px;
+}

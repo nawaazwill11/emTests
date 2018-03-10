@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head>
+	<title>About</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %} ">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %} ">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/custom/style.css' %} ">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/custom/page-style.css' %} ">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/custom/profile.css' %} ">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/custom/about.css' %} ">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/fontawesome/fontawesome-all.css' %} ">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %} ">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %} ">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/custom/style.css' %} ">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/custom/page-style.css' %} ">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/custom/profile.css' %} ">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/custom/timeline.css' %} ">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/fontawesome/fontawesome-all.css' %} ">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body >
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navBar">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="{% url 'story/' %}"><img class="img-responsive pull-left" src="{% static 'img/emLogo-1.png' %}" alt="..."></a>
+				<div class="page-title col-lg-1"><h1><i>Profile</i></h1></div>
+				<div class="input-group input-group-md col-lg-offset-2 col-lg-3" id="nav-search">
+					<input type="text" name="search" class="form-control search-input-top" placeholder="Search places or events">
+					<span class="input-group-btn">
+						<button class="btn btn-danger search-button-top"><span class="glyphicon glyphicon-search"></span></button>
+					</span>
+			</div>
+			</div>
+			<div id="user-info-nav" class="user-info-nav col-lg-offset-6">
+				<button class="btn btn-default dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+					<a href="#">
+						<span style="font-size: 13px;">
+							<img src="{% static 'img/user-white.png' %}" style="width: 30px">
+						</span>
+						<span style="margin-left: 8px;">
+							<u>Willo Walker</u></a>
+						</span>
+					<span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu">
+					<li><a href="#">Settings</a></li>
+					<li><a href="#">Help</a></li>
+					<li role="separator" class="divider"></li>
+					<li><a href="#">Logout</a></li>
+				</ul>
+			</div>
+			
+			<div class="col-lg-offset-7 nav-fmn" >
+				<ul class="nav navbar-nav navbar-right" id="navMenu">
+					<li><a class="text-center" href="#">Friend Requests</a></li>
+					<li><a class="text-center" href="#">Messages</a></li>
+					<li><a class="text-center" href="#">Notifications</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div id="leftSidenav" class="left-sidenav">
+  		<a href="javascript:void(0)" class="left-closebtn" onclick="leftCloseNav()">&times;</a>
+		<ul class="leftSidenav-content-ul-open sidenav-content-ul-open">
+			<li><h1><u> Main Options</u></h1></li>
+		  	<li><a href="story.html"><span class="glyphicon glyphicon-th" style="font-size: 25px">&nbsp</span>Story</a></li>
+			<li><a href="#"><span class="glyphicon glyphicon-sunglasses">&nbsp</span>Profile</a></li>
+			<li><a href="../traveller/traveller-main.html"><span class="glyphicon glyphicon-road"">&nbsp</span>Traveller</a></li>
+			<li><a href="#"><span class="glyphicon glyphicon-pushpin">&nbsp</span>Organizer</a></li>
+			<li><a href="#"><span class="glyphicon glyphicon-list-alt">&nbsp</span>Estimator</a></li>
+			<li><a href="#"><span class="glyphicon glyphicon-warning-sign">&nbsp</span>Emergency</a></li>
+		</ul>
+	</div>
+	<div class="leftSidenav-content">
+		<ul class="leftSidenav-content-ul">
+			<li id="t-ham"><span  data-toggle="tooltip" data-placement="right" data-original-title="Menu"  class="glyphicon glyphicon-menu-hamburger ham" style=";cursor:pointer;"   onclick="leftOpenNav()"></span></li>
+			<li><a href="story.html"><span data-toggle="tooltip" data-placement="right" data-original-title="Story" class="glyphicon glyphicon-th" style=""></span></a></li>
+			<li><a href="../traveller/traveller-main.html"><span data-toggle="tooltip" data-placement="right" data-original-title="Profile" class="glyphicon glyphicon-sunglasses" style=""></span></a></li>
+			<li><a href="../traveller/traveller-main.html"><span data-toggle="tooltip" data-placement="right" data-original-title="Traveller" class="glyphicon glyphicon-road" style=""></span></a></li>
+			<li><a href="#"><span data-toggle="tooltip" data-placement="right" data-original-title="Organizer" class="glyphicon glyphicon-pushpin" style=""></span></a></li>
+			<li><a href="#"><span data-toggle="tooltip" data-placement="right" data-original-title="Estimator" class="glyphicon glyphicon-list-alt" style="
+			"></span></a></li>
+			<li><a href="#"><span data-toggle="tooltip" data-placement="right" data-original-title="Emergency" class="glyphicon glyphicon-warning-sign" style="font-size: 35p"></span></a></li>		
+
+		</ul>
+	</div>
+
+	<div id="rightSidenav" class="right-sidenav">
+        <a href="javascript:void(0)" class="right-closebtn" onclick="rightCloseNav()">&times;</a>
+        <ul class="rightSidenav-content-ul-open sidenav-content-ul-open" style="list-style: none;">
+            <li style="color: #ef0707"><h1><u> Page Options</u></h1></li>
+            <li><a href="#"><span class="glyphicon glyphicon-th-list">&nbsp</span>Guide</a></li>
+            <li><a href="#"><span><i class="fa fa-suitcase fai" aria-hidden="true" style="color: #ef0707"></i></span>My Events</a></li>
+      <li><a href="plan.html"><span class="glyphicon glyphicon-pencil"">&nbsp</span>Plan a Event</a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-plus" >&nbsp</span>Join a Event</a></li>
+            <li><a href="#"><span></span>Chat</a></li>
+        </ul>
+    </div>
+
+    <div class="rightSidenav-content ">
+        <ul class="rightSidenav-content-ul">
+            <li id="t-ham"><span data-toggle="tooltip" data-placement="top" data-original-title="Menu" class="glyphicon glyphicon-menu-hamburger" onclick="rightOpenNav()"></span></li>
+      <li><a href="#"><span data-toggle="tooltip" data-placement="top" data-original-title="Suggestions" class="glyphicon glyphicon-th-list"></span></a></li>
+            <li style="margin-top: 20px"><a href="#"><span data-toggle="tooltip" data-placement="top" data-original-title="My Events" ><i class="fa fa-suitcase" aria-hidden="true"></i></span></a></li>
+      <li><a href="plan.html"><span data-toggle="tooltip" data-placement="top" data-original-title="Plan a Event" class="glyphicon glyphicon-pencil"></span></a></li>
+            <li><a href="#"><span data-toggle="tooltip" data-placement="top" data-original-title="Join a Event" class="glyphicon glyphicon-plus"></span></a></li>
+            <li><a href="#"><span data-toggle="tooltip" data-placement="top" data-original-title="Chat" ></span></a></li>
+        </ul>
+    </div>
+
+<div id="main" class="container">
+  <div class="root">
+    <div class="root-content">
+      <div class="cover">
+        <img src="{% static '' %}img/cover.jpg">
+      </div>
+      <div class="sunglass">
+        <div class="rowlo">
+          <div class="strap col-lg-5">
+            <ul type="none">
+              <li><a href="timeline.html">Timeline</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="album.html">Album</a></li>
+            </ul>
+          </div>
+          <div class="strap col-lg-offset-2 col-lg-5">
+            <ul type="none">
+              <li><a href="friends.html">Friends</a></li>
+              <li><a href="settings.html">Settings</a></li>
+            </ul>
+          </div>
+        </div>  
+      </div>
+      <div class="author-onNose">
+        <div class="author-content">
+          <div class="onNose-photo">
+            <img src="{% static 'img/ppic.jpg' %}">
+          </div>
+          <div class="author-name">
+            <a href="#">Willo Walker</a>
+          </div>
+        </div>
+      </div>
+      <div class="root-content-edit">
+        <div class="dropup">
+          <button class="dropdown-toggle" type="button" id="photo-edit" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="glyphicon glyphicon-cog"></span>
+          </button>
+          <ul id="root-content-set" class="dropdown-menu" aria-labelledby="photo-edit">
+            <li><a href="#">Update Profile Picture</a></li>
+            <li><a href="#">Update Cover Photo</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Remove Profile Photo</a></li>
+            <li><a href="#">Remove Cover Photo</a></li>
+          </ul>
+      </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="boot">
+    <div class="cap">
+    	<div class="cap-content">
+    		<div class="cap-edit cap-edit-pi">
+    			<div class="dropup">
+    				<button class="dropdown-toggle cap-edit-button" id="bio-edit" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-option-horizontal"></span></button>
+    				<ul id="root-content-set" class="dropdown-menu" aria-labelledby="bio-edit">
+            <li><a href="#">Edit</a></li>
+          	</ul>
+    			</div>
+    		</div>
+    		<div class="cap-layer">
+    			<h4>Personal Info</h4>
+    		</div>
+    		<hr>
+    		<div class="cap-layer">
+    			<div class="cap-op">
+    				<div class="cap-subop">
+	    				<label class="label-dark">About Me:</label>
+    				</div>
+    				<div class="cap-subop cap-subop-right">
+    					<span>I am a very hilarious person with an ambition to travel the entire world on my Uni-cycle.</span>	
+    				</div>
+    			</div>
+    			<div class="cap-op">
+    				<div class="cap-subop">
+	    				<label class="label-dark">Birthday:</label>
+    				</div>
+    				<div class="cap-subop cap-subop-right">
+    					<span>24th November 1993</span>	
+    				</div>
+    			</div>
+    			<div class="cap-op">
+    				<div class="cap-subop">
+	    				<label class="label-dark">Birth Place:</label>
+    				</div>
+    				<div class="cap-subop cap-subop-right">
+    					<span>Daman, Daman & Diu, India</span>	
+    				</div>
+    			</div>
+    			<div class="cap-op">
+    				<div class="cap-subop">
+	    				<label class="label-dark">Lives in:</label>
+    				</div>
+    				<div class="cap-subop cap-subop-right">
+    					<span>Pune, Maharashtra, India</span>	
+    				</div>
+    			</div>
+    			<div class="cap-op">
+    				<div class="cap-subop">
+	    				<label class="label-dark">Occupation:</label>
+    				</div>
+    				<div class="cap-subop cap-subop-right">
+    					<span>Enterprenuer</span>	
+    				</div>
+    			</div>
+    			<div class="cap-op">
+    				<div class="cap-subop">
+	    				<label class="label-dark">Gender:</label>
+    				</div>
+    				<div class="cap-subop cap-subop-right">
+    					<span>Males</span>	
+    				</div>
+    			</div>
+    			<div class="cap-op">
+    				<div class="cap-subop">
+	    				<label class="label-dark">Status:</label>
+    				</div>
+    				<div class="cap-subop cap-subop-right">
+    					<span>In a Relationship</span>	
+    				</div>
+    			</div>
+    			<div class="cap-op">
+    				<div class="cap-subop">
+	    				<label class="label-dark">Email:</label>
+    				</div>
+    				<div class="cap-subop cap-subop-right">
+    					<span>mastermindjim@gmail.com</span>	
+    				</div>
+    			</div>
+    			<div class="cap-op">
+    				<div class="cap-subop">
+	    				<label class="label-dark">Website:</label>
+    				</div>
+    				<div class="cap-subop cap-subop-right">
+    					<span>endlessmiles.com</span>	
+    				</div>
+    			</div>
+    			<div class="cap-op">
+    				<div class="cap-subop">
+	    				<label class="label-dark">Phone Number:</label>
+    				</div>
+    				<div class="cap-subop cap-subop-right">
+    					<span>+91 9737177329</span>	
+    				</div>
+    			</div>
+    			<div class="cap-op">
+    				<div class="cap-subop">
+	    				<label class="label-dark">Religious Belief</label>
+    				</div>
+    				<div class="cap-subop cap-subop-right">
+    					<span>Islam</span>	
+    				</div>
+    			</div>
+    			<div class="cap-op">
+    				<div class="cap-subop">
+	    				<label class="label-dark">Political View:</label>
+    				</div>
+    				<div class="cap-subop cap-subop-right">
+    					<span>None</span>	
+    				</div>
+    			</div>
+    		</div>
+    	</div>
+    	<div class="cap-content">
+    		<div class="cap-edit cap-edit-os">
+    			<div class="dropup">
+    				<button class="dropdown-toggle cap-edit-button" id="os-edit" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-option-horizontal"></span></button>
+    				<ul id="root-content-set" class="dropdown-menu" aria-labelledby="os-edit">
+            <li><a href="#">Edit</a></li>
+          	</ul>
+    			</div>
+    		</div>
+    		<div class="cap-layer">
+    			<h4>Other Social Networks</h4>
+    		</div>
+    		<hr>
+    		<div class="cap-layer">
+    			<div class="cap-op">
+    				<label class="label-dark">Facebook</label>
+    				<span>www.facebook.com/NawaazJames</span>
+    			</div>
+    			<div class="cap-op">
+    				<label class="label-dark">Twitter</label>
+    				<span>www.twitter.com/nawaazwill11</span>
+    			</div>
+    			<div class="cap-op">
+    				<label class="label-dark">Instagram</label>
+    				<span>www.instagram.com/nawaazwill11</span>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+    <div class="marker">
+    	<div class="marker-content">
+    		<div class="marker-edit marker-edit-tp">
+    			<div class="dropup">
+    				<button class="dropdown-toggle marker-edit-button" id="tp-edit" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-option-horizontal"></span></button>
+    				<ul id="root-content-set" class="dropdown-menu" aria-labelledby="tp-edit">
+            <li><a href="#">Edit</a></li>
+          	</ul>
+    			</div>
+    		</div>
+    		<div class="marker-edit marker-edit-hi">
+    			<div class="dropup">
+    				<button class="dropdown-toggle marker-edit-button" id="hi-edit" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-option-horizontal"></span></button>
+    				<ul id="root-content-set" class="dropdown-menu" aria-labelledby="hi-edit">
+            <li><a href="#">Edit</a></li>
+          	</ul>
+    			</div>
+    		</div>
+    		<div class="marker-layer">
+    			<div class="marker-op marker-op-head-left">
+    				<h4>Travel Portfolio</h4>    				
+    			</div>
+    			<div class="marker-op marker-op-head-right">
+    				<h4>Hobbies & Interest</h4>    					
+    			</div>
+    		</div>
+    		<hr>
+    		<div class="marker-content-main">
+    			<div class="marker-div marker-div-left">
+	    			<div class="marker-layer marker-layer-low">
+		    			<div class="marker-op">
+		    				<div class="marker-subop">
+		    					<label class="label-dark">Travelled Places</label>
+		    				</div>
+		    				<div class="marker-op">
+		    					<span>Daman, Daman & Diu, India</span>
+		    					<span>Diu, Daman & Diu, India</span>
+		    					<span>Mumbai, Maharashtra, India</span>
+		    					<span>New York, New York, USA</span>
+		    				</div>
+		    			</div>
+		    			<div class="marker-op">
+		    				<div class="marker-subop">
+		    					<label class="label-dark">Dream Places</label>
+		    				</div>
+		    				<div class="marker-op">
+		    					<span>Manali, Himachal Pradesh, India</span>
+		    					<span>Banglore, Karnataka, India</span>
+		    					<span>Shimla, J & K, India</span>
+		    				</div>
+		    			</div>
+		    		</div>
+		    		<div class="marker-layer marker-layer-low">
+		    			<div class="marker-op">
+		    				<div class="marker-subop">
+		    					<label class="label-dark">Favorite Places</label>
+		    				</div>
+		    				<div class="marker-op">
+		    					<span>Daman, Daman & Diu, India</span>
+		    					<span>Diu, Daman & Diu, India</span>
+		    				</div>
+		    			</div>
+		    			<div class="marker-op">
+		    				<div class="marker-subop">
+		    					<label class="label-dark">Favorite Season</label>
+		    				</div>
+		    				<div class="marker-op marker-op-row">
+		    					<span>Spring</span><span>,</span>
+		    					<span>Monsoon</span><span>,</span>
+		    					<span>Autumn</span><span>,</span>
+		    					<span>Winter</span>
+		    				</div>
+		    			</div>
+		    		</div>
+		    		<div class="marker-layer marker-layer-low">
+	    			<div class="marker-op">
+	    				<div class="marker-subop">
+	    					<label class="label-dark">Favorite Travel Moto</label>
+	    				</div>
+	    				<div class="marker-op marker-op-row">
+	    					<span>Adventure</span><span>,</span>
+	    					<span>Photography</span><span>,</span>
+	    					<span>Sports Event</span><span>,</span>
+	    					<span>Travel Bloggin</span><span>,</span>
+	    					<span>Backpacking</span>
+	    				</div>
+	    			</div>
+	    			<div class="marker-op">
+	    				<div class="marker-subop">
+	    					<label class="label-dark">Favorite Travel Mode</label>
+	    				</div>
+	    				<div class="marker-op marker-op-row">
+	    					<span>Cycle</span><span>,</span>
+	    					<span>Motorbike</span><span>,</span>
+	    					<span>Car</span><span>,</span>
+	    					<span>On Foot</span>
+	    				</div>
+	    			</div>
+	    			</div>
+    			</div>
+	    		<div class="marker-div marker-div-right">
+		    		<div class="marker-layer marker-layer-low">
+		    			<div class="marker-op">
+		    				<div class="marker-subop">
+		    					<label class="label-dark">Hobbies</label>
+		    				</div>
+		    				<div class="marker-op marker-op-row">
+		    					<span>Riding</span><span>,</span>
+		    					<span>Sky Diving</span><span>,</span>
+		    					<span>Scuba Diving</span><span>,</span>
+		    					<span>Reading</span><span>,</span>
+		    				</div>
+		    			</div>
+		    		</div>
+		    		<div class="marker-layer marker-layer-low">
+		    			<div class="marker-op">
+		    				<div class="marker-subop">
+		    					<label class="label-dark">Skills</label>
+		    				</div>
+		    				<div class="marker-op marker-op-row">
+		    					<span>Programming</span><span>,</span>
+		    					<span>Karate</span><span>,</span>
+		    					<span>Poetry</span><span>,</span>
+		    					<span>Comedy</span>
+		    				</div>
+		    			</div>
+		    		</div>
+		    		<div class="marker-layer marker-layer-low">
+		    			<div class="marker-op">
+		    				<div class="marker-subop">
+		    					<label class="label-dark">Interests</label>
+		    				</div>
+		    				<div class="marker-op marker-op-row">
+		    					<span>Gardening</span><span>,</span>
+		    					<span>Cricket</span><span>,</span>
+		    					<span>Basketball</span><span>,</span>
+		    					<span>Gyming</span>
+		    				</div>
+		    			</div>
+		    		</div>
+	    		</div>
+    		</div>
+    	</div>
+    	<div class="marker-content">
+    		<div class="marker-layer">
+    			<div class="marker-op marker-op-head-left">
+    				<h4>Education & Employement</h4>    				
+    			</div>
+    		</div>
+    		<hr>
+    		<div class="marker-content-main">
+    			<div class="marker-div marker-div-low-2">
+	    			<div class="marker-layer marker-layer-low">
+		    			<div class="marker-op">
+		    				<div class="marker-subop">
+		    					<label class="label-dark">School</label>
+		    				</div>
+		    				<div class="marker-op">
+		    					<span>Institute of Our Lady of Fatima, Daman</span>
+		    				</div>
+		    			</div>
+		    			<div class="marker-op">
+		    				<div class="marker-subop">
+		    					<label class="label-dark">College</label>
+		    				</div>
+		    				<div class="marker-op">
+		    					<span>SSR College, Silvassa</span>
+		    					<span>Sinhgad Institue of Management and Computer Application, Pune</span>
+		    				</div>
+		    			</div>
+		    			<div class="marker-op">
+		    				<div class="marker-subop">
+		    					<label class="label-dark">Editional Educations</label>
+		    				</div>
+		    				<div class="marker-op marker-op-row">
+		    					<span>Udacity</span><span>,</span>
+		    					<span>Edx</span>
+		    				</div>
+		    			</div>
+		    		</div>
+		    		<div class="marker-layer marker-layer-low">
+		    			<div class="marker-op">
+		    				<div class="marker-subop">
+		    					<label class="label-dark">Current Work</label>
+		    				</div>
+		    				<div class="marker-op">
+		    					<span>CEO, CTO Will Inc.</span>
+		    				</div>
+		    			</div>
+		    			<div class="marker-op">
+		    				<div class="marker-subop">
+		    					<label class="label-dark">Previous Work</label>
+		    				</div>
+		    				<div class="marker-op">
+		    					<span>Receptionist, Hotel Blue Lagoon</span>
+		    				</div>
+		    			</div>
+		    			<div class="marker-op">
+		    				<div class="marker-subop">
+		    					<label class="label-dark">Work Skills</label>
+		    				</div>
+		    				<div class="marker-op marker-op-row">
+		    					<span>Python</span><span>,</span>
+		    					<span>HTML</span><span>,</span>
+		    					<span>CSS</span>
+		    				</div>
+		    			</div>
+		    		</div>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+    
+  </div>
+</div><!--container-feed end-->
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="{% static "js/custom.js" %}"></script>
+</body>
+</html>
