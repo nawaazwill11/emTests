@@ -1,8 +1,8 @@
-from django.conf.urls import url, path
+from django.conf.urls import url
 from em import views
 
 urlpatterns = [
-    path(r'^$', views.index, name = 'index'),
+    url(r'^$', views.index, name = 'index'),
     url(r'^/about/$', views.about, name = 'about'),
     url(r'^album/$', views.album, name = 'album'),
     url(r'^contribute/$', views.contribute, name = 'contribute'),
