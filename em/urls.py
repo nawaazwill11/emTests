@@ -1,9 +1,9 @@
-from django.conf.urls import url
+from django.conf.urls import url, path
 from em import views
 
 urlpatterns = [
-    url(r'^$', views.index, name = 'index'),
-    url(r'^about/$', views.about, name = 'about'),
+    path(r'^$', views.index, name = 'index'),
+    url(r'^/about/$', views.about, name = 'about'),
     url(r'^album/$', views.album, name = 'album'),
     url(r'^contribute/$', views.contribute, name = 'contribute'),
     url(r'^emergency/$', views.emergency, name = 'emergency'),

@@ -69,11 +69,13 @@
 	border-radius: 70px;
     border: 5px solid white;
 }
+.onNose-photo > a > img {
+	border-radius: 70px;
+    border: 5px solid white;
+}
+
 .author-content {
 	text-align: center;
-}
-.onNose-photo {
-	border-radius: ;
 }
 .author-name {
 }

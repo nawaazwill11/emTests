@@ -22,8 +22,8 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#"><img class="img-responsive pull-left" src="{% static "img/emLogo-1.png" %}" alt="..."></a>
-				<div class="page-title col-lg-1"><h1><i>Story</i></h1></div>
+				<a class="navbar-brand" href="#"><img class="img-responsive pull-left" src="{% static 'img/emLogo-1.png' %}" alt="..."></a>
+				<div class="page-title col-lg-1"><h1><i>Profile</i></h1></div>
 				<div class="input-group input-group-md col-lg-offset-2 col-lg-3" id="nav-search">
 					<input type="text" name="search" class="form-control search-input-top" placeholder="Search places or events">
 					<span class="input-group-btn">
@@ -33,17 +33,18 @@
 			</div>
 			<div id="user-info-nav" class="user-info-nav col-lg-offset-6">
 				<button class="btn btn-default dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-					<a href="#">
+					<a href="{% url 'timeline' %}">
 						<span style="font-size: 13px;">
-							<img src="{% static "img/user-white.png" %}" style="width: 30px">
+							<img src="{% static 'img/user-white.png' %}" style="width: 30px">
 						</span>
 						<span style="margin-left: 8px;">
-							<u>Willo Walker</u></a>
+							Willo Walker</a>
 						</span>
 					<span class="caret"></span>
 				</button>
 				<ul class="dropdown-menu">
-					<li><a href="#">Settings</a></li>
+                    <li><a href="{% url "timeline" %}">Profile</a></li>
+					<li><a href="{% url "setting" %}">Settings</a></li>
 					<li><a href="#">Help</a></li>
 					<li role="separator" class="divider"></li>
 					<li><a href="#">Logout</a></li>
@@ -63,24 +64,24 @@
   		<a href="javascript:void(0)" class="left-closebtn" onclick="leftCloseNav()">&times;</a>
 		<ul class="leftSidenav-content-ul-open sidenav-content-ul-open">
 			<li><h1><u> Main Options</u></h1></li>
-		  	<li><a href="#"><span class="glyphicon glyphicon-th" style="font-size: 25px">&nbsp</span>Home</a></li>
-			<li><a href="#"><span class="glyphicon glyphicon-sunglasses">&nbsp</span>Profile</a></li>
-			<li><a href="#"><span class="glyphicon glyphicon-road">&nbsp</span>Traveller</a></li>
-			<li><a href="#"><span class="glyphicon glyphicon-pushpin">&nbsp</span>Organizer</a></li>
+		  	<li><a href="{% url "story" %}"><span class="glyphicon glyphicon-th" style="font-size: 25px">&nbsp</span>Story</a></li>
+			<li><a href="{% url "timeline" %}"><span class="glyphicon glyphicon-sunglasses">&nbsp</span>Profile</a></li>
+			<li><a href="{% url "traveller_main" %}"><span class="glyphicon glyphicon-road">&nbsp</span>Traveller</a></li>
+			<li><a href="{% url "event_main" %}"><span class="glyphicon glyphicon-pushpin">&nbsp</span>Organizer</a></li>
 			<li><a href="#"><span class="glyphicon glyphicon-list-alt">&nbsp</span>Estimator</a></li>
-			<li><a href="#"><span class="glyphicon glyphicon-warning-sign">&nbsp</span>Emergency</a></li>
+			<li><a href="{% url "emergency" %}"><span class="glyphicon glyphicon-warning-sign">&nbsp</span>Emergency</a></li>
 		</ul>
 	</div>
 	<div class="leftSidenav-content">
 		<ul class="leftSidenav-content-ul">
 			<li id="t-ham"><span  data-toggle="tooltip" data-placement="right" data-original-title="Menu"  class="glyphicon glyphicon-menu-hamburger ham" style=";cursor:pointer;"   onclick="leftOpenNav()"></span></li>
-			<li><a href="#"><span data-toggle="tooltip" data-placement="right" data-original-title="Wall" class="glyphicon glyphicon-th" style=""></span></a></li>
-			<li><a href="#"><span data-toggle="tooltip" data-placement="right" data-original-title="Profile" class="glyphicon glyphicon-sunglasses" style=""></span></a></li>
-			<li><a href="#"><span data-toggle="tooltip" data-placement="right" data-original-title="Traveller" class="glyphicon glyphicon-road" style=""></span></a></li>
-			<li><a href="#"><span data-toggle="tooltip" data-placement="right" data-original-title="Organizer" class="glyphicon glyphicon-pushpin" style=""></span></a></li>
+			<li><a href="{% url "story" %}"><span data-toggle="tooltip" data-placement="right" data-original-title="Story" class="glyphicon glyphicon-th" style=""></span></a></li>
+			<li><a href="{% url "timeline" %}"><span data-toggle="tooltip" data-placement="right" data-original-title="Profile" class="glyphicon glyphicon-sunglasses" style=""></span></a></li>
+			<li><a href="{% url "traveller_main" %}"><span data-toggle="tooltip" data-placement="right" data-original-title="Traveller" class="glyphicon glyphicon-road" style=""></span></a></li>
+			<li><a href="{% url "event_main" %}"><span data-toggle="tooltip" data-placement="right" data-original-title="Organizer" class="glyphicon glyphicon-pushpin" style=""></span></a></li>
 			<li><a href="#"><span data-toggle="tooltip" data-placement="right" data-original-title="Estimator" class="glyphicon glyphicon-list-alt" style="
 			"></span></a></li>
-			<li><a href="#"><span data-toggle="tooltip" data-placement="right" data-original-title="Emergency" class="glyphicon glyphicon-warning-sign" style="font-size: 35p"></span></a></li>		
+			<li><a href="{% url "emergency" %}"><span data-toggle="tooltip" data-placement="right" data-original-title="Emergency" class="glyphicon glyphicon-warning-sign" style="font-size: 35p"></span></a></li>		
 
 		</ul>
 	</div>
@@ -89,18 +90,16 @@
   		<a href="javascript:void(0)" class="right-closebtn" onclick="rightCloseNav()">&times;</a>
 		<ul class="rightSidenav-content-ul-open sidenav-content-ul-open" style="list-style: none;">
 			<li style="color: #ef0707"><h1><u> Page Options</u></h1></li>
-			
-			<li><a href="#"><span><i class="material-icons">report_problem</i></span>Chat</a></li>
-			<li><a href="#"><span><i class="material-icons">pan_tool</i></span>Chat</a></li>
-			
+			<li><a href="{% url "emergency" %}"><span><i class="material-icons">report_problem</i></span>Emergency</a></li>
+			<li><a href="{% url "emergency_request" %}"><span><i class="material-icons">pan_tool</i></span>Requests</a></li>
 		</ul>
 	</div>
 
 	<div class="rightSidenav-content ">
 		<ul class="rightSidenav-content-ul">
 			<li id="t-ham"><span data-toggle="tooltip" data-placement="top" data-original-title="Menu" class="glyphicon glyphicon-menu-hamburger" onclick="rightOpenNav()"></span></li>
-			<li><a href="#"><span data-toggle="tooltip" data-placement="top" data-original-title="Chat" ><i id="mat-icon" class="material-icons">report_problem</i></span></a></li>
-			<li><a href="#"><span data-toggle="tooltip" data-placement="top" data-original-title="Chat" ><i class="material-icons">pan_tool</i></span></a></li>
+			<li><a href="{% url "emergency" %}"><span data-toggle="tooltip" data-placement="top" data-original-title="Chat" ><i id="mat-icon" class="material-icons">report_problem</i></span></a></li>
+			<li><a href="{% url "emergency_request" %}"><span data-toggle="tooltip" data-placement="top" data-original-title="Chat" ><i class="material-icons">pan_tool</i></span></a></li>
 		</ul>
 	</div>
 
