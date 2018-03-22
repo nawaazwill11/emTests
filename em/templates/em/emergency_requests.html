@@ -1,110 +1,26 @@
-<!DOCTYPE html>
+{% extends 'frame.html' %}
 {% load staticfiles %}
-<html>
-<head>
-	<title>Emergency</title>
-	<meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="{% static "css/custom/myevent-style.css" %}">
+  
+  {% block title %}Emergency Request {% endblock title %}
+  
+  {% block static_files %}
   <link rel="stylesheet" type="text/css" href="{% static "css/custom/emergency.css" %}">
-  <link rel="stylesheet" type="text/css" href="{% static "css/custom/page-style.css" %}">
-  <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
-  <link rel="stylesheet" href="{% static "css/bootstrap.css" %}">
-  <link rel="stylesheet" type="text/css" href="{% static "css/fontawesome-all.css" %}">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
-<body >
-  <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navBar">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#"><img class="img-responsive pull-left" src="{% static 'img/emLogo-1.png' %}" alt="..."></a>
-        <div class="page-title col-lg-1"><h1><i>Profile</i></h1></div>
-        <div class="input-group input-group-md col-lg-offset-2 col-lg-3" id="nav-search">
-          <input type="text" name="search" class="form-control search-input-top" placeholder="Search places or events">
-          <span class="input-group-btn">
-            <button class="btn btn-danger search-button-top"><span class="glyphicon glyphicon-search"></span></button>
-          </span>
-      </div>
-      </div>
-      <div id="user-info-nav" class="user-info-nav col-lg-offset-6">
-        <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-          <a href="{% url 'timeline' %}">
-            <span style="font-size: 13px;">
-              <img src="{% static 'img/user-white.png' %}" style="width: 30px">
-            </span>
-            <span style="margin-left: 8px;">
-              Willo Walker</a>
-            </span>
-          <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu">
-                    <li><a href="{% url "timeline" %}">Profile</a></li>
-          <li><a href="{% url "setting" %}">Settings</a></li>
-          <li><a href="#">Help</a></li>
-          <li role="separator" class="divider"></li>
-          <li><a href="#">Logout</a></li>
-        </ul>
-      </div>
-      
-      <div class="col-lg-offset-7 nav-fmn" >
-        <ul class="nav navbar-nav navbar-right" id="navMenu">
-          <li><a class="text-center" href="#">Friend Requests</a></li>
-          <li><a class="text-center" href="#">Messages</a></li>
-          <li><a class="text-center" href="#">Notifications</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  <div id="leftSidenav" class="left-sidenav">
-      <a href="javascript:void(0)" class="left-closebtn" onclick="leftCloseNav()">&times;</a>
-    <ul class="leftSidenav-content-ul-open sidenav-content-ul-open">
-      <li><h1><u> Main Options</u></h1></li>
-        <li><a href="{% url "story" %}"><span class="glyphicon glyphicon-th" style="font-size: 25px">&nbsp</span>Story</a></li>
-      <li><a href="{% url "timeline" %}"><span class="glyphicon glyphicon-sunglasses">&nbsp</span>Profile</a></li>
-      <li><a href="{% url "traveller_main" %}"><span class="glyphicon glyphicon-road">&nbsp</span>Traveller</a></li>
-      <li><a href="{% url "event_main" %}"><span class="glyphicon glyphicon-pushpin">&nbsp</span>Organizer</a></li>
-      <li><a href="#"><span class="glyphicon glyphicon-list-alt">&nbsp</span>Estimator</a></li>
-      <li><a href="{% url "emergency" %}"><span class="glyphicon glyphicon-warning-sign">&nbsp</span>Emergency</a></li>
-    </ul>
-  </div>
-  <div class="leftSidenav-content">
-    <ul class="leftSidenav-content-ul">
-      <li id="t-ham"><span  data-toggle="tooltip" data-placement="right" data-original-title="Menu"  class="glyphicon glyphicon-menu-hamburger ham" style=";cursor:pointer;"   onclick="leftOpenNav()"></span></li>
-      <li><a href="{% url "story" %}"><span data-toggle="tooltip" data-placement="right" data-original-title="Story" class="glyphicon glyphicon-th" style=""></span></a></li>
-      <li><a href="{% url "timeline" %}"><span data-toggle="tooltip" data-placement="right" data-original-title="Profile" class="glyphicon glyphicon-sunglasses" style=""></span></a></li>
-      <li><a href="{% url "traveller_main" %}"><span data-toggle="tooltip" data-placement="right" data-original-title="Traveller" class="glyphicon glyphicon-road" style=""></span></a></li>
-      <li><a href="{% url "event_main" %}"><span data-toggle="tooltip" data-placement="right" data-original-title="Organizer" class="glyphicon glyphicon-pushpin" style=""></span></a></li>
-      <li><a href="#"><span data-toggle="tooltip" data-placement="right" data-original-title="Estimator" class="glyphicon glyphicon-list-alt" style="
-      "></span></a></li>
-      <li><a href="{% url "emergency" %}"><span data-toggle="tooltip" data-placement="right" data-original-title="Emergency" class="glyphicon glyphicon-warning-sign" style="font-size: 35p"></span></a></li>   
+  {% endblock static_files %}
 
-    </ul>
-  </div>
+  {% block page_name %}Emergency<br>Request{% endblock page_name %}
 
-	<div id="rightSidenav" class="right-sidenav">
-      <a href="javascript:void(0)" class="right-closebtn" onclick="rightCloseNav()">&times;</a>
-    <ul class="rightSidenav-content-ul-open sidenav-content-ul-open" style="list-style: none;">
-      <li style="color: #ef0707"><h1><u> Page Options</u></h1></li>
+  {% block inner_rightSideBar %}
       <li><a href="{% url "emergency" %}"><span><i class="material-icons">report_problem</i></span>Emergency</a></li>
       <li><a href="{% url "emergency_request" %}"><span><i class="material-icons">pan_tool</i></span>Requests</a></li>
-    </ul>
-  </div>
+  {% endblock inner_rightSideBar %}
 
-  <div class="rightSidenav-content ">
-    <ul class="rightSidenav-content-ul">
-      <li id="t-ham"><span data-toggle="tooltip" data-placement="top" data-original-title="Menu" class="glyphicon glyphicon-menu-hamburger" onclick="rightOpenNav()"></span></li>
-      <li><a href="#"><span data-toggle="tooltip" data-placement="top" data-original-title="Chat" ><i id="mat-icon" class="material-icons">report_problem</i></span></a></li>
-      <li><a href="#"><span data-toggle="tooltip" data-placement="top" data-original-title="Chat" ><i class="material-icons">pan_tool</i></span></a></li>
-    </ul>
-  </div>
+  {% block outer_rightSideBar %}
+      <li><a href="{% url "emergency" %}"><span data-toggle="tooltip" data-placement="top" data-original-title="Chat" ><i id="mat-icon" class="material-icons">report_problem</i></span></a></li>
+      <li><a href="{% url "emergency_request" %}"><span data-toggle="tooltip" data-placement="top" data-original-title="Chat" ><i class="material-icons">pan_tool</i></span></a></li>
+  {% endblock outer_rightSideBar %}
 
- <div class="container main col-lg-offset-1 col-lg-10">
+  {% block class_main %} col-lg-offset-2 col-lg-8 {% endblock class_main %}
+
     <div id="left-panel" class="left-panel col-lg-3">
       <div class="left-panel-body">
         <div class="left-panel-body-top">

@@ -311,9 +311,10 @@ margin-bottom: 14px;
   .navbar-brand {margin-left: -15px;}
 }
 #nav-search{
-    position: fixed;
+    /* position: fixed; */
     float: left;
     top: 2px;
+    left: 60px;
 }
 #nav-search > input{
     height: 82px;
