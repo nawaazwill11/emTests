@@ -1,111 +1,14 @@
-<!DOCTYPE html>
+{% extends 'trip.html' %}
 {% load staticfiles %}
-<html>
-<head>
-	<title>Traveller - Suggestions</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="{% static "css/custom/page-style.css" %}">
-  <link rel="stylesheet" type="text/css" href="{% static "css/custom/search-trip.css" %}">
-	<link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
-	<link rel="stylesheet" href="{% static "css/bootstrap.css" %}">
-	<link rel="stylesheet" type="text/css" href="{% static "css/fontawesome/fontawesome-all.css" %}">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
-<body >
-	 <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navBar">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#"><img class="img-responsive pull-left" src="{% static 'img/emLogo-1.png' %}" alt="..."></a>
-        <div class="page-title col-lg-1"><h1><i>Profile</i></h1></div>
-        <div class="input-group input-group-md col-lg-offset-2 col-lg-3" id="nav-search">
-          <input type="text" name="search" class="form-control search-input-top" placeholder="Search places or events">
-          <span class="input-group-btn">
-            <button class="btn btn-danger search-button-top"><span class="glyphicon glyphicon-search"></span></button>
-          </span>
-      </div>
-      </div>
-      <div id="user-info-nav" class="user-info-nav col-lg-offset-6">
-        <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-          <a href="{% url 'timeline' %}">
-            <span style="font-size: 13px;">
-              <img src="{% static 'img/user-white.png' %}" style="width: 30px">
-            </span>
-            <span style="margin-left: 8px;">
-              Willo Walker</a>
-            </span>
-          <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu">
-                    <li><a href="{% url "timeline" %}">Profile</a></li>
-          <li><a href="{% url "setting" %}">Settings</a></li>
-          <li><a href="#">Help</a></li>
-          <li role="separator" class="divider"></li>
-          <li><a href="#">Logout</a></li>
-        </ul>
-      </div>
-      
-      <div class="col-lg-offset-7 nav-fmn" >
-        <ul class="nav navbar-nav navbar-right" id="navMenu">
-          <li><a class="text-center" href="#">Friend Requests</a></li>
-          <li><a class="text-center" href="#">Messages</a></li>
-          <li><a class="text-center" href="#">Notifications</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  <div id="leftSidenav" class="left-sidenav">
-      <a href="javascript:void(0)" class="left-closebtn" onclick="leftCloseNav()">&times;</a>
-    <ul class="leftSidenav-content-ul-open sidenav-content-ul-open">
-      <li><h1><u> Main Options</u></h1></li>
-        <li><a href="{% url "story" %}"><span class="glyphicon glyphicon-th" style="font-size: 25px">&nbsp</span>Story</a></li>
-      <li><a href="{% url "timeline" %}"><span class="glyphicon glyphicon-sunglasses">&nbsp</span>Profile</a></li>
-      <li><a href="{% url "traveller_main" %}"><span class="glyphicon glyphicon-road">&nbsp</span>Traveller</a></li>
-      <li><a href="{% url "event_main" %}"><span class="glyphicon glyphicon-pushpin">&nbsp</span>Organizer</a></li>
-      <li><a href="#"><span class="glyphicon glyphicon-list-alt">&nbsp</span>Estimator</a></li>
-      <li><a href="{% url "emergency" %}"><span class="glyphicon glyphicon-warning-sign">&nbsp</span>Emergency</a></li>
-    </ul>
-  </div>
-  <div class="leftSidenav-content">
-    <ul class="leftSidenav-content-ul">
-      <li id="t-ham"><span  data-toggle="tooltip" data-placement="right" data-original-title="Menu"  class="glyphicon glyphicon-menu-hamburger ham" style=";cursor:pointer;"   onclick="leftOpenNav()"></span></li>
-      <li><a href="{% url "story" %}"><span data-toggle="tooltip" data-placement="right" data-original-title="Story" class="glyphicon glyphicon-th" style=""></span></a></li>
-      <li><a href="{% url "timeline" %}"><span data-toggle="tooltip" data-placement="right" data-original-title="Profile" class="glyphicon glyphicon-sunglasses" style=""></span></a></li>
-      <li><a href="{% url "traveller_main" %}"><span data-toggle="tooltip" data-placement="right" data-original-title="Traveller" class="glyphicon glyphicon-road" style=""></span></a></li>
-      <li><a href="{% url "event_main" %}"><span data-toggle="tooltip" data-placement="right" data-original-title="Organizer" class="glyphicon glyphicon-pushpin" style=""></span></a></li>
-      <li><a href="#"><span data-toggle="tooltip" data-placement="right" data-original-title="Estimator" class="glyphicon glyphicon-list-alt" style="
-      "></span></a></li>
-      <li><a href="{% url "emergency" %}"><span data-toggle="tooltip" data-placement="right" data-original-title="Emergency" class="glyphicon glyphicon-warning-sign" style="font-size: 35p"></span></a></li>   
+  
+  {% block title %}Search Trip{% endblock title %}
 
-    </ul>
-  </div>
-
-  <div id="rightSidenav" class="right-sidenav">
-      <a href="javascript:void(0)" class="right-closebtn" onclick="rightCloseNav()">&times;</a>
-    <ul class="rightSidenav-content-ul-open sidenav-content-ul-open" style="list-style: none;">
-      <li style="color: #ef0707"><h1><u> Page Options</u></h1></li>
-      <li><a href="{% url "traveller_main" %}"><span class="glyphicon glyphicon-th-list">&nbsp</span>Guide</a></li>
-      <li><a href="{% url "mytrip" %}"><span><i class="fa fa-suitcase fai" aria-hidden="true" style="color: #ef0707"></i></span>My Trips</a></li>
-      <li><a href="{% url "plan_trip" %}"><span class="glyphicon glyphicon-pencil">&nbsp</span>Plan a Trip</a></li>
-      <li><a href="{% url "search_trip" %}"><span class="glyphicon glyphicon-plus" >&nbsp</span>Join a Trip</a></li>
-    </ul>
-  </div>
-
-  <div class="rightSidenav-content ">
-    <ul class="rightSidenav-content-ul">
-      <li id="t-ham"><span data-toggle="tooltip" data-placement="top" data-original-title="Menu" class="glyphicon glyphicon-menu-hamburger" onclick="rightOpenNav()"></span></li>
-      <li><a href="{% url "traveller_main" %}"><span data-toggle="tooltip" data-placement="top" data-original-title="Suggestions" class="glyphicon glyphicon-th-list"></span></a></li>
-      <li style="margin-top: 20px"><a href="{% url "mytrip" %}"><span data-toggle="tooltip" data-placement="top" data-original-title="My Trips" ><i class="fa fa-suitcase" aria-hidden="true"></i></span></a></li>
-      <li><a href="{% url "plan_trip" %}"><span data-toggle="tooltip" data-placement="top" data-original-title="Plan a Trip" class="glyphicon glyphicon-pencil"></span></a></li>
-      <li><a href="{% url "search_trip" %}"><span data-toggle="tooltip" data-placement="top" data-original-title="Join a Trip" class="glyphicon glyphicon-plus"></span></a></li>
-    </ul>
-  </div>
-  <div class="container main">
+  {% block static_files %}
+    <link rel="stylesheet" type="text/css" href="{% static "css/custom/search-trip.css" %}">
+  {% endblock static_files %}
+  {% block page_name %}Search Trip{% endblock page_name %}
+        
+  {% block content %}
     <div class="search-top">
       <div class="sub-title">
         <h1>Search Trip</h1>
@@ -908,130 +811,136 @@
       
     </div>
   </div>
-  <div id="olay" class="overlay" hidden="hidden">
-    
-    <div class="route-details">
+  {% endblock content %}
+
+  {% block overlayTD %}
+    <div id="olay" class="overlay" hidden="hidden">
       
-    </div>
-  </div>
-  <div id="TD" class="trip-details" hidden="hidden">
-      <div class="trip-box-big"> 
-        <div class="tbb-layer tbb-zero">
-          <div class="tbb-op tbb-title">
-            <h3>Around the state in 7 Days</h3>
-          </div>
-          <div class="tbb-op join-btn">
-            <button>Join</button>
-          </div>
-        </div>
-        <div class="tbb-layer tbb-bck-main">
-          <div class="tbb-bck">
-            <img src="{% static "img/food.jpg" %}">
-          </div>
-        </div>
-        <div class="tbb-layer">
-          
-          <div class="tbb-op creator">
-            <label>Created By</label>
-            <img src="{% static "img/user-black.png" %}">
-          </div>
-        </div>
-        <div class="tbb-layer">
-          <div class="part">
-            <label>Participants: 23</label>
-            <div class="tbb-subop">
-              <img src="{% static "img/user-black.png" %}">
-              <img src="{% static "img/user-black.png" %}">
-              <img src="{% static "img/user-black.png" %}">
-              <img src="{% static "img/user-black.png" %}">
-              <img src="{% static "img/user-black.png" %}">
-            </div>
-          </div>
-        </div>
-        <div class="tbb-layer">
-          <div class="tbb-op" style="text-align: center; margin-bottom: 20px;">
-            <label>Vacancy:</label>
-            <span>7</span>
-          </div>
-        </div>
-        <div class="tbb-low">
-          <div class="tbb-layer lw">
-            <div class="tbb-op">
-              <label>Source:</label>
-              <span>Daman, Daman & Diu</span>
-            </div>
-            <div class="tbb-op">
-              <label>Destination:</label>
-              <span>Calungute, Goa</span>
-            </div>
-          </div>
-          <div class="tbb-layer lw">
-            <div class="tbb-op">
-              <label>Travel Moto:</label>
-              <span>Adventure</span>
-            </div>
-            <div class="tbb-op">
-              <label>Travelling Mode:</label>
-              <span>Motorbike</span>
-            </div>
-          </div>
-          <div class="tbb-layer lw">
-            <div class="tbb-op">
-              <label>Start Date:</label>
-              <span>28-02-2018</span>
-            </div>
-            <div class="tbb-op">
-              <label>Start Time:</label>
-              <span>10:00 am</span>
-            </div>
-          </div>
-          <div class="tbb-layer lw">
-            <div class="tbb-op">
-              <label>Gender:</label>
-              <span>Any</span>
-            </div>
-            <div class="tbb-op">
-              <label>Age Group:</label>
-              <span>18-35</span>
-            </div>
-          </div>
-          <div class="tbb-layer lw" style="border: 0;">
-            <div class="tbb-op tbb-route">
-              <label>Route Info:</label>
-              <span><a href="#!">Click to View</a></span>
-            </div>
-          </div>
-        </div>
+      <div class="route-details">
+        
       </div>
     </div>
+    <div id="TD" class="trip-details" hidden="hidden">
+        <div class="trip-box-big"> 
+          <div class="tbb-layer tbb-zero">
+            <div class="tbb-op tbb-title">
+              <h3>Around the state in 7 Days</h3>
+            </div>
+            <div class="tbb-op join-btn">
+              <button>Join</button>
+            </div>
+          </div>
+          <div class="tbb-layer tbb-bck-main">
+            <div class="tbb-bck">
+              <img src="{% static "img/food.jpg" %}">
+            </div>
+          </div>
+          <div class="tbb-layer">
+            
+            <div class="tbb-op creator">
+              <label>Created By</label>
+              <img src="{% static "img/user-black.png" %}">
+            </div>
+          </div>
+          <div class="tbb-layer">
+            <div class="part">
+              <label>Participants: 23</label>
+              <div class="tbb-subop">
+                <img src="{% static "img/user-black.png" %}">
+                <img src="{% static "img/user-black.png" %}">
+                <img src="{% static "img/user-black.png" %}">
+                <img src="{% static "img/user-black.png" %}">
+                <img src="{% static "img/user-black.png" %}">
+              </div>
+            </div>
+          </div>
+          <div class="tbb-layer">
+            <div class="tbb-op" style="text-align: center; margin-bottom: 20px;">
+              <label>Vacancy:</label>
+              <span>7</span>
+            </div>
+          </div>
+          <div class="tbb-low">
+            <div class="tbb-layer lw">
+              <div class="tbb-op">
+                <label>Source:</label>
+                <span>Daman, Daman & Diu</span>
+              </div>
+              <div class="tbb-op">
+                <label>Destination:</label>
+                <span>Calungute, Goa</span>
+              </div>
+            </div>
+            <div class="tbb-layer lw">
+              <div class="tbb-op">
+                <label>Travel Moto:</label>
+                <span>Adventure</span>
+              </div>
+              <div class="tbb-op">
+                <label>Travelling Mode:</label>
+                <span>Motorbike</span>
+              </div>
+            </div>
+            <div class="tbb-layer lw">
+              <div class="tbb-op">
+                <label>Start Date:</label>
+                <span>28-02-2018</span>
+              </div>
+              <div class="tbb-op">
+                <label>Start Time:</label>
+                <span>10:00 am</span>
+              </div>
+            </div>
+            <div class="tbb-layer lw">
+              <div class="tbb-op">
+                <label>Gender:</label>
+                <span>Any</span>
+              </div>
+              <div class="tbb-op">
+                <label>Age Group:</label>
+                <span>18-35</span>
+              </div>
+            </div>
+            <div class="tbb-layer lw" style="border: 0;">
+              <div class="tbb-op tbb-route">
+                <label>Route Info:</label>
+                <span><a href="#!">Click to View</a></span>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  {% endblock overlayTD %}
+  
+  {% block custom_scripts %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="{% static "js/custom.js" %}"></script>
+    <script type="text/javascript">
+          var link = $( '#dlink' )[0];
+          var overlay = $( '#olay' )[0];
+          var TD = $( '#TD' )[0];
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="{% static "js/custom.js" %}"></script>
-<script type="text/javascript">
-      var link = $( '#dlink' )[0];
-      var overlay = $( '#olay' )[0];
-      var TD = $( '#TD' )[0];
+          $( link ).on( 'click', function ( e ) {
+              $( overlay ).show();
+              $( TD ).show();
+              e.stopPropagation();
+          });
 
-      $( link ).on( 'click', function ( e ) {
-          $( overlay ).show();
-          $( TD ).show();
-          e.stopPropagation();
-      });
-
-      $( document ).on( 'click', function ( e ) {
-          if ( $( e.target ).closest( TD ).length === 0 ) {
-              $( overlay ).hide();
-              $( TD ).hide();
-          }
-      });
-                      
-      $( document ).on( 'keydown', function ( e ) {
-          if ( e.keyCode === 27 ) {
-              $( overlay ).hide();
-              $( TD ).hide();
-          }
-      });
+          $( document ).on( 'click', function ( e ) {
+              if ( $( e.target ).closest( TD ).length === 0 ) {
+                  $( overlay ).hide();
+                  $( TD ).hide();
+              }
+          });
+                          
+          $( document ).on( 'keydown', function ( e ) {
+              if ( e.keyCode === 27 ) {
+                  $( overlay ).hide();
+                  $( TD ).hide();
+              }
+          });
 </script>
+  {% endblock custom_scripts %}
 </body>
 </html>

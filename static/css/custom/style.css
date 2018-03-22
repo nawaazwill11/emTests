@@ -1,5 +1,6 @@
-#main {    
+#main {
     top: 100px;
+    position: relative;
 }
 body{
     background-color: #edf2f6;

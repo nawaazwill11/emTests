@@ -21,8 +21,8 @@ function navigante(main,a,b,c) {
 	document.getElementById(c).style.display = "none";
 }
 
-function publish() {
-	location.href = "mytrip.html";
+function publishTrip() {
+	location.href = "../mytrip";
 }
 function redirect (url) {
   location.href = url;
