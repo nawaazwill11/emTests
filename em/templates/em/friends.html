@@ -1,276 +1,121 @@
-<!DOCTYPE html>
+{% extends 'profile.html' %}
 {% load staticfiles %}
-<html>
-<head>
-	<title>Friends</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
-	<link rel="stylesheet" href="{% static "css/bootstrap.css" %}">
-	<link rel="stylesheet" type="text/css" href="{% static "css/custom/page-style.css" %}">
-  	<link rel="stylesheet" type="text/css" href="{% static "css/custom/profile.css" %}">
+
+	{% block title %}Profile-Friends{% endblock title %}
+
+	{% block sub_sf %}
   	<link rel="stylesheet" type="text/css" href="{% static "css/custom/friends.css" %}">
-	<link rel="stylesheet" type="text/css" href="{% static "fontawesome/css/fontawesome-all.css" %}">
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
-<body >
-	<nav class="navbar navbar-inverse navbar-fixed-top">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navBar">
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#"><img class="img-responsive pull-left" src="{% static 'img/emLogo-1.png' %}" alt="..."></a>
-				<div class="page-title col-lg-1"><h1><i>Profile</i></h1></div>
-				<div class="input-group input-group-md col-lg-offset-2 col-lg-3" id="nav-search">
-					<input type="text" name="search" class="form-control search-input-top" placeholder="Search places or events">
-					<span class="input-group-btn">
-						<button class="btn btn-danger search-button-top"><span class="glyphicon glyphicon-search"></span></button>
-					</span>
-			</div>
-			</div>
-			<div id="user-info-nav" class="user-info-nav col-lg-offset-6">
-				<button class="btn btn-default dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-					<a href="{% url 'timeline' %}">
-						<span style="font-size: 13px;">
-							<img src="{% static 'img/user-white.png' %}" style="width: 30px">
-						</span>
-						<span style="margin-left: 8px;">
-							Willo Walker</a>
-						</span>
-					<span class="caret"></span>
-				</button>
-				<ul class="dropdown-menu">
-                    <li><a href="{% url "timeline" %}">Profile</a></li>
-					<li><a href="{% url "setting" %}">Settings</a></li>
-					<li><a href="#">Help</a></li>
-					<li role="separator" class="divider"></li>
-					<li><a href="#">Logout</a></li>
-				</ul>
-			</div>
-			
-			<div class="col-lg-offset-7 nav-fmn" >
-				<ul class="nav navbar-nav navbar-right" id="navMenu">
-					<li><a class="text-center" href="#">Friend Requests</a></li>
-					<li><a class="text-center" href="#">Messages</a></li>
-					<li><a class="text-center" href="#">Notifications</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
-	<div id="leftSidenav" class="left-sidenav">
-  		<a href="javascript:void(0)" class="left-closebtn" onclick="leftCloseNav()">&times;</a>
-		<ul class="leftSidenav-content-ul-open sidenav-content-ul-open">
-			<li><h1><u> Main Options</u></h1></li>
-		  	<li><a href="{% url "story" %}"><span class="glyphicon glyphicon-th" style="font-size: 25px">&nbsp</span>Story</a></li>
-			<li><a href="{% url "timeline" %}"><span class="glyphicon glyphicon-sunglasses">&nbsp</span>Profile</a></li>
-			<li><a href="{% url "traveller_main" %}"><span class="glyphicon glyphicon-road">&nbsp</span>Traveller</a></li>
-			<li><a href="{% url "event_main" %}"><span class="glyphicon glyphicon-pushpin">&nbsp</span>Organizer</a></li>
-			<li><a href="#"><span class="glyphicon glyphicon-list-alt">&nbsp</span>Estimator</a></li>
-			<li><a href="{% url "emergency" %}"><span class="glyphicon glyphicon-warning-sign">&nbsp</span>Emergency</a></li>
-		</ul>
-	</div>
-	<div class="leftSidenav-content">
-		<ul class="leftSidenav-content-ul">
-			<li id="t-ham"><span  data-toggle="tooltip" data-placement="right" data-original-title="Menu"  class="glyphicon glyphicon-menu-hamburger ham" style=";cursor:pointer;"   onclick="leftOpenNav()"></span></li>
-			<li><a href="{% url "story" %}"><span data-toggle="tooltip" data-placement="right" data-original-title="Story" class="glyphicon glyphicon-th" style=""></span></a></li>
-			<li><a href="{% url "timeline" %}"><span data-toggle="tooltip" data-placement="right" data-original-title="Profile" class="glyphicon glyphicon-sunglasses" style=""></span></a></li>
-			<li><a href="{% url "traveller_main" %}"><span data-toggle="tooltip" data-placement="right" data-original-title="Traveller" class="glyphicon glyphicon-road" style=""></span></a></li>
-			<li><a href="{% url "event_main" %}"><span data-toggle="tooltip" data-placement="right" data-original-title="Organizer" class="glyphicon glyphicon-pushpin" style=""></span></a></li>
-			<li><a href="#"><span data-toggle="tooltip" data-placement="right" data-original-title="Estimator" class="glyphicon glyphicon-list-alt" style="
-			"></span></a></li>
-			<li><a href="{% url "emergency" %}"><span data-toggle="tooltip" data-placement="right" data-original-title="Emergency" class="glyphicon glyphicon-warning-sign" style="font-size: 35p"></span></a></li>		
+  	{% endblock sub_sf %}
+	
+	{% block page_name %}Profile{% endblock page_name %}
+	
+	{% block boot %}
+	  <div class="boot">
+	    <div class="friend-options">
+	      <div class="friend-options-holder">
+	        <div class="friend-owner friend-holder-op">
+	          <label class="label-dark">Willo Walker's Friends</label>
+	          <a href="#"><label class="label-dark friend-count">(97)</label></a>
+	        </div>
+	        <div class="friend-search">
+	          <label id="friend-search-label">
+	          	<input type="text" name="search-input" placeholder="Search Friends...">
+	          	<span class="btn btn-default glyphicon glyphicon-search"></span>
+	          </label>
+	        </div>
+	      </div>
+	    </div>
+	    <div class="friend-container">
+	      <div class="friends">
+	        <div class="friend-card">
+	          <div class="friend-card-contents">
+	            <div class="friend-card-cover">
+	              <a href="#!" id="friend-select"><img src="{% static "img/friend-cover-1.jpg" %}"></a>
+	            </div>
+	            <div class="friend-card-info">
+	            	<div class="friend-info">
+	            		<div class="friend-face">
+	            			<img src="{% static "img/ppic-2.jpg" %}">
+	            		</div>
+	            		<div class="friend-name">
+	            			<label class="label-dark">Smoker Jones</label>
+	            		</div>
+	            		<div class="friend-location">
+	            			<label class="label-light">Daman, India</label>
+	            		</div>
+	            		<div class="friend-info-options">
+	            			<button class="dropdown-toggle cap-edit-button" id="friend-edit" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-option-horizontal"></span></button>
+	    							<ul id="root-content-set" class="dropdown-menu" aria-labelledby="friend-edit">
+	            				<li><a href="#">Unfriend</a></li>
+	            				<li><a href="#">Block</a></li>
+	            				<li><a href="#">Report</a></li>
+	          				</ul>
+	            		</div>
+	            	</div>
+	            	<div class="friend-card-info-low">
+	            		<div class="friend-info-slider">
+	            			<div id="car" class="carousel slide caro caro-1" data-ride="carousel" data-interval="false">
+	            					
+	                  <!-- Wrapper for slides -->
+		                 	<div id="car-in" class="carousel-inner">
+		                    <div class="item active">
+		                    	<div class="friend-popular ff">
+		                    		<div class="friend-popular-case">
+			            						<div class="friend-popular-score">
+			            							<span>25</span>
+			            						</div>
+						            			<div class="friend-popular-title">
+						            				<label class="label-dark">Travels</label>
+						            			</div>
+			            					</div>
+			            					<div class="friend-popular-case">
+			            						<div class="friend-popular-score">
+			            							<span>20</span>
+			            						</div>
+						            			<div class="friend-popular-title">
+						            				<label class="label-dark">Events</label>
+						            			</div>
+			            					</div>
+			            					<div class="friend-popular-case">
+			            						<div class="friend-popular-score">
+			            							<span>250</span>
+			            						</div>
+						            			<div class="friend-popular-title">
+						            				<label class="label-dark">Photos</label>
+						            			</div>
+			            					</div>
+		                    	</div>
+		                    	<div class="friend-msg ff">
+		                    		<span class="glyphicon glyphicon-comment"></span>		
+		                  	  </div>
+		                    </div>
+		                    <div class="item">
+		                    	<div class="friend-bio ff">
+		                    		<p>I like to smoke so much that i change my name from Adil Shaikh to Smoker Jones. I can smoke more than anyone in the world, galaxy, universe, multiverse.!!!</p>
+		                    	</div>
+		                    	<div class="friend-ago ff">
+		                    		<div class="friend-ago-title">
+		                    			<label class="label-light">Friends Since</label>
+		                    		</div>
+		                    		<div class="friend-date">
+		                    			<label class="label-dark">November 2017</label>
+		                    		</div>
+		                    	</div>
+		                    </div>
+		                 	</div>
+		                 	<ol id="bas" class="carousel-indicators">
+	      								<li data-target=".caro-1" data-slide-to="0" class="active"></li>
+									      <li data-target=".caro-1" data-slide-to="1"></li>
+	    								</ol>	
+	              		</div> 
+	            		</div>	
+	            	</div>
+	            </div>
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+	{% endblock boot %}
 
-		</ul>
-	</div>
-
-	<div id="rightSidenav" class="right-sidenav">
-  		<a href="javascript:void(0)" class="right-closebtn" onclick="rightCloseNav()">&times;</a>
-		<ul class="rightSidenav-content-ul-open sidenav-content-ul-open" style="list-style: none;">
-			<li style="color: #ef0707"><h1><u> Page Options</u></h1></li>
-			<li><a href="{% url "timeline" %}"><span><i class="material-icons">timeline</i></span>Timeline</a></li>
-		  	<li><a href="{% url "about" %}"><span><i class="material-icons">info_outline</i></span>About</a></li>
-			<li><a href="{% url "album" %}"><span><i class="material-icons">photo_album</i></span>Album</a></li>
-			<li><a href="{% url "friends" %}"><span><i class="material-icons">supervisor_account</i></span>Friends</a></li>
-			<li><a href="{% url "setting" %}"><span><i class="material-icons">tune</i></span>Settings</a></li>
-		</ul>
-	</div>
-
-	<div class="rightSidenav-content ">
-		<ul class="rightSidenav-content-ul">
-			<li id="t-ham"><span data-toggle="tooltip" data-placement="top" data-original-title="Menu" class="glyphicon glyphicon-menu-hamburger" onclick="rightOpenNav()"></span></li>
-			<li style="margin-bottom: 35px;"><a href="{% url "timeline" %}"><span data-toggle="tooltip" data-placement="top" data-original-title="Timeline"><i id="mat-icon" class="material-icons">timeline</i></span></a></li>
-			<li><a href="{% url "about" %}"><span data-toggle="tooltip" data-placement="top" data-original-title="About"><i id="mat-icon" class="material-icons">info_outline</i></span></a></li>
-			<li style="margin-top: 20px"><a href="{% url "album" %}"><span data-toggle="tooltip" data-placement="top" data-original-title="Album"><i id="mat-icon" class="material-icons">photo_album</i></span></a></li>
-			<li><a href="{% url "friends" %}"><span data-toggle="tooltip" data-placement="top" data-original-title="Friends"><i id="mat-icon" class="material-icons">supervisor_account</i></span></a></li>
-			<li><a href="{% url "setting" %}"><span data-toggle="tooltip" data-placement="top" data-original-title="Friends"><i id="mat-icon" class="material-icons">tune</i></span></a></li>
-		</ul>
-	</div>
-
-<div id="main" class="container">
-  <div class="root">
-    <div class="root-content">
-      <div class="cover">
-        <img src="{% static "img/cover.jpg" %}">
-      </div>
-      <div class="sunglass">
-        <div class="rowlo">
-          <div class="strap col-lg-5">
-            <ul type="none">
-              <li><a href="{% url "timeline" %}">Timeline</a></li>
-              <li><a href="{% url "about" %}">About</a></li>
-              <li><a href="{% url "album" %}">Album</a></li>
-            </ul>
-          </div>
-          <div class="strap col-lg-offset-2 col-lg-5">
-            <ul type="none">
-              <li><a href="{% url "friends" %}">Friends</a></li>
-              <li><a href="{% url "setting" %}">Settings</a></li>
-            </ul>
-          </div>
-        </div>  
-      </div>
-      <div class="author-onNose">
-        <div class="author-content">
-          <div class="onNose-photo">
-            <img src="{% static "img/ppic.jpg" %}">
-          </div>
-          <div class="author-name">
-            <a href="#">Willo Walker</a>
-          </div>
-        </div>
-      </div>
-      <div class="root-content-edit">
-        <div class="dropup">
-          <button class="dropdown-toggle" type="button" id="photo-edit" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <span class="glyphicon glyphicon-cog"></span>
-          </button>
-          <ul id="root-content-set" class="dropdown-menu" aria-labelledby="photo-edit">
-            <li><a href="#">Update Profile Picture</a></li>
-            <li><a href="#">Update Cover Photo</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Remove Profile Photo</a></li>
-            <li><a href="#">Remove Cover Photo</a></li>
-          </ul>
-      </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="boot">
-    <div class="friend-options">
-      <div class="friend-options-holder">
-        <div class="friend-owner friend-holder-op">
-          <label class="label-dark">Willo Walker's Friends</label>
-          <a href="#"><label class="label-dark friend-count">(97)</label></a>
-        </div>
-        <div class="friend-search">
-          <label id="friend-search-label">
-          	<input type="text" name="search-input" placeholder="Search Friends...">
-          	<span class="btn btn-default glyphicon glyphicon-search"></span>
-          </label>
-        </div>
-      </div>
-    </div>
-    <div class="friend-container">
-      <div class="friends">
-        <div class="friend-card">
-          <div class="friend-card-contents">
-            <div class="friend-card-cover">
-              <a href="#!" id="friend-select"><img src="{% static "img/friend-cover-1.jpg" %}"></a>
-            </div>
-            <div class="friend-card-info">
-            	<div class="friend-info">
-            		<div class="friend-face">
-            			<img src="{% static "img/ppic-2.jpg" %}">
-            		</div>
-            		<div class="friend-name">
-            			<label class="label-dark">Smoker Jones</label>
-            		</div>
-            		<div class="friend-location">
-            			<label class="label-light">Daman, India</label>
-            		</div>
-            		<div class="friend-info-options">
-            			<button class="dropdown-toggle cap-edit-button" id="friend-edit" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-option-horizontal"></span></button>
-    							<ul id="root-content-set" class="dropdown-menu" aria-labelledby="friend-edit">
-            				<li><a href="#">Unfriend</a></li>
-            				<li><a href="#">Block</a></li>
-            				<li><a href="#">Report</a></li>
-          				</ul>
-            		</div>
-            	</div>
-            	<div class="friend-card-info-low">
-            		<div class="friend-info-slider">
-            			<div id="car" class="carousel slide caro caro-1" data-ride="carousel" data-interval="false">
-            					
-                  <!-- Wrapper for slides -->
-	                 	<div id="car-in" class="carousel-inner">
-	                    <div class="item active">
-	                    	<div class="friend-popular ff">
-	                    		<div class="friend-popular-case">
-		            						<div class="friend-popular-score">
-		            							<span>25</span>
-		            						</div>
-					            			<div class="friend-popular-title">
-					            				<label class="label-dark">Travels</label>
-					            			</div>
-		            					</div>
-		            					<div class="friend-popular-case">
-		            						<div class="friend-popular-score">
-		            							<span>20</span>
-		            						</div>
-					            			<div class="friend-popular-title">
-					            				<label class="label-dark">Events</label>
-					            			</div>
-		            					</div>
-		            					<div class="friend-popular-case">
-		            						<div class="friend-popular-score">
-		            							<span>250</span>
-		            						</div>
-					            			<div class="friend-popular-title">
-					            				<label class="label-dark">Photos</label>
-					            			</div>
-		            					</div>
-	                    	</div>
-	                    	<div class="friend-msg ff">
-	                    		<span class="glyphicon glyphicon-comment"></span>		
-	                  	  </div>
-	                    </div>
-	                    <div class="item">
-	                    	<div class="friend-bio ff">
-	                    		<p>I like to smoke so much that i change my name from Adil Shaikh to Smoker Jones. I can smoke more than anyone in the world, galaxy, universe, multiverse.!!!</p>
-	                    	</div>
-	                    	<div class="friend-ago ff">
-	                    		<div class="friend-ago-title">
-	                    			<label class="label-light">Friends Since</label>
-	                    		</div>
-	                    		<div class="friend-date">
-	                    			<label class="label-dark">November 2017</label>
-	                    		</div>
-	                    	</div>
-	                    </div>
-	                 	</div>
-	                 	<ol id="bas" class="carousel-indicators">
-      								<li data-target=".caro-1" data-slide-to="0" class="active"></li>
-								      <li data-target=".caro-1" data-slide-to="1"></li>
-    								</ol>	
-              		</div> 
-            		</div>	
-            	</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div><!--container-feed end-->
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="{% static "js/custom.js" %}"></script>
-
-</body>
-</html>
+	{% block custom_scripts %}{% endblock custom_scripts %}

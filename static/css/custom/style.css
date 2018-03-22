@@ -1,8 +1,6 @@
-/*.container{
-    display: flex;
-    justify-content: center;
+#main {    
+    top: 100px;
 }
-*/ 
 body{
     background-color: #edf2f6;
     font-family: sans-serif;
