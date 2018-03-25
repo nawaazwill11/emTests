@@ -213,13 +213,12 @@ margin-bottom: 14px;
 .rightSidenav-content{
     position: fixed;
     right: 0;
-    z-index: 21; 
+    z-index: 21;
     width: 70px;
     min-height: 1000vh;
     background-color: white;
     margin-right: 0;
-    overflow: hidden;
-    box-shadow: 7px 42px 47px -2px #888da6
+    box-shadow: 7px 42px 47px -2px #888da6;
 }
 .leftSidenav-content-ul {
     list-style: none;

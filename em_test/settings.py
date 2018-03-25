@@ -65,6 +65,8 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'builtins': [
+            ],
         },
     }
 ]
@@ -127,3 +129,5 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     STATIC_DIRS,
 ]
+
+LOGIN_REDIRECT_URL = '../../em/timeline'

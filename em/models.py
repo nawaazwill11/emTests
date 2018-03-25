@@ -300,7 +300,8 @@ class Login(models.Model):
         db_table = 'login'
 
     def __str__(self):
-        return self.user_id
+        returns = '{0.user_id}, {0.username}, {0.email} '
+        return returns.format(self)
 
 
 class Misc(models.Model):

@@ -16,10 +16,19 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from em import views
+from em.models import *
+from django.views.generic import TemplateView
+
+
+testspatterns = [
+    url(r'^$', views.test, name='test'),
+    url(r'^(?P<album_id>\d+)/$', views.test, name='test')
+]
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^em/$', views.index, name = 'index'),
+    url(r'^accounts/', include('django.contrib.auth.urls')),
+    url(r'^em/$', include(testspatterns)),
     url(r'^em/about/$', views.about, name = 'about'),
     url(r'^em/album/$', views.album, name = 'album'),
     url(r'^em/contribute/$', views.contribute, name = 'contribute'),
@@ -39,3 +48,4 @@ urlpatterns = [
     url(r'^em/timeline/$', views.timeline, name = 'timeline'),
     url(r'^em/traveller_main/$', views.traveller_main, name = 'traveller_main'),
 ]
+

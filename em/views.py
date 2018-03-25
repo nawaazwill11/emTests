@@ -1,12 +1,29 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
-# Create your views here.
+from .models import Login
+from django.http import HttpResponseRedirect
+from django.core.urlresolvers import reverse
+from .mods.forms import LoginForm
+from django.core.exceptions import ValidationError
+
+
+def test(request, size=['i', 'me', 'my', 'mine']):
+	'''Test'''
+	if request.method == 'POST':
+		form = LoginForm(request.POST)
+		if form.is_valid():
+			return HttpResponseRedirect('timeline')
+		else:
+			raise ValidationError (['Invalid Inputs. Retry!'])
+	else:
+		form = LoginForm()
+	return render(request, 'test/test1.html', {'form': form})
 
 def index(request):
 	return render(request, 'index.html', context=None)
 
 def about(request):
-	return render(request, 'about.html', context=None)
+	return render(request,'about.html', context=None)
 
 def album(request):
 	return render(request, 'album.html', context=None)
