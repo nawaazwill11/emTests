@@ -17,22 +17,22 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from em import views
 from em.models import *
-from django.views.generic import TemplateView
+from django.contrib.auth.decorators import login_required, permission_required
 
 
 testspatterns = [
-    url(r'^$', views.test, name='test'),
-    url(r'^(?P<album_id>\d+)/$', views.test, name='test')
+    url(r'^$', views.TestPageView.as_view(), name='test'),
+    url(r'^(?P<album_id>\d+)/$', views.TestPageView.as_view(), name='test')
 ]
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/', include('django.contrib.auth.urls')),
     url(r'^em/$', include(testspatterns)),
-    url(r'^em/about/$', views.about, name = 'about'),
+    url(r'^em/about/$',views.AboutPageView.as_view(), name='about'),
     url(r'^em/album/$', views.album, name = 'album'),
     url(r'^em/contribute/$', views.contribute, name = 'contribute'),
-    url(r'^em/emergency/$', views.emergency, name = 'emergency'),
+    url(r'^em/emergency/', views.EmergencyPageView.as_view(), name='emergency'),
     url(r'^em/emergency_request/$', views.emergency_request, name = 'emergency_request'),
     url(r'^em/event_main/$', views.event_main, name = 'event_main'),
     url(r'^em/feedback/$', views.feedback, name = 'feedback'),

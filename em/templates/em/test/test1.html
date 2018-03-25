@@ -1,15 +1,23 @@
+{% load staticfiles %}
 <!DOCTYPE html>
+
 <html>
 <head>
 	<title>Test-1</title>
+	<link rel="stylesheet" type="text/css" href="{% static "css/lol.css" %}">
 </head>
 <body>
+	<div class="main">
+	
 		<form method="POST" >
 			{% csrf_token %}
 			
-			<table>{{form.as_table}}</table>
-			
+			<table>
+				{{form.as_table}}
+			</table>
+			{{form.username.error}}
 			<input type="submit" name="submit">
 		</form>
+	</div>
 </body>
 </html>

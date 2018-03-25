@@ -1,23 +1,36 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from .models import Login
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponsePermanentRedirect 
+from django.core.exceptions import ValidationError
 from django.core.urlresolvers import reverse
 from .mods.forms import LoginForm
-from django.core.exceptions import ValidationError
+from django.contrib.auth.decorators import login_required, permission_required
 
+class TestPageView(TemplateView):
+	template_name = 'test/test1.html'
+	form = LoginForm
+	#@login_required
+	def get(self, request, *args, **kwargs):
+		form = self.form(initial='')
+		return render(request, self.template_name, {'form': form})
 
-def test(request, size=['i', 'me', 'my', 'mine']):
-	'''Test'''
-	if request.method == 'POST':
-		form = LoginForm(request.POST)
+	def post(self, request, **kwargs):
+		form = self.form(request.POST)
 		if form.is_valid():
 			return HttpResponseRedirect('timeline')
-		else:
-			raise ValidationError (['Invalid Inputs. Retry!'])
-	else:
-		form = LoginForm()
-	return render(request, 'test/test1.html', {'form': form})
+		return render(request, 'test/test1.html', {'form': form})
+
+class AboutPageView(TemplateView):
+	template_name = 'about.html'
+
+	def get(self, request, **kwargs):
+		return render(request, self.template_name, context=None)
+
+class EmergencyPageView(TemplateView):
+	template_name = 'emergency.html'
+
+	
 
 def index(request):
 	return render(request, 'index.html', context=None)

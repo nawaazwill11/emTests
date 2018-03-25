@@ -3,7 +3,7 @@ from em import views
 
 urlpatterns = [
     url(r'^$', views.index, name = 'index'),
-    url(r'^about/$', views.about, name = 'about'),
+    url(r'^about/$', views.AboutPageView.as_view()),
     url(r'^album/$', views.album, name = 'album'),
     url(r'^contribute/$', views.contribute, name = 'contribute'),
     url(r'^emergency/$', views.emergency, name = 'emergency'),
