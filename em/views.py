@@ -1,24 +1,35 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from .models import Login
-from django.http import HttpResponseRedirect, HttpResponsePermanentRedirect 
+from django.http import HttpResponseRedirect, HttpResponsePermanentRedirect, JsonResponse
 from django.core.exceptions import ValidationError
 from django.core.urlresolvers import reverse
 from .mods.forms import LoginForm
+from .mods.test import SharingForm
 from django.contrib.auth.decorators import login_required, permission_required
+
+
+def save_uploaded_file_to_media_root(f):
+    with open('%s%s' % (settings.MEDIA_ROOT,f.name), 'wb+') as destination:
+        for chunk in f.chunks():
+            destination.write(chunk)
 
 class TestPageView(TemplateView):
 	template_name = 'test/test1.html'
-	form = LoginForm
+	form = SharingForm
 	#@login_required
 	def get(self, request, *args, **kwargs):
 		form = self.form(initial='')
 		return render(request, self.template_name, {'form': form})
 
 	def post(self, request, **kwargs):
-		form = self.form(request.POST)
+		form = self.form(request.POST, request.FILES)
 		if form.is_valid():
-			return HttpResponseRedirect('timeline')
+			for field in request.FILES.keys():
+                		for formfile in request.FILES.getlist(field):
+                			save_uploaded_file_to_media_root(formfile)                    
+			return HttpResponseRedirect('/about/contact/thankyou')
+		
 		return render(request, 'test/test1.html', {'form': form})
 
 class AboutPageView(TemplateView):
@@ -31,6 +42,15 @@ class EmergencyPageView(TemplateView):
 	template_name = 'emergency.html'
 
 	
+class IndexPageView(TemplateView):
+	template_name = 'index.html'
+
+	def get(self, request, *args, **kwargs):
+		return render(request, self.template_name, context=None)
+
+	def post(self, request, *args, **kwargs):
+		return render(request, self.template_name, context=None)
+
 
 def index(request):
 	return render(request, 'index.html', context=None)

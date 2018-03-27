@@ -2,6 +2,9 @@ from django import forms
 import re
 
 
+
+
+
 #Using clean_<field_name>. This is the best choice.
 class LoginForm(forms.Form):
 

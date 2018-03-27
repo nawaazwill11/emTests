@@ -1,6 +1,14 @@
 from django.conf.urls import url
 from em import views
 
+
+indexpatterns = [
+    url(r'^$',views.IndexPageView.as_view(), name='index')
+
+]
+
+
+
 urlpatterns = [
     url(r'^$', views.index, name = 'index'),
     url(r'^about/$', views.AboutPageView.as_view()),

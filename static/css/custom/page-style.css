@@ -114,7 +114,7 @@ margin-bottom: 14px;
     float: left;
     position: relative;
     top: 7px;
-    left: 35px;
+    left: 110px;
 }
 
 /******End NavBar******/
@@ -314,7 +314,7 @@ margin-bottom: 14px;
     /* position: fixed; */
     float: left;
     top: 2px;
-    left: 60px;
+    left: 190px;
 }
 #nav-search > input{
     height: 82px;
@@ -341,17 +341,23 @@ margin-bottom: 14px;
   }
 }
 .page-title{
-
+    width: 350px;
+    height: 85px;
+    position: fixed;
+    left: 70px;
+    text-align: -webkit-center;
 }
 .page-title > h1{
     font-weight: bolder;
-    position: fixed;
-    display: inline-flex;
+    position: relative;
+    display: inline-block;
     margin-left: 15px;
+    
 }
 .user-info-nav{
     position: fixed;
-    top: 2px
+    top: 2px;
+    left: 135px;
 }
 .user-info-nav .glyphicon{
     color: black;

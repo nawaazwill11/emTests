@@ -17,6 +17,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from em import views
 from em.models import *
+from em import urls as emurls
 from django.contrib.auth.decorators import login_required, permission_required
 
 
@@ -28,7 +29,7 @@ testspatterns = [
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/', include('django.contrib.auth.urls')),
-    url(r'^em/$', include(testspatterns)),
+    url(r'^em/$', include(emurls.indexpatterns)),
     url(r'^em/about/$',views.AboutPageView.as_view(), name='about'),
     url(r'^em/album/$', views.album, name = 'album'),
     url(r'^em/contribute/$', views.contribute, name = 'contribute'),

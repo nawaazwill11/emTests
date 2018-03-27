@@ -3,11 +3,6 @@ import os
 import re
 
 def image_check(image):
-	image_split = image.split('.')
-	if '.png' or '.jpg' or '.png' in image:
-		print('yes')
-	
-
 	reg_check = re.search(r'(([\w]+).+(?:jpg|jpeg|png)$)', image)
 	#image_ext = os.path.splitext(image.name)[1]
 	ext_list = ['.jpg', '.jpeg', '.png']

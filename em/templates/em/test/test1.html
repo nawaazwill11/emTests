@@ -8,16 +8,43 @@
 </head>
 <body>
 	<div class="main">
-	
-		<form method="POST" >
+	<div id="ajresp"></div>
+
+		<form  method="POST" id="trial" action="#" >
 			{% csrf_token %}
 			
 			<table>
 				{{form.as_table}}
 			</table>
-			{{form.username.error}}
+			
 			<input type="submit" name="submit">
 		</form>
 	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!--	<script>
+		$(document).ready(function(){
+			$("#trial").submit(function(event){
+				event.preventDefault();
+				$.ajax({data: $(this).serialize(),
+						type: $(this).attr('method'),
+						url: $(this).attr('action'),
+						success: function(response){
+							console.log(response);
+							if (response['success']) {
+								$("#ajresp").html("<div class='alert alert-success'>Success</div>");
+								$("#trial").addClass("hidden");
+							}
+							else {
+								$("#ajresp").html("<div class='alert alert-danger'>Failed</div>");
+							}
+						},
+						error: function (request, status, error) {
+							console.log(request.responseText);
+						}
+				});
+			});
+		})
+	</script>
+-->
 </body>
 </html>
