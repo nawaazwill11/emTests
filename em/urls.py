@@ -6,8 +6,8 @@ from django.contrib.auth.models import Group
 
 indexpatterns = [
     url(r'^$',views.IndexPageView.as_view(), name='index'),
-   # url(r'^?next=(?P<redirect_url>[/\w]+)$',views.IndexPageView.as_view(), name='index'),
-
+   # url(r'^?next=(?P<redirect_url>[/\w]+)$',login_required(views.IndexPageView.as_view()), name='index'),
+    url(r'^logout/', views.logout_page, name='logout_page')
 
 ]
 
@@ -22,72 +22,72 @@ albumpatterns = [
 ]
 
 contributepatterns = [
-    url(r'^$',views.ContributePageView.as_view(), name='contribute')
+    url(r'^$',login_required(views.ContributePageView.as_view()), name='contribute')
 
 ]
 
 emergencypatterns = [
-    url(r'^$',views.EmergencyPageView.as_view(), name='emergency')
+    url(r'^$',login_required(views.EmergencyPageView.as_view()), name='emergency')
 
 ]
 
 emergencyrequestpatterns = [
-    url(r'^$',views.EmergencyRequestPageView.as_view(), name='emergencyrequest')
+    url(r'^$',login_required(views.EmergencyRequestPageView.as_view()), name='emergencyrequest')
 
 ]
 
 eventmainpatterns = [
-    url(r'^$',views.EventMainPageView.as_view(), name='eventmain')
+    url(r'^$',login_required(views.EventMainPageView.as_view()), name='eventmain')
 
 ]
 
 feedbackpatterns = [
-    url(r'^$',views.FeedbackPageView.as_view(), name='feedback')
+    url(r'^$',login_required(views.FeedbackPageView.as_view()), name='feedback')
 
 ]
 
 friendspatterns = [
-    url(r'^$',views.FriendsPageView.as_view(), name='friends')
+    url(r'^$',login_required(views.FriendsPageView.as_view()), name='friends')
 
 ]
 
 myeventpatterns = [
-    url(r'^$',views.MyEventPageView.as_view(), name='myevent')
+    url(r'^$',login_required(views.MyEventPageView.as_view()), name='myevent')
 
 ]
 
 mytrippatterns = [
-    url(r'^$',views.MyTripPageView.as_view(), name='mytrip')
+    url(r'^$',login_required(views.MyTripPageView.as_view()), name='mytrip')
 
 ]
 
 planeventpatterns = [
-    url(r'^$',views.PlanEventPageView.as_view(), name='planevent')
+    url(r'^$',login_required(views.PlanEventPageView.as_view()), name='planevent')
 
 ]
 
 plantrippatterns = [
-    url(r'^$',views.PlanTripPageView.as_view(), name='plantrip')
+    url(r'^$',login_required(views.PlanTripPageView.as_view()), name='plantrip')
 
 ]
 
 searcheventpatterns = [
-    url(r'^$',views.SearchEventPageView.as_view(), name='searchevent')
+    url(r'^$',login_required(views.SearchEventPageView.as_view()), name='searchevent')
 
 ]
 
 searchtrippatterns = [
-    url(r'^$',views.IndexPageView.as_view(), name='searchtrip')
+    url(r'^$',login_required(views.IndexPageView.as_view()), name='searchtrip')
 
 ]
 
 profilesettingspatterns = [
-    url(r'^$',views.ProfileSettingsPageView.as_view(), name='profilesetting')
+    url(r'^$',login_required(views.ProfileSettingsPageView.as_view()), name='profilesetting')
 
 ]
 
 storypatterns = [
-    url(r'^$',views.StoryPageView.as_view(), name='story')
+    url(r'^$',login_required(views.StoryPageView.as_view()), name='story')
 
 ]
 
@@ -97,7 +97,7 @@ timelinepatterns = [
 ]
 
 travellermainpatterns = [
-    url(r'^$',views.TravellerMainPageView.as_view(), name='travellermain')
+    url(r'^$',login_required(views.TravellerMainPageView.as_view()), name='travellermain')
 
 ]
 

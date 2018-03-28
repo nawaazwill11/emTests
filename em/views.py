@@ -10,6 +10,7 @@ from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as auth_login 
+from django.contrib.auth import logout
 
 def save_uploaded_file_to_media_root(f):
     with open('%s%s' % (settings.MEDIA_ROOT,f.name), 'wb+') as destination:
@@ -50,14 +51,21 @@ class IndexPageView(TemplateView):
 			if user is not None:				
 				auth_login(request, user)
 			#	return render(request, 'about.html', context=None)
-				return JsonResponse({'success':True})
+				next_url = request.GET.get('next')
+				if next_url:
+					redirect_url = next_url[4:]
+				else:
+					redirect_url = 'timeline/'
+				return JsonResponse({'success':True, 'url': redirect_url})
 			else:
 				raise ValidationError('nope')
 		return render(request, self.template_name, context=None)
 
 
 
-
+def logout_page(request):
+	logout(request)
+	return HttpResponsePermanentRedirect('../')
 
 
 

@@ -131,8 +131,9 @@
 				    success: function (x) {                
 				      $("#credential-error").html("Login Success");
 				      var delay = 1000; 
-				      alert("Welcome to Endless Miles. Happy Travelling!");
-				      setTimeout(function(){ window.location = 'timeline/'; }, delay);
+				      redirect_url = x.url
+				      //alert("Welcome to Endless Miles. Happy Travelling!");
+				      setTimeout(function(){ window.location = redirect_url; }, delay);
 				    },
 				    beforeSend:function(){
 				      $("#credential-error").html("Invalid Credentials");

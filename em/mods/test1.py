@@ -37,5 +37,22 @@ class IndexPageView(TemplateView):
 				raise ValidationError('nope')
 		return render(request, self.template_name, context=None)
 
-
+if user is not None:				
+				auth_login(request, user)
+			#	return render(request, 'about.html', context=None)
+				next_url = request.GET.get('next')
+				if next_url:
+					a = LoginForm.loginauth(next_url)
+					if '=' in next_url:
+						f = str.find('=/em/') + 5
+						u = str.find('#', f)-1
+						redirect_url = next_url[f:u].append('.html')
+						l = LoginForm.loginauth(redirect_url)
+					else:
+						redirect_url = 'timeline/'
+				else:
+					redirect_url = 'timeline/'
+				return JsonResponse({'success':True, 'url': redirect_url})
+			else:
+				raise ValidationError('nope')
 
