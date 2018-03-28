@@ -42,7 +42,7 @@
         </button>
         <ul class="dropdown-menu">
                     <li><a href="{% url "timeline" %}">Profile</a></li>
-          <li><a href="{% url "setting" %}">Settings</a></li>
+          <li><a href="{% url "profilesetting" %}">Settings</a></li>
           <li><a href="#">Help</a></li>
           <li role="separator" class="divider"></li>
           <li><a href="#">Logout</a></li>
@@ -64,8 +64,8 @@
       <li><h1><u> Main Options</u></h1></li>
         <li><a href="{% url "story" %}"><span class="glyphicon glyphicon-th" style="font-size: 25px">&nbsp</span>Story</a></li>
       <li><a href="{% url "timeline" %}"><span class="glyphicon glyphicon-sunglasses">&nbsp</span>Profile</a></li>
-      <li><a href="{% url "traveller_main" %}"><span class="glyphicon glyphicon-road">&nbsp</span>Traveller</a></li>
-      <li><a href="{% url "event_main" %}"><span class="glyphicon glyphicon-pushpin">&nbsp</span>Organizer</a></li>
+      <li><a href="{% url "travellermain" %}"><span class="glyphicon glyphicon-road">&nbsp</span>Traveller</a></li>
+      <li><a href="{% url "eventmain" %}"><span class="glyphicon glyphicon-pushpin">&nbsp</span>Organizer</a></li>
       <li><a href="#"><span class="glyphicon glyphicon-list-alt">&nbsp</span>Estimator</a></li>
       <li><a href="{% url "emergency" %}"><span class="glyphicon glyphicon-warning-sign">&nbsp</span>Emergency</a></li>
     </ul>
@@ -75,8 +75,8 @@
       <li id="t-ham"><span  data-toggle="tooltip" data-placement="right" data-original-title="Menu"  class="glyphicon glyphicon-menu-hamburger ham" style=";cursor:pointer;"   onclick="leftOpenNav()"></span></li>
       <li><a href="{% url "story" %}"><span data-toggle="tooltip" data-placement="right" data-original-title="Story" class="glyphicon glyphicon-th" style=""></span></a></li>
       <li><a href="{% url "timeline" %}"><span data-toggle="tooltip" data-placement="right" data-original-title="Profile" class="glyphicon glyphicon-sunglasses" style=""></span></a></li>
-      <li><a href="{% url "traveller_main" %}"><span data-toggle="tooltip" data-placement="right" data-original-title="Traveller" class="glyphicon glyphicon-road" style=""></span></a></li>
-      <li><a href="{% url "event_main" %}"><span data-toggle="tooltip" data-placement="right" data-original-title="Organizer" class="glyphicon glyphicon-pushpin" style=""></span></a></li>
+      <li><a href="{% url "travellermain" %}"><span data-toggle="tooltip" data-placement="right" data-original-title="Traveller" class="glyphicon glyphicon-road" style=""></span></a></li>
+      <li><a href="{% url "eventmain" %}"><span data-toggle="tooltip" data-placement="right" data-original-title="Organizer" class="glyphicon glyphicon-pushpin" style=""></span></a></li>
       <li><a href="#"><span data-toggle="tooltip" data-placement="right" data-original-title="Estimator" class="glyphicon glyphicon-list-alt" style="
       "></span></a></li>
       <li><a href="{% url "emergency" %}"><span data-toggle="tooltip" data-placement="right" data-original-title="Emergency" class="glyphicon glyphicon-warning-sign" style="font-size: 35p"></span></a></li>   

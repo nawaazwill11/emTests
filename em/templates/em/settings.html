@@ -10,8 +10,8 @@
 	{% block inner_leftSideBar %}
 	  <li><a href="{% url "story" %}"><span class="glyphicon glyphicon-th" style="font-size: 25px">&nbsp</span>Story</a></li>
 	  <li><a href="{% url "timeline" %}"><span class="glyphicon glyphicon-sunglasses">&nbsp</span>Profile</a></li>
-	  <li><a href="{% url "traveller_main" %}"><span class="glyphicon glyphicon-road">&nbsp</span>Traveller</a></li>
-	  <li><a href="{% url "event_main" %}"><span class="glyphicon glyphicon-pushpin">&nbsp</span>Organizer</a></li>
+	  <li><a href="{% url "travellermain" %}"><span class="glyphicon glyphicon-road">&nbsp</span>Traveller</a></li>
+	  <li><a href="{% url "eventmain" %}"><span class="glyphicon glyphicon-pushpin">&nbsp</span>Organizer</a></li>
 	  <li><a href="#"><span class="glyphicon glyphicon-list-alt">&nbsp</span>Estimator</a></li>
 	  <li><a href="{% url "emergency" %}"><span class="glyphicon glyphicon-warning-sign">&nbsp</span>Emergency</a></li>
   {% endblock inner_leftSideBar %}
@@ -31,7 +31,7 @@
 	  <li><a href="{% url "about" %}"><span><i class="material-icons">info_outline</i></span>About</a></li>
 	  <li><a href="{% url "album" %}"><span><i class="material-icons">photo_album</i></span>Album</a></li>
 	  <li><a href="{% url "friends" %}"><span><i class="material-icons">supervisor_account</i></span>Friends</a></li>
-	  <li><a href="{% url "setting" %}"><span><i class="material-icons">tune</i></span>Settings</a></li>
+	  <li><a href="{% url "profilesetting" %}"><span><i class="material-icons">tune</i></span>Settings</a></li>
   {% endblock inner_rightSideBar %}
   
   {% block outer_rightSideBar %}
@@ -39,7 +39,7 @@
 	  <li><a href="{% url "about" %}"><span data-toggle="tooltip" data-placement="top" data-original-title="About"><i id="mat-icon" class="material-icons">info_outline</i></span></a></li>
 	  <li style="margin-top: 20px"><a href="{% url "album" %}"><span data-toggle="tooltip" data-placement="top" data-original-title="Album"><i id="mat-icon" class="material-icons">photo_album</i></span></a></li>
 	  <li><a href="{% url "friends" %}"><span data-toggle="tooltip" data-placement="top" data-original-title="Friends"><i id="mat-icon" class="material-icons">supervisor_account</i></span></a></li>
-	  <li><a href="{% url "setting" %}"><span data-toggle="tooltip" data-placement="top" data-original-title="Friends"><i id="mat-icon" class="material-icons">tune</i></span></a></li>
+	  <li><a href="{% url "profilesetting" %}"><span data-toggle="tooltip" data-placement="top" data-original-title="Friends"><i id="mat-icon" class="material-icons">tune</i></span></a></li>
   {% endblock outer_rightSideBar %}
 
   {% block class_main %} col-lg-offset-3 col-lg-6 {% endblock class_main %}

@@ -7,26 +7,94 @@ indexpatterns = [
 
 ]
 
+aboutpatterns = [
+    url(r'^$',views.AboutPageView.as_view(), name='about')
 
-
-urlpatterns = [
-    url(r'^$', views.index, name = 'index'),
-    url(r'^about/$', views.AboutPageView.as_view()),
-    url(r'^album/$', views.album, name = 'album'),
-    url(r'^contribute/$', views.contribute, name = 'contribute'),
-    url(r'^emergency/$', views.emergency, name = 'emergency'),
-    url(r'^emergency_request/$', views.emergency_request, name = 'emergency_request'),
-    url(r'^event_main/$', views.event_main, name = 'event_main'),
-    url(r'^feedback/$', views.feedback, name = 'feedback'),
-    url(r'^friends/$', views.friends, name = 'friends'),
-    url(r'^myevent/$', views.myevent, name = 'myevent'),
-    url(r'^mytrip/$', views.mytrip, name = 'mytrip'),
-    url(r'^plan_event/$', views.plan_event, name = 'plan_event'),
-    url(r'^plan_trip/$', views.plan_trip, name = 'plan_trip'),
-    url(r'^search_event/$', views.search_event, name = 'search_event'),
-    url(r'^search_trip/$', views.search_trip, name = 'search_trip'),
-    url(r'^settings/$', views.setting, name = 'setting'),
-    url(r'^story/$', views.story, name = 'story'),
-    url(r'^timeline/$', views.timeline, name = 'timeline'),
-    url(r'^traveller_main/$', views.traveller_main, name = 'traveller_main'),
 ]
+
+albumpatterns = [
+    url(r'^$',views.AlbumPageView.as_view(), name='album')
+
+]
+
+contributepatterns = [
+    url(r'^$',views.ContributePageView.as_view(), name='contribute')
+
+]
+
+emergencypatterns = [
+    url(r'^$',views.EmergencyPageView.as_view(), name='emergency')
+
+]
+
+emergencyrequestpatterns = [
+    url(r'^$',views.EmergencyRequestPageView.as_view(), name='emergencyrequest')
+
+]
+
+eventmainpatterns = [
+    url(r'^$',views.EventMainPageView.as_view(), name='eventmain')
+
+]
+
+feedbackpatterns = [
+    url(r'^$',views.FeedbackPageView.as_view(), name='feedback')
+
+]
+
+friendspatterns = [
+    url(r'^$',views.FriendsPageView.as_view(), name='friends')
+
+]
+
+myeventpatterns = [
+    url(r'^$',views.MyEventPageView.as_view(), name='myevent')
+
+]
+
+mytrippatterns = [
+    url(r'^$',views.MyTripPageView.as_view(), name='mytrip')
+
+]
+
+planeventpatterns = [
+    url(r'^$',views.PlanEventPageView.as_view(), name='planevent')
+
+]
+
+plantrippatterns = [
+    url(r'^$',views.PlanTripPageView.as_view(), name='plantrip')
+
+]
+
+searcheventpatterns = [
+    url(r'^$',views.SearchEventPageView.as_view(), name='searchevent')
+
+]
+
+searchtrippatterns = [
+    url(r'^$',views.IndexPageView.as_view(), name='searchtrip')
+
+]
+
+profilesettingspatterns = [
+    url(r'^$',views.ProfileSettingsPageView.as_view(), name='profilesetting')
+
+]
+
+storypatterns = [
+    url(r'^$',views.StoryPageView.as_view(), name='story')
+
+]
+
+timelinepatterns = [
+    url(r'^$',views.TimelinePageView.as_view(), name='timeline')
+
+]
+
+travellermainpatterns = [
+    url(r'^$',views.TravellerMainPageView.as_view(), name='travellermain')
+
+]
+
+

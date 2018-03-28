@@ -399,7 +399,6 @@ xsigin/signup popup
   border-radius: 0.25em;
   /* prevent click and touch events */
   pointer-events: none;
-  visibility: hidden;
   opacity: 0;
   -webkit-transition: opacity 0.2s 0, visibility 0 0.2s;
   -moz-transition: opacity 0.2s 0, visibility 0 0.2s;
@@ -506,4 +505,20 @@ label {
 }
 .terms {
   font-size: 1.4rem;
+}
+
+.test {
+  position: relative;
+  top: 100px;
+  left: 100px;
+  background-color: white;
+  width: 30%;
+  height: 30%;
+}
+
+#credential-error {
+  position: absolute;
+  top: 90%;
+  left: -15px;
+  color: #ef0707;
 }

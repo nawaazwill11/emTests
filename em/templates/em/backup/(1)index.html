@@ -33,19 +33,19 @@
 				</ul>
 
 				<div id="cd-login"> <!-- log in form -->
-					<form id="form_login" method="POST" class="cd-form">
+					<form id="form_login" class="cd-form">
 						{% csrf_token %}
 						<p class="fieldset">
 							<label class="image-replace cd-email" for="signin-email">E-mail</label>
-							{{form.email}}
-							<span id="email-error" class="cd-error-message">{{form.email.error}}</span>
+							<input class="full-width has-padding has-border" id="signin-email" name="email_login" type="email" placeholder="E-mail">
+							<span class="cd-error-message">Error message here!</span>
 						</p>
 
 						<p class="fieldset">
 							<label class="image-replace cd-password" for="signin-password">Password</label>
-							{{form.password}}
-							<a href="#0" class="hide-password">Show</a>
-							<span id="credential-error" class="alert alter-danger"></span>
+							<input class="full-width has-padding has-border" id="signin-password" name="password_login" type="text"  placeholder="Password">
+							<a href="#0" class="hide-password">Hide</a>
+							<span class="cd-error-message">Error message here!</span>
 						</p>
 
 						<p class="fieldset">
@@ -54,7 +54,7 @@
 						</p>
 
 						<p class="fieldset">
-							<input id="trial" class="full-width" type="submit" value="Login">
+							<input class="full-width" type="submit" value="Login">
 						</p>
 					</form>
 					<p class="cd-form-bottom-message"><a href="#0">Forgot your password?</a></p>
@@ -78,7 +78,7 @@
 						<p class="fieldset">
 							<label class="image-replace cd-password" for="signup-password">Password</label>
 							<input class="full-width has-padding has-border" id="signup-password" type="text"  placeholder="Password">
-							<a href="#0" class="hide-password">Show</a>
+							<a href="#0" class="hide-password">Hide</a>
 							<span class="cd-error-message">Error message here!</span>
 						</p>
 
@@ -115,33 +115,20 @@
 				<a href="#0" class="cd-close-form">Close</a>
 			</div> <!-- cd-user-modal-container -->
 		</div> <!-- cd-user-modal -->
+		<div class="test">
+			<ul>
+				<li>Caught</li>
+				{% for rl in response_list %}
+					<li>{{rl}}</li>
+				{% endfor %}
+			</ul>
+		</div>
 	{% endblock content %}
 
 	{% block custom_scripts %}
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript"></script>
     <script  src="{% static "js/index.js" %}"></script>
-    <script>
-		$(document).ready(function() {
-		    $("#trial").click(function(){
-				  $.ajax({
-				    type: 'POST', 
-				    url: '#', 
-				    dataType: 'json',
-				    data: $('#form_login').serialize(),
-				    success: function (x) {                
-				      $("#credential-error").html("Login Success");
-				      var delay = 1000; 
-				      //alert("Welcome to Endless Miles. Happy Travelling!");
-				      setTimeout(function(){ window.location = 'timeline/'; }, delay);
-				    },
-				    beforeSend:function(){
-				      $("#credential-error").html("Invalid Credentials");
-				    }
-			  	});
-			  return false;
-			});
-		})
-    </script>
+
   {% endblock custom_scripts %}
 
 

@@ -12,12 +12,12 @@
 
     {% block inner_rightSideBar %}
       <li><a href="{% url "emergency" %}"><span><i class="material-icons">report_problem</i></span>Emergency</a></li>
-      <li><a href="{% url "emergency_request" %}"><span><i class="material-icons">pan_tool</i></span>Requests</a></li>
+      <li><a href="{% url "emergencyrequest" %}"><span><i class="material-icons">pan_tool</i></span>Requests</a></li>
     {% endblock inner_rightSideBar %}
     
     {% block outer_rightSideBar %}
-      <li><a href="#"><span data-toggle="tooltip" data-placement="top" data-original-title="Chat" ><i id="mat-icon" class="material-icons">report_problem</i></span></a></li>
-      <li><a href="#"><span data-toggle="tooltip" data-placement="top" data-original-title="Chat" ><i class="material-icons">pan_tool</i></span></a></li>
+      <li><a href="{% url "emergency" %}"><span data-toggle="tooltip" data-placement="top" data-original-title="Emergency" ><i id="mat-icon" class="material-icons">report_problem</i></span></a></li>
+      <li><a href="{% url "emergencyrequest" %}"><span data-toggle="tooltip" data-placement="top" data-original-title="Emergency Requests" ><i class="material-icons">pan_tool</i></span></a></li>
     {% endblock outer_rightSideBar %}
 
     {% block class_main %} col-lg-offset-1 col-lg-10 {% endblock class_main %}

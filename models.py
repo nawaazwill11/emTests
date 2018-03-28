@@ -1,4 +1,4 @@
-#/home/willo_buntu/emTests/em/templates/em
+/home/willo_buntu/emTests/em/templates/em
 # This is an auto-generated Django model module.
 # You'll have to do the following manually to clean this up:
 #   * Rearrange models' order
@@ -300,10 +300,6 @@ class Login(models.Model):
     class Meta:
         managed = False
         db_table = 'login'
-
-    def __str__(self):
-        returns = '{0.user_id}, {0.username}, {0.email}, {0.passw}, {0.first_name}, {0.last_name}'
-        return returns.format(self)
 
 
 class Misc(models.Model):

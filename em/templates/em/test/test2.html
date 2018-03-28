@@ -1,0 +1,55 @@
+
+{% load staticfiles %}
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title>Test-1</title>
+	<link rel="stylesheet" type="text/css" href="{% static "css/lol.css" %}">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+</head>
+<body>
+	<div class="main">
+	<div id="ajresp"></div>
+
+		<form  method="POST" id="trial" action="#" >
+			{% csrf_token %}
+			<table id="tabl"> 
+				<tr>{{form.email}}</tr>
+				<tr>{{form.password}}</tr>
+			</table>
+			<ul>
+				
+			</ul>
+			
+			<input id="trial" type="submit" name="submit">
+		</form>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#trial").submit(function(event){
+				event.preventDefault();
+				$.ajax({data: $(this).serialize(),
+						type: $(this).attr('method'),
+						url: $(this).attr('action'),
+						success: function(response){
+							console.log(response);
+							if (response['success']) {
+								$("#tabl").html("<div class='alert alert-success'>Success</div>");
+								
+							}
+							else {
+								$("#tabl").html("<div class='alert alert-danger'>Failed</div>");
+							}
+						},
+						error: function (request, status, error) {
+							console.log(request.responseText);
+						}
+				});
+			});
+		})
+	</script>
+</body>
+</html>

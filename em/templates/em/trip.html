@@ -8,17 +8,17 @@
 	{% block page_name %}{% endblock page_name %}
 
 	{% block inner_rightSideBar %}
-		<li><a href="{% url "traveller_main" %}"><span class="glyphicon glyphicon-th-list">&nbsp</span>Guide</a></li>
+		<li><a href="{% url "travellermain" %}"><span class="glyphicon glyphicon-th-list">&nbsp</span>Guide</a></li>
     <li><a href="{% url "mytrip" %}"><span><i class="fa fa-suitcase fai" aria-hidden="true" style="color: #ef0707"></i></span>My Trips</a></li>
-    <li><a href="{% url "plan_trip" %}"><span class="glyphicon glyphicon-pencil">&nbsp</span>Plan a Trip</a></li>
-    <li><a href="{% url "search_trip" %}"><span class="glyphicon glyphicon-plus" >&nbsp</span>Join a Trip</a></li>
+    <li><a href="{% url "plantrip" %}"><span class="glyphicon glyphicon-pencil">&nbsp</span>Plan a Trip</a></li>
+    <li><a href="{% url "searchtrip" %}"><span class="glyphicon glyphicon-plus" >&nbsp</span>Join a Trip</a></li>
 	{% endblock inner_rightSideBar %}
 
 	{% block outer_rightSideBar %}
-		<li><a href="{% url "traveller_main" %}"><span data-toggle="tooltip" data-placement="top" data-original-title="Suggestions" class="glyphicon glyphicon-th-list"></span></a></li>
+		<li><a href="{% url "travellermain" %}"><span data-toggle="tooltip" data-placement="top" data-original-title="Suggestions" class="glyphicon glyphicon-th-list"></span></a></li>
     <li style="margin-top: 20px"><a href="{% url "mytrip" %}"><span data-toggle="tooltip" data-placement="top" data-original-title="My Trips" ><i class="fa fa-suitcase" aria-hidden="true"></i></span></a></li>
-    <li><a href="{% url "plan_trip" %}"><span data-toggle="tooltip" data-placement="top" data-original-title="Plan a Trip" class="glyphicon glyphicon-pencil"></span></a></li>
-    <li><a href="{% url "search_trip" %}"><span data-toggle="tooltip" data-placement="top" data-original-title="Join a Trip" class="glyphicon glyphicon-plus"></span></a></li>
+    <li><a href="{% url "plantrip" %}"><span data-toggle="tooltip" data-placement="top" data-original-title="Plan a Trip" class="glyphicon glyphicon-pencil"></span></a></li>
+    <li><a href="{% url "searchtrip" %}"><span data-toggle="tooltip" data-placement="top" data-original-title="Join a Trip" class="glyphicon glyphicon-plus"></span></a></li>
 	{% endblock outer_rightSideBar %}
 
 	{% block content %}{% endblock content  %}

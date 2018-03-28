@@ -5,23 +5,51 @@
 <head>
 	<title>Test-1</title>
 	<link rel="stylesheet" type="text/css" href="{% static "css/lol.css" %}">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
 </head>
 <body>
 	<div class="main">
 	<div id="ajresp"></div>
-
-		<form  method="POST" id="trial" action="#" >
+		<form method="POST" id="trial" action="#">
 			{% csrf_token %}
-			
-			<table>
-				{{form.as_table}}
-			</table>
-			
-			<input type="submit" name="submit">
+
+				{{form.email}}
+				
+				{{form.password}}
+
+				<input id="tria" class="full-width" type="submit" name="submit">
 		</form>
-	</div>
+		<div id="passw-error">
+			
+		</div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!--	<script>
+	<script>
+	   $(document).ready(function() {
+		    $("submit").submit(function(event) {
+		       event.preventDefault();
+		       $.ajax({ data: $(this).serialize(), 
+		                type: $(this).attr('method'), 
+		                url: $(this).attr('action'), 
+		                success: function(response) {
+		                     console.log(response);
+		                     if(response['success']) {
+		                         $("#passw-error").html("<div class='alert alert-success'>     Succesfully sent feedback, thank you!</div>");
+		                        
+		                     } 
+		                     if(response['error']) {
+		                         $("#passw-error").html("<div class='alert alert-danger'>Lahu-Da</div>");
+		                     } 
+		                },
+		                error: function (request, status, error) {
+		                     console.log(request.responseText);
+		                }
+		       });
+		   });
+		})
+    </script>
+
+<!--	<script type="text/javascript">
 		$(document).ready(function(){
 			$("#trial").submit(function(event){
 				event.preventDefault();
@@ -31,11 +59,11 @@
 						success: function(response){
 							console.log(response);
 							if (response['success']) {
-								$("#ajresp").html("<div class='alert alert-success'>Success</div>");
-								$("#trial").addClass("hidden");
+								$("#tabl").html("<div class='alert alert-success'>Success</div>");
+								
 							}
 							else {
-								$("#ajresp").html("<div class='alert alert-danger'>Failed</div>");
+								$("#tabl").html("<div class='alert alert-danger'>Failed</div>");
 							}
 						},
 						error: function (request, status, error) {
@@ -46,5 +74,6 @@
 		})
 	</script>
 -->
+
 </body>
 </html>
