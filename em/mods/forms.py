@@ -5,19 +5,18 @@ from django.core.exceptions import ObjectDoesNotExist
 
 
 
-
 #Using clean_<field_name>. This is the best choice.
 class LoginForm(forms.Form):
 
-	email = forms.EmailField(required=True, widget=forms.EmailInput(attrs={'id': 'sigin-email', 'class': 'full-width has-padding has-border aaa', 'placeholder': 'E-mail'}))
+	username = forms.CharField(required=True, widget=forms.TextInput(attrs={'id': 'sigin-email', 'class': 'full-width has-padding has-border aaa', 'placeholder': 'E-mail'}))
 	password = forms.CharField(required=True, widget=forms.PasswordInput(attrs={'id': 'sigin-password', 'class': 'full-width has-padding has-border', 'placeholder': 'Password'}))
 	#image = forms.ImageField(label='Photoo', required=False, widget=forms.ClearableFileInput())
 	
-	def clean_email(self, *args):
-		isclean = self.cleaned_data['email']
-		email_valid = re.search(r'^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$', isclean, re.I)
-		if not email_valid:
-			raise forms.ValidationError('Incorrect Email Address')
+	def clean_username(self, *args):
+		isclean = (self.cleaned_data['username']).lower()
+		user_check = re.search(r'^\d',isclean)
+		if user_check:
+			raise ValidationError('Cannot start username with a digit')
 		return isclean
 
 	def clean_password(self):
@@ -28,14 +27,20 @@ class LoginForm(forms.Form):
 			raise forms.ValidationError('Try a combination of Number and Digits')
 		return isclean
 
-	def loginauth(email, password):
-		#print('email:' + email, 'password:' + password)
-		
+	def loginauth(email):
+		print(email)
+
+		'''
 		try:
-			if (Login.objects.get(email=email, passw=password)):
-				return True
+			#if (Login.objects.get(email=email, passw=password)):
+			#	return True
+			
+			if (User.objects.filter(email=email).exists()):
+				user = authenticate(email=email, password=password)
+				
 		except ObjectDoesNotExist as e:
 			return False
+		'''
 		
 
 

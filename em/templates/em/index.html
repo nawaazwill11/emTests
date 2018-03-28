@@ -36,9 +36,9 @@
 					<form id="form_login" method="POST" class="cd-form">
 						{% csrf_token %}
 						<p class="fieldset">
-							<label class="image-replace cd-email" for="signin-email">E-mail</label>
-							{{form.email}}
-							<span id="email-error" class="cd-error-message">{{form.email.error}}</span>
+							<label class="image-replace cd-email" for="signin-username">E-mail</label>
+							{{form.username}}
+							<span id="username-error" class="cd-error-message">{{form.username.error}}</span>
 						</p>
 
 						<p class="fieldset">
@@ -131,7 +131,7 @@
 				    success: function (x) {                
 				      $("#credential-error").html("Login Success");
 				      var delay = 1000; 
-				      //alert("Welcome to Endless Miles. Happy Travelling!");
+				      alert("Welcome to Endless Miles. Happy Travelling!");
 				      setTimeout(function(){ window.location = 'timeline/'; }, delay);
 				    },
 				    beforeSend:function(){

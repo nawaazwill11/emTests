@@ -1,21 +1,41 @@
-import os
-#from django.core.exception import ValidationError
-import re
+str = 'http://127.0.0.1:8000/em/?next=/em/album/#0'
 
-def image_check(image):
-	reg_check = re.search(r'(([\w]+).+(?:jpg|jpeg|png)$)', image)
-	#image_ext = os.path.splitext(image.name)[1]
-	ext_list = ['.jpg', '.jpeg', '.png']
-	#if image_ext not in ext_list:
-	#	print(Failed)#raise ValidationError('Sorry. Image Type Not Supported')
-	#print('Success')
-	print(reg_check)
+f = str.find('=/em/') + 5
+u = str.find('#', f)-1
+print(str[f:u])
 
-#image_check('____00_fileasdsad_asd.asd.asd.jpeg')
-isclean = "1200aa"
-i = re.search(r'[0-9]+', isclean, re.I)
-ai =  re.search(r'[a-zA-Z]+', isclean, re.I)
-if not (i and ai and len(isclean)>= 4):
-	print('nay')
-else:
-	print('yay')
+
+
+class IndexPageView(TemplateView):
+	template_name = 'index.html'
+	form = LoginForm
+
+	def get(self, request, *args, **kwargs):
+		form = self.form(initial='')
+		return render(request, self.template_name, {'form': form})
+
+	def post(self, request, *args, **kwargs):
+		form = self.form(request.POST)
+		if form.is_valid():
+			cleaned = form.cleaned_data
+			username = cleaned['username']
+			password = cleaned['password']
+			user = authenticate(request, username=username, password=password)
+			l = LoginForm.loginauth(user)
+			if user is not None:				
+				a = auth_login(request, user)
+				next_url = request.GET.get('next')
+				if next_url:
+					if '=' in next_url:
+						f = str.find('=/em/') + 5
+						u = str.find('#', f)-1
+						redirect_url = next_url[f:u]
+					else: 
+						redirect_url = 'timeline.html'
+						return JsonResponse({'success':True, 'url': redirect_url})
+			else:
+				raise ValidationError('nope')
+		return render(request, self.template_name, context=None)
+
+
+

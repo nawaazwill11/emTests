@@ -51,6 +51,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+)
+
 ROOT_URLCONF = 'em_test.urls'
 
 TEMPLATES = [
@@ -130,4 +134,6 @@ STATICFILES_DIRS = [
     STATIC_DIRS,
 ]
 
-LOGIN_REDIRECT_URL = '../../em/timeline'
+LOGIN_URL = ("/em/")
+
+LOGIN_REDIRECT_URL = os.path.join(BASE_DIR,"em/templates/em/timeline")

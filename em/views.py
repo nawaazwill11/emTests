@@ -7,6 +7,9 @@ from django.core.urlresolvers import reverse
 from .mods.forms import LoginForm
 from .mods.test import SharingForm
 from django.contrib.auth.decorators import login_required, permission_required
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate
+from django.contrib.auth import login as auth_login 
 
 def save_uploaded_file_to_media_root(f):
     with open('%s%s' % (settings.MEDIA_ROOT,f.name), 'wb+') as destination:
@@ -38,16 +41,18 @@ class IndexPageView(TemplateView):
 
 	def post(self, request, *args, **kwargs):
 		form = self.form(request.POST)
-		valid = form.is_valid()
 		if form.is_valid():
-			#email = form.cleaned_data["form['email'].value()"]
-			#password = form.cleaned_data["form['password'].value()"]
-			#auth = LoginForm.loginauth(form, valid)
-			email = form['email'].value()
-			password = form['password'].value()
-			auth = LoginForm.loginauth(email, password)
-			if auth:
+			cleaned = form.cleaned_data
+			username = cleaned['username']
+			password = cleaned['password']
+			user = authenticate(request, username=username, password=password)
+			#l = LoginForm.loginauth(user)
+			if user is not None:				
+				auth_login(request, user)
+			#	return render(request, 'about.html', context=None)
 				return JsonResponse({'success':True})
+			else:
+				raise ValidationError('nope')
 		return render(request, self.template_name, context=None)
 
 

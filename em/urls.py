@@ -1,19 +1,23 @@
 from django.conf.urls import url
 from em import views
+from django.contrib.auth.decorators import login_required, permission_required, user_passes_test
+from django.contrib.auth.models import Group
 
 
 indexpatterns = [
-    url(r'^$',views.IndexPageView.as_view(), name='index')
+    url(r'^$',views.IndexPageView.as_view(), name='index'),
+   # url(r'^?next=(?P<redirect_url>[/\w]+)$',views.IndexPageView.as_view(), name='index'),
+
 
 ]
 
 aboutpatterns = [
-    url(r'^$',views.AboutPageView.as_view(), name='about')
+    url(r'^$',user_passes_test(lambda u: Group.objects.get(name='Baristas') in u.groups.all())(views.AboutPageView.as_view()), name='about')
 
 ]
 
 albumpatterns = [
-    url(r'^$',views.AlbumPageView.as_view(), name='album')
+    url(r'^$',login_required(views.AlbumPageView.as_view()), name='album')
 
 ]
 
@@ -88,7 +92,7 @@ storypatterns = [
 ]
 
 timelinepatterns = [
-    url(r'^$',views.TimelinePageView.as_view(), name='timeline')
+    url(r'^$',login_required(views.TimelinePageView.as_view()), name='timeline')
 
 ]
 
