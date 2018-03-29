@@ -1,1 +1,0 @@
-1. Clean data during login check.

@@ -10,9 +10,9 @@ from django.http import HttpResponseRedirect, HttpResponsePermanentRedirect, Jso
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from .models import Login
-from .mods.forms import LoginForm
+from .mods.forms import LoginForm, RegistrationForm, Printer
 from .mods.test import SharingForm
-
+import re
 
 def save_uploaded_file_to_media_root(f):
     with open('%s%s' % (settings.MEDIA_ROOT,f.name), 'wb+') as destination:
@@ -37,37 +37,64 @@ class TestPageView(TemplateView):
 class IndexPageView(TemplateView):
 	template_name = 'index.html'
 	form = LoginForm
+	rform = RegistrationForm
 
 	def get(self, request, *args, **kwargs):
 		if request.session.has_key('username'):
 			return HttpResponseRedirect('story/')
 		form = self.form(initial='')
-		return render(request, self.template_name, {'form': form})
+		rform  = self.rform(initial='')
+		#Printer.print(rform)
+		return render(request, self.template_name, {'form': form,'rform': rform})
 		
-
 	def post(self, request, *args, **kwargs):
 		form = self.form(request.POST)
-		if form.is_valid():
-			cleaned = form.cleaned_data
-			username = cleaned['username']
-			password = cleaned['password']
-			user = authenticate(request, username=username, password=password)
-			#l = LoginForm.loginauth(user)
-			if user is not None:				
-				in_session = create_session(request, username)
-				if in_session:
-					l = LoginForm.loginauth(in_session)
-					auth_login(request, user)
-					next_url = request.GET.get('next')
-					user 
-					if next_url:
-						redirect_url = next_url[4:]
-					else:
-						redirect_url = 'story/'
-					return JsonResponse({'success':True, 'url': redirect_url})
-			else:
-				raise ValidationError('nope')
-		return render(request, self.template_name, context=None)
+		rform = self.rform(request.POST)
+		check_user_form = re.search(r'^\w+', form['username'].value(), re.I)
+		
+		if 'contact' in request.POST:
+			if rform.is_valid():
+				cleaned = rform.cleaned_data
+				username = cleaned['username']
+				email = cleaned['email']
+				password = cleaned['password']
+				repassword = cleaned['repassword']
+				contact = cleaned['contact']
+				recorded = RegistrationForm.register(username, email, password, repassword, contact)
+				if 'True' in recorded.values():
+					return JsonResponse(recorded)
+				else:
+					return JsonResponse(recorded)
+					error = recorded['error']
+					return render(request, self.template_name, {'error': error })
+			return render(request, self.template_name, {'form': form,'rform': rform})
+	#			return HttpResponseRedirect(template_name)
+
+		else:
+			if form.is_valid():
+				cleaned = form.cleaned_data
+				username = cleaned['username']
+				password = cleaned['password']
+				user = authenticate(request, username=username, password=password)
+				#l = LoginForm.loginauth(user)
+				if user is not None:				
+					in_session = create_session(request, username)
+					if in_session:
+						l = LoginForm.loginauth(in_session)
+						auth_login(request, user)
+						next_url = request.GET.get('next')
+						user 
+						if next_url:
+							redirect_url = next_url[4:]
+						else:
+							redirect_url = 'story/'
+						return JsonResponse({'success':True, 'url': redirect_url})
+				else:
+					raise ValidationError('nope')
+			return render(request, self.template_name, context=None)
+
+
+
 
 def create_session(request, username):
 	user = User.objects.get(username=username)
