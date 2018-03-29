@@ -1,16 +1,18 @@
+from django.contrib.auth.decorators import login_required, permission_required
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, logout
+from django.contrib.auth import login as auth_login 
+from django.core.exceptions import ValidationError
+from django.core import serializers
+from django.contrib.sessions.models import Session
+from django.core.urlresolvers import reverse
+from django.http import HttpResponseRedirect, HttpResponsePermanentRedirect, JsonResponse
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from .models import Login
-from django.http import HttpResponseRedirect, HttpResponsePermanentRedirect, JsonResponse
-from django.core.exceptions import ValidationError
-from django.core.urlresolvers import reverse
 from .mods.forms import LoginForm
 from .mods.test import SharingForm
-from django.contrib.auth.decorators import login_required, permission_required
-from django.contrib.auth.models import User
-from django.contrib.auth import authenticate
-from django.contrib.auth import login as auth_login 
-from django.contrib.auth import logout
+
 
 def save_uploaded_file_to_media_root(f):
     with open('%s%s' % (settings.MEDIA_ROOT,f.name), 'wb+') as destination:
@@ -37,8 +39,11 @@ class IndexPageView(TemplateView):
 	form = LoginForm
 
 	def get(self, request, *args, **kwargs):
+		if request.session.has_key('username'):
+			return HttpResponseRedirect('story/')
 		form = self.form(initial='')
 		return render(request, self.template_name, {'form': form})
+		
 
 	def post(self, request, *args, **kwargs):
 		form = self.form(request.POST)
@@ -49,23 +54,49 @@ class IndexPageView(TemplateView):
 			user = authenticate(request, username=username, password=password)
 			#l = LoginForm.loginauth(user)
 			if user is not None:				
-				auth_login(request, user)
-			#	return render(request, 'about.html', context=None)
-				next_url = request.GET.get('next')
-				if next_url:
-					redirect_url = next_url[4:]
-				else:
-					redirect_url = 'timeline/'
-				return JsonResponse({'success':True, 'url': redirect_url})
+				in_session = create_session(request, username)
+				if in_session:
+					l = LoginForm.loginauth(in_session)
+					auth_login(request, user)
+					next_url = request.GET.get('next')
+					user 
+					if next_url:
+						redirect_url = next_url[4:]
+					else:
+						redirect_url = 'story/'
+					return JsonResponse({'success':True, 'url': redirect_url})
 			else:
 				raise ValidationError('nope')
 		return render(request, self.template_name, context=None)
 
+def create_session(request, username):
+	user = User.objects.get(username=username)
+	if user:
+		request.session['username'] = user.username
+		return True
+	return False
 
 
-def logout_page(request):
-	logout(request)
+def check_session_valid(request):
+	if request.session.has_key('username'):
+		username = request.session['username']
+		if (User.objects.get(username=username)):
+			return True
+	return False
+
+	
+def logout_page (request):
+	#user = User.objects.get(username=request.session['username'])
+	if logout(request):
+		logout(request)
+	if request.session.has_key('username'):
+		del request.session['username']
+	
 	return HttpResponsePermanentRedirect('../')
+
+	'''def get(request):
+					logout(request)
+					return HttpResponsePermanentRedirect('../')'''
 
 
 
