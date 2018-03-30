@@ -121,7 +121,7 @@ class RegistrationForm(forms.Form):
 	def check_user_exists(username):
 		try:
 			if (User.objects.filter(username=username).exists()):
-				return True
+				return User.objects.get(username=username)
 		except ObjectDoesNotExist:
 			raise forms.ValidationError('User Exists')
 
@@ -154,14 +154,14 @@ class Printer(forms.Form):
 		
 
 class AboutEditForm(forms.Form):
-	dayslist = days = [('','------')] + [(str(i),'0'+str(i)) for i in [i for i in range(1,10)]] + [(str(i),str(i)) for i in [i for i in range(10,32)]]
-	monthslist = [('','------')] + [('jan','Jan'), ('feb','Feb'), ('mar','Mar'), ('apr','Apr'), ('may','May'), ('jun','Jun'), ('jul','Jul'), ('aug','Aug'), ('sep','Sep'), ('oct','Oct'), ('nov','Nov'), ('dec','Dec')]
-	yearslist = [(i, i) for i in range(1930,2004)] + [('','------')] 
+	dayslist = [(str(i),'0'+str(i)) for i in [i for i in range(1,10)]] + [(str(i),str(i)) for i in [i for i in range(10,32)]]
+	monthslist =  [('jan','Jan'), ('feb','Feb'), ('mar','Mar'), ('apr','Apr'), ('may','May'), ('jun','Jun'), ('jul','Jul'), ('aug','Aug'), ('sep','Sep'), ('oct','Oct'), ('nov','Nov'), ('dec','Dec')]
+	yearslist = [(i, i) for i in range(1930,2004)]
 	yearslist.reverse()
 	aboutme = forms.CharField(required=False, max_length=160, widget=forms.Textarea(attrs={'placeholder': 'Something about you...' }))
-	days = forms.ChoiceField(choices=dayslist, required=True, widget=forms.Select(attrs={'class': 'slt'}))
-	months = forms.ChoiceField(choices=monthslist, required=True, widget=forms.Select(attrs={'class': 'slt'}))
-	years = forms.ChoiceField(choices=yearslist, required=True, widget=forms.Select(attrs={'class': 'slt'}))
+	dayz = forms.ChoiceField(choices=dayslist, required=True, widget=forms.Select(attrs={'class': 'slt'}))
+	monthz = forms.ChoiceField(choices=monthslist, required=True, widget=forms.Select(attrs={'class': 'slt'}))
+	yearz = forms.ChoiceField(choices=yearslist, required=True, widget=forms.Select(attrs={'class': 'slt'}))
 	birthplace = forms.CharField(required=False, max_length=500, widget=forms.TextInput(attrs={'placeholder': 'Eg. Daman, India'}))
 	livesin = forms.CharField(required=False, max_length=500, widget=forms.TextInput(attrs={'placeholder': 'Eg. Pune, India'}))
 	occupation = forms.CharField(required=False, max_length=500, widget=forms.TextInput(attrs={'placeholder': 'Eg. Programmer'}))
@@ -247,14 +247,11 @@ class AboutEditForm(forms.Form):
 			raise forms.ValidationError('Error in Mobile')
 		return isclean
 
-
-
-
-
-
-
-
-
+	def do_update(**kwargs):
+		Printer.print()
+		user_data_valid = RegistrationForm.check_user_exists(kwargs['username'])
+		if user_data_valid:
+			pass
 
 
 

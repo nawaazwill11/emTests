@@ -154,9 +154,9 @@ class AboutFillPageView(TemplateView):
 		if form.is_valid():
 			cleaned = form.cleaned_data
 			aboutme = cleaned['aboutme']
-			days = cleaned['days']
-			months = cleaned['months']
-			years = cleaned['years']
+			dayz = cleaned['dayz']
+			monthz = cleaned['monthz']
+			yearz = cleaned['yearz']
 			birthplace = cleaned['birthplace']
 			livesin = cleaned['livesin']
 			occupation = cleaned['occupation']
@@ -165,8 +165,8 @@ class AboutFillPageView(TemplateView):
 			email = cleaned['email']
 			website = cleaned['website']
 			mobile = cleaned['mobile']
-			cleaned_stuff = (aboutme, days, months, years, birthplace, livesin, occupation, gender, relationstatus, email, website, mobile)
-			Printer.print(cleaned_stuff)
+			cleaned_stuff = {'username': request.session['username'],'aboutme':aboutme, 'dayz': dayz, 'monthz': monthz, 'yearz': yearz, 'birthplace': birthplace, 'livesin': livesin, 'occupation': occupation, 'gender': gender, 'relationstatus': relationstatus, 'email': email, 'website': website, 'mobile': mobile}
+			AboutEditForm.do_update(**cleaned_stuff)
 		else:
 			Printer.print(('cleaned_stuff'))
 		return render(request, self.template_name, context={'form': form})
