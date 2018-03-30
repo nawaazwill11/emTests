@@ -13,7 +13,8 @@ indexpatterns = [
 
 aboutpatterns = [
     #url(r'^$',user_passes_test(lambda u: Group.objects.get(name='Baristas') in u.groups.all())(views.AboutPageView.as_view()), name='about')
-    url(r'^$',login_required(views.AboutPageView.as_view()), name='about')
+    url(r'^$',login_required(views.AboutPageView.as_view()), name='about'),
+    url(r'^about_fill/$',login_required(views.AboutFillPageView.as_view()), name='about_fill')
 ]
 
 albumpatterns = [

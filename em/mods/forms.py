@@ -144,12 +144,121 @@ class RegistrationForm(forms.Form):
 			user.save()
 			print('done')
 			return({'success': True, 'message': 'User\'s up the arse'})
-		return({'success': False, 'message': 'Error. Try Again'})
+		return({'success': False, 'message': 'Error. Try Again with other credentials.'})
 
 class Printer(forms.Form):
 
-	def print(a):
-		print(a)
+	def print(*args):
+		for i in args:
+			print(i)
+		
+
+class AboutEditForm(forms.Form):
+	dayslist = days = [('','------')] + [(str(i),'0'+str(i)) for i in [i for i in range(1,10)]] + [(str(i),str(i)) for i in [i for i in range(10,32)]]
+	monthslist = [('','------')] + [('jan','Jan'), ('feb','Feb'), ('mar','Mar'), ('apr','Apr'), ('may','May'), ('jun','Jun'), ('jul','Jul'), ('aug','Aug'), ('sep','Sep'), ('oct','Oct'), ('nov','Nov'), ('dec','Dec')]
+	yearslist = [(i, i) for i in range(1930,2004)] + [('','------')] 
+	yearslist.reverse()
+	aboutme = forms.CharField(required=False, max_length=160, widget=forms.Textarea(attrs={'placeholder': 'Something about you...' }))
+	days = forms.ChoiceField(choices=dayslist, required=True, widget=forms.Select(attrs={'class': 'slt'}))
+	months = forms.ChoiceField(choices=monthslist, required=True, widget=forms.Select(attrs={'class': 'slt'}))
+	years = forms.ChoiceField(choices=yearslist, required=True, widget=forms.Select(attrs={'class': 'slt'}))
+	birthplace = forms.CharField(required=False, max_length=500, widget=forms.TextInput(attrs={'placeholder': 'Eg. Daman, India'}))
+	livesin = forms.CharField(required=False, max_length=500, widget=forms.TextInput(attrs={'placeholder': 'Eg. Pune, India'}))
+	occupation = forms.CharField(required=False, max_length=500, widget=forms.TextInput(attrs={'placeholder': 'Eg. Programmer'}))
+	gender = forms.ChoiceField(choices=[('0','Male'),('1','Female'),('2','Other')], required=True, widget=forms.Select(attrs={'class': 'slt'}))
+	relationstatus = forms.ChoiceField(choices=[('0','Single'),('1','In a Relation'),('2','Married')], required=True, widget=forms.Select(attrs={'class': 'slt'}))
+	email = forms.EmailField(required=True, widget=forms.EmailInput(attrs={'placeholder': 'Eg. some@mail.com'}))
+	website = forms.CharField(required=False, max_length=500, widget=forms.TextInput(attrs={'placeholder': 'Website'}))
+	mobile = forms.CharField(required=False, max_length=10, widget=forms.TextInput(attrs={'placeholder': 'Eg. 999990000'}))
+	#about_submit = forms.SubmitButtonField(initial=u'Save Changes')
+
+	def clean_aboutme(self):
+		isclean = self.cleaned_data['aboutme']
+		if len(isclean) >160:
+			raise forms.ValidationError('Error in About Me')
+		return isclean
+
+	def clean_days(self):
+		isclean = self.cleaned_data['days']
+		if (isclean in day for day in self.dayslist) :
+			raise forms.ValidationError('Error in Date')
+		return isclean
+
+
+	def clean_months(self):
+		isclean = self.cleaned_data['months']
+		if (isclean in month for month in self.monthslist):
+			raise forms.ValidationError('Error in Date')
+		return isclean
+
+	def clean_years(self):
+		isclean = self.cleaned_data['years']
+		if (isclean in year for years in self.yearslist):
+			raise forms.ValidationError('Error in Date')
+		return isclean
+
+	def clean_birthplace(self):
+		isclean = self.cleaned_data['birthplace']
+		if len(isclean) > 500:
+			raise forms.ValidationError('Error in Birth Place')
+		return isclean
+
+	def clean_livesin(self):
+		isclean = self.cleaned_data['livesin']
+		if len(isclean) > 500:
+			raise forms.ValidationError('Error in Lives In')
+		return isclean
+
+	def clean_occupation(self):
+		isclean = self.cleaned_data['occupation']
+		if len(isclean) > 500:
+			raise forms.ValidationError('Error in Occupation')
+		return isclean
+
+	def clean_gender(self):
+		isclean = self.cleaned_data['gender']
+		if (isclean in range(0,3)):
+			raise forms.ValidationError('Error in Gender')
+		return isclean
+
+	def clean_relationstatus(self):
+		isclean = self.cleaned_data['relationstatus']
+		if (isclean in range(0,3)):
+			raise forms.ValidationError('Error in Relation')
+		return isclean
+
+	def clean_email(self):
+		isclean = self.cleaned_data['email']
+		email_valid = re.search(r'^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$', isclean, re.I)
+		if not email_valid:
+			raise form.ValidationError('Error in Email')
+		return isclean
+
+	def clean_website(self):
+		isclean = self.cleaned_data['website']
+		if len(isclean) > 500:
+			raise forms.ValidationError('Error in Website')
+		return isclean
+
+	def clean_mobile(self, *args):
+		isclean = self.cleaned_data['mobile']
+		valid = re.search(r'^\d{10}$', isclean)
+		if not valid:
+			raise forms.ValidationError('Error in Mobile')
+		return isclean
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 '''

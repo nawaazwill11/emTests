@@ -10,7 +10,7 @@ from django.http import HttpResponseRedirect, HttpResponsePermanentRedirect, Jso
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from .models import Login
-from .mods.forms import LoginForm, RegistrationForm, Printer
+from .mods.forms import LoginForm, RegistrationForm, Printer, AboutEditForm
 from .mods.test import SharingForm
 import re
 
@@ -136,6 +136,41 @@ class AboutPageView(TemplateView):
 
 	def post(self, request, *args, **kwargs):
 		return render(request, self.template_name, context=None)
+
+
+class AboutFillPageView(TemplateView):
+	template_name = 'about_fill.html'
+	form = AboutEditForm
+
+	def get(self, request, *args, **kwargs):
+		form = self.form(initial='')
+		context = {'form': form}
+		return render(request, self.template_name, context)
+
+	def post(self, request, *args, **kwargs):
+		form = self.form(request.POST)
+		#prnt = (form)
+		#Printer.print(prnt)
+		if form.is_valid():
+			cleaned = form.cleaned_data
+			aboutme = cleaned['aboutme']
+			days = cleaned['days']
+			months = cleaned['months']
+			years = cleaned['years']
+			birthplace = cleaned['birthplace']
+			livesin = cleaned['livesin']
+			occupation = cleaned['occupation']
+			gender = cleaned['gender']
+			relationstatus = cleaned['relationstatus']
+			email = cleaned['email']
+			website = cleaned['website']
+			mobile = cleaned['mobile']
+			cleaned_stuff = (aboutme, days, months, years, birthplace, livesin, occupation, gender, relationstatus, email, website, mobile)
+			Printer.print(cleaned_stuff)
+		else:
+			Printer.print(('cleaned_stuff'))
+		return render(request, self.template_name, context={'form': form})
+
 
 
 class AlbumPageView(TemplateView):
