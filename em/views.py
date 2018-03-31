@@ -165,8 +165,8 @@ class AboutFillPageView(TemplateView):
 			email = cleaned['email']
 			website = cleaned['website']
 			mobile = cleaned['mobile']
-			cleaned_stuff = {'username': request.session['username'],'aboutme':aboutme, 'dayz': dayz, 'monthz': monthz, 'yearz': yearz, 'birthplace': birthplace, 'livesin': livesin, 'occupation': occupation, 'gender': gender, 'relationstatus': relationstatus, 'email': email, 'website': website, 'mobile': mobile}
-			AboutEditForm.do_update(**cleaned_stuff)
+			username = request.session['username']
+			AboutEditForm.do_update(username, aboutme, dayz, monthz, yearz, birthplace, livesin, occupation, gender, relationstatus, email, website, mobile)
 		else:
 			Printer.print(('cleaned_stuff'))
 		return render(request, self.template_name, context={'form': form})

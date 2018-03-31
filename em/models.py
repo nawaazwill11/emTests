@@ -51,10 +51,10 @@ class AuthPermission(models.Model):
 
 
 class AuthUser(models.Model):
+    username = models.CharField(unique=True, max_length=150)
     password = models.CharField(max_length=128)
     last_login = models.DateTimeField(blank=True, null=True)
     is_superuser = models.BooleanField()
-    username = models.CharField(unique=True, max_length=150)
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     email = models.CharField(max_length=254)
@@ -65,6 +65,10 @@ class AuthUser(models.Model):
     class Meta:
         managed = False
         db_table = 'auth_user'
+
+    def __str__(self):
+        returns = '{0.username}'
+        return returns.format(self)
 
 
 class AuthUserGroups(models.Model):
@@ -146,20 +150,6 @@ class DjangoSession(models.Model):
         db_table = 'django_session'
 
 
-class Ee(models.Model):
-    user = models.ForeignKey('Login', models.DO_NOTHING, primary_key=True)
-    school = models.CharField(max_length=500, blank=True, null=True)
-    college = models.CharField(max_length=500, blank=True, null=True)
-    editional_edu = models.CharField(max_length=500, blank=True, null=True)
-    current_work = models.CharField(max_length=500, blank=True, null=True)
-    previous_work = models.CharField(max_length=500, blank=True, null=True)
-    work_skill = models.CharField(max_length=500, blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'ee'
-
-
 class Emergency(models.Model):
     emergency_id = models.CharField(max_length=26)
     emergency_requestor = models.CharField(max_length=26)
@@ -173,10 +163,31 @@ class Emergency(models.Model):
 
 class Event(models.Model):
     event_id = models.CharField(primary_key=True, max_length=30)
-    user = models.ForeignKey('Login', models.DO_NOTHING)
     event_privacy = models.IntegerField()
     event_link = models.CharField(max_length=100)
     event_request = models.IntegerField()
+    title = models.CharField(max_length=50, blank=True, null=True)
+    description = models.CharField(max_length=50, blank=True, null=True)
+    start_date = models.DateTimeField(blank=True, null=True)
+    end_date = models.DateTimeField(blank=True, null=True)
+    deadline = models.DateTimeField(blank=True, null=True)
+    username = models.ForeignKey(AuthUser, models.DO_NOTHING, db_column='username', blank=True, null=True)
+    location = models.IntegerField(blank=True, null=True)
+    venue_name = models.CharField(max_length=100, blank=True, null=True)
+    street_address = models.CharField(max_length=100, blank=True, null=True)
+    city = models.CharField(max_length=100, blank=True, null=True)
+    state = models.CharField(max_length=100, blank=True, null=True)
+    country = models.CharField(max_length=100, blank=True, null=True)
+    pincode = models.CharField(max_length=100, blank=True, null=True)
+    logo = models.BinaryField(blank=True, null=True)
+    cover = models.BinaryField(blank=True, null=True)
+    segment = models.CharField(max_length=50, blank=True, null=True)
+    category = models.CharField(max_length=50, blank=True, null=True)
+    activity = models.CharField(max_length=50, blank=True, null=True)
+    gender = models.IntegerField(blank=True, null=True)
+    age = models.CharField(max_length=20, blank=True, null=True)
+    participant = models.IntegerField(blank=True, null=True)
+    fees = models.FloatField(blank=True, null=True)
 
     class Meta:
         managed = False
@@ -278,17 +289,6 @@ class Friends(models.Model):
         db_table = 'friends'
 
 
-class Hi(models.Model):
-    user = models.ForeignKey('Login', models.DO_NOTHING, primary_key=True)
-    hobbies = models.CharField(max_length=1000, blank=True, null=True)
-    skills = models.CharField(max_length=1000, blank=True, null=True)
-    interests = models.CharField(max_length=1000, blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'hi'
-
-
 class Login(models.Model):
     user_id = models.CharField(primary_key=True, max_length=26)
     username = models.CharField(max_length=100)
@@ -300,10 +300,6 @@ class Login(models.Model):
     class Meta:
         managed = False
         db_table = 'login'
-
-    def __str__(self):
-        returns = '{0.user_id}, {0.username}, {0.email}, {0.passw}, {0.first_name}, {0.last_name}'
-        return returns.format(self)
 
 
 class Misc(models.Model):
@@ -345,9 +341,8 @@ class Photo(models.Model):
 
 
 class Pi(models.Model):
-    user = models.ForeignKey(Login, models.DO_NOTHING, primary_key=True)
-    username = models.CharField(max_length=100)
-    email = models.CharField(max_length=150)
+    username = models.CharField(unique=True, max_length=100)
+    email = models.CharField(unique=True, max_length=150)
     about_me = models.CharField(max_length=160, blank=True, null=True)
     doj = models.DateTimeField()
     dob = models.DateTimeField()
@@ -362,6 +357,22 @@ class Pi(models.Model):
     facebook = models.CharField(max_length=100, blank=True, null=True)
     twitter = models.CharField(max_length=100, blank=True, null=True)
     instagram = models.CharField(max_length=100, blank=True, null=True)
+    travelled_places = models.CharField(max_length=1000, blank=True, null=True)
+    dream_places = models.CharField(max_length=1000, blank=True, null=True)
+    fav_places = models.CharField(max_length=1000, blank=True, null=True)
+    fav_season = models.CharField(max_length=1000, blank=True, null=True)
+    fav_moto = models.CharField(max_length=1000, blank=True, null=True)
+    fav_mode = models.CharField(max_length=1000, blank=True, null=True)
+    school = models.CharField(max_length=1000, blank=True, null=True)
+    college = models.CharField(max_length=1000, blank=True, null=True)
+    additional_edu = models.CharField(max_length=1000, blank=True, null=True)
+    current_work = models.CharField(max_length=1000, blank=True, null=True)
+    previous_work = models.CharField(max_length=1000, blank=True, null=True)
+    work_skill = models.CharField(max_length=1000, blank=True, null=True)
+    hobbies = models.CharField(max_length=1000, blank=True, null=True)
+    skills = models.CharField(max_length=1000, blank=True, null=True)
+    interests = models.CharField(max_length=1000, blank=True, null=True)
+    pi_id = models.CharField(primary_key=True, max_length=100)
 
     class Meta:
         managed = False
@@ -400,7 +411,6 @@ class PrivacySetting(models.Model):
 
 class Story(models.Model):
     story_id = models.CharField(primary_key=True, max_length=26)
-    user = models.ForeignKey(Login, models.DO_NOTHING)
     album = models.CharField(max_length=26, blank=True, null=True)
     comments = models.CharField(max_length=26, blank=True, null=True)
     likes = models.CharField(max_length=26, blank=True, null=True)
@@ -408,24 +418,11 @@ class Story(models.Model):
     description = models.CharField(max_length=160, blank=True, null=True)
     share = models.CharField(max_length=50)
     type = models.IntegerField()
+    username = models.ForeignKey(AuthUser, models.DO_NOTHING, db_column='username', blank=True, null=True)
 
     class Meta:
         managed = False
         db_table = 'story'
-
-
-class TravelPortfolio(models.Model):
-    user = models.ForeignKey(Login, models.DO_NOTHING, primary_key=True)
-    travelled_places = models.CharField(max_length=500, blank=True, null=True)
-    dream_places = models.CharField(max_length=1000, blank=True, null=True)
-    fav_places = models.CharField(max_length=1000, blank=True, null=True)
-    fav_season = models.CharField(max_length=1000, blank=True, null=True)
-    fav_moto = models.CharField(max_length=1000, blank=True, null=True)
-    fav_mode = models.CharField(max_length=1000, blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'travel_portfolio'
 
 
 class Trip(models.Model):
@@ -433,6 +430,20 @@ class Trip(models.Model):
     trip_privacy = models.IntegerField()
     trip_link = models.CharField(max_length=26)
     trip_request = models.IntegerField()
+    company = models.IntegerField(blank=True, null=True)
+    moto = models.IntegerField(blank=True, null=True)
+    occasion = models.IntegerField(blank=True, null=True)
+    fuel = models.FloatField(blank=True, null=True)
+    vehicle = models.FloatField(blank=True, null=True)
+    hotel = models.FloatField(blank=True, null=True)
+    total = models.FloatField(blank=True, null=True)
+    start_date = models.DateTimeField(blank=True, null=True)
+    end_date = models.DateTimeField(blank=True, null=True)
+    gender = models.IntegerField(blank=True, null=True)
+    age = models.CharField(max_length=20, blank=True, null=True)
+    participants = models.IntegerField(blank=True, null=True)
+    title = models.CharField(max_length=50, blank=True, null=True)
+    description = models.CharField(max_length=160, blank=True, null=True)
 
     class Meta:
         managed = False
@@ -520,3 +531,23 @@ class Video(models.Model):
     class Meta:
         managed = False
         db_table = 'video'
+
+class Simply(models.Model):
+    id = models.IntegerField(primary_key=True)
+    votes = models.CharField(max_length=100, blank=True, null=True)
+    username = models.ForeignKey('Stupid', models.DO_NOTHING, db_column='username', blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'simply'
+
+    class Meta:
+        managed = False
+        db_table = 'simply'
+
+class Stupid(models.Model):
+    username = models.CharField(unique=True, max_length=150, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'stupid'

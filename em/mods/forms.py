@@ -1,8 +1,10 @@
 from django import forms
 import re
-from em.models import Login
+from em.models import Login, Pi, AuthUser
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.models import User
+import datetime
+from datetime import datetime as dt
 
 
 #Using clean_<field_name>. This is the best choice.
@@ -120,8 +122,8 @@ class RegistrationForm(forms.Form):
 
 	def check_user_exists(username):
 		try:
-			if (User.objects.filter(username=username).exists()):
-				return User.objects.get(username=username)
+			if (AuthUser.objects.filter(username=username).exists()):
+				return AuthUser.objects.get(username=username)
 		except ObjectDoesNotExist:
 			raise forms.ValidationError('User Exists')
 
@@ -155,7 +157,7 @@ class Printer(forms.Form):
 
 class AboutEditForm(forms.Form):
 	dayslist = [(str(i),'0'+str(i)) for i in [i for i in range(1,10)]] + [(str(i),str(i)) for i in [i for i in range(10,32)]]
-	monthslist =  [('jan','Jan'), ('feb','Feb'), ('mar','Mar'), ('apr','Apr'), ('may','May'), ('jun','Jun'), ('jul','Jul'), ('aug','Aug'), ('sep','Sep'), ('oct','Oct'), ('nov','Nov'), ('dec','Dec')]
+	monthslist =  [('01','Jan'), ('02','Feb'), ('03','Mar'), ('04','Apr'), ('05','May'), ('06','Jun'), ('07','Jul'), ('08','Aug'), ('09','Sep'), ('10','Oct'), ('11','Nov'), ('12','Dec')]
 	yearslist = [(i, i) for i in range(1930,2004)]
 	yearslist.reverse()
 	aboutme = forms.CharField(required=False, max_length=160, widget=forms.Textarea(attrs={'placeholder': 'Something about you...' }))
@@ -247,11 +249,23 @@ class AboutEditForm(forms.Form):
 			raise forms.ValidationError('Error in Mobile')
 		return isclean
 
-	def do_update(**kwargs):
-		Printer.print()
-		user_data_valid = RegistrationForm.check_user_exists(kwargs['username'])
+	def do_update(username, aboutme, dayz, monthz, yearz, birthplace, livesin, occupation, gender, relationstatus, email, website, mobile):
+		user_data_valid = RegistrationForm.check_user_exists(username)
 		if user_data_valid:
-			pass
+			now = datetime.datetime.now()
+			doj = now.strftime("%Y-%m-%d %H:%M")
+			dob = dt(year=int(yearz), month=int(monthz), day=int(dayz))
+			if (Pi.objects.filter(username=username).exists()):
+				pi = Pi.objects.get(username=username)
+				pi.about_me = aboutme
+				pi.save()
+				return True
+			else:
+				pi, created = Pi.objects.update_or_create(username=username, email=email, about_me=aboutme, doj=doj, dob=dob, bplace=birthplace, lives_in=livesin, occupation=occupation, gender=gender, website=website, phone_no=mobile, pi_id=username)
+				if created:
+					return True
+		return False
+
 
 
 
