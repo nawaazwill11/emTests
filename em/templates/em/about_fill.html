@@ -21,16 +21,16 @@
 {% block content %}
 <form method="POST" id="pi_form">
     {% csrf_token %}
-    <div class="pi_block block">
+    <div class="pi_block block col-lg-11">
         <div class="block-head">
             <h2><i>Person Information</i></h2>
         </div>
         <div class="block-main">
             <div class="block-layer">
-                <div class="field-label aboutme-label">
+                <div class="field-label fl-txtar">
                     <label>About Me:</label>
                 </div>
-                <div class="field-content aboutme-content">
+                <div class="field-content fc-txtar">
                     {{form.aboutme}}
                 </div>
             </div>
@@ -116,11 +116,204 @@
                 </div>
             </div>
             <div class="block-layer">
-                <div class="form_submit">
-                    <input type="submit" name="submit" value="Save Changes"   class="btn btn-success">
+                <div class="field-label">
+                    <label>Facebook:</label>
+                </div>
+                <div class="field-content">
+                    {{form.facebook}}
+                </div>
+            </div>
+            <div class="block-layer">
+                <div class="field-label">
+                    <label>Twitter:</label>
+                </div>
+                <div class="field-content">
+                    {{form.twitter}}
+                </div>
+            </div>
+            <div class="block-layer">
+                <div class="field-label">
+                    <label>Instagram:</label>
+                </div>
+                <div class="field-content">
+                    {{form.instagram}}
                 </div>
             </div>
         </div>    
-</div>
+    </div>
+    <div class="pi_block block col-lg-11">
+        <div class="block-head">
+            <h2><i>Travel Portfolio</i></h2>
+        </div>
+        <div class="block-main">
+            <div class="block-layer">
+                <div class="field-label fl-txtar">
+                    <label>Travelled Places:</label>
+                </div>
+                <div class="field-content fc-txtar ">
+                    {{form.travelledplaces}}
+                </div>
+            </div>
+            <div class="block-layer">
+                <div class="field-label fl-txtar">
+                    <label>Dream Places:</label>
+                </div>
+                <div class="field-content fc-txtar">
+                   <div class="birth-year">
+                       {{form.dreamplaces}}
+                   </div>
+                </div>
+            </div>
+            <div class="block-layer">
+                <div class="field-label fl-txtar">
+                    <label>Favorite Travel Places:</label>
+                </div>
+                <div class="field-content fc-txtar">
+                    {{form.favtravplaces}}
+                </div>
+            </div>
+            <div class="block-layer">
+                <div class="field-label fl-txtar">
+                    <label>Favorite Travel Season:</label>
+                </div>
+                <div class="field-content fc-txtar">
+                    {{form.favtravseasons}}
+                </div>
+            </div>
+            <div class="block-layer">
+                <div class="field-label fl-txtar">
+                    <label>Favorite Travel Moto:</label>
+                </div>
+                <div class="field-content fc-txtar">
+                    {{form.favtravmoto}}
+                </div>
+            </div>
+            <div class="block-layer">
+                <div class="field-label fl-txtar">
+                    <label>Favorite Travel Mode:</label>
+                </div>
+                <div class="field-content fc-txtar">
+                    {{form.favtravmode}}
+                </div>
+            </div>
+        </div>    
+    </div>
+    <div class="pi_block block col-lg-11">
+        <div class="block-head">
+            <h2><i>Hobbies & Skills</i></h2>
+        </div>
+        <div class="block-main">
+            <div class="block-layer">
+                <div class="field-label fl-txtar">
+                    <label>Hobbies:</label>
+                </div>
+                <div class="field-content fc-txtar ">
+                    {{form.hobbies}}
+                </div>
+            </div>
+            <div class="block-layer">
+                <div class="field-label fl-txtar">
+                    <label>Skilles:</label>
+                </div>
+                <div class="field-content fc-txtar">
+                   <div class="birth-year">
+                       {{form.skills}}
+                   </div>
+                </div>
+            </div>
+            <div class="block-layer">
+                <div class="field-label fl-txtar">
+                    <label>Interests:</label>
+                </div>
+                <div class="field-content fc-txtar">
+                    {{form.interests}}
+                </div>
+            </div>
+        </div>    
+    </div>
+    <div class="pi_block block col-lg-11">
+        <div class="block-head">
+            <h2><i>Education & Employement</i></h2>
+        </div>
+        <div class="block-main">
+            <div class="block-layer">
+                <div class="field-label fl-txtar">
+                    <label>School:</label>
+                </div>
+                <div class="field-content fc-txtar ">
+                    {{form.school}}
+                </div>
+            </div>
+            <div class="block-layer">
+                <div class="field-label fl-txtar">
+                    <label>College:</label>
+                </div>
+                <div class="field-content fc-txtar">
+                   <div class="birth-year">
+                       {{form.college}}
+                   </div>
+                </div>
+            </div>
+            <div class="block-layer">
+                <div class="field-label fl-txtar">
+                    <label>Additional Educations:</label>
+                </div>
+                <div class="field-content fc-txtar">
+                    {{form.aded}}
+                </div>
+            </div>
+            <div class="block-layer">
+                <div class="field-label fl-txtar">
+                    <label>Current Work:</label>
+                </div>
+                <div class="field-content fc-txtar">
+                    {{form.currwork}}
+                </div>
+            </div>
+            <div class="block-layer">
+                <div class="field-label fl-txtar">
+                    <label>Previous Work:</label>
+                </div>
+                <div class="field-content fc-txtar">
+                    {{form.prevwork}}
+                </div>
+            </div>
+            <div class="block-layer">
+                <div class="field-label fl-txtar">
+                    <label>Work Skills:</label>
+                </div>
+                <div class="field-content fc-txtar">
+                    {{form.workskills}}
+                </div>
+            </div>
+        </div>    
+    </div>
+    <div class="block-layer">
+        <div class="form_submit">
+            <input id="aboutsubmit" type="submit" name="submit" value="Save Changes"   class="btn btn-success">
+        </div>
+    </div>
 </form>
 {% endblock content %}
+
+{% block custom_scripts %}
+ <script>
+    $(document).ready(function() {
+        $("#aboutsubmit").click(function(){
+              $.ajax({
+                type: 'POST', 
+                url: '#', 
+                dataType: 'json',
+                data: $('#pi_form').serialize(),
+                success: function (x) {                
+                  alert("Changes have been saved") 
+                },
+                error:function(){
+                  alert("Changes cannot be saved.\nTry Again with proper inputs.") 
+                }
+            });
+          return false;
+        });
+    })
+</script>
+{% endblock custom_scripts %}

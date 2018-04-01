@@ -347,6 +347,7 @@ class Pi(models.Model):
     c_pic = models.BinaryField(blank=True, null=True)
     livesin = models.CharField(max_length=100, blank=True, null=True)
     occupation = models.CharField(max_length=100, blank=True, null=True)
+    gender = models.IntegerField()
     website = models.CharField(max_length=200, blank=True, null=True)
     mobile = models.CharField(max_length=20, blank=True, null=True)
     facebook = models.CharField(max_length=100, blank=True, null=True)
@@ -363,13 +364,11 @@ class Pi(models.Model):
     aded = models.CharField(max_length=1000, blank=True, null=True)
     currwork = models.CharField(max_length=1000, blank=True, null=True)
     prevwork = models.CharField(max_length=1000, blank=True, null=True)
-    workskills = models.CharField(max_length=1000, blank=True, null=True)
+    workskill = models.CharField(max_length=1000, blank=True, null=True)
     hobbies = models.CharField(max_length=1000, blank=True, null=True)
     skills = models.CharField(max_length=1000, blank=True, null=True)
     interests = models.CharField(max_length=1000, blank=True, null=True)
     pi_id = models.CharField(primary_key=True, max_length=100)
-    relationstatus = models.CharField(max_length=20, blank=True, null=True)
-    gender = models.CharField(max_length=7, blank=True, null=True)
 
     class Meta:
         managed = False

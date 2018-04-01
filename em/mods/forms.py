@@ -153,26 +153,44 @@ class Printer(forms.Form):
 	def print(*args):
 		for i in args:
 			print(i)
-		
+
+
 
 class AboutEditForm(forms.Form):
 	dayslist = [(str(i),'0'+str(i)) for i in [i for i in range(1,10)]] + [(str(i),str(i)) for i in [i for i in range(10,32)]]
 	monthslist =  [('01','Jan'), ('02','Feb'), ('03','Mar'), ('04','Apr'), ('05','May'), ('06','Jun'), ('07','Jul'), ('08','Aug'), ('09','Sep'), ('10','Oct'), ('11','Nov'), ('12','Dec')]
 	yearslist = [(i, i) for i in range(1930,2004)]
 	yearslist.reverse()
-	aboutme = forms.CharField(required=False, max_length=160, widget=forms.Textarea(attrs={'placeholder': 'Something about you...' }))
+	aboutme = forms.CharField(required=False, initial='', max_length=160, widget=forms.Textarea(attrs={'rows': '2' ,'placeholder': 'Something about you...' }))
 	dayz = forms.ChoiceField(choices=dayslist, required=True, widget=forms.Select(attrs={'class': 'slt'}))
 	monthz = forms.ChoiceField(choices=monthslist, required=True, widget=forms.Select(attrs={'class': 'slt'}))
 	yearz = forms.ChoiceField(choices=yearslist, required=True, widget=forms.Select(attrs={'class': 'slt'}))
 	birthplace = forms.CharField(required=False, max_length=500, widget=forms.TextInput(attrs={'placeholder': 'Eg. Daman, India'}))
 	livesin = forms.CharField(required=False, max_length=500, widget=forms.TextInput(attrs={'placeholder': 'Eg. Pune, India'}))
 	occupation = forms.CharField(required=False, max_length=500, widget=forms.TextInput(attrs={'placeholder': 'Eg. Programmer'}))
-	gender = forms.ChoiceField(choices=[('0','Male'),('1','Female'),('2','Other')], required=True, widget=forms.Select(attrs={'class': 'slt'}))
-	relationstatus = forms.ChoiceField(choices=[('0','Single'),('1','In a Relation'),('2','Married')], required=True, widget=forms.Select(attrs={'class': 'slt'}))
+	gender = forms.ChoiceField(choices=[('male','Male'),('female','Female'),('other','Other')], required=True, widget=forms.Select(attrs={'class': 'slt'}))
+	relationstatus = forms.ChoiceField(choices=[('single','Single'),('relation','In a Relation'),('married','Married')], required=False, widget=forms.Select(attrs={'class': 'slt'}))
 	email = forms.EmailField(required=True, widget=forms.EmailInput(attrs={'placeholder': 'Eg. some@mail.com'}))
 	website = forms.CharField(required=False, max_length=500, widget=forms.TextInput(attrs={'placeholder': 'Website'}))
 	mobile = forms.CharField(required=False, max_length=10, widget=forms.TextInput(attrs={'placeholder': 'Eg. 999990000'}))
-	#about_submit = forms.SubmitButtonField(initial=u'Save Changes')
+	facebook = forms.CharField(required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'https://www.facebook.com/user'}))
+	twitter = forms.CharField(required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'https://www.twitter.com/user'}))
+	instagram = forms.CharField(required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'https://www.instagram.com/user'}))
+	travelledplaces = forms.CharField(required=False, max_length=700, widget=forms.Textarea(attrs={'rows': '2' ,'placeholder': 'Places travelled to...' }))
+	dreamplaces = forms.CharField(required=False, max_length=700, widget=forms.Textarea(attrs={'rows': '2' ,'placeholder': 'Dream Places to travelled to...' }))
+	favtravplaces = forms.CharField(required=False, max_length=700, widget=forms.Textarea(attrs={'rows': '2' ,'placeholder': 'Favorite Travel places...' }))
+	favtravseasons = forms.CharField(required=False, max_length=700, widget=forms.Textarea(attrs={'rows': '2' ,'placeholder': 'Favorite travelling season...' }))
+	favtravmoto = forms.CharField(required=False, max_length=700, widget=forms.Textarea(attrs={'rows': '2' ,'placeholder': 'Favorite Travel Moto...' }))
+	favtravmode = forms.CharField(required=False, max_length=700, widget=forms.Textarea(attrs={'rows': '2' ,'placeholder': 'Favorite Travel Mode...' }))
+	hobbies = forms.CharField(required=False, max_length=700, widget=forms.Textarea(attrs={'rows': '2' ,'placeholder': 'Mention Hobbies...' }))
+	skills = forms.CharField(required=False, max_length=700, widget=forms.Textarea(attrs={'rows': '2' ,'placeholder': 'Mention Skills...' }))
+	interests = forms.CharField(required=False, max_length=700, widget=forms.Textarea(attrs={'rows': '2' ,'placeholder': 'Mention Interests...' }))
+	school = forms.CharField(required=False, max_length=700, widget=forms.Textarea(attrs={'rows': '2' ,'placeholder': 'Add School...' }))
+	college = forms.CharField(required=False, max_length=700, widget=forms.Textarea(attrs={'rows': '2' ,'placeholder': 'Add College...' }))
+	aded = forms.CharField(required=False, max_length=700, widget=forms.Textarea(attrs={'rows': '2' ,'placeholder': 'Add Additional Educations...' }))
+	currwork = forms.CharField(required=False, max_length=700, widget=forms.Textarea(attrs={'rows': '2' ,'placeholder': 'Currently working at...' }))
+	prevwork = forms.CharField(required=False, max_length=700, widget=forms.Textarea(attrs={'rows': '2' ,'placeholder': 'Previously working at...' }))
+	workskills = forms.CharField(required=False, max_length=700, widget=forms.Textarea(attrs={'rows': '2' ,'placeholder': 'Add Work Skills...' }))
 
 	def clean_aboutme(self):
 		isclean = self.cleaned_data['aboutme']
@@ -249,28 +267,141 @@ class AboutEditForm(forms.Form):
 			raise forms.ValidationError('Error in Mobile')
 		return isclean
 
-	def do_update(username, aboutme, dayz, monthz, yearz, birthplace, livesin, occupation, gender, relationstatus, email, website, mobile):
+	def clean_travelledplaces(self):
+		isclean = self.cleaned_data['travelledplaces']
+		if len(isclean) > 700:
+			raise forms.ValidationError('Error in Travelled Places')
+		return isclean
+
+	def clean_dreamplaces(self):
+		isclean = self.cleaned_data['dreamplaces']
+		if len(isclean) > 700:
+			raise forms.ValidationError('Error in Dream Places')
+		return isclean
+
+	def clean_favtravplaces(self):
+		isclean = self.cleaned_data['favtravplaces']
+		if len(isclean) > 700:
+			raise forms.ValidationError('Error in Favorite Travel Places')
+		return isclean
+
+	def clean_favtravseasons(self):
+		isclean = self.cleaned_data['favtravseasons']
+		if len(isclean) > 700:
+			raise forms.ValidationError('Error in Favorite Travel Season')
+		return isclean
+
+	def clean_favtravmoto(self):
+		isclean = self.cleaned_data['favtravmoto']
+		if len(isclean) > 700:
+			raise forms.ValidationError('Error in Favorite Travel Moto')
+		return isclean
+
+	def clean_favtravmode(self):
+		isclean = self.cleaned_data['favtravmode']
+		if len(isclean) > 700:
+			raise forms.ValidationError('Error in Favorite Travel Mode')
+		return isclean
+
+	def clean_hobbies(self):
+		isclean = self.cleaned_data['hobbies']
+		if len(isclean) > 700:
+			raise forms.ValidationError('Error in Hobbies')
+		return isclean
+
+	def clean_skills(self):
+		isclean = self.cleaned_data['skills']
+		if len(isclean) > 700:
+			raise forms.ValidationError('Error in Skills')
+		return isclean
+
+	def clean_interests(self):
+		isclean = self.cleaned_data['interests']
+		if len(isclean) > 700:
+			raise forms.ValidationError('Error in Interests')
+		return isclean
+
+	def clean_school(self):
+		isclean = self.cleaned_data['school']
+		if len(isclean) > 700:
+			raise forms.ValidationError('Error in School')
+		return isclean
+
+	def clean_college(self):
+		isclean = self.cleaned_data['college']
+		if len(isclean) > 700:
+			raise forms.ValidationError('Error in College')
+		return isclean
+
+	def clean_aded(self):
+		isclean = self.cleaned_data['aded']
+		if len(isclean) > 700:
+			raise forms.ValidationError('Error in Additional Educations')
+		return isclean
+
+	def clean_currwork(self):
+		isclean = self.cleaned_data['currwork']
+		if len(isclean) > 700:
+			raise forms.ValidationError('Error in Current Work')
+		return isclean
+
+	def clean_prevwork(self):
+		isclean = self.cleaned_data['prevwork']
+		if len(isclean) > 700:
+			raise forms.ValidationError('Error in Previous Work')
+		return isclean
+
+	def clean_workskills(self):
+		isclean = self.cleaned_data['workskills']
+		if len(isclean) > 700:
+			raise forms.ValidationError('Error in Work Skills')
+		return isclean
+
+	def clean_facebook(self):
+		isclean = self.cleaned_data['facebook']
+		if len(isclean) > 700:
+			raise forms.ValidationError('Error in Facebook')
+		return isclean
+
+	def clean_twitter(self):
+		isclean = self.cleaned_data['twitter']
+		if len(isclean) > 700:
+			raise forms.ValidationError('Error in Twitter')
+		return isclean
+
+	def clean_instagram(self):
+		isclean = self.cleaned_data['instagram']
+		if len(isclean) > 700:
+			raise forms.ValidationError('Error in Instragram')
+		return isclean
+
+	def do_update(username, aboutme, dayz, monthz, yearz, birthplace, livesin, occupation, gender, relationstatus, email, website, mobile, travelledplaces, dreamplaces, favtravplaces, favtravseasons, favtravmoto, favtravmode, hobbies, skills, interests, school, college, aded, currwork, prevwork, workskills, facebook, twitter, instagram):
+
 		user_data_valid = RegistrationForm.check_user_exists(username)
 		if user_data_valid:
+			user = AuthUser.objects.get(username=username)
+			doj = user.date_joined
 			now = datetime.datetime.now()
-			doj = now.strftime("%Y-%m-%d %H:%M")
 			dob = dt(year=int(yearz), month=int(monthz), day=int(dayz))
 			if (Pi.objects.filter(username=username).exists()):
-				pi = Pi.objects.get(username=username)
-				pi.about_me = aboutme
-				pi.save()
+				pi = Pi.objects.filter(username=username).update(aboutme=aboutme, dob=dob, birthplace=birthplace, livesin=livesin, occupation=occupation, gender=gender, relationstatus=relationstatus, website=website, mobile=mobile, travelledplaces=travelledplaces, dreamplaces=dreamplaces, favtravplaces=favtravplaces, favtravseasons=favtravseasons, favtravmoto=favtravmoto, favtravmode=favtravmode, hobbies=hobbies, skills=skills, interests=interests, school=school, college=college, aded=aded, currwork=currwork, prevwork=prevwork, workskills=workskills, facebook=facebook, twitter=twitter, instagram=instagram)
 				return True
 			else:
-				pi, created = Pi.objects.update_or_create(username=username, email=email, about_me=aboutme, doj=doj, dob=dob, bplace=birthplace, lives_in=livesin, occupation=occupation, gender=gender, website=website, phone_no=mobile, pi_id=username)
+				pi, created = Pi.objects.update_or_create(username=username, email=email, aboutme=aboutme, doj=doj, dob=dob, birthplace=birthplace, livesin=livesin, occupation=occupation, gender=gender, website=website, mobile=mobile, pi_id=username, travelledplaces=travelledplaces, dreamplaces=dreamplaces, favtravplaces=favtravplaces, favtravseasons=favtravseasons, favtravmoto=favtravmoto, favtravmode=favtravmode, hobbies=hobbies, skills=skills, interests=interests, school=school, college=college, aded=aded, currwork=currwork, prevwork=prevwork, workskills=workskills)
 				if created:
 					return True
 		return False
+	
 
 
-
-
-
-
+class GetInitial(forms.Form):
+	def initial(username):
+		if (AuthUser.objects.filter(username=username).exists()):
+			pi = Pi.objects.filter(username=username)
+			for i in pi.values():
+				data = i
+			return data
+		return None
 
 '''
 #Using clean()

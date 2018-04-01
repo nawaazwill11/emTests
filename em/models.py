@@ -342,42 +342,46 @@ class Photo(models.Model):
 
 class Pi(models.Model):
     username = models.CharField(unique=True, max_length=100)
-    email = models.CharField(unique=True, max_length=150)
-    about_me = models.CharField(max_length=160, blank=True, null=True)
+    email = models.CharField(max_length=150)
+    aboutme = models.CharField(max_length=160, blank=True, null=True)
     doj = models.DateTimeField()
     dob = models.DateTimeField()
-    bplace = models.CharField(max_length=100, blank=True, null=True)
+    birthplace = models.CharField(max_length=100, blank=True, null=True)
     p_pic = models.BinaryField(blank=True, null=True)
     c_pic = models.BinaryField(blank=True, null=True)
-    lives_in = models.CharField(max_length=100, blank=True, null=True)
+    livesin = models.CharField(max_length=100, blank=True, null=True)
     occupation = models.CharField(max_length=100, blank=True, null=True)
-    gender = models.IntegerField()
     website = models.CharField(max_length=200, blank=True, null=True)
-    phone_no = models.CharField(max_length=20, blank=True, null=True)
+    mobile = models.CharField(max_length=20, blank=True, null=True)
     facebook = models.CharField(max_length=100, blank=True, null=True)
     twitter = models.CharField(max_length=100, blank=True, null=True)
     instagram = models.CharField(max_length=100, blank=True, null=True)
-    travelled_places = models.CharField(max_length=1000, blank=True, null=True)
-    dream_places = models.CharField(max_length=1000, blank=True, null=True)
-    fav_places = models.CharField(max_length=1000, blank=True, null=True)
-    fav_season = models.CharField(max_length=1000, blank=True, null=True)
-    fav_moto = models.CharField(max_length=1000, blank=True, null=True)
-    fav_mode = models.CharField(max_length=1000, blank=True, null=True)
+    travelledplaces = models.CharField(max_length=1000, blank=True, null=True)
+    dreamplaces = models.CharField(max_length=1000, blank=True, null=True)
+    favtravplaces = models.CharField(max_length=1000, blank=True, null=True)
+    favtravseasons = models.CharField(max_length=1000, blank=True, null=True)
+    favtravmoto = models.CharField(max_length=1000, blank=True, null=True)
+    favtravmode = models.CharField(max_length=1000, blank=True, null=True)
     school = models.CharField(max_length=1000, blank=True, null=True)
     college = models.CharField(max_length=1000, blank=True, null=True)
-    additional_edu = models.CharField(max_length=1000, blank=True, null=True)
-    current_work = models.CharField(max_length=1000, blank=True, null=True)
-    previous_work = models.CharField(max_length=1000, blank=True, null=True)
-    work_skill = models.CharField(max_length=1000, blank=True, null=True)
+    aded = models.CharField(max_length=1000, blank=True, null=True)
+    currwork = models.CharField(max_length=1000, blank=True, null=True)
+    prevwork = models.CharField(max_length=1000, blank=True, null=True)
+    workskills = models.CharField(max_length=1000, blank=True, null=True)
     hobbies = models.CharField(max_length=1000, blank=True, null=True)
     skills = models.CharField(max_length=1000, blank=True, null=True)
     interests = models.CharField(max_length=1000, blank=True, null=True)
     pi_id = models.CharField(primary_key=True, max_length=100)
+    relationstatus = models.CharField(max_length=20, blank=True, null=True)
+    gender = models.CharField(max_length=7, blank=True, null=True)
 
     class Meta:
         managed = False
         db_table = 'pi'
-
+        
+    def __str__(self):
+        returns = '{0.username}'
+        return returns.format(self)
 
 class PollsChoice(models.Model):
     choice_text = models.CharField(max_length=200)

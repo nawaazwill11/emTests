@@ -10,9 +10,9 @@ from django.http import HttpResponseRedirect, HttpResponsePermanentRedirect, Jso
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from .models import Login
-from .mods.forms import LoginForm, RegistrationForm, Printer, AboutEditForm, GetInitial
+from .mods.forms import LoginForm, RegistrationForm, Printer
 from .mods.test import SharingForm
-import re
+
 
 def save_uploaded_file_to_media_root(f):
     with open('%s%s' % (settings.MEDIA_ROOT,f.name), 'wb+') as destination:
@@ -45,32 +45,13 @@ class IndexPageView(TemplateView):
 		form = self.form(initial='')
 		rform  = self.rform(initial='')
 		#Printer.print(rform)
-		return render(request, self.template_name, {'form': form,'rform': rform})
+		return render(request, self.template_name, {'form': form, 'rform': rform})
 		
 	def post(self, request, *args, **kwargs):
 		form = self.form(request.POST)
-		rform = self.rform(request.POST)
-		check_user_form = re.search(r'^\w+', form['username'].value(), re.I)
-		
-		if 'contact' in request.POST:
-			if rform.is_valid():
-				cleaned = rform.cleaned_data
-				username = cleaned['username']
-				email = cleaned['email']
-				password = cleaned['password']
-				repassword = cleaned['repassword']
-				contact = cleaned['contact']
-				recorded = RegistrationForm.register(username, email, password, repassword, contact)
-				if 'True' in recorded.values():
-					return JsonResponse(recorded)
-				else:
-					return JsonResponse(recorded)
-					error = recorded['error']
-					return render(request, self.template_name, {'error': error })
-			return render(request, self.template_name, {'form': form,'rform': rform})
-	#			return HttpResponseRedirect(template_name)
-
-		else:
+		rform = self.form(request.POST)
+		'''
+		if form['username'].value() is not None:
 			if form.is_valid():
 				cleaned = form.cleaned_data
 				username = cleaned['username']
@@ -92,7 +73,21 @@ class IndexPageView(TemplateView):
 				else:
 					raise ValidationError('nope')
 			return render(request, self.template_name, context=None)
-
+		'''
+#		if rform['username'].value() is not None:
+		if form.is_valid():
+			cleaned = form.cleaned_data
+			username = cleaned['username']
+			email = cleaned['email']
+			password = cleaned['password']
+			repassword = cleaned['repassword']
+			contact = cleaned['contact']
+			recorded = RegistrationForm.register(username, email, password, repassword, contact)
+#				if recorded:
+#					redirect_url = 'about/'
+#			return JsonResponse({'success': True, 'url': redirect_url })
+			return render(request, self.template_name, {'form': form, 'rform': rform})
+			return HttpResponseRedirect(template_name)
 
 
 
@@ -130,74 +125,12 @@ def logout_page (request):
 
 class AboutPageView(TemplateView):
 	template_name = 'about.html'
-	form = AboutEditForm
-	def get(self, request, *args, **kwargs):
-		initials = GetInitial.initial(request.session['username'])
-		Printer.print(initials)
-		form = self.form(initial=initials)
-		context = {'form': form}
 
-		return render(request, self.template_name, context)
+	def get(self, request, *args, **kwargs):
+		return render(request, self.template_name, context=None)
 
 	def post(self, request, *args, **kwargs):
 		return render(request, self.template_name, context=None)
-
-
-class AboutFillPageView(TemplateView):
-	template_name = 'about_fill.html'
-	form = AboutEditForm
-
-	def get(self, request, *args, **kwargs):
-		initial = GetInitial.initial(request.session['username'])
-		form = self.form(initial=initial)
-		context = {'form': form}
-		Printer.print(form)
-		return render(request, self.template_name, context)
-
-	def post(self, request, *args, **kwargs):
-		form = self.form(request.POST)
-		username = request.session['username']
-		if form.is_valid():
-			cleaned = form.cleaned_data
-			aboutme = cleaned['aboutme']
-			dayz = cleaned['dayz']
-			monthz = cleaned['monthz']
-			yearz = cleaned['yearz']
-			birthplace = cleaned['birthplace']
-			livesin = cleaned['livesin']
-			occupation = cleaned['occupation']
-			gender = cleaned['gender']
-			relationstatus = cleaned['relationstatus']
-			email = cleaned['email']
-			website = cleaned['website']
-			mobile = cleaned['mobile']
-			travelledplaces = cleaned['travelledplaces']
-			dreamplaces = cleaned['dreamplaces']
-			favtravplaces = cleaned['favtravplaces']
-			favtravseasons = cleaned['favtravseasons']
-			favtravmoto = cleaned['favtravmoto']
-			favtravmode = cleaned['favtravmode']
-			hobbies = cleaned['hobbies']
-			skills = cleaned['skills']
-			interests = cleaned['interests']
-			school = cleaned['school']
-			college = cleaned['college']
-			aded = cleaned['aded']
-			currwork = cleaned['currwork']
-			prevwork = cleaned['prevwork']
-			workskills = cleaned['workskills']
-			facebook = cleaned['facebook']
-			twitter = cleaned['twitter']
-			instagram = cleaned['instagram']
-			saved = AboutEditForm.do_update(username, aboutme, dayz, monthz, yearz, birthplace, livesin, occupation, gender, relationstatus, email, website, mobile, travelledplaces, dreamplaces, favtravplaces, favtravseasons, favtravmoto, favtravmode, hobbies, skills, interests, school, college, aded, currwork, prevwork, workskills, facebook, twitter, instagram)
-			if saved:
-				return JsonResponse({'success':True})
-			else:
-				return JsonResponse({'success':False})	
-		else:
-			return JsonResponse({'success':False})
-		return render(request, self.template_name, context={'form': form})
-
 
 
 class AlbumPageView(TemplateView):

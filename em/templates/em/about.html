@@ -17,7 +17,7 @@
       			<div class="dropup">
       				<button class="dropdown-toggle cap-edit-button" id="bio-edit" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-option-horizontal"></span></button>
       				<ul id="root-content-set" class="dropdown-menu" aria-labelledby="bio-edit">
-              <li><a href="#">Edit</a></li>
+              <li><a href="about_fill/">Edit</a></li>
             	</ul>
       			</div>
       		</div>
@@ -30,8 +30,8 @@
       				<div class="cap-subop">
   	    				<label class="label-dark">About Me:</label>
       				</div>
-      				<div class="cap-subop cap-subop-right">
-      					<span>I am a very hilarious person with an ambition to travel the entire world on my Uni-cycle.</span>	
+      				<div class="cap-subop cap-subop-right txtar">
+      					{{form.aboutme}}
       				</div>
       			</div>
       			<div class="cap-op">
@@ -39,7 +39,7 @@
   	    				<label class="label-dark">Birthday:</label>
       				</div>
       				<div class="cap-subop cap-subop-right">
-      					<span>24th November 1993</span>	
+      					{{form.dob}}	
       				</div>
       			</div>
       			<div class="cap-op">
@@ -47,7 +47,7 @@
   	    				<label class="label-dark">Birth Place:</label>
       				</div>
       				<div class="cap-subop cap-subop-right">
-      					<span>Daman, Daman & Diu, India</span>	
+      					{{form.birthplace}}
       				</div>
       			</div>
       			<div class="cap-op">
@@ -55,7 +55,7 @@
   	    				<label class="label-dark">Lives in:</label>
       				</div>
       				<div class="cap-subop cap-subop-right">
-      					<span>Pune, Maharashtra, India</span>	
+      					{{form.livesin}}
       				</div>
       			</div>
       			<div class="cap-op">
@@ -63,7 +63,7 @@
   	    				<label class="label-dark">Occupation:</label>
       				</div>
       				<div class="cap-subop cap-subop-right">
-      					<span>Enterprenuer</span>	
+      					{{form.occupation}}
       				</div>
       			</div>
       			<div class="cap-op">
@@ -71,15 +71,15 @@
   	    				<label class="label-dark">Gender:</label>
       				</div>
       				<div class="cap-subop cap-subop-right">
-      					<span>Males</span>	
+      					{{form.gender}}	
       				</div>
       			</div>
       			<div class="cap-op">
       				<div class="cap-subop">
-  	    				<label class="label-dark">Status:</label>
+  	    				<label class="label-dark"> Relation Status:</label>
       				</div>
       				<div class="cap-subop cap-subop-right">
-      					<span>In a Relationship</span>	
+      					{{form.relationstatus}}
       				</div>
       			</div>
       			<div class="cap-op">
@@ -87,7 +87,7 @@
   	    				<label class="label-dark">Email:</label>
       				</div>
       				<div class="cap-subop cap-subop-right">
-      					<span>mastermindjim@gmail.com</span>	
+      					{{form.email}}
       				</div>
       			</div>
       			<div class="cap-op">
@@ -95,7 +95,7 @@
   	    				<label class="label-dark">Website:</label>
       				</div>
       				<div class="cap-subop cap-subop-right">
-      					<span>endlessmiles.com</span>	
+      					{{form.website}}
       				</div>
       			</div>
       			<div class="cap-op">
@@ -103,23 +103,7 @@
   	    				<label class="label-dark">Phone Number:</label>
       				</div>
       				<div class="cap-subop cap-subop-right">
-      					<span>+91 9737177329</span>	
-      				</div>
-      			</div>
-      			<div class="cap-op">
-      				<div class="cap-subop">
-  	    				<label class="label-dark">Religious Belief</label>
-      				</div>
-      				<div class="cap-subop cap-subop-right">
-      					<span>Islam</span>	
-      				</div>
-      			</div>
-      			<div class="cap-op">
-      				<div class="cap-subop">
-  	    				<label class="label-dark">Political View:</label>
-      				</div>
-      				<div class="cap-subop cap-subop-right">
-      					<span>None</span>	
+      					{{form.mobile}}
       				</div>
       			</div>
       		</div>
@@ -129,7 +113,7 @@
       			<div class="dropup">
       				<button class="dropdown-toggle cap-edit-button" id="os-edit" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-option-horizontal"></span></button>
       				<ul id="root-content-set" class="dropdown-menu" aria-labelledby="os-edit">
-              <li><a href="#">Edit</a></li>
+              <li><a href="about_fill/">Edit</a></li>
             	</ul>
       			</div>
       		</div>
@@ -140,15 +124,15 @@
       		<div class="cap-layer">
       			<div class="cap-op">
       				<label class="label-dark">Facebook</label>
-      				<span>www.facebook.com/NawaazJames</span>
+      				{{form.facebook}}
       			</div>
       			<div class="cap-op">
       				<label class="label-dark">Twitter</label>
-      				<span>www.twitter.com/nawaazwill11</span>
+      				{{form.twitter}}
       			</div>
       			<div class="cap-op">
       				<label class="label-dark">Instagram</label>
-      				<span>www.instagram.com/nawaazwill11</span>
+      				{{form.instagram}}
       			</div>
       		</div>
       	</div>
@@ -159,7 +143,7 @@
       			<div class="dropup">
       				<button class="dropdown-toggle marker-edit-button" id="tp-edit" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-option-horizontal"></span></button>
       				<ul id="root-content-set" class="dropdown-menu" aria-labelledby="tp-edit">
-              <li><a href="#">Edit</a></li>
+              <li><a href="about_fill/">Edit</a></li>
             	</ul>
       			</div>
       		</div>
@@ -167,7 +151,7 @@
       			<div class="dropup">
       				<button class="dropdown-toggle marker-edit-button" id="hi-edit" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-option-horizontal"></span></button>
       				<ul id="root-content-set" class="dropdown-menu" aria-labelledby="hi-edit">
-              <li><a href="#">Edit</a></li>
+              <li><a href="about_fill/">Edit</a></li>
             	</ul>
       			</div>
       		</div>
@@ -187,43 +171,34 @@
   		    				<div class="marker-subop">
   		    					<label class="label-dark">Travelled Places</label>
   		    				</div>
-  		    				<div class="marker-op">
-  		    					<span>Daman, Daman & Diu, India</span>
-  		    					<span>Diu, Daman & Diu, India</span>
-  		    					<span>Mumbai, Maharashtra, India</span>
-  		    					<span>New York, New York, USA</span>
+  		    				<div id="txtar" class="marker-op">
+  		    					{{form.travelledplaces}}
   		    				</div>
   		    			</div>
   		    			<div class="marker-op">
   		    				<div class="marker-subop">
   		    					<label class="label-dark">Dream Places</label>
   		    				</div>
-  		    				<div class="marker-op">
-  		    					<span>Manali, Himachal Pradesh, India</span>
-  		    					<span>Banglore, Karnataka, India</span>
-  		    					<span>Shimla, J & K, India</span>
+  		    				<div id="txtar" class="marker-op">
+  		    					{{form.dreamplaces}}
   		    				</div>
   		    			</div>
   		    		</div>
   		    		<div class="marker-layer marker-layer-low">
   		    			<div class="marker-op">
   		    				<div class="marker-subop">
-  		    					<label class="label-dark">Favorite Places</label>
+  		    					<label class="label-dark">Favorite Travel Places</label>
   		    				</div>
-  		    				<div class="marker-op">
-  		    					<span>Daman, Daman & Diu, India</span>
-  		    					<span>Diu, Daman & Diu, India</span>
+  		    				<div id="txtar" class="marker-op">
+  		    					{{form.favtravplaces}}
   		    				</div>
   		    			</div>
   		    			<div class="marker-op">
   		    				<div class="marker-subop">
-  		    					<label class="label-dark">Favorite Season</label>
+  		    					<label class="label-dark">Favorite Travel Season</label>
   		    				</div>
-  		    				<div class="marker-op marker-op-row">
-  		    					<span>Spring</span><span>,</span>
-  		    					<span>Monsoon</span><span>,</span>
-  		    					<span>Autumn</span><span>,</span>
-  		    					<span>Winter</span>
+  		    				<div id="txtar" class="marker-op marker-op-row">
+  		    					{{form.favtravseasons}}
   		    				</div>
   		    			</div>
   		    		</div>
@@ -232,23 +207,16 @@
   	    				<div class="marker-subop">
   	    					<label class="label-dark">Favorite Travel Moto</label>
   	    				</div>
-  	    				<div class="marker-op marker-op-row">
-  	    					<span>Adventure</span><span>,</span>
-  	    					<span>Photography</span><span>,</span>
-  	    					<span>Sports Event</span><span>,</span>
-  	    					<span>Travel Bloggin</span><span>,</span>
-  	    					<span>Backpacking</span>
+  	    				<div id="txtar" class="marker-op marker-op-row">
+  	    					{{form.favtravmoto}}
   	    				</div>
   	    			</div>
   	    			<div class="marker-op">
   	    				<div class="marker-subop">
   	    					<label class="label-dark">Favorite Travel Mode</label>
   	    				</div>
-  	    				<div class="marker-op marker-op-row">
-  	    					<span>Cycle</span><span>,</span>
-  	    					<span>Motorbike</span><span>,</span>
-  	    					<span>Car</span><span>,</span>
-  	    					<span>On Foot</span>
+  	    				<div id="txtar" class="marker-op marker-op-row">
+  	    					{{form.favtravmode}}
   	    				</div>
   	    			</div>
   	    			</div>
@@ -259,11 +227,8 @@
   		    				<div class="marker-subop">
   		    					<label class="label-dark">Hobbies</label>
   		    				</div>
-  		    				<div class="marker-op marker-op-row">
-  		    					<span>Riding</span><span>,</span>
-  		    					<span>Sky Diving</span><span>,</span>
-  		    					<span>Scuba Diving</span><span>,</span>
-  		    					<span>Reading</span><span>,</span>
+  		    				<div id="txtar" class="marker-op marker-op-row">
+  		    					{{form.hobbies}}
   		    				</div>
   		    			</div>
   		    		</div>
@@ -272,11 +237,8 @@
   		    				<div class="marker-subop">
   		    					<label class="label-dark">Skills</label>
   		    				</div>
-  		    				<div class="marker-op marker-op-row">
-  		    					<span>Programming</span><span>,</span>
-  		    					<span>Karate</span><span>,</span>
-  		    					<span>Poetry</span><span>,</span>
-  		    					<span>Comedy</span>
+  		    				<div id="txtar" class="marker-op marker-op-row">
+  		    					{{form.skills}}
   		    				</div>
   		    			</div>
   		    		</div>
@@ -285,11 +247,8 @@
   		    				<div class="marker-subop">
   		    					<label class="label-dark">Interests</label>
   		    				</div>
-  		    				<div class="marker-op marker-op-row">
-  		    					<span>Gardening</span><span>,</span>
-  		    					<span>Cricket</span><span>,</span>
-  		    					<span>Basketball</span><span>,</span>
-  		    					<span>Gyming</span>
+  		    				<div id="txtar" class="marker-op marker-op-row">
+  		    					{{form.interests}}
   		    				</div>
   		    			</div>
   		    		</div>
@@ -297,8 +256,16 @@
       		</div>
       	</div>
       	<div class="marker-content">
+          <div class="marker-edit marker-edit-ee">
+            <div class="dropup">
+              <button class="dropdown-toggle marker-edit-button" id="hi-edit" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-option-horizontal"></span></button>
+              <ul id="root-content-set" class="dropdown-menu" aria-labelledby="hi-edit">
+              <li><a href="about_fill/">Edit</a></li>
+              </ul>
+            </div>
+          </div>
       		<div class="marker-layer">
-      			<div class="marker-op marker-op-head-left">
+      			<div class="marker-op marker-op-head-left nobod">
       				<h4>Education & Employement</h4>    				
       			</div>
       		</div>
@@ -310,26 +277,24 @@
   		    				<div class="marker-subop">
   		    					<label class="label-dark">School</label>
   		    				</div>
-  		    				<div class="marker-op">
-  		    					<span>Institute of Our Lady of Fatima, Daman</span>
+  		    				<div id="txtar" class="marker-op">
+  		    					{{form.school}}
   		    				</div>
   		    			</div>
   		    			<div class="marker-op">
   		    				<div class="marker-subop">
   		    					<label class="label-dark">College</label>
   		    				</div>
-  		    				<div class="marker-op">
-  		    					<span>SSR College, Silvassa</span>
-  		    					<span>Sinhgad Institue of Management and Computer Application, Pune</span>
+  		    				<div id="txtar" class="marker-op">
+                    {{form.college}}
   		    				</div>
   		    			</div>
   		    			<div class="marker-op">
   		    				<div class="marker-subop">
-  		    					<label class="label-dark">Editional Educations</label>
+  		    					<label class="label-dark">Additional Educations</label>
   		    				</div>
-  		    				<div class="marker-op marker-op-row">
-  		    					<span>Udacity</span><span>,</span>
-  		    					<span>Edx</span>
+  		    				<div id="txtar" class="marker-op marker-op-row">
+  		    					{{form.aded}}
   		    				</div>
   		    			</div>
   		    		</div>
@@ -338,32 +303,30 @@
   		    				<div class="marker-subop">
   		    					<label class="label-dark">Current Work</label>
   		    				</div>
-  		    				<div class="marker-op">
-  		    					<span>CEO, CTO Will Inc.</span>
+  		    				<div id="txtar" class="marker-op">
+  		    					{{form.currwork}}
   		    				</div>
   		    			</div>
   		    			<div class="marker-op">
   		    				<div class="marker-subop">
   		    					<label class="label-dark">Previous Work</label>
   		    				</div>
-  		    				<div class="marker-op">
-  		    					<span>Receptionist, Hotel Blue Lagoon</span>
+  		    				<div id="txtar" class="marker-op">
+  		    					{{form.prevwork}}
   		    				</div>
   		    			</div>
   		    			<div class="marker-op">
   		    				<div class="marker-subop">
   		    					<label class="label-dark">Work Skills</label>
   		    				</div>
-  		    				<div class="marker-op marker-op-row">
-  		    					<span>Python</span><span>,</span>
-  		    					<span>HTML</span><span>,</span>
-  		    					<span>CSS</span>
+  		    				<div id="txtar" class="marker-op marker-op-row">
+  		    					{{form.workskills}}
   		    				</div>
   		    			</div>
   		    		</div>
       			</div>
       		</div>
-      	</div>
+        </div>
       </div>
     </div>
   {% endblock boot %}

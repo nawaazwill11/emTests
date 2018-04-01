@@ -24,11 +24,11 @@
 	position: absolute;
 }
 .cap-edit-pi{
-	top: 33%;
+	top: 36%;
 	left: 27%;
 }
 .cap-edit-os {
-	top: 83.35%;
+	top: 81.5%;
     left: 27%;
 }
 .cap-edit-button, .marker-edit-button {
@@ -45,7 +45,7 @@
 .cap-op {
 	display: flex;
 	flex-direction: row;
-	margin-bottom: 30px; 
+	margin-bottom: 30.7px;
 }
 .cap-subop {
 	flex: 1;
@@ -73,7 +73,7 @@
 .marker-layer {
 	display: flex;
 	flex-direction: row;
-	padding: 15px;
+	padding: 12.3px;
 }
 .marker-content-main {
 	display: flex;
@@ -92,6 +92,8 @@
 .marker-layer-low {
 	display: flex;
 	flex-direction: row;
+	height: 100px;
+	height: fit-content;
 }
 .marker-op-head-left {
 	flex: 2;
@@ -114,13 +116,43 @@
 	flex: 1 60px;
 }
 .marker-edit-tp {
-	top: 33%;
+	top: 36%;
     left: 73%;
 }
 .marker-edit-hi {
-	top: 33%;
-    left: 96%;
+	top: 36%;
+    right: 3%;
+}
+.marker-edit-ee{
+	top: 63.7%;
+	right: 3%;
 }
 .marker-div-low-2 {
 	width: 100%;
+}
+.nobod {
+	border: 0;
+}
+#txtar{
+	margin: 0px;
+    width: 200px;
+    min-height: 26px;
+    height: fit-content;
+    border: none;
+    resize: none;
+    pointer-events: none
+}
+input {
+	border: none;
+    pointer-events: none;
+}
+
+textarea {
+	margin: 0px;
+    width: 200px;
+    min-height: 26px;
+    height: fit-content;
+    border: none;
+    resize: none;
+    pointer-events: none
 }
