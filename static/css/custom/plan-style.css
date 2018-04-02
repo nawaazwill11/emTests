@@ -23,8 +23,9 @@
 	flex: 1;
 }
 .option-solo > img, .option-group > img, .op-ty >img {
-	width: 250px;
+	width: 260px;
     height: 120px;
+    border: 5px solid;
     opacity: 0.7;
 }
 .option-solo:hover, .option-group > img:hover {
@@ -51,6 +52,11 @@
 
 .op-ty {
 	margin-left: 30px;
+	margin-right: 90px;
+	cursor: pointer;
+}
+.op-ty:hover {
+	box-shadow: 0px 0px 15px 5px gray;
 }
 
 .navigante {
@@ -150,8 +156,13 @@
 
 .sop {
 	display: flex;
-	flex: 1;
 	margin-left: 30px;
+	margin-right: 90px;
+	border: 5px solid;
+	cursor: pointer;
+}
+.sop:hover {
+	box-shadow: 0px 0px 10px 5px gray;
 }
 .sop > img {
 	width: 250px;
@@ -170,10 +181,12 @@
     font-weight: 900;
     margin-top: 37px;
     background-color: white;
+    width: 87.5%;
 }
 .op {
 	display: flex;
 	border-radius: 5px;
+	margin-bottom: 20px;
 }
 .prog-focus {
 	background-color: white;
@@ -495,4 +508,10 @@ textarea{
 }
 .first {
 	border: 1px solid red;
+}
+.company-select {
+	box-shadow: 0px 0px 15px 5px gray;
+}
+.moto-select {
+	box-shadow: 0px 0px 15px 5px gray;	
 }

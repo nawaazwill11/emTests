@@ -2,3 +2,4 @@
 2. Foreign key needs an id of type int which wasn't in the table. That is the reason it wasn't being able to assign the value (8) to username as it returned an id (8) and the username (waheed). So the workaround is adding a column name id of type integer having a primary key in the table. Try this.
 3. Redirect specific section in page.
    Link:https://stackoverflow.com/questions/17687328/getting-a-link-to-go-to-a-specific-section-on-another-page
+4. Bind the back key to prev of plan to avoid going to the previous page.

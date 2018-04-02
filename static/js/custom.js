@@ -20,6 +20,9 @@ function navigante(main,a,b,c) {
 	document.getElementById(b).style.display = "none";
 	document.getElementById(c).style.display = "none";
 }
+function pb_nav(pb_id) {
+  pb_id.addClass('prog-focus')
+}
 
 function publishTrip() {
 	location.href = "../mytrip";
@@ -127,25 +130,28 @@ var button = $( '#open' )[0];
           }
       });
 
-function profileupload(link, overlay, D) {
+function profileupload(lin, olay, D) {
+          var link = $( '#profileedit' )[0];
+          var overlay = $( '#olay' )[0];
+          var TD = $( '#upload-overlay-photo' )[0];
 
           $( link ).on( 'click', function ( e ) {
               $( overlay ).show();
-              $( D ).show();
+              $( TD ).show();
               e.stopPropagation();
           });
 
           $( document ).on( 'click', function ( e ) {
-              if ( $( e.target ).closest( D ).length === 0 ) {
+              if ( $( e.target ).closest( TD ).length === 0 ) {
                   $( overlay ).hide();
-                  $( D ).hide();
+                  $( TD ).hide();
               }
           });
                           
           $( document ).on( 'keydown', function ( e ) {
               if ( e.keyCode === 27 ) {
                   $( overlay ).hide();
-                  $( D ).hide();
+                  $( TD ).hide();
               }
           });
 }

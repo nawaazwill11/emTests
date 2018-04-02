@@ -31,12 +31,12 @@
   						</div>
   					</div>
   					<div class="l1-options">
-  						<div class="option-solo op-ty">
+  						<div id="solo" class="option-solo op-ty" onclick="get_company(this.id)">
   							<img src="{% static "img/solo-traveller.jpg" %}">
   							<span><h3>SOLO</h3></span>
   						</div>
   							
-  						<div class="option-group op-ty">
+  						<div id="group" class="option-group op-ty" onclick="get_company(this.id)">
   							<img src="{% static "img/group-traveller.jpg" %}">
   							<span><h3>GROUP</h3></span>
   						</div>
@@ -52,56 +52,56 @@
   					<div class="l2-options">
   						<div class="sub-layer-1 sl">
   							<div class="sl1 op">
-  								<div class="sl1-op1 sop">
+  								<div id="adventure" class="sl1-op1 sop" onclick="get_moto(this.id)">
   									<img src="{% static "img/adventure.jpg" %}">
   									<span><h3>Adventure</h3></span>
   								</div>
   							
-  								<div class="sl1-op2 sop">
+  								<div id="exploring" class="sl1-op2 sop" onclick="get_moto(this.id)">
 		  							<img src="{% static "img/explore.jpg" %}">
 		  							<span><h3>Exploring</h3></span>
   								</div>
   							</div>
   							<div class="sl2 op">
-  								<div class="sl2-op1 sop">
+  								<div id="photography" class="sl2-op1 sop" onclick="get_moto(this.id)">
   									<img src="{% static "img/photography.jpg" %}">
   									<span><h3>Photography</h3></span>
   								</div>
   							
-  								<div class="sl2-op2 sop">
+  								<div id="sports" class="sl2-op2 sop" onclick="get_moto(this.id)">
 		  							<img src="{% static "img/sports.jpg" %}">
 		  							<span><h3>Sport Event</h3></span>
   								</div>
   							</div>
   							<div class="sl3 op">
-  								<div class="sl3-op1 sop">
+  								<div id="food" class="sl3-op1 sop" onclick="get_moto(this.id)">
   									<img src="{% static "img/food.jpg" %}">
   									<span><h3>Food & Cuisine</h3></span>
   								</div>
   							
-  								<div class="sl3-op2 sop">
+  								<div id="fitness" class="sl3-op2 sop" onclick="get_moto(this.id)">
 		  							<img src="{% static "img/exercise.jpg" %}">
-		  							<span><h3>Exercise</h3></span>
+		  							<span><h3>Fitness</h3></span>
   								</div>
   							</div>
   							<div class="sl4 op">
-  								<div class="sl4-op1 sop">
-  									<img src="{% static "img/shopping.jpg" %}">
+  								<div id="shopping" class="sl4-op1 sop" onclick="get_moto(this.id)">
+  									<img src="{% static "img/shopping.jpg" %}" >
   									<span><h3>Shopping</h3></span>
   								</div>
   							
-  								<div class="sl4-op2 sop">
+  								<div id="travel" class="sl4-op2 sop" onclick="get_moto(this.id)">
 		  							<img src="{% static "img/travel-blog.jpg" %}">
 		  							<span><h3>Travel Blogging</span>
   								</div>
   							</div>
   							<div class="sl5 op">
-  								<div class="sl5-op1 sop">
+  								<div id="partying" class="sl5-op1 sop" onclick="get_moto(this.id)">
   									<img src="{% static "img/party.jpg" %}">
   									<span><h3>Partying</h3></span>
   								</div>
   							
-  								<div class="sl5-op2 sop">
+  								<div id="backtracking" class="sl5-op2 sop" onclick="get_moto(this.id)">
 		  							<img src="{% static "img/backpacking.jpg" %}">
 		  							<span><h3>Backtracking</h3></span>
   								</div>
@@ -118,10 +118,10 @@
   							<button class="btn btn-success glyphicon glyphicon-floppy-disk" onclick="save()"><a href="{% url 'mytrip' %}"></a></button>
   						</div>
   						<div id=btn-prev class="btn-prev" style="visibility: hidden;">
-  							<button class="btn btn-primary">Prev</button>
+  							<button class="btn btn-primary" onclick="prev_click1()">Prev</button>
   						</div>
   						<div id="btn-next" class="btn-next">
-  							<button class="btn btn-primary" onclick="navigante('two','one','three','four')">Next</button>
+  							<button class="btn btn-primary" onclick="navigante('two','one','three','four'); next_click1()">Next</button>
   						</div>
   					</div>
   				</div>
@@ -667,24 +667,24 @@
           <div class="prog-body">
             <div class="club">
               <div class="prog-layer" style="margin-top: 10px;">
-                <div class="hash">
+                <div id="pb-one" class="hash first" onclick="navigante('one','two','three','four')">
                   <div class="sub-hash p-heads">
                     <h4><b>#1 Type</b></h4>
                   </div>
                   <div class="sub-hash p-bot">
                     <div class="s-sh">
                       <span class="hash-content-left"><b>Company:</b></span>
-                      <span class="hash-content-right">Group</span>
+                      <span id="pb-company" class="hash-content-right"></span>
                     </div>
                     <div class="s-sh">
                       <span class="hash-content-left"><b> Travel Moto:</b></span>
-                      <span class="hash-content-right">Photography</span>
+                      <span id="pb-moto" class="hash-content-right"></span>
                     </div>
                   </div>  
                 </div>
               </div>
               <div class="prog-layer">
-                <div class="hash">
+                <div id="pb-two" class="hash" onclick="navigante('two','one','three','four')">
                   <div class="sub-hash p-heads">
                     <h4><b>#2 Route Info</b></h4>
                   </div>
@@ -715,7 +715,7 @@
             </div>
             <div class="club">
               <div class="prog-layer">
-                <div class="hash">
+                <div id="pb-three" class="hash" onclick="navigante('three','two','one','four')">
                   <div class="sub-hash p-heads">
                     <h4><b>#3 Date and Other Info</b></h4>
                   </div>
@@ -744,7 +744,7 @@
                 </div>
               </div>
               <div class="prog-layer">
-              <div class="hash">
+              <div id="pb-four" class="hash" onclick="navigante('four','two','three','one')">
                 <div class="sub-hash p-heads">
                   <h4><b>#4 Cost Info</b></h4>
                 </div>
@@ -773,3 +773,66 @@
         </div>
   		</div>
   {% endblock content %}
+
+  {% block custom_scripts %}
+    <script type="text/javascript">
+      $(document).ready(function() {
+          var addclass = 'company-select';
+          var $cols = $('.op-ty').click(function(e) {
+            $cols.removeClass(addclass);
+            $(this).addClass(addclass);
+          });
+      })
+      $(document).ready(function() {
+          var addclass = 'moto-select';
+          var $cols = $('.sop').click(function(e) {
+            $cols.removeClass(addclass);
+            $(this).addClass(addclass);
+          });
+      })
+    </script>
+    <script type="text/javascript">
+      var addclass = 'prog-focus';
+      var initremove = 'first';
+      var $cols = $('.hash').click(function(e) {
+        $cols.removeClass(addclass);
+        $cols.removeClass(initremove);
+        $(this).addClass(addclass);
+      });
+    </script>
+    <script type="text/javascript">
+      var moto;
+      var company_dict = {'solo': 'Solo', 'group': 'Group'}
+      var moto_dict = {'adventure': 'Adventure', 'exploring': 'Exploring', 'photography': 'Photography', 'sports': 'Sport Event', 'food': 'Food & Cuisine', 'fitness': 'Fitness', 'shopping': 'Shopping', 'travel': 'Travel Blogging', 'partying': 'Partying', 'backtracking': 'Backtracking'}
+      var dict1 = {'company':'', 'moto': ''}
+      function get_company(id){
+        dict1['company'] = company_dict[id]
+      }
+      function get_moto(id){
+        dict1['moto'] = moto_dict[id]
+      }
+      function pb_focus(pb_id) {
+        focus = document.getElementById(pb_id)
+        focus.classList.add('prog-focus')
+      }
+      function pb_unfocus(pb_id) {
+        unfocus = document.getElementById(pb_id)
+        unfocus.classList.remove('first')
+        unfocus.classList.remove('prog-focus')
+      }
+      function next_click1(){
+        var pb_company = document.getElementById('pb-company')
+        var pb_moto = document.getElementById('pb-moto')
+        pb_company.innerHTML = ""
+        pb_moto.innerHTML = ""
+        pb_company.innerHTML = dict1['company']
+        pb_moto.innerHTML = dict1['moto']
+        pb_focus('pb-two')
+        pb_unfocus('pb-one')
+      }
+      function prev_click1() {
+        pb_focus('pb-one')
+        pb_unfocus('pb-two')
+      }
+    </script>
+  {% endblock custom_scripts %}
