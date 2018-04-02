@@ -141,10 +141,11 @@ class RegistrationForm(forms.Form):
 		if not(has_user and has_email):
 			user = User(username=username, email=email, password=password)
 			user.is_staff = False
+			user.set_password(password)
 			user.is_superuser = False
 			user.is_active = True
 			user.save()
-			print('done')
+			user = User.objects.get(username=username)
 			return({'success': True, 'message': 'User\'s up the arse'})
 		return({'success': False, 'message': 'Error. Try Again with other credentials.'})
 
@@ -153,6 +154,17 @@ class Printer(forms.Form):
 	def print(*args):
 		for i in args:
 			print(i)
+
+	def img(username):
+		pi = Pi.objects.get(username=username)
+		ppic = pi.profilepic
+		return ppic
+
+	def covimg(username):
+		pi = Pi.objects.get(username=username)
+		cpic = pi.coverpic
+		return cpic
+
 
 
 
@@ -168,8 +180,8 @@ class AboutEditForm(forms.Form):
 	birthplace = forms.CharField(required=False, max_length=500, widget=forms.TextInput(attrs={'placeholder': 'Eg. Daman, India'}))
 	livesin = forms.CharField(required=False, max_length=500, widget=forms.TextInput(attrs={'placeholder': 'Eg. Pune, India'}))
 	occupation = forms.CharField(required=False, max_length=500, widget=forms.TextInput(attrs={'placeholder': 'Eg. Programmer'}))
-	gender = forms.ChoiceField(choices=[('male','Male'),('female','Female'),('other','Other')], required=True, widget=forms.Select(attrs={'class': 'slt'}))
-	relationstatus = forms.ChoiceField(choices=[('single','Single'),('relation','In a Relation'),('married','Married')], required=False, widget=forms.Select(attrs={'class': 'slt'}))
+	gender = forms.ChoiceField(choices=[('none',' '), ('male','Male'),('female','Female'),('other','Other')], required=True, widget=forms.Select(attrs={'class': 'slt'}))
+	relationstatus = forms.ChoiceField(choices=[('none',' '), ('single','Single'),('relation','In a Relation'),('married','Married')], required=False, widget=forms.Select(attrs={'class': 'slt'}))
 	email = forms.EmailField(required=True, widget=forms.EmailInput(attrs={'placeholder': 'Eg. some@mail.com'}))
 	website = forms.CharField(required=False, max_length=500, widget=forms.TextInput(attrs={'placeholder': 'Website'}))
 	mobile = forms.CharField(required=False, max_length=10, widget=forms.TextInput(attrs={'placeholder': 'Eg. 999990000'}))
@@ -191,6 +203,7 @@ class AboutEditForm(forms.Form):
 	currwork = forms.CharField(required=False, max_length=700, widget=forms.Textarea(attrs={'rows': '2' ,'placeholder': 'Currently working at...' }))
 	prevwork = forms.CharField(required=False, max_length=700, widget=forms.Textarea(attrs={'rows': '2' ,'placeholder': 'Previously working at...' }))
 	workskills = forms.CharField(required=False, max_length=700, widget=forms.Textarea(attrs={'rows': '2' ,'placeholder': 'Add Work Skills...' }))
+	
 
 	def clean_aboutme(self):
 		isclean = self.cleaned_data['aboutme']
@@ -391,11 +404,23 @@ class AboutEditForm(forms.Form):
 				if created:
 					return True
 		return False
-	
+
+class ProfileForm(forms.Form):
+	profilepic = forms.FileField(required=False)
+	coverpic = forms.FileField(required=False)
+
+	def clean_profilepic(self):
+		isclean = self.cleaned_data['profilepic']
+		return isclean
+
+	def clean_coverpic(self):
+		isclean = self.cleaned_data['coverpic']
+		return isclean
 
 
-class GetInitial(forms.Form):
+class GetAboutInitial(forms.Form):
 	def initial(username):
+		data = {}
 		if (AuthUser.objects.filter(username=username).exists()):
 			pi = Pi.objects.filter(username=username)
 			for i in pi.values():

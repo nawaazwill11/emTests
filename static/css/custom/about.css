@@ -144,7 +144,7 @@
 }
 input {
 	border: none;
-    pointer-events: none;
+    pointer-events: one;
 }
 
 textarea {
@@ -155,4 +155,51 @@ textarea {
     border: none;
     resize: none;
     pointer-events: none
+}
+
+::placeholder {
+	color: transparent;
+}
+select{
+	border: none;
+	background-color: transparent;
+	-webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    pointer-events: none;
+}
+select::-ms-expand {
+	display: none;
+}
+.testpicupload {
+	position: absolute;
+    background-color: #5c5858;
+    color: white;
+}
+#olay {
+    top: 0;
+    left: 0;
+    background-color: grey;
+    opacity: 0.6;
+    position: fixed;
+    width: 100%;
+    min-height: 100%;
+    overflow: hidden;
+    z-index: 1030;
+}
+.upload-overlay {
+    position: fixed;
+    align-items: center;
+    justify-content: center;
+    top: 85px;
+    left: -200px;
+    bottom: 0;
+    right: 0;
+    background-color: white;
+    width: 1200px;
+    margin-left: 23%;
+    height: 95%;
+    border-radius: 5px;
+    margin-top: -70px;
+    z-index: 1031;
 }

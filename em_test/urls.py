@@ -1,18 +1,5 @@
-"""em_test URL Configuration
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/1.11/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  url(r'^em/', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  url(r'^em/', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.conf.urls import url, include
-    2. Add a URL to urlpatterns:  url(r'^em/blog/', include('blog.urls'))
-"""
+from django.conf import settings
+from django.conf.urls.static import static
 from django.conf.urls import url, include
 from django.contrib import admin
 from em import views
@@ -20,6 +7,7 @@ from em.models import *
 from em import urls as emurls
 from django.contrib.auth.decorators import login_required, permission_required, user_passes_test
 
+#PROJECT URLS
 
 testspatterns = [
     url(r'^$', views.TestPageView.as_view(), name='test'),
@@ -51,3 +39,5 @@ urlpatterns = [
     url(r'^em/traveller_main/', include(emurls.travellermainpatterns)),
 ]
 
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -10,70 +10,15 @@
 </head>
 <body>
 	<div class="main">
-	<div id="ajresp"></div>
-		<form method="POST" id="trial" action="#">
-			{% csrf_token %}
-
-				{{form.username}}
-				
-				{{form.password}}
-
-				<input id="tria" class="full-width" type="submit" name="submit">
+		<form id="upload_form" method="POST" enctype="multipart/form-data">
+		{% csrf_token %}
+		<p>{{ form.non_field_error }}</p>
+		<p>{{ form.profilepic.errors }}</p>
+		<p>{{ form.profilepic }}</p>
+		<input type="submit" name="Upload">
 		</form>
-		<div id="passw-error">
-			
-		</div>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script>
-	   $(document).ready(function() {
-		    $("submit").submit(function(event) {
-		       event.preventDefault();
-		       $.ajax({ data: $(this).serialize(), 
-		                type: $(this).attr('method'), 
-		                url: $(this).attr('action'), 
-		                success: function(response) {
-		                     console.log(response);
-		                     if(response['success']) {
-		                         $("#passw-error").html("<div class='alert alert-success'>     Succesfully sent feedback, thank you!</div>");
-		                        
-		                     } 
-		                     if(response['error']) {
-		                         $("#passw-error").html("<div class='alert alert-danger'>Lahu-Da</div>");
-		                     } 
-		                },
-		                error: function (request, status, error) {
-		                     console.log(request.responseText);
-		                }
-		       });
-		   });
-		})
-    </script>
-
-<!--	<script type="text/javascript">
-		$(document).ready(function(){
-			$("#trial").submit(function(event){
-				event.preventDefault();
-				$.ajax({data: $(this).serialize(),
-						type: $(this).attr('method'),
-						url: $(this).attr('action'),
-						success: function(response){
-							console.log(response);
-							if (response['success']) {
-								$("#tabl").html("<div class='alert alert-success'>Success</div>");
-								
-							}
-							else {
-								$("#tabl").html("<div class='alert alert-danger'>Failed</div>");
-							}
-						},
-						error: function (request, status, error) {
-							console.log(request.responseText);
-						}
-				});
-			});
-		})
-	</script>
--->
+		<img src="{{ MEDIA_URL }}{{ ppic }}">
+	</div>
 
 </body>
 </html>

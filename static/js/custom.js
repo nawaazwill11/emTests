@@ -126,3 +126,26 @@ var button = $( '#open' )[0];
               $( elem ).hide();
           }
       });
+
+function profileupload(link, overlay, D) {
+
+          $( link ).on( 'click', function ( e ) {
+              $( overlay ).show();
+              $( D ).show();
+              e.stopPropagation();
+          });
+
+          $( document ).on( 'click', function ( e ) {
+              if ( $( e.target ).closest( D ).length === 0 ) {
+                  $( overlay ).hide();
+                  $( D ).hide();
+              }
+          });
+                          
+          $( document ).on( 'keydown', function ( e ) {
+              if ( e.keyCode === 27 ) {
+                  $( overlay ).hide();
+                  $( D ).hide();
+              }
+          });
+}

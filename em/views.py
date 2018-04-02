@@ -9,8 +9,8 @@ from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect, HttpResponsePermanentRedirect, JsonResponse
 from django.shortcuts import render
 from django.views.generic import TemplateView
-from .models import Login
-from .mods.forms import LoginForm, RegistrationForm, Printer, AboutEditForm, GetInitial
+from .models import Login, Pi
+from .mods.forms import LoginForm, RegistrationForm, Printer, AboutEditForm, GetAboutInitial, ProfileForm
 from .mods.test import SharingForm
 import re
 
@@ -21,16 +21,25 @@ def save_uploaded_file_to_media_root(f):
 
 class TestPageView(TemplateView):
 	template_name = 'test/test1.html'
-	form = LoginForm
+	form = ProfileForm
+
+	
 
 	def get(self, request, *args, **kwargs):
+		ppic = Printer.img(request.session['username'])
 		form = self.form(initial='')
-		return render(request, self.template_name, {'form': form})
+		return render(request, self.template_name, {'form': form,'ppic': ppic})	
 
 	def post(self, request, *args, **kwargs):
-		form = self.form(request.POST)
+		form = self.form(request.POST, request.FILES)
 		if form.is_valid():
-			return JsonResponse({'success':True})
+			pic = Pi.objects.get(username=request.session['username'])
+			pic.profilepic = request.FILES['profilepic']
+			pic.save()
+			ppic = Printer.img(request.session['username'])
+			return render(request, self.template_name, {'form': form,'ppic': ppic})	
+		else:
+			return JsonResponse({'success':False})
 		return render(request, self.template_name, context=None)
 
 
@@ -76,6 +85,7 @@ class IndexPageView(TemplateView):
 				username = cleaned['username']
 				password = cleaned['password']
 				user = authenticate(request, username=username, password=password)
+				Printer.print(user)
 				#l = LoginForm.loginauth(user)
 				if user is not None:				
 					in_session = create_session(request, username)
@@ -131,28 +141,63 @@ def logout_page (request):
 class AboutPageView(TemplateView):
 	template_name = 'about.html'
 	form = AboutEditForm
+	imgform = ProfileForm
+	initials = ''
+
 	def get(self, request, *args, **kwargs):
-		initials = GetInitial.initial(request.session['username'])
-		Printer.print(initials)
+		initials = GetAboutInitial.initial(request.session['username'])
 		form = self.form(initial=initials)
-		context = {'form': form}
+		profilepic_init = Printer.img(request.session['username'])
+		imgform = self.imgform(initial='')
+		coverpic_init = Printer.covimg(request.session['username'])
+		context = {'form': form, 'imgform': imgform, 'profilep': profilepic_init, 'coverp': coverpic_init}
 
 		return render(request, self.template_name, context)
 
 	def post(self, request, *args, **kwargs):
-		return render(request, self.template_name, context=None)
+		imgform = self.imgform(request.POST, request.FILES)
+		profilepic_init=''
+		coverpic_init = ''
+		Printer.print('ere')
+		if 'profilepic' in request.FILES:
+			if imgform.is_valid():
+				Printer.print('in profile')
+				cleaned = imgform.cleaned_data
+				propic = cleaned['profilepic']
+				pi = Pi.objects.get(username=request.session['username'])
+				pi.profilepic = propic
+				pi.save()
+				Printer.print('ahiya')
+				profilepic_init = Printer.img(request.session['username'])
+				coverpic_init = Printer.covimg(request.session['username'])
+				return render(request, self.template_name, context={'imgform': imgform, 'profilep': profilepic_init, 'coverp': coverpic_init})
+		elif 'coverpic' in request.FILES:
+			if imgform.is_valid():
+				cleaned = imgform.cleaned_data
+				covpic = cleaned['coverpic']
+				pi = Pi.objects.get(username=request.session['username'])
+				pi.coverpic = covpic
+				pi.save()
+				profilepic_init = Printer.img(request.session['username'])
+				coverpic_init = Printer.covimg(request.session['username'])
+				return render(request, self.template_name, context={'imgform': imgform, 'profilep': profilepic_init, 'coverp': coverpic_init})
+			else:
+				print('locha lapsi')
+
+		return 
 
 
 class AboutFillPageView(TemplateView):
 	template_name = 'about_fill.html'
 	form = AboutEditForm
+	initials = ''
 
 	def get(self, request, *args, **kwargs):
-		initial = GetInitial.initial(request.session['username'])
-		form = self.form(initial=initial)
-		context = {'form': form}
-		Printer.print(form)
-		return render(request, self.template_name, context)
+		if check_session_valid:
+			initial = GetInitial.initial(request.session['username'])
+			form = self.form(initial=initial)
+			context = {'form': form}
+			return render(request, self.template_name, context)
 
 	def post(self, request, *args, **kwargs):
 		form = self.form(request.POST)

@@ -30,7 +30,7 @@
   <div class="root">
         <div class="root-content">
           <div class="cover">
-            <img src="{% static '' %}img/cover.jpg">
+            <img src="{{ MEDIA_URL }}{{ coverp }}">
           </div>
           <div class="sunglass">
             <div class="rowlo">
@@ -53,7 +53,7 @@
             <div class="author-content">
               <div class="onNose-photo">
                 <a href="#">
-                    <img class="round-ppic" src="{% static 'img/ppic.jpg' %}">
+                    <img class="round-ppic" src="{{ MEDIA_URL }}{{ profilep }}">
                 </a>
               </div>
               <div class="author-name">
@@ -67,8 +67,8 @@
               <span class="glyphicon glyphicon-cog"></span>
               </button>
               <ul id="root-content-set" class="dropdown-menu" aria-labelledby="photo-edit">
-                <li><a href="#">Update Profile Picture</a></li>
-                <li><a href="#">Update Cover Photo</a></li>
+                <li><a id="profileedit" href="#" onclick="letupload(this.id)">Update Profile Picture</a></li>
+                <li><a id="coveredit" href="#" onclick="letupload(this.id)">Update Cover Photo</a></li>
                 <li role="separator" class="divider"></li>
                 <li><a href="#">Remove Profile Photo</a></li>
                 <li><a href="#">Remove Cover Photo</a></li>
@@ -76,11 +76,63 @@
           </div>
           </div>
         </div>
+      <form id="propic_form" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div id="upload-overlay-photo" class="upload-overlay" class="testpicupload" hidden="hidden">
+          <label>Mast mast profile</label>
+          {{ imgform.profilepic }}
+          <input type="submit" name="ProfileUpload">
+        </div>
+      <form id="cover_form" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div id="upload-overlay-cover" class="upload-overlay" class="testpicupload" hidden="hidden">
+          <label>Mast mast cover</label>
+          {{ imgform.coverpic }}
+          <input type="submit" name="CoverUpload">
+        </div>
+    </form>
   </div>
 
 {% block boot %}{% endblock boot %}
 {% endblock content %}
 
-{% block overlay %}{% endblock overlay %}
+{% block overlay %}
+<div class="album-overlay" id="olay" hidden="hidden">
+    </div>
+{% endblock overlay %}
 
-{% block custom_scripts %}{% endblock custom_scripts %}
+{% block custom_scripts %}
+<script type="text/javascript">
+function letupload(link){
+          if (link == "coveredit"){
+            var link = $( '#coveredit' )[0];
+            var overlay = $( '#olay' )[0];
+            var TD = $( '#upload-overlay-cover' )[0];
+          }
+          else if (link == "profileedit"){
+            var link = $( '#profileedit' )[0];
+            var overlay = $( '#olay' )[0];
+            var TD = $( '#upload-overlay-photo')[0]; 
+          }
+          $( link ).on( 'click', function ( e ) {
+              $( overlay ).show();
+              $( TD ).show();
+              e.stopPropagation();
+          });
+
+          $( document ).on( 'click', function ( e ) {
+              if ( $( e.target ).closest( TD ).length === 0 ) {
+                  $( overlay ).hide();
+                  $( TD ).hide();
+              }
+          });
+                          
+          $( document ).on( 'keydown', function ( e ) {
+              if ( e.keyCode === 27 ) {
+                  $( overlay ).hide();
+                  $( TD ).hide();
+              }
+          });
+        }
+    </script>
+{% endblock custom_scripts %}
