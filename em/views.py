@@ -156,6 +156,8 @@ class AboutPageView(TemplateView):
 
 	def post(self, request, *args, **kwargs):
 		imgform = self.imgform(request.POST, request.FILES)
+		initials = GetAboutInitial.initial(request.session['username'])
+		form = self.form(initial=initials)
 		profilepic_init=''
 		coverpic_init = ''
 		Printer.print('ere')
@@ -170,7 +172,7 @@ class AboutPageView(TemplateView):
 				Printer.print('ahiya')
 				profilepic_init = Printer.img(request.session['username'])
 				coverpic_init = Printer.covimg(request.session['username'])
-				return render(request, self.template_name, context={'imgform': imgform, 'profilep': profilepic_init, 'coverp': coverpic_init})
+				return render(request, self.template_name, context={'form':form, 'imgform': imgform, 'profilep': profilepic_init, 'coverp': coverpic_init})
 		elif 'coverpic' in request.FILES:
 			if imgform.is_valid():
 				cleaned = imgform.cleaned_data
@@ -180,7 +182,7 @@ class AboutPageView(TemplateView):
 				pi.save()
 				profilepic_init = Printer.img(request.session['username'])
 				coverpic_init = Printer.covimg(request.session['username'])
-				return render(request, self.template_name, context={'imgform': imgform, 'profilep': profilepic_init, 'coverp': coverpic_init})
+				return render(request, self.template_name, context={'form':form, 'imgform': imgform, 'profilep': profilepic_init, 'coverp': coverpic_init})
 			else:
 				print('locha lapsi')
 
