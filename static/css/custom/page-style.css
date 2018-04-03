@@ -690,3 +690,14 @@ margin-bottom: 14px;
 .tooltip {
     z-index: 22;
 }
+#olay {
+    top: 0;
+    left: 0;
+    background-color: grey;
+    opacity: 0.6;
+    position: fixed;
+    width: 100%;
+    min-height: 100%;
+    overflow: hidden;
+    z-index: 1030;
+}
