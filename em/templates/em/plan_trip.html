@@ -142,11 +142,11 @@
           <div class="p2-layer-1 col-lg-10 col-lg-offset-1">
             <div class="p2-l1-options col-lg-12">
               <div id="p2-l1-op" class="source l1-op col-lg-10 col-lg-offset-1">
-                <label><span>From:</span><input id="" class="p3-vs" type="text" name="source"></label>
+                <label><span>Source:</span><input id="frominp" class="p3-vs" type="text" name="source"></label>
               </div>
                 
               <div id="p2-l1-op" class="dest l1-op col-lg-10 col-lg-offset-1">
-                <label><span>To:</span><input id="" class="p3-vs" type="text" name="dest" style="flex: 9;"></label>
+                <label><span>Destination:</span><input id="toinp" class="p3-vs" type="text" name="dest" style="flex: 9;"></label>
               </div>
               <br>
               
@@ -154,12 +154,12 @@
             <div class="vehicle l1-op col-lg-7 col-lg-offset-4">
               <div class="veh-club">
                 <span>Mode:</span>
-                <select id="" class="vehicle-select p2-vs">
-                <option>-----</option>
+                <select id="mode" class="vehicle-select p2-vs">
+                <option value="">-----</option>
                 <option value="car">Car</option>
                 <option value="motorbike">Motorbike</option>
                 <option value="cycle">Cycling</option>
-                <option value="walking">Walking</option>
+                <option value="onfoot">On-Foot</option>
               </select>
               </div>
             </div>
@@ -260,11 +260,11 @@
                     <div class="subtrip-layer-bottom">
                       <div class="bottom-sublayer col-lg-11 sts">
                           <div class="subtrip-src st">
-                            <b>From: </b>
+                            <b>Source: </b>
                             <span>Pune</span>
                           </div>
                           <div class="subtrip-dest st">
-                            <b>To: </b>
+                            <b>Destination: </b>
                             <span>Goa</span>
                           </div>
                           <div class="subtrip-route-info st">
@@ -306,11 +306,11 @@
                     <div class="subtrip-layer-bottom">
                       <div class="bottom-sublayer col-lg-11 sts">
                           <div class="subtrip-src st">
-                            <b>From: </b>
+                            <b>Source: </b>
                             <span>Goa</span>
                           </div>
                           <div class="subtrip-dest st">
-                            <b>To: </b>
+                            <b>Destination: </b>
                             <span>Mangalore</span>
                           </div>
                           <div class="subtrip-route-info st">
@@ -357,7 +357,7 @@
                 <button class="btn btn-primary" onclick="navigante('one','two','three','four'); focus_click('one','two')">Prev</button>
               </div>
               <div id=btn-next class="btn-next">
-                <button class="btn btn-primary" onclick="navigante('three','one','two','four'); focus_click('three', 'two');">Next</button>
+                <button id="next_click2" class="btn btn-primary">Next</button>
               </div>
             </div>
           </div>
@@ -689,20 +689,20 @@
                   </div>
                   <div class="sub-hash p-bot">
                     <div class="s-sh">
-                      <span class="hash-content-left"><b>From:</b></span>
-                      <span class="hash-content-right">Daman</span>
+                      <span class="hash-content-left"><b>Source:</b></span>
+                      <span id="pb_source" class="hash-content-right"></span>
                     </div>
                     <div class="s-sh">
-                      <span class="hash-content-left"><b>To:</b></span>
-                      <span class="hash-content-right">Goa</span>
+                      <span class="hash-content-left"><b>Destination:</b></span>
+                      <span id="pb_destination" class="hash-content-right"></span>
                     </div>
                     <div class="s-sh">
                       <span class="hash-content-left"><b>Mode:</b></span>
-                      <span class="hash-content-right">Motorbike</span>
+                      <span id='pb_mode' class="hash-content-right"></span>
                     </div>
                     <div class="s-sh">
-                      <span class="hash-content-left"><b>T. Dist.:</b></span>
-                      <span class="hash-content-right">550 km</span>
+                      <span class="hash-content-left"><b>Distance:</b></span>
+                      <span id="pb_trip_distance" class="hash-content-right">550 km</span>
                     </div>
                     <div class="s-sh">
                       <span class="hash-content-left"><b>T. Time:</b></span>
@@ -805,6 +805,8 @@
       var moto_dict = {'adventure': 'Adventure', 'exploring': 'Exploring', 'photography': 'Photography', 'sports': 'Sport Event', 'food': 'Food & Cuisine', 'fitness': 'Fitness', 'shopping': 'Shopping', 'travel': 'Travel Blogging', 'partying': 'Partying', 'backtracking': 'Backtracking'};
       var focus_dict = {'one': 'pb-one', 'two': 'pb-two', 'three': 'pb-three', 'four': 'pb-four'};
       var post_dict = {'company':'', 'moto': ''};
+      var mode_dict = {'cycle': 'Cycle', 'motorbike': 'Motorbike', 'car': 'Car', 'onfoot': 'On Foot'}
+      var time_string = '';
       function pb_focus(pb_id) {
         focus = document.getElementById(pb_id);
         focus.classList.add('prog-focus');
@@ -903,10 +905,28 @@
           }
         }
         total_min = temp;
-        time_string = total_hours+" hours "+total_min+" mins" 
+        if (total_min == 0){
+          time_string = total_hours+" hours "
+        }
+        else{
+          time_string = total_hours+" hours "+total_min+" mins" 
+        }
         $("#trip_duration").text(time_string)
         $("#pb_trip_duration").text(time_string)
         //alert('Hours: '+total_hours+' Mins:'+total_min);
+      });
+      $("#next_click2").click(function(){
+        var source = $("#frominp").val()
+        var destination = $("#toinp").val()
+        var mode_val = $("#mode option:selected").val()
+        var mode = mode_dict[mode_val]
+        $("#pb_source").text(source)
+        $("#pb_destination").text(destination)
+        $("#pb_mode").text(mode)
+        trip_duration = $("#trip_duration").text()
+        $("#pb_trip_duration").text(trip_duration)
+        focus_click('three', 'two')
+        navigante('three', 'one', 'two', 'four')
       });
 
     </script>
