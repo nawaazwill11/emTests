@@ -482,10 +482,10 @@
                 <div class="gender-select slt-div" style="display:flex;flex: 3;">
                   <select id="gender_list" class="gender slt p3-vs">
                     <option>----------------</option>
-                    <option>Male</option>
-                    <option>Female</option>
-                    <option>Others</option>
-                    <option>Any</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="others">Others</option>
+                    <option value="any">Any</option>
                   </select>
                   
                 </div>
@@ -820,7 +820,7 @@
       var company_dict = {'solo': 'Solo', 'group': 'Group'};
       var moto_dict = {'adventure': 'Adventure', 'exploring': 'Exploring', 'photography': 'Photography', 'sports': 'Sport Event', 'food': 'Food & Cuisine', 'fitness': 'Fitness', 'shopping': 'Shopping', 'travel': 'Travel Blogging', 'partying': 'Partying', 'backtracking': 'Backtracking'};
       var focus_dict = {'one': 'pb-one', 'two': 'pb-two', 'three': 'pb-three', 'four': 'pb-four'};
-      var post_dict = {'company':'', 'moto': ''};
+      var post_dict = {'company':'', 'moto': '', 'source': '', 'destination': '', 'mode': '', 'pitstop': '', 'timeperpit': '', 'distance': '', 'start_date': '', 'gender': '', 'age_group': '', 'participants': '', 'title': '', 'description': '', 'fuel': '', 'vehicle': '', 'hotel': '', 'total_cost': ''};
       var mode_dict = {'cycle': 'Cycle', 'motorbike': 'Motorbike', 'car': 'Car', 'onfoot': 'On Foot'}
       var time_string = '';
       var month_dict = {'01': 'Jan'}
@@ -930,6 +930,8 @@
         }
         $("#trip_duration").text(time_string)
         $("#pb_trip_duration").text(time_string)
+        post_dict['pitstops'] = pitstops
+        post_dict['timeperpit'] = pits_time 
         //alert('Hours: '+total_hours+' Mins:'+total_min);
       });
       $("#next_click2").click(function(){
@@ -937,11 +939,15 @@
         var destination = $("#toinp").val()
         var mode_val = $("#mode option:selected").val()
         var mode = mode_dict[mode_val]
-        $("#pb_source").text(source)
-        $("#pb_destination").text(destination)
-        $("#pb_mode").text(mode)
         trip_duration = $("#trip_duration").text()
-        $("#pb_trip_duration").text(trip_duration)
+        post_dict['source'] = source
+        post_dict['destination'] = destination
+        post_dict['mode'] = mode
+        post_dict['duration'] = trip_duration
+        $("#pb_source").text(post_dict['source'])
+        $("#pb_destination").text(post_dict['destination'])
+        $("#pb_mode").text(post_dict['mode'])
+        $("#pb_trip_duration").text(post_dict['duration'])
         focus_click('three', 'two')
         navigante('three', 'one', 'two', 'four')
       });
@@ -980,7 +986,7 @@
         var month_text = $("#month_list option:selected").text()
         var day = $("#day_list option:selected").text()
         
-        var time = $("#time_list option:selected").val()
+        var time = parseInt($("#time_list option:selected").val())
         var meridiem = $("#meridiem option:selected").val()
         var gender = $("#gender_list option:selected").val()
         var age_group_list =[]
@@ -1008,18 +1014,32 @@
           limit = $("#limit_inp").val()
         }
         else{
-          limit = 'NO'
+          limit = '-1'
         }
         var title = $("#trip_title").val()
         var desc = $("#trip_desc").val()
-
-        $("#pb_start_date").text(year+" "+month_text+" "+day)
+        if (meridiem == 'pm'){
+          if (time == 12){
+            time = 12
+          }
+          else{
+            time = 12 + parseInt(time)
+          }
+        }
+        post_dict['start_date'] = year+"-"+month+"-"+day+" "+time
+        post_dict['gender'] = gender
+        post_dict['age_group'] = age_group_str
+        post_dict['participants'] = limit
+        post_dict['title'] = title
+        post_dict['description'] = desc
+        //$("#pb_start_date").text(year+" "+month_text+" "+day)
+        $("#pb_start_date").text(post_dict['start_date'])
         $("#pb_start_time").text(time+meridiem)
-        $("#pb_gender").text(gender)
-        $("#pb_agegroup").text(age_group_str)
-        $("#pb_limit").text(limit)
-        $("#pb_title").text(title)
-        $("#pb_desc").text(desc)
+        $("#pb_gender").text(post_dict['gender'])
+        $("#pb_agegroup").text(post_dict['age_group'])
+        $("#pb_limit").text(post_dict['participants'])
+        $("#pb_title").text(post_dict['title'])
+        $("#pb_desc").text(post_dict['description'])
         focus_click('four', 'three')
         navigante('four','one','two','three')
       });
@@ -1037,21 +1057,21 @@
           $("#olay").hide()
         });
 
+        $("#get_fuel_rate").click(function(){
+          $("#iframe_block").show()
+          $("#olay").show()
+          $("#cost_frame").attr('src',"//www.mypetrolprice.com/petrol-price-in-india.aspx") 
+        });
+
         $("#fuel_cost").focus(function(){
           mileage = $("#mileage").val()
           fuelprice = $("#fuel_price").val()
           fuelcost = mileage * fuelprice
           $("#fuel_cost").val(fuelcost)
-          console.log(totalcost+fuelcost)
+          $("#total_cost").val(fuelcost)
+          post_dict['fuel'] = fuelcost
         });
 
-
-        $("#get_fuel_rate").click(function(){
-          $("#iframe_block").show()
-          $("#olay").show()
-          $("#cost_frame").attr('src',"//www.mypetrolprice.com/petrol-price-in-india.aspx") 
-          
-        });
 
         $("#get_vehicle_rate").click(function(){
           $("#iframe_block").show()
@@ -1060,7 +1080,11 @@
         });
 
         $("#vehcost").blur(function(){
-          var vehcost = $("#vehcost").val()
+          var vehcost = parseInt($("#vehcost").val())
+          var fuel = parseInt($("#fuel_cost").val())
+          total = vehcost+fuel
+          $("#total_cost").val(total)
+          post_dict['vehicle'] = vehcost
         });
 
         $("#get_hotel_rate").click(function(){
@@ -1070,14 +1094,12 @@
         });
 
         $("#hotcost").blur(function(){
-          var hotcost = $("#hotcost").val()
-        });
-
-        $("#total_cost").focus(function(){
+          var hotcost = parseInt($("#hotcost").val())
+          var vehcost = parseInt($("#vehcost").val())
           var fuel = parseInt($("#fuel_cost").val())
-          var vehicle = parseInt($("#vehcost").val())
-          var hotel = parseInt($("#hotcost").val())
-          $("#total_cost").val(fuel+vehicle+hotel)
+          total = hotcost+vehcost+fuel
+          $("#total_cost").val(total)
+          post_dict['hotel'] = hotcost
         });
       </script>
   {% endblock custom_scripts %}
