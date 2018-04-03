@@ -492,7 +492,7 @@ textarea{
 .fuel, .get-rate {
 	flex: 1;
 }
-#p4-vs {
+.p4-vs {
 	background-color: white;
     border: 0;
     border-radius: 5px;
@@ -522,4 +522,11 @@ textarea{
 }
 .moto-select {
 	box-shadow: 0px 0px 15px 5px gray;	
+}
+.cost_frame {
+	position: absolute;
+    z-index: 1040;
+    width: 67%;
+    height: 300px;
+    display: none;
 }

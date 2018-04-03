@@ -12,7 +12,10 @@
   {% block class_main %} col-lg-offset-2 col-lg-9 {% endblock class_main %}
   
   {% block content %}
-      <div id="one" class="plan-container col-lg-8" style="display: block;">
+  <div class="iframe_block">
+      <iframe id="cost_frame" class="cost_frame" src="//www.goodreturns.in/petrol-price.html" frameborder="0" allowfullscreen></iframe>
+  </div>
+    <div id="one" class="plan-container col-lg-8" style="display: block;">
   			<div class="plan-head">
   				<div class="plan-title">
   					<div class="title-top">
@@ -380,48 +383,48 @@
               <div id="p3-l1-op" class="sl1-op col-lg-10 col-lg-offset-1">
                 <span style="display: lex; flex: 1;">Starting Date:</span>
                 <div class="date-select slt-div">
-                  <select id="" class="year slt p3-vs">
-                    <option>----------------</option>
-                    <option>2018</option>
-                    <option>2019</option>
-                    <option>2020</option>
-                    <option>2021</option>
-                    <option>2022</option>
-                    <option>2023</option>
-                    <option>2024</option>
-                    <option>2025</option>
-                    <option>2026</option>
-                    <option>2027</option>
-                    <option>2028</option>
-                    <option>2029</option>
-                    <option>2030</option>
+                  <select id="year_list" class="year slt p3-vs">
+                    <option>Year</option>
+                    <option value="2018">2018</option>
+                    <option value="2019">2019</option>
+                    <option value="2020">2020</option>
+                    <option value="2021">2021</option>
+                    <option value="2022">2022</option>
+                    <option value="2023">2023</option>
+                    <option value="2024">2024</option>
+                    <option value="2025">2025</option>
+                    <option value="2026">2026</option>
+                    <option value="2027">2027</option>
+                    <option value="2028">2028</option>
+                    <option value="2029">2029</option>
+                    <option value="2030">2030</option>
                   </select>
-                  <select id="" class="month slt p3-vs">
-                    <option>----------------</option>
-                    <option>Jan</option>
-                    <option>Feb</option>
-                    <option>March</option>
-                    <option>April</option>
-                    <option>May</option>
-                    <option>June</option>
-                    <option>July</option>
-                    <option>Aug</option>
-                    <option>Sep</option>
-                    <option>Oct</option>
-                    <option>Nov</option>
-                    <option>Dec</option>
+                  <select id="month_list" class="month slt p3-vs">
+                    <option>Month</option>
+                    <option value="01">Jan</option>
+                    <option value="02">Feb</option>
+                    <option value="03">Mar</option>
+                    <option value="04">Apr</option>
+                    <option value="05">May</option>
+                    <option value="06">Jun</option>
+                    <option value="07">Jul</option>
+                    <option value="08">Aug</option>
+                    <option value="09">Sep</option>
+                    <option value="10">Oct</option>
+                    <option value="11">Nov</option>
+                    <option value="12">Dec</option>
                   </select>
-                  <select id="" class="date slt p3-vs">
-                    <option>----------------</option>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                    <option>6</option>
-                    <option>7</option>
-                    <option>8</option>
-                    <option>9</option>
+                  <select id="day_list" class="date slt p3-vs">
+                    <option>Day</option>
+                    <option>01</option>
+                    <option>02</option>
+                    <option>03</option>
+                    <option>04</option>
+                    <option>05</option>
+                    <option>06</option>
+                    <option>07</option>
+                    <option>08</option>
+                    <option>09</option>
                     <option>10</option>
                     <option>11</option>
                     <option>12</option>
@@ -451,8 +454,8 @@
               <div id="p3-l1-op" class="l1-op col-lg-10 col-lg-offset-1">
                 <span style="display: flex;flex: 1;">Starting Time:</span>
                 <div class="time-select slt-div">
-                  <select id="" class="hour slt p3-vs">
-                    <option>----------------</option>
+                  <select id="time_list" class="hour slt p3-vs">
+                    <option>----------</option>
                     <option>12</option>
                     <option>11</option>
                     <option>10</option>
@@ -466,8 +469,8 @@
                     <option>2</option>
                     <option>1</option>
                   </select>
-                  <select id="" class="meridiem slt p3-vs">
-                    <option>----------------</option>
+                  <select id="meridiem" class="meridiem slt p3-vs">
+                    <option>----------</option>
                     <option>am</option>
                     <option>pm</option>
                   </select>
@@ -476,7 +479,7 @@
               <div id="p3-l1-op" class="l1-op col-lg-10 col-lg-offset-1">
                 <span style="flex: 1;">Gender:</span>
                 <div class="gender-select slt-div" style="display:flex;flex: 3;">
-                  <select id="" class="gender slt p3-vs">
+                  <select id="gender_list" class="gender slt p3-vs">
                     <option>----------------</option>
                     <option>Male</option>
                     <option>Female</option>
@@ -488,21 +491,21 @@
               </div>
               <div id="p3-l1-op" class="l1-op col-lg-11 col-lg-offset-1 age-group">
                 <span class="ag" style="flex: 2 30px;">Age Group:</span>
-                <div class="age-select ag slt-div">
-                  <select id="" class="age slt p3-vs">
+                <div id="age_select" class="age-select ag slt-div">
+                  <select id="age_group1" class="age slt p3-vs">
                     <option>-------------------</option>
-                    <option>Under 18</option>
-                    <option>18-30</option>
-                    <option>30-50</option>
-                    <option>Above 50</option>
+                    <option value="u18">Under 18</option>
+                    <option value="18-30">18-30</option>
+                    <option value="30-50">30-50</option>
+                    <option value="50u">Above 50</option>
                     <option>Any</option>
                   </select>
                 </div>
                 <div class="p3-button-group">
                   <div class="age-add ag">
-                    <button class="btn btn-success"><span class="intbtn">+</span></button>
+                    <button id="add_age_group" class="btn btn-success"><span class="intbtn">+</span></button>
                   </div>
-                  <div class="age-remove ag">
+                  <div id="remove_age_group" class="age-remove ag">
                     <button class="btn btn-danger"><span class="intbtn">-</span></button>
                   </div>
                 </div>
@@ -511,22 +514,22 @@
                 <div class="nop">
                   <div class="nop-radio">
 
-                    <label><span style="margin-right: 10px;">Limit Participants:</span><input type="radio" name="nop">Yes</label>
-                    <label><input type="radio" name="nop">No</label>
+                    <label><span style="margin-right: 10px;">Limit Participants:</span><input id="limit_yes" type="radio" name="nop" value='yes'>Yes</label>
+                    <label><input id="limit_no" type="radio" name="nop" checked="checked" value="no">No</label>
                   </div>
-                  <label><input type="text" name="limit" placeholder="Eg. 10" style="border: 0; border-radius: 5px; font-weight: 400; padding: 5px;"></label>
+                  <label><input id="limit_inp" type="text" name="limit" placeholder="Eg. 10" style="border: 0; border-radius: 5px; font-weight: 400; padding: 5px; display: none"></label>
                   <br>
                 </div>
                 <button class="btn btn-success"><span class="intbtn">+</span></button>
               </div>
               <div id="p3-l1-op" class="l1-op col-lg-10 col-lg-offset-1">
                 <label>Title:</label>
-                <input type="text" name="trip-title" placeholder="Eg. Around the state in 7 days" maxlength="30" style="border: 0; border-radius: 5px; width: 400px; padding: 5px;">
+                <input id="trip_title" type="text" name="trip-title" placeholder="Eg. Around the state in 7 days" maxlength="30" style="border: 0; border-radius: 5px; width: 400px; padding: 5px;">
               </div>
               <div id="p3-l1-op" class="l1-op col-lg-10 col-lg-offset-1">
                 <div class="description">
                   <span><b>Tell Something About It:</b></span>
-                  <textarea id="desc" cols="43" rows="4" maxlength="160" placeholder="Enter a short description. Max character: 160" style="margin-top: 3px; color: #888da6; resize: none; padding: 5px;"></textarea>
+                  <textarea id="trip_desc" cols="43" rows="4" maxlength="160" placeholder="Enter a short description. Max character: 160" style="margin-top: 3px; color: #888da6; resize: none; padding: 5px;"></textarea>
                 </div>
               </div>
             </div>
@@ -544,7 +547,7 @@
                 <button class="btn btn-primary" onclick="navigante('two','one','three','four'); focus_click('two', 'three')">Prev</button>
               </div>
               <div id=btn-next class="btn-next">
-                <button class="btn btn-primary" onclick="navigante('four','one','two','three'); focus_click('four', 'three')">Next</button>
+                <button id="next_click3" class="btn btn-primary">Next</button>
               </div>
             </div>
           </div>
@@ -571,21 +574,20 @@
               <div id="club" class="col-lg-offset-2 col-lg-8">
                <div id="p4-l1-op" class=" l1-op col-lg-10 col-lg-offset-1">
                   <span>Mileage:</span>
-                  <span style="margin-left: 20px;"><input id="p4-vs" type="text" name="mileage"></span> 
+                  <span style="margin-left: 20px;"><input id="mileage" class="p4-vs" type="text" name="mileage"></span> 
                 </div>
                 <div id="p4-l1-op" class=" l1-op col-lg-11 col-lg-offset-1">
                   <div class="fuel">
                     <span class="tag-fuel">Price/Litre:</span>
-                    <span class="inp-fuel" style="margin-left: 4px;"><input id="p4-vs" type="text" name="mileage"></span>
+                    <span class="inp-fuel" style="margin-left: 4px;"><input id="fuel_price" class="p4-vs" type="text" name="mileage"></span>
                   </div>
                   <div class="get-rate">
-                    <span class="a-rate"><a href="#">Get Rate</a></span>
-                    
+                    <span id="get_fuel_rate" class="a-rate"><a href="">Get Rate</a></span>
                   </div>
                 </div>
                 <div id="p4-l1-op" class=" l1-op col-lg-10 col-lg-offset-1">
                   <span><b>Fuel Cost:</b></span>
-                  <span style="margin-left: 8px;"><input id="p4-vs" type="text" name="fuel-cost"></span> 
+                  <span id="" style="margin-left: 8px;"><input id="fuel_cost" class="p4-vs" type="text" name="fuel-cost"></span> 
                 </div>
               </div>
             </div>
@@ -604,7 +606,7 @@
                 </div>
                 <div id="p4-l1-op" class=" l1-op col-lg-10 col-lg-offset-1">
                   <span><b>Vehicle Cost:</b></span>
-                  <span><input id="p4-vs" type="text" name="fuel-cost"></span> 
+                  <span><input id="vehcost" class="p4-vs" type="text" name="fuel-cost"></span> 
                 </div>
               </div>
             </div>
@@ -623,7 +625,7 @@
                 </div>
                 <div id="p4-l1-op" class=" l1-op col-lg-10 col-lg-offset-1" style="margin-top: -10px">
                   <span><b>Hotel Cost:</b></span>
-                  <span><input id="p4-vs" type="text" name="fuel-cost"></span> 
+                  <span><input id="hotcost" class="p4-vs" type="text" name="fuel-cost"></span> 
                 </div>
               </div>
             </div>
@@ -721,23 +723,31 @@
                   <div class="sub-hash p-bot">
                     <div class="s-sh">
                       <span class="hash-content-left"><b>Start Date:</b></span>
-                      <span class="hash-content-right">25 FEB 2018</span>
+                      <span id="pb_start_date" class="hash-content-right">25 FEB 2018</span>
                     </div>
                     <div class="s-sh">
                       <span class="hash-content-left"><b>Start Time:</b></span>
-                      <span class="hash-content-right">10:00 am</span>
+                      <span id="pb_start_time" class="hash-content-right">10:00 am</span>
                     </div>
                     <div class="s-sh">
                       <span class="hash-content-left"><b>Gender:</b></span>
-                      <span class="hash-content-right">Men Only</span>
+                      <span id="pb_gender" class="hash-content-right">Men Only</span>
                     </div>
                     <div class="s-sh">
                       <span class="hash-content-left"><b>Age Group:</b></span>
-                      <span class="hash-content-right">U-18, 18-30</span>
+                      <span id="pb_agegroup" class="hash-content-right">U-18, 18-30</span>
                     </div>
                     <div class="s-sh">
                       <span class="hash-content-left"><b>Limit:</b></span>
-                      <span class="hash-content-right">Any</span>
+                      <span id="pb_limit" class="hash-content-right">Any</span>
+                    </div>
+                    <div class="s-sh">
+                      <span class="hash-content-left"><b>Title:</b></span>
+                      <span id="pb_title" class="hash-content-right">My First Trip</span>
+                    </div>
+                    <div class="s-sh">
+                      <span class="hash-content-left"><b>Descrip.:</b></span>
+                      <span id="pb_desc" class="hash-content-right">Its such an awesome one</span>
                     </div>
                   </div>
                 </div>
@@ -771,6 +781,7 @@
           </div>
         </div>
   		</div>
+      
   {% endblock content %}
 
   {% block custom_scripts %}
@@ -807,6 +818,7 @@
       var post_dict = {'company':'', 'moto': ''};
       var mode_dict = {'cycle': 'Cycle', 'motorbike': 'Motorbike', 'car': 'Car', 'onfoot': 'On Foot'}
       var time_string = '';
+      var month_dict = {'01': 'Jan'}
       function pb_focus(pb_id) {
         focus = document.getElementById(pb_id);
         focus.classList.add('prog-focus');
@@ -930,4 +942,96 @@
       });
 
     </script>
+    <script>
+        var age_group_count = 1
+        $("#add_age_group").click(function(){
+          console.log(++age_group_count)
+          if(!(age_group_count >3)){
+            $("#age_select").append("<select id='age_group"+age_group_count+"' class='age slt p3-vs'><option>-------------------</option><option>Under 18</option><option>18-30</option><option>30-50</option><option>Above 50</option><option>Any</option></select>")
+          }
+        });
+        $("#remove_age_group").click(function(){
+          if(age_group_count < 2){
+            age_group_count = 2;
+          }
+          var remove_group_id = "#age_group"+age_group_count
+          $(remove_group_id).remove()
+          console.log(age_group_count--)
+        });
+
+        $("#limit_yes").click(function(){
+          $("#limit_inp").show()
+        });
+
+        $("#limit_no").click(function(){
+          $("#limit_inp").hide()
+        });
+
+    </script>
+    <script type="text/javascript">
+      $("#next_click3").click(function(){
+        var year = $("#year_list option:selected").val()
+        var month = $("#month_list option:selected").val()
+        var month_text = $("#month_list option:selected").text()
+        var day = $("#day_list option:selected").text()
+        
+        var time = $("#time_list option:selected").val()
+        var meridiem = $("#meridiem option:selected").val()
+        var gender = $("#gender_list option:selected").val()
+        var age_group_list =[]
+        age_group_list_text =[]
+
+        for (var i=1; i <= age_group_count;i++) {
+          var agegroup = "#age_group"+i+" option:selected"
+          pushable = $(agegroup).val()
+          pushable_text = $(agegroup).text()
+          age_group_list.push(pushable)
+          age_group_list_text.push(pushable_text)
+        }
+        var age_group_str = ""
+        for (var i = 0; i<age_group_list_text.length; i++) {
+          if (i == 0){
+            age_group_str = age_group_str+age_group_list_text[i]
+          }
+          else{
+            age_group_str = age_group_str +","+ age_group_list_text[i]
+          }
+        }
+
+        var limit = $("input[name=nop]:checked").val()
+        if (limit === 'yes'){
+          limit = $("#limit_inp").val()
+        }
+        else{
+          limit = 'NO'
+        }
+        var title = $("#trip_title").val()
+        var desc = $("#trip_desc").val()
+
+        $("#pb_start_date").text(year+" "+month_text+" "+day)
+        $("#pb_start_time").text(time+meridiem)
+        $("#pb_gender").text(gender)
+        $("#pb_agegroup").text(age_group_str)
+        $("#pb_limit").text(limit)
+        $("#pb_title").text(title)
+        $("#pb_desc").text(desc)
+        focus_click('four', 'three')
+        navigante('four','one','two','three')
+      });
+      </script>
+      <script type="text/javascript">
+        var mileage = ""
+
+        var fuelprice = ""
+        var fuelcost = ""
+        $("#fuel_cost").click(function(){
+          mileage = $("#mileage").val()
+          fuelprice = $("#fuel_price").val()
+          fuelcost = mileage * fuelprice
+          $("#fuel_cost").val(fuelcost)
+        });
+        $("#get_fuel_rate").click(function(){
+          $("#cost_frame").show()
+        });
+      </script>
   {% endblock custom_scripts %}
