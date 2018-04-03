@@ -109,7 +109,7 @@
   						</div>
   					</div>
   				</div>
-  				<div class="layer-3">
+  				<div class="layer-3"><!--First Layer corner options-->
   					<div class="navigante">
   						<div id="btn-cancel" class="btn-cancel">
   							<button class="btn btn-danger" onclick="abort()"><a href="{% url 'mytrip' %}">x</a></button>
@@ -118,10 +118,10 @@
   							<button class="btn btn-success glyphicon glyphicon-floppy-disk" onclick="save()"><a href="{% url 'mytrip' %}"></a></button>
   						</div>
   						<div id=btn-prev class="btn-prev" style="visibility: hidden;">
-  							<button class="btn btn-primary" onclick="prev_click1()">Prev</button>
+  							<button class="btn btn-primary" onclick="focus_click('two','one')">Prev</button>
   						</div>
   						<div id="btn-next" class="btn-next">
-  							<button class="btn btn-primary" onclick="navigante('two','one','three','four'); next_click1()">Next</button>
+  							<button class="btn btn-primary" onclick="next_click1('two','one','three','four', 'two', 'one')">Next</button>
   						</div>
   					</div>
   				</div>
@@ -142,19 +142,19 @@
           <div class="p2-layer-1 col-lg-10 col-lg-offset-1">
             <div class="p2-l1-options col-lg-12">
               <div id="p2-l1-op" class="source l1-op col-lg-10 col-lg-offset-1">
-                <label><span>From:</span><input id="p3-vs" type="text" name="source"></label>
+                <label><span>From:</span><input id="" class="p3-vs" type="text" name="source"></label>
               </div>
                 
               <div id="p2-l1-op" class="dest l1-op col-lg-10 col-lg-offset-1">
-                <label><span>To:</span><input id="p3-vs" type="text" name="dest" style="flex: 9;"></label>
+                <label><span>To:</span><input id="" class="p3-vs" type="text" name="dest" style="flex: 9;"></label>
               </div>
               <br>
               
             </div>
-            <div class="vehicle l1-op  col-lg-7 col-lg-offset-4">
+            <div class="vehicle l1-op col-lg-7 col-lg-offset-4">
               <div class="veh-club">
                 <span>Mode:</span>
-                <select id="p2-vs" class="vehicle-select">
+                <select id="" class="vehicle-select p2-vs">
                 <option>-----</option>
                 <option value="car">Car</option>
                 <option value="motorbike">Motorbike</option>
@@ -181,8 +181,8 @@
               <div class="pitstops pb">
                 <div class="pitstops-club">
                   <span class="s1">Pitstops:</span>
-                  <select id="p2-vs" class="select-pitstops">
-                    <option>--------</option>
+                  <select id="selectpit" class="select-pitstops p2-vs">
+                    <option value="">--------</option>
                     <option value="0">0</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -195,31 +195,31 @@
                     <option value="9">9</option>
                     <option value="custom">custom</option>
                   </select>
-                  <span class="s2"><input id="p3-vs" type="text" name="custom-pitstop"></span>
-                  <span class="s3"><button class="edit-pitstop btnt">Check</button></span>
+                  <span class="s2"><input id="custpit" class="p3-vs" type="text" name="custom-pitstop" style="display: none"></span>
+                  <span class="s3"><button id="checkpits" class="edit-pitstop btnt">Check</button></span>
                 </div>
               </div>
               <div class="time-per-pitstop pb">
                 <div class="pitstime-club">
                   <span>Time Per Pitstop:</span>
-                  <select id="p2-vs" class="select-pitstime" style="margin-left: 14px;">
-                    <option>--------</option>
-                    <option value="five">5 min</option>
-                    <option value="ten">10 min</option>
-                    <option value="fifteen">15 min</option>
-                    <option value="thirty">30 min</option>
-                    <option value="hour">1 hour</option>
+                  <select id="tppsel" class="select-pitstime p2-vs" style="margin-left: 14px;">
+                    <option value="">--------</option>
+                    <option value="5">5 min</option>
+                    <option value="10">10 min</option>
+                    <option value="15">15 min</option>
+                    <option value="30">30 min</option>
+                    <option value="60">1 hour</option>
                     <option value="custom">custom</option>
                   </select> 
                   <span style="display: flex; flex: 1;">
-                    <input id="p3-vs" type="text" name="custom-time">
-                    <select id="p2-vs" class="custom-time-unit">
-                      <option value="minutes">mins</option>
+                    <input id="tppinp" class="p3-vs" type="text" name="custom-time" style="display: none">
+                    <select id="tppisel" class="custom-time-unit p2-vs" style="display: none">
+                      <option value="mins">mins</option>
                       <option value="hours">hours</option>
                       <option value="days">days</option>
                     </select>
                   </span>
-                  <button class="edit-pitstime btnt">Check</button>
+                  <button id="calctime" class="edit-pitstime btnt">Check</button>
                 </div>
               </div>
             </div>
@@ -236,7 +236,7 @@
             <div class="p2-total-time-distance pb">
               <div class="p2-total-time">
                 <span style="display: flex; flex: 1;">Total Journey Time:</span>
-                <span>9 hours 20 min</span>
+                <span id="trip_duration">9 hours 20 min</span>
               </div>
               <div class="p2-total-distance">
                 <span style="display: flex; flex: 1;">Total Distance:</span>
@@ -344,9 +344,8 @@
                     </div>
                   </div>
                 </div>
-            
           </div>
-          <div class="p2-layer-3">
+          <div class="p2-layer-3"><!--Second Layer corner options-->
             <div class="navigante">
               <div id="btn-cancel" class="btn-cancel">
                 <button class="btn btn-danger" onclick="abort()"><a href="{% url 'mytrip' %}">x</a></button>
@@ -355,10 +354,10 @@
                 <button class="btn btn-success glyphicon glyphicon-floppy-disk" onclick="save()"><a href="{% url 'mytrip' %}"></a></button>
               </div>
               <div id=btn-prev class="btn-prev">
-                <button class="btn btn-primary" onclick="navigante('one','two','three','four')">Prev</button>
+                <button class="btn btn-primary" onclick="navigante('one','two','three','four'); focus_click('one','two')">Prev</button>
               </div>
               <div id=btn-next class="btn-next">
-                <button class="btn btn-primary" onclick="navigante('three','one','two','four')">Next</button>
+                <button class="btn btn-primary" onclick="navigante('three','one','two','four'); focus_click('three', 'two');">Next</button>
               </div>
             </div>
           </div>
@@ -381,7 +380,7 @@
               <div id="p3-l1-op" class="sl1-op col-lg-10 col-lg-offset-1">
                 <span style="display: lex; flex: 1;">Starting Date:</span>
                 <div class="date-select slt-div">
-                  <select id="p3-vs" class="year slt">
+                  <select id="" class="year slt p3-vs">
                     <option>----------------</option>
                     <option>2018</option>
                     <option>2019</option>
@@ -397,7 +396,7 @@
                     <option>2029</option>
                     <option>2030</option>
                   </select>
-                  <select id="p3-vs" class="month slt">
+                  <select id="" class="month slt p3-vs">
                     <option>----------------</option>
                     <option>Jan</option>
                     <option>Feb</option>
@@ -412,7 +411,7 @@
                     <option>Nov</option>
                     <option>Dec</option>
                   </select>
-                  <select id="p3-vs" class="date slt">
+                  <select id="" class="date slt p3-vs">
                     <option>----------------</option>
                     <option>1</option>
                     <option>2</option>
@@ -452,7 +451,7 @@
               <div id="p3-l1-op" class="l1-op col-lg-10 col-lg-offset-1">
                 <span style="display: flex;flex: 1;">Starting Time:</span>
                 <div class="time-select slt-div">
-                  <select id="p3-vs" class="hour slt">
+                  <select id="" class="hour slt p3-vs">
                     <option>----------------</option>
                     <option>12</option>
                     <option>11</option>
@@ -467,7 +466,7 @@
                     <option>2</option>
                     <option>1</option>
                   </select>
-                  <select id="p3-vs" class="meridiem slt">
+                  <select id="" class="meridiem slt p3-vs">
                     <option>----------------</option>
                     <option>am</option>
                     <option>pm</option>
@@ -477,7 +476,7 @@
               <div id="p3-l1-op" class="l1-op col-lg-10 col-lg-offset-1">
                 <span style="flex: 1;">Gender:</span>
                 <div class="gender-select slt-div" style="display:flex;flex: 3;">
-                  <select id="p3-vs" class="gender slt">
+                  <select id="" class="gender slt p3-vs">
                     <option>----------------</option>
                     <option>Male</option>
                     <option>Female</option>
@@ -490,7 +489,7 @@
               <div id="p3-l1-op" class="l1-op col-lg-11 col-lg-offset-1 age-group">
                 <span class="ag" style="flex: 2 30px;">Age Group:</span>
                 <div class="age-select ag slt-div">
-                  <select id="p3-vs" class="age slt">
+                  <select id="" class="age slt p3-vs">
                     <option>-------------------</option>
                     <option>Under 18</option>
                     <option>18-30</option>
@@ -532,7 +531,7 @@
               </div>
             </div>
           </div>
-          <div class="p3-layer2">
+          <div class="p3-layer2"><!--Third Layer corner options-->
             <div class="navigante">
               <div id="btn-cancel" class="btn-cancel">
                 <button class="btn btn-danger" onclick="abort()"><a href="{% url 'mytrip' %}">x</a></button>
@@ -542,10 +541,10 @@
               </div>
               <div>
               <div id=btn-prev class="btn-prev">
-                <button class="btn btn-primary" onclick="navigante('two','one','three','four')">Prev</button>
+                <button class="btn btn-primary" onclick="navigante('two','one','three','four'); focus_click('two', 'three')">Prev</button>
               </div>
               <div id=btn-next class="btn-next">
-                <button class="btn btn-primary" onclick="navigante('four','one','two','three')">Next</button>
+                <button class="btn btn-primary" onclick="navigante('four','one','two','three'); focus_click('four', 'three')">Next</button>
               </div>
             </div>
           </div>
@@ -647,7 +646,7 @@
                 <button class="btn btn-success glyphicon glyphicon-floppy-disk" onclick="save()"><a href="{% url 'mytrip' %}"></a></button>
               </div>
               <div id=btn-prev class="btn-prev">
-                <button class="btn btn-primary" onclick="navigante('three','one','two','four')">Prev</button>
+                <button class="btn btn-primary" onclick="navigante('three','one','two','four'); focus_click('three', 'four')">Prev</button>
               </div>
               <div id=btn-next class="btn-next">
                 <button class="btn btn-primary" onclick="publishTrip()">Publish</button>
@@ -707,7 +706,7 @@
                     </div>
                     <div class="s-sh">
                       <span class="hash-content-left"><b>T. Time:</b></span>
-                      <span class="hash-content-right">9 hr 20 min</span>
+                      <span id="pb_trip_duration" class="hash-content-right">9 hr 20 min</span>
                     </div>
                   </div>   
                 </div>
@@ -802,37 +801,113 @@
     </script>
     <script type="text/javascript">
       var moto;
-      var company_dict = {'solo': 'Solo', 'group': 'Group'}
-      var moto_dict = {'adventure': 'Adventure', 'exploring': 'Exploring', 'photography': 'Photography', 'sports': 'Sport Event', 'food': 'Food & Cuisine', 'fitness': 'Fitness', 'shopping': 'Shopping', 'travel': 'Travel Blogging', 'partying': 'Partying', 'backtracking': 'Backtracking'}
-      var dict1 = {'company':'', 'moto': ''}
-      function get_company(id){
-        dict1['company'] = company_dict[id]
-      }
-      function get_moto(id){
-        dict1['moto'] = moto_dict[id]
-      }
+      var company_dict = {'solo': 'Solo', 'group': 'Group'};
+      var moto_dict = {'adventure': 'Adventure', 'exploring': 'Exploring', 'photography': 'Photography', 'sports': 'Sport Event', 'food': 'Food & Cuisine', 'fitness': 'Fitness', 'shopping': 'Shopping', 'travel': 'Travel Blogging', 'partying': 'Partying', 'backtracking': 'Backtracking'};
+      var focus_dict = {'one': 'pb-one', 'two': 'pb-two', 'three': 'pb-three', 'four': 'pb-four'};
+      var post_dict = {'company':'', 'moto': ''};
       function pb_focus(pb_id) {
-        focus = document.getElementById(pb_id)
-        focus.classList.add('prog-focus')
+        focus = document.getElementById(pb_id);
+        focus.classList.add('prog-focus');
       }
       function pb_unfocus(pb_id) {
-        unfocus = document.getElementById(pb_id)
-        unfocus.classList.remove('first')
-        unfocus.classList.remove('prog-focus')
+        unfocus = document.getElementById(pb_id);
+        unfocus.classList.remove('first');
+        unfocus.classList.remove('prog-focus');
       }
-      function next_click1(){
+      function focus_click(f, uf){
+        pb_focus(focus_dict[f]);
+        pb_unfocus(focus_dict[uf]);
+      }
+      function get_company(id){
+        post_dict['company'] = company_dict[id];
+      }
+      function get_moto(id){
+        post_dict['moto'] = moto_dict[id];
+      }
+      function next_click1(main, s1, s2, s3, f, uf){
         var pb_company = document.getElementById('pb-company')
-        var pb_moto = document.getElementById('pb-moto')
-        pb_company.innerHTML = ""
-        pb_moto.innerHTML = ""
-        pb_company.innerHTML = dict1['company']
-        pb_moto.innerHTML = dict1['moto']
-        pb_focus('pb-two')
-        pb_unfocus('pb-one')
+        var pb_moto = document.getElementById('pb-moto');
+        pb_company.innerHTML = "";
+        pb_moto.innerHTML = "";
+        //if (post_dict['company'] && post_dict['moto']){
+          pb_company.innerHTML = post_dict['company'];
+          pb_moto.innerHTML = post_dict['moto'];
+          navigante(main, s1, s2, s3);
+          focus_click(f,uf);
+        //}
+        //else{
+          //alert('Please select Company and Travel-Moto')
+        //}
       }
       function prev_click1() {
-        pb_focus('pb-one')
-        pb_unfocus('pb-two')
       }
+    </script>
+    <script type="text/javascript">
+    /*For displaying custom textboxes*/
+      $("#selectpit").change(function(){          
+        var value = $("#selectpit option:selected").val();
+        if (value === 'custom'){
+          $("#custpit").show();
+        }
+        else{
+          $("#custpit").hide();
+        }
+      });
+      $("#selectpit").change(function(){          
+        var value = $("#selectpit option:selected").val();
+        if (value === 'custom'){
+          $("#custpit").show();
+        }
+        else{
+          $("#custpit").hide();
+        }
+      });
+      $("#tppsel").change(function(){          
+        var value = $("#tppsel option:selected").val();
+        if (value === 'custom'){
+          $("#tppinp").show();
+          $("#tppisel").show()
+        }
+        else{
+          $("#tppinp").hide();
+          $("#tppisel").hide();
+        }
+      });
+    </script>
+    <script type="text/javascript">
+      $("#calctime").click(function(){
+        var hours = 8;
+        var min = 15;
+        var time_dict = {'mins': 1, 'hours': 60, 'days': 60*24}
+        var initial_min = hours*60 + min;
+        var pitstops = $("#selectpit option:selected").val();
+        if (pitstops === "custom"){
+          pitstops = $("#custpit").val();
+        }
+        var pits_time = $("#tppsel option:selected").val()
+        if (pits_time === 'custom'){
+          var tppinp_val = $("#tppinp").val();
+          var tppisel_val = $("#tppisel option:selected").val();
+          pits_time = tppinp_val * time_dict[tppisel_val];
+        }
+        var total_min = (pitstops * pits_time) + initial_min;
+        var total_hours = 0;
+        var temp = total_min;
+        while(temp > 0){
+          if (!(temp-60 < 0)){
+            temp = temp - 60;
+            total_hours++;
+          }
+          else{
+            break
+          }
+        }
+        total_min = temp;
+        time_string = total_hours+" hours "+total_min+" mins" 
+        $("#trip_duration").text(time_string)
+        $("#pb_trip_duration").text(time_string)
+        //alert('Hours: '+total_hours+' Mins:'+total_min);
+      });
+
     </script>
   {% endblock custom_scripts %}

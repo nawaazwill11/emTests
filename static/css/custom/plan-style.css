@@ -96,6 +96,14 @@
 	border-radius: 0;
 	font-size: 20px;
 }
+.btn-next {
+	position: relative;
+	right: -15px;
+}
+.btn-next > button, #btn-prev > button {
+	border-radius: 0;
+	font-size: 20px;
+}
 #btn-prev {
 	position: absolute;
 	bottom: 0;
@@ -232,7 +240,7 @@
 }
 .veh-club {
 }
-#p2-vs {
+.p2-vs {
 	background-color: white;
     border: 0;
     border-radius: 5px;
@@ -309,7 +317,7 @@
 	flex: 1;
 }
 .select-pitstime {
-	margin-left: 14px;
+	margin-left: 25px;
 }
 .p2-time-distance {
 	display: flex;
@@ -390,7 +398,7 @@
 	display: flex;
     flex: 3;
 }
-#p3-vs {
+.p3-vs {
 	background-color: white;
     border: 0;
     border-radius: 5px;
