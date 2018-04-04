@@ -237,11 +237,11 @@
             <div class="p2-time-distance pb">
               <div class="p2-distance">
                   <span>Distance:</span>
-                  <span>300 km</span>
+                  <span id="init_distance">300 km</span>
               </div>
               <div class="p2-time">
                   <span>Travel Time:</span>
-                  <span>8 hours 15 min</span>
+                  <span id="init_duration">8 hours 15 min</span>
               </div>
             </div>
             <div class="p2-total-time-distance pb">
@@ -251,7 +251,7 @@
               </div>
               <div class="p2-total-distance">
                 <span style="display: flex; flex: 1;">Total Distance:</span>
-                <span>310 km</span>
+                <span id="trip_distance">310 km</span>
               </div>
             </div>
           </div>
@@ -503,7 +503,7 @@
                 <span class="ag" style="flex: 2 30px;">Age Group:</span>
                 <div id="age_select" class="age-select ag slt-div">
                   <select id="age_group1" class="age slt p3-vs">
-                    <option>-------------------</option>
+                    <option value="">-------------------</option>
                     <option value="u18">Under 18</option>
                     <option value="18-30">18-30</option>
                     <option value="30-50">30-50</option>
@@ -680,6 +680,8 @@
         <input id="pitstops" type="hidden" name="pitstops" value="">
         <input id="pitstops_time" type="hidden" name="pitstops_time" value="">
         <input id="timeperpit" type="hidden" name="timeperpit" value="">
+        <input id="distance" type="hidden" name="distance" value="">
+        <input id="duration" type="hidden" name="duration" value="">
         <input id="start_date" type="hidden" name="start_date" value="">
         <input id="gender" type="hidden" name="gender" value="">
         <input id="age_group" type="hidden" name="age_group" value="">
@@ -957,7 +959,6 @@
         }
         
         pits_time = pitstops * timeperpit
-        alert(pits_time)
         var total_min = (pits_time) + initial_min;
         var total_hours = 0;
         var temp = total_min;
@@ -993,14 +994,20 @@
         post_dict['source'] = source
         post_dict['destination'] = destination
         post_dict['mode'] = mode
-        post_dict['duration'] = trip_duration
+        post_dict['duration'] = $("#trip_duration").text()
+        post_dict['distance'] = $("#trip_distance").text()
+        var init_distance = $("#trip_distance").text()
+        var init_duration = $("#trip_duration").text()
+        
+
         $("#source").val(source)
         $("#destination").val(destination)
         $("#mode").val(mode)
         $("#pitstops").val(pitstops) 
         $("#pitstops_time").val(pits_time) 
         $("#timeperpit").val(timeperpit)
-        $("#duration").val(trip_duration)
+        $("#duration").val(init_duration)
+        $("#distance").val(init_distance)
         $("#pb_source").text(post_dict['source'])
         $("#pb_destination").text(post_dict['destination'])
         $("#pb_mode").text(post_dict['mode'])
@@ -1129,7 +1136,8 @@
         $("#fuel_cost").focus(function(){
           mileage = $("#mileage").val()
           fuelprice = $("#fuel_price").val()
-          fuelcost = mileage * fuelprice
+          distance = 300
+          fuelcost = distance / mileage * fuelprice
           $("#fuel_cost").val(fuelcost)
           $("#total_cost").val(fuelcost)
           post_dict['fuel'] = fuelcost
@@ -1178,7 +1186,8 @@
                     dataType: 'json',
                     data: $('#trip_form').serialize(),
                     success: function (x) {                
-                      alert("Changes have been saved") 
+                      alert("Trip Created")
+                      setTimeout(function(){ window.location =  x.redirect_url;}); 
                     },
                     error:function(){
                       alert("Changes cannot be saved.\nTry Again with proper inputs.") 

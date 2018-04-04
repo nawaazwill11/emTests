@@ -1,4 +1,4 @@
-/home/willo_buntu/emTests/em/templates/em
+/home/willo_buntu/emTests/media
 # This is an auto-generated Django model module.
 # You'll have to do the following manually to clean this up:
 #   * Rearrange models' order
@@ -343,8 +343,8 @@ class Pi(models.Model):
     doj = models.DateTimeField()
     dob = models.DateTimeField()
     birthplace = models.CharField(max_length=100, blank=True, null=True)
-    p_pic = models.BinaryField(blank=True, null=True)
-    c_pic = models.BinaryField(blank=True, null=True)
+    profilepic = models.CharField(max_length=200, blank=True, null=True)
+    coverpic = models.CharField(max_length=200, blank=True, null=True)
     livesin = models.CharField(max_length=100, blank=True, null=True)
     occupation = models.CharField(max_length=100, blank=True, null=True)
     website = models.CharField(max_length=200, blank=True, null=True)
@@ -441,24 +441,32 @@ class Stupid(models.Model):
 
 
 class Trip(models.Model):
-    trip_id = models.CharField(primary_key=True, max_length=30)
-    trip_privacy = models.IntegerField()
-    trip_link = models.CharField(max_length=26)
-    trip_request = models.IntegerField()
     company = models.IntegerField(blank=True, null=True)
     moto = models.IntegerField(blank=True, null=True)
-    occasion = models.IntegerField(blank=True, null=True)
     fuel = models.FloatField(blank=True, null=True)
     vehicle = models.FloatField(blank=True, null=True)
     hotel = models.FloatField(blank=True, null=True)
     total = models.FloatField(blank=True, null=True)
     start_date = models.DateTimeField(blank=True, null=True)
-    end_date = models.DateTimeField(blank=True, null=True)
-    gender = models.IntegerField(blank=True, null=True)
-    age = models.CharField(max_length=20, blank=True, null=True)
+    gender = models.CharField(max_length=10, blank=True, null=True)
+    age_group = models.CharField(max_length=20, blank=True, null=True)
     participants = models.IntegerField(blank=True, null=True)
     title = models.CharField(max_length=50, blank=True, null=True)
     description = models.CharField(max_length=160, blank=True, null=True)
+    trip_group = models.CharField(max_length=32)
+    username = models.CharField(max_length=50)
+    pitstops = models.IntegerField(blank=True, null=True)
+    pitstops_time = models.IntegerField(blank=True, null=True)
+    source = models.CharField(max_length=100, blank=True, null=True)
+    destination = models.CharField(max_length=100, blank=True, null=True)
+    timeperpit = models.IntegerField(blank=True, null=True)
+    distance = models.FloatField(blank=True, null=True)
+    duration = models.IntegerField(blank=True, null=True)
+    is_published = models.IntegerField(blank=True, null=True)
+    trip_privacy = models.CharField(max_length=32, blank=True, null=True)
+    trip_link = models.CharField(max_length=32, blank=True, null=True)
+    trip_id = models.CharField(primary_key=True, max_length=32)
+    created_on = models.DateTimeField()
 
     class Meta:
         managed = False
@@ -466,7 +474,7 @@ class Trip(models.Model):
 
 
 class TripBasic(models.Model):
-    trip = models.ForeignKey(Trip, models.DO_NOTHING, primary_key=True)
+    trip_id = models.CharField(primary_key=True, max_length=30)
     user = models.ForeignKey(Login, models.DO_NOTHING)
     company = models.IntegerField()
     moto = models.IntegerField()
@@ -478,7 +486,7 @@ class TripBasic(models.Model):
 
 
 class TripCost(models.Model):
-    trip = models.ForeignKey(Trip, models.DO_NOTHING, primary_key=True)
+    trip_id = models.CharField(primary_key=True, max_length=30)
     user = models.ForeignKey(Login, models.DO_NOTHING)
     fuel = models.FloatField(blank=True, null=True)
     vehicle = models.FloatField(blank=True, null=True)
@@ -491,7 +499,7 @@ class TripCost(models.Model):
 
 
 class TripDate(models.Model):
-    trip = models.ForeignKey(Trip, models.DO_NOTHING, primary_key=True)
+    trip_id = models.CharField(primary_key=True, max_length=30)
     user = models.ForeignKey(Login, models.DO_NOTHING)
     start_date = models.DateTimeField()
     end_date = models.DateTimeField()
@@ -507,7 +515,7 @@ class TripDate(models.Model):
 
 
 class TripRequest(models.Model):
-    trip = models.ForeignKey(Trip, models.DO_NOTHING, primary_key=True)
+    trip_id = models.CharField(primary_key=True, max_length=30)
     trip_admin = models.ForeignKey(Login, models.DO_NOTHING, db_column='trip_admin')
     requesting_user = models.CharField(max_length=26)
     request_status = models.IntegerField()
@@ -518,7 +526,7 @@ class TripRequest(models.Model):
 
 
 class TripRoute(models.Model):
-    trip = models.ForeignKey(Trip, models.DO_NOTHING, primary_key=True)
+    trip_id = models.CharField(primary_key=True, max_length=30)
     user = models.ForeignKey(Login, models.DO_NOTHING)
     source = models.CharField(max_length=100)
     destination = models.CharField(max_length=100)

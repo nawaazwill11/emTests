@@ -430,28 +430,41 @@ class Story(models.Model):
 
 
 class Trip(models.Model):
-    trip_id = models.CharField(primary_key=True, max_length=30)
-    trip_privacy = models.IntegerField()
-    trip_link = models.CharField(max_length=26)
-    trip_request = models.IntegerField()
-    company = models.IntegerField(blank=True, null=True)
-    moto = models.IntegerField(blank=True, null=True)
-    occasion = models.IntegerField(blank=True, null=True)
+    company = models.CharField(max_length=5, blank=True, null=True)
+    moto = models.CharField(max_length=5,blank=True, null=True)
     fuel = models.FloatField(blank=True, null=True)
     vehicle = models.FloatField(blank=True, null=True)
     hotel = models.FloatField(blank=True, null=True)
     total = models.FloatField(blank=True, null=True)
+    mode = models.CharField(max_length=10, blank=True, null=True)
     start_date = models.DateTimeField(blank=True, null=True)
-    end_date = models.DateTimeField(blank=True, null=True)
-    gender = models.IntegerField(blank=True, null=True)
-    age = models.CharField(max_length=20, blank=True, null=True)
+    gender = models.CharField(max_length=10, blank=True, null=True)
+    age_group = models.CharField(max_length=20, blank=True, null=True)
     participants = models.IntegerField(blank=True, null=True)
     title = models.CharField(max_length=50, blank=True, null=True)
     description = models.CharField(max_length=160, blank=True, null=True)
+    trip_group = models.CharField(max_length=32)
+    username = models.CharField(max_length=50)
+    pitstops = models.IntegerField(blank=True, null=True)
+    pitstops_time = models.IntegerField(blank=True, null=True)
+    source = models.CharField(max_length=100, blank=True, null=True)
+    destination = models.CharField(max_length=100, blank=True, null=True)
+    timeperpit = models.IntegerField(blank=True, null=True)
+    distance = models.CharField(max_length=50, blank=True, null=True)
+    duration = models.CharField(max_length=50, blank=True, null=True)
+    is_published = models.IntegerField(blank=True, null=True)
+    trip_privacy = models.CharField(max_length=32, blank=True, null=True)
+    trip_link = models.CharField(max_length=32, blank=True, null=True)
+    trip_id = models.CharField(primary_key=True, max_length=32)
+    created_on = models.DateTimeField()
 
     class Meta:
         managed = False
         db_table = 'trip'
+
+    def __str__(self):
+        returns = '{0.username},{0.trip_group},{0.trip_id},{0.created_on}'
+        return returns.format(self)
 
 
 class TripBasic(models.Model):

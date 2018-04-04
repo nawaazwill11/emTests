@@ -10,7 +10,7 @@ from django.http import HttpResponseRedirect, HttpResponsePermanentRedirect, Jso
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from .models import Login, Pi
-from .mods.forms import LoginForm, RegistrationForm, Printer, AboutEditForm, GetAboutInitial, ProfileForm
+from .mods.forms import LoginForm, RegistrationForm, Printer, AboutEditForm, GetAboutInitial, ProfileForm, TripPlanValidation
 from .mods.test import SharingForm
 import re
 
@@ -42,18 +42,21 @@ class TestPageView(TemplateView):
 			return JsonResponse({'success':False})
 		return render(request, self.template_name, context=None)
 
-
+#Plan Trip Class-View
 class PlanTripPageView(TemplateView):
 	template_name = 'plan_trip.html'
-
+	
 	def get(self, request, *args, **kwargs):
 		return render(request, self.template_name, context=None)
 
 	def post(self, request, *args, **kwargs):
-		if 'company' in request.POST:
-			print(request.POST)
-			return JsonResponse({"success": True})
+		username = request.session['username']
+		valid = TripPlanValidation.validate(request.POST, username)
+		if valid:
+			redirect_url = '../mytrip/'
+			return JsonResponse({"success": True, 'redirect_url': redirect_url })
 		return render(request, self.template_name, context=None)
+
 
 class IndexPageView(TemplateView):
 	template_name = 'index.html'

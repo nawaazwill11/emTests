@@ -1,10 +1,11 @@
-from django import forms
-import re
-from em.models import Login, Pi, AuthUser
-from django.core.exceptions import ObjectDoesNotExist
-from django.contrib.auth.models import User
 import datetime
 from datetime import datetime as dt
+from django import forms
+from django.core.exceptions import ObjectDoesNotExist
+from django.contrib.auth.models import User
+import hashlib
+import re
+from em.models import Login, Pi, AuthUser, Trip
 
 
 #Using clean_<field_name>. This is the best choice.
@@ -427,6 +428,142 @@ class GetAboutInitial(forms.Form):
 				data = i
 			return data
 		return None
+
+class TripPlanValidation():
+	def validate(response, username):
+		kwargs = dict(response.lists())
+		print(kwargs)
+		count = 0
+		company  = kwargs['company'][0]
+		moto = kwargs['moto'][0]
+		source = kwargs['source'][0]
+		destination = kwargs['destination'][0]
+		mode = kwargs['mode'][0]
+		pitstops = int(kwargs['pitstops'][0])
+		timeperpit = int(kwargs['timeperpit'][0])
+		pitstops_time = int(kwargs['pitstops_time'][0])
+		distance_raw = kwargs['distance'][0]
+		duration_raw = kwargs['duration'][0]
+		start_date_raw = kwargs['start_date'][0]
+		gender = kwargs['gender'][0]
+		age_group_list = kwargs['age_group'][0]
+		participants = kwargs['participants'][0]
+		title = kwargs['title'][0]
+		description = kwargs['description'][0]
+		fuel = kwargs['fuel'][0]
+		vehicle = kwargs['vehicle'][0]
+		hotel = kwargs['hotel'][0]
+		v_source = TripPlanValidation.alpha(source)
+		v_destination = TripPlanValidation.alpha(destination)
+		v_mode = TripPlanValidation.modecheck(mode)
+		v_pits = TripPlanValidation.calcpits(pitstops, timeperpit, pitstops_time)
+		distance, v_distance = TripPlanValidation.extractdistance(distance_raw)
+		duration, v_duration = TripPlanValidation.extractduration(duration_raw)
+		start_date, v_start_date = TripPlanValidation.datemade(start_date_raw)
+		v_gender = TripPlanValidation.gencheck(gender)
+		age_group, v_age_group = TripPlanValidation.agegrouping(age_group_list)
+		v_part = TripPlanValidation.partcheck(participants)
+		v_title_desc = TripPlanValidation.titlecheck(title, description)
+		total, v_costing = TripPlanValidation.costcheck(fuel, vehicle, hotel)
+
+		if (v_source and v_destination and v_mode and v_pits and v_start_date and v_gender and v_age_group and v_part and v_title_desc and v_duration and v_distance ):
+			#print(True)
+			recorded = TripPlanValidation.trip_record(username, company, moto, source, destination, mode, pitstops, timeperpit, pitstops_time, distance, duration, start_date, gender, age_group, participants, title, description, fuel, vehicle, hotel, total)
+			if recorded:
+				return True
+		else:
+			print('Error in Values')
+			return (False)
+
+	def alpha(string):
+		valid = re.search(r'^[a-z]+$', string, re.I)
+		if valid:
+			string = string.title()
+			return string
+		else:
+			return False
+
+	def modecheck(mode):
+		mode_dict = {'cycle': 'Cycle', 'motorbike': 'Motorbike', 'car': 'Car', 'onfoot': 'On Foot'}
+		if mode in mode_dict.values():
+			return True
+		return False
+
+	def calcpits(pit, time, ptime):
+		pit = int(pit)
+		time = int(time)
+		ptime = int(ptime)
+
+		if ((pit*time) == ptime):
+			return True
+		return False
+
+	def extractdistance(distance):
+		extracted = re.findall('\d+', distance)
+		return (extracted[0], True)
+
+	def extractduration(duration):
+		extracted = re.findall('\d+', duration)
+		return (extracted[0], True)
+
+	def datemade(date):
+		try:
+			sdate = date + ":00"
+			madedate = dt.strptime(sdate, '%Y-%m-%d %H:%M')
+			if isinstance(madedate, datetime.datetime):
+				return (madedate, True)
+		except ValueError as v:
+			raise v("Date isn't right")
+
+	def gencheck(gender):
+		gender = gender.title()
+		gendict = {'male': 'Male', 'female': 'Female', 'others': 'Others', 'any': 'Any'}
+		if gender in gendict.values():
+			return True
+		return False
+
+	def agegrouping(agestring):
+		agesplit = agestring.split(',')
+		return (agesplit, True)
+
+	def partcheck(participants):
+		isclean = re.search(r'^[\d]+$', participants)
+		if isclean:
+			return True
+		return False
+
+	def titlecheck(title, desc):
+		if (len(title) > 30) or (len(desc) > 160) :
+			return False
+		return True
+
+	def costcheck(fuel, veh, hot):
+		fuel = int(fuel)
+		veh = int(veh)
+		hot = int(hot)
+		total = (fuel+veh+hot)
+		return (total, True)
+
+	def trip_record(username, company, moto, source, destination, mode, pitstops, timeperpit, pitstops_time, distance, duration, start_date, gender, age_group, participants, title, description, fuel, vehicle, hotel, total):
+		print(username, company, moto, source, destination, mode, pitstops, timeperpit, pitstops_time, distance, duration, start_date, gender, age_group, participants, title, description, fuel, vehicle, hotel, total)
+
+		trip_group = TripPlanValidation.hexer(username)
+		trip_id = TripPlanValidation.hexer(trip_group)
+		timenow = datetime.datetime.now()
+		trip = Trip.objects.create(username=username, trip_group=trip_group, trip_id=trip_id, created_on=timenow, company=company, moto=moto, source=source, destination=destination, mode=mode, pitstops=pitstops, timeperpit=timeperpit, pitstops_time=pitstops_time, distance= distance, duration=duration, start_date=start_date, gender=gender, age_group=age_group, participants=participants, title=title, description=description, fuel=fuel, vehicle=vehicle, hotel=hotel, total=total)
+		if trip:
+			return True
+		else:
+			print('Error in Creating')
+
+
+
+
+	def hexer(parameter):
+		base_str = parameter + str(datetime.datetime.now())
+		the_md5 = hashlib.md5(base_str.encode())
+		the_hex = the_md5.hexdigest()
+		return the_hex
 
 '''
 #Using clean()
