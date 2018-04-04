@@ -565,6 +565,28 @@ class TripPlanValidation():
 		the_hex = the_md5.hexdigest()
 		return the_hex
 
+
+class MyTripForm():
+
+	def form_base(username):
+		trip = Trip.objects.filter(username='nwillo').order_by('-created_on').values()
+		records_list = list(trip)
+		for record in records_list:
+			print (record)
+		return records_list
+		
+
+
+
+
+
+
+
+
+
+
+
+
 '''
 #Using clean()
 class LoginForm(forms.Form):

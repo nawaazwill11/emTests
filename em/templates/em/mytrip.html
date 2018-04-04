@@ -47,102 +47,101 @@
           </div>
         </div>
         <div class="right-panel-body">
-          <div class="trip-section">
-            <div id="trip-box" class="trip-box col-lg-8">
-              <div id="tbl1" class="trip-box-layer-1 col-lg-12 layers">
-                <div id="tbl1l" class="trip-box-l1-left col-lg-7">
-                  <div class="tbl1l-title">
-                      <span><i>Around the state in 20 days</i></span>
+          {% for record in records_list %}
+            <div class='trip-section'>
+            <div id='' class='trip-box col-lg-8'>
+              <div id='' class='trip-box-layer-1 col-lg-12 layers tbl1'>
+                <div id='' class='trip-box-l1-left col-lg-7 tbl1l'>
+                  <div class='tbl1l-title'>
+                      <span id='title'><i>{{record.title}}</i></span>
                   </div>
                 </div>
-                <div id="tbl1r" class="trip-box-l1-right col-lg-5">
-                  <div id="tc" class="trip-creator col-lg-12">
-                    <span>Created By:</span>
-                    <div class="creator-club">
-                      <div class="trip-creator-img">
-                        <img src="{% static "img/user-black.png" %}">
+                <div id='' class='trip-box-l1-right col-lg-5 tbl1r'>
+                  <div id='' class='trip-creator col-lg-12 tc'>
+                    <span></span>
+                    <div class='creator-club'>
+                      <div class='trip-creator-img'>
+                        <img src='{% static 'img/user-black.png' %}'>
                       </div>
-                      <div class="trip-creator-name">
+                      <div class='trip-creator-name'>
                         Willo Walker
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="trip-box-layer-2 col-lg-12 layers">
-                <div class="trip-src-dest sub-layer">
-                  <div class="trip-src sub-layer-1">
-                    <span><b>Source:</b></span>&nbsp <span>Daman, Daman & Diu</span>
+              <div class='trip-box-layer-2 col-lg-12 layers'>
+                <div class='trip-src-dest sub-layer'>
+                  <div class='trip-src sub-layer-1'>
+                    <span><b>Source:</b></span>&nbsp <span> {{record.source}} </span>
                   </div>
-                  <div class="trip-dest sub-layer-2">
-                    <span><b>Destination:</b></span>&nbsp <span>Pune, Maharashtra</span>
-                  </div>
-                </div>
-              </div>
-              <div class="trip-box-layer-4 col-lg-12 layers">
-                <div class="trip-mode-type-veh sub-layer">
-                  <div class="trip-mode sub-layer-1">
-                    <span><b>Moto:</b></span>&nbsp <span>Adventure</span>
-                  </div>
-                  <div class="trip-type sub-layer-2">
-                    <span><b>Mode:</b></span>&nbsp <span>Motorbike</span>
+                  <div class='trip-dest sub-layer-2'>
+                    <span><b>Destination:</b></span>&nbsp <span> {{record.destination}} </span>
                   </div>
                 </div>
               </div>
-              <div class="trip-box-layer-3 col-lg-12 layers">
-                <div class="trip-date-time sub-layer">
-                  <div class="trip-date sub-layer-1">
-                    <span><b>Starts on:</b></span>&nbsp <span>28th February, 2018</span>
+              <div class='trip-box-layer-4 col-lg-12 layers'>
+                <div class='trip-mode-type-veh sub-layer'>
+                  <div class='trip-mode sub-layer-1'>
+                    <span><b>Moto:</b></span>&nbsp <span> {{record.moto}} </span>
                   </div>
-                  <div class="trip-time sub-layer-2">
-                    <span><b>Time:</b></span>&nbsp <span>10:00 am</span>
-                  </div>
-                </div>
-              </div>
-              <div class="trip-box-layer-4 col-lg-12 layers">
-                <div class="trip-nop-vac sub-layer">
-                  <div class="trip-nop sub-layer-1">
-                    <span><b>Gender:</b></span>&nbsp <span>Any</span>
-                  </div>
-                  <div class="trip-vac sub-layer-2">
-                    <span><b>Age Group:</b></span>&nbsp <span>18-35</span>
+                  <div class='trip-type sub-layer-2'>
+                    <span><b>Mode:</b></span>&nbsp <span>{{record.mode}}</span>
                   </div>
                 </div>
               </div>
-              <div class="trip-box-layer-4 col-lg-12 layers">
-                <div class="trip-nop-vac sub-layer">
-                  <div class="trip-nop sub-layer-1">
-                    <span><b>People Travelling:</b></span>&nbsp <span>28&nbsp<a href="#">(View)</a></span>
+              <div class='trip-box-layer-3 col-lg-12 layers'>
+                <div class='trip-date-time sub-layer'>
+                  <div class='trip-date sub-layer-1'>
+                    <span class="timedate"><b>Starts Date and Time:</b></span>&nbsp <span class="timedate">{{record.start_date}}</span>
                   </div>
-                  <div class="trip-vac sub-layer-2">
+                </div>
+              </div>
+              <div class='trip-box-layer-4 col-lg-12 layers'>
+                <div class='trip-nop-vac sub-layer'>
+                  <div class='trip-nop sub-layer-1'>
+                    <span><b>Gender:</b></span>&nbsp <span>{{record.gender}}</span>
+                  </div>
+                  <div class='trip-vac sub-layer-2'>
+                    <span><b>Age Group:</b></span>&nbsp <span>{{record.age_group}}</span>
+                  </div>
+                </div>
+              </div>
+              <div class='trip-box-layer-4 col-lg-12 layers'>
+                <div class='trip-nop-vac sub-layer'>
+                  <div class='trip-nop sub-layer-1'>
+                    <span><b>Route-Info:</b></span>&nbsp <span><a href='#'>Click Here..</a></span>
+                  </div>
+                  <div class='trip-vac sub-layer-2'>
                     <span><b>Vacancy:</b></span>&nbsp <span>7</span>
                   </div>
                 </div>
               </div>
               
-              <div id="tbl5" class="trip-box-layer-5 col-lg-12 layers">
-                <div class="trip-route-join sub-layer">
-                  <div class="trip-route sub-layer-1">
-                    <span><b>Route-Info:</b></span>&nbsp <span><a href="#">Click Here..</a></span>
+              <div id='' class='trip-box-layer-5 col-lg-12 layers tbl5'>
+                <div class='trip-route-join sub-layer'>
+                  <div class='trip-route sub-layer-1'>
+                    <span class=''><b>Description:</b></span>&nbsp <span>{{record.description}}</span>
                   </div>
                   
                 </div>
               </div>
             </div>
-            <div id="sb" class="side-box col-lg-offset-1 col-lg-3">
-              <div class="side-box-body">
-                <div class="sb-edit-btn sb">
-                  <button class="btn btn-primary">Edit</button>
+            <div id='' class='side-box col-lg-offset-1 col-lg-3 sb'>
+              <div class='side-box-body'>
+                <div class='sb-edit-btn sb'>
+                  <button class='btn btn-primary'>Edit</button>
                 </div>
-                <div class="sb-discussion-btn sb">
-                  <button class="btn btn-success">Discussion</button>
+                <div class='sb-discussion-btn sb'>
+                  <button class='btn btn-success'>Discussion</button>
                 </div>
-                <div class="sb-cancel-btn sb">
-                  <button class="btn btn-danger">Cancel</button>
+                <div class='sb-cancel-btn sb'>
+                  <button class='btn btn-danger'>Cancel</button>
                 </div>
               </div>
             </div>
           </div>
+          {% endfor %}
         </div>
       </div>
     </div>

@@ -43,7 +43,7 @@
     flex-direction: column;
     margin-top: 15px;
 }
-#sb {
+.sb {
     width: 18%;
 }
 .sb {
@@ -62,7 +62,7 @@
     border-bottom: 1px solid #edf2f6
 }
 
-#trip-box{
+.trip-box{
     background-color: white;
     position: relative;
     display: flex;
@@ -80,14 +80,17 @@
     border-bottom: 2px solid #edf2f6;
 
 }
-#tbl1 {
+.tbl1 {
     background-color: #edf2f7;
     color: #888da6;
     margin-top: 0;
 }
-#tbl1l {
+.tbl1l {
     padding: 0;
     padding-top: 10px;
+}
+.tbl1l-title {
+    margin-top: 10px;
 }
 .tbl1l-title > span {
     font-size: 17px;
@@ -105,7 +108,7 @@
 .tbl1l-img > img {
     width: 40px
 }
-#tbl1r {
+.tbl1r {
     padding: 0;
 }
 .trip-box-l1-right {
@@ -114,7 +117,7 @@
     padding: 0;
 
 }
-#tc {
+.tc {
     padding: 0;
 }
 .trip-creator {
@@ -153,6 +156,9 @@
     display: flex;
     flex: 1;
 }
+.last-mid {
+    margin-top: 10px;
+}
 
 /****trip-box-layer-2 end****/
 
@@ -168,7 +174,7 @@
 
 /****trip-box-layer-4****/
 
-#tbl5 {
+.tbl5 {
     border-bottom: 0;
 }
 
@@ -190,3 +196,10 @@
 /****trip-box-layer-5****/
 
 /****right-panel end****/
+
+.trip-box-layer-5 {
+    height: 50px;
+}
+.timedate{
+    flex: 1;
+}

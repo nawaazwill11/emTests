@@ -10,7 +10,7 @@ from django.http import HttpResponseRedirect, HttpResponsePermanentRedirect, Jso
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from .models import Login, Pi
-from .mods.forms import LoginForm, RegistrationForm, Printer, AboutEditForm, GetAboutInitial, ProfileForm, TripPlanValidation
+from .mods.forms import LoginForm, RegistrationForm, Printer, AboutEditForm, GetAboutInitial, ProfileForm, TripPlanValidation, MyTripForm
 from .mods.test import SharingForm
 import re
 
@@ -346,7 +346,9 @@ class MyTripPageView(TemplateView):
 	template_name = 'mytrip.html'
 
 	def get(self, request, *args, **kwargs):
-		return render(request, self.template_name, context=None)
+		records_list = MyTripForm.form_base(request.session['username'])
+		context = {'records_list': records_list}
+		return render(request, self.template_name, context)
 
 	def post(self, request, *args, **kwargs):
 		return render(request, self.template_name, context=None)
