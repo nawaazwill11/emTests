@@ -43,6 +43,18 @@ class TestPageView(TemplateView):
 		return render(request, self.template_name, context=None)
 
 
+class PlanTripPageView(TemplateView):
+	template_name = 'plan_trip.html'
+
+	def get(self, request, *args, **kwargs):
+		return render(request, self.template_name, context=None)
+
+	def post(self, request, *args, **kwargs):
+		if 'company' in request.POST:
+			print(request.POST)
+			return JsonResponse({"success": True})
+		return render(request, self.template_name, context=None)
+
 class IndexPageView(TemplateView):
 	template_name = 'index.html'
 	form = LoginForm
@@ -347,14 +359,7 @@ class PlanEventPageView(TemplateView):
 		return render(request, self.template_name, context=None)
 
 
-class PlanTripPageView(TemplateView):
-	template_name = 'plan_trip.html'
 
-	def get(self, request, *args, **kwargs):
-		return render(request, self.template_name, context=None)
-
-	def post(self, request, *args, **kwargs):
-		return render(request, self.template_name, context=None)
 
 class SearchEventPageView(TemplateView):
 	template_name = 'search_event.html'

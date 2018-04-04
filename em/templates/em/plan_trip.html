@@ -12,11 +12,15 @@
   {% block class_main %} col-lg-offset-2 col-lg-9 {% endblock class_main %}
   
   {% block content %}
-  <div id="iframe_block">
+    <div id="iframe_block">
       <iframe id="cost_frame" class="cost_frame" src="#" frameborder="0" allowfullscreen></iframe>
-      <button id="hideframe" class="btn btn-success">Done</button>
-  </div>
-    <div id="one" class="plan-container col-lg-8" style="display: block;">
+      <button type="button" id="hideframe" class="btn btn-success">Done</button>
+    </div>
+    <form id="trip_form" method="POST" >
+      {% csrf_token %}
+    
+      <!--Plan Page One-->
+      <div id="one" class="plan-container col-lg-8" style="display: block;">
   			<div class="plan-head">
   				<div class="plan-title">
   					<div class="title-top">
@@ -116,21 +120,24 @@
   				<div class="layer-3"><!--First Layer corner options-->
   					<div class="navigante">
   						<div id="btn-cancel" class="btn-cancel">
-  							<button class="btn btn-danger" onclick="abort()"><a href="{% url 'mytrip' %}">x</a></button>
+  							<button type="button" class="btn btn-danger" onclick="abort()"><a href="{% url 'mytrip' %}">x</a></button>
   						</div>
   						<div id="btn-save" class="btn-save">
-  							<button class="btn btn-success glyphicon glyphicon-floppy-disk" onclick="save()"><a href="{% url 'mytrip' %}"></a></button>
+  							<button type="button" class="btn btn-success glyphicon glyphicon-floppy-disk" onclick="save()"><a href="{% url 'mytrip' %}"></a></button>
   						</div>
   						<div id=btn-prev class="btn-prev" style="visibility: hidden;">
-  							<button class="btn btn-primary" onclick="focus_click('two','one')">Prev</button>
+  							<button type="button" class="btn btn-primary" onclick="focus_click('two','one')">Prev</button>
   						</div>
+
   						<div id="btn-next" class="btn-next">
-  							<button class="btn btn-primary" onclick="next_click1('two','one','three','four', 'two', 'one')">Next</button>
+  							<button type="button" type="button" class="btn btn-primary" onclick="next_click1('two','one','three','four', 'two', 'one')">Next</button>
   						</div>
   					</div>
   				</div>
   			</div>
   		</div>
+      <!--Plan Page End-->
+      <!--Plan Page Two-->
       <div id="two" class="plan-container col-lg-8">
         <div class="plan-head">
           <div class="plan-title">
@@ -146,11 +153,11 @@
           <div class="p2-layer-1 col-lg-10 col-lg-offset-1">
             <div class="p2-l1-options col-lg-12">
               <div id="p2-l1-op" class="source l1-op col-lg-10 col-lg-offset-1">
-                <label><span>Source:</span><input id="frominp" class="p3-vs" type="text" name="source"></label>
+                <label><span>Source:</span><input id="frominp" class="p3-vs" type="text"></label>
               </div>
                 
               <div id="p2-l1-op" class="dest l1-op col-lg-10 col-lg-offset-1">
-                <label><span>Destination:</span><input id="toinp" class="p3-vs" type="text" name="dest" style="flex: 9;"></label>
+                <label><span>Destination:</span><input id="toinp" class="p3-vs" type="text"  style="flex: 9;"></label>
               </div>
               <br>
               
@@ -158,7 +165,7 @@
             <div class="vehicle l1-op col-lg-7 col-lg-offset-4">
               <div class="veh-club">
                 <span>Mode:</span>
-                <select id="mode" class="vehicle-select p2-vs">
+                <select id="travel_mode" class="vehicle-select p2-vs">
                 <option value="">-----</option>
                 <option value="car">Car</option>
                 <option value="motorbike">Motorbike</option>
@@ -177,7 +184,7 @@
           <div class="p2-layer-2 col-lg-offset-1 col-lg-10">
           <div class="p2-sub-layer-1">
             <div class="add-stop">
-              <button class="btn btn-success"><span>+</span>AddStop</button>
+              <button type="button" class="btn btn-success"><span>+</span>AddStop</button>
             </div>
           </div>
           <div class="p2-sub-layer-2">
@@ -199,8 +206,8 @@
                     <option value="9">9</option>
                     <option value="custom">custom</option>
                   </select>
-                  <span class="s2"><input id="custpit" class="p3-vs" type="text" name="custom-pitstop" style="display: none"></span>
-                  <span class="s3"><button id="checkpits" class="edit-pitstop btnt">Check</button></span>
+                  <span class="s2"><input id="custpit" class="p3-vs" type="text"  style="display: none"></span>
+                  <span class="s3"><button type="button" id="checkpits" class="edit-pitstop btnt">Check</button></span>
                 </div>
               </div>
               <div class="time-per-pitstop pb">
@@ -216,14 +223,14 @@
                     <option value="custom">custom</option>
                   </select> 
                   <span style="display: flex; flex: 1;">
-                    <input id="tppinp" class="p3-vs" type="text" name="custom-time" style="display: none">
+                    <input id="tppinp" class="p3-vs" type="text"  style="display: none">
                     <select id="tppisel" class="custom-time-unit p2-vs" style="display: none">
                       <option value="mins">mins</option>
                       <option value="hours">hours</option>
                       <option value="days">days</option>
                     </select>
                   </span>
-                  <button id="calctime" class="edit-pitstime btnt">Check</button>
+                  <button type="button" id="calctime" class="edit-pitstime btnt">Check</button>
                 </div>
               </div>
             </div>
@@ -297,7 +304,7 @@
                           </div>
                       </div>
                       <div class="subtrip-edit">
-                        <button class="st-btn-edit btnt">Edit</button>
+                        <button type="button" class="st-btn-edit btnt">Edit</button>
                       </div>
                     </div>
                   </div>
@@ -343,7 +350,7 @@
                           </div>
                       </div>
                       <div class="subtrip-edit">
-                        <button class="st-btn-edit btnt">Edit</button>
+                        <button type="button" class="st-btn-edit btnt">Edit</button>
                       </div>
                     </div>
                   </div>
@@ -352,21 +359,23 @@
           <div class="p2-layer-3"><!--Second Layer corner options-->
             <div class="navigante">
               <div id="btn-cancel" class="btn-cancel">
-                <button class="btn btn-danger" onclick="abort()"><a href="{% url 'mytrip' %}">x</a></button>
+                <button type="button" class="btn btn-danger" onclick="abort()"><a href="{% url 'mytrip' %}">x</a></button>
               </div>
               <div id="btn-save" class="btn-save">
-                <button class="btn btn-success glyphicon glyphicon-floppy-disk" onclick="save()"><a href="{% url 'mytrip' %}"></a></button>
+                <button type="button" class="btn btn-success glyphicon glyphicon-floppy-disk" onclick="save()"><a href="{% url 'mytrip' %}"></a></button>
               </div>
               <div id=btn-prev class="btn-prev">
-                <button class="btn btn-primary" onclick="navigante('one','two','three','four'); focus_click('one','two')">Prev</button>
+                <button type="button" class="btn btn-primary" onclick="navigante('one','two','three','four'); focus_click('one','two')">Prev</button>
               </div>
               <div id=btn-next class="btn-next">
-                <button id="next_click2" class="btn btn-primary">Next</button>
+                <button type="button" id="next_click2" class="btn btn-primary">Next</button>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <!--Plan Page Two End-->
+      <!--Plan Page Three-->
       <div id="three" class="plan-container col-lg-8">
         <div class="plan-head">
           <div class="plan-title">
@@ -504,10 +513,10 @@
                 </div>
                 <div class="p3-button-group">
                   <div class="age-add ag">
-                    <button id="add_age_group" class="btn btn-success"><span class="intbtn">+</span></button>
+                    <button type="button" id="add_age_group" class="btn btn-success"><span class="intbtn">+</span></button>
                   </div>
                   <div id="remove_age_group" class="age-remove ag">
-                    <button class="btn btn-danger"><span class="intbtn">-</span></button>
+                    <button type="button" class="btn btn-danger"><span class="intbtn">-</span></button>
                   </div>
                 </div>
               </div>
@@ -518,14 +527,14 @@
                     <label><span style="margin-right: 10px;">Limit Participants:</span><input id="limit_yes" type="radio" name="nop" value='yes'>Yes</label>
                     <label><input id="limit_no" type="radio" name="nop" checked="checked" value="no">No</label>
                   </div>
-                  <label><input id="limit_inp" type="text" name="limit" placeholder="Eg. 10" style="border: 0; border-radius: 5px; font-weight: 400; padding: 5px; display: none"></label>
+                  <label><input id="limit_inp" type="text" placeholder="Eg. 10" style="border: 0; border-radius: 5px; font-weight: 400; padding: 5px; display: none"></label>
                   <br>
                 </div>
-                <button class="btn btn-success"><span class="intbtn">+</span></button>
+                <button type="button" class="btn btn-success"><span class="intbtn">+</span></button>
               </div>
               <div id="p3-l1-op" class="l1-op col-lg-10 col-lg-offset-1">
                 <label>Title:</label>
-                <input id="trip_title" type="text" name="trip-title" placeholder="Eg. Around the state in 7 days" maxlength="30" style="border: 0; border-radius: 5px; width: 400px; padding: 5px;">
+                <input id="trip_title" type="text" placeholder="Eg. Around the state in 7 days" maxlength="30" style="border: 0; border-radius: 5px; width: 400px; padding: 5px;">
               </div>
               <div id="p3-l1-op" class="l1-op col-lg-10 col-lg-offset-1">
                 <div class="description">
@@ -538,23 +547,25 @@
           <div class="p3-layer2"><!--Third Layer corner options-->
             <div class="navigante">
               <div id="btn-cancel" class="btn-cancel">
-                <button class="btn btn-danger" onclick="abort()"><a href="{% url 'mytrip' %}">x</a></button>
+                <button type="button" class="btn btn-danger" onclick="abort()"><a href="{% url 'mytrip' %}">x</a></button>
               </div>
               <div id="btn-save" class="btn-save">
-                <button class="btn btn-success glyphicon glyphicon-floppy-disk" onclick="save()"><a href="{% url 'mytrip' %}"></a></button>
+                <button type="button" class="btn btn-success glyphicon glyphicon-floppy-disk" onclick="save()"><a href="{% url 'mytrip' %}"></a></button>
               </div>
               <div>
               <div id=btn-prev class="btn-prev">
-                <button class="btn btn-primary" onclick="navigante('two','one','three','four'); focus_click('two', 'three')">Prev</button>
+                <button type="button" class="btn btn-primary" onclick="navigante('two','one','three','four'); focus_click('two', 'three')">Prev</button>
               </div>
               <div id=btn-next class="btn-next">
-                <button id="next_click3" class="btn btn-primary">Next</button>
+                <button type="button" id="next_click3" class="btn btn-primary">Next</button>
               </div>
             </div>
           </div>
         </div>
       </div>
      </div>
+     <!--Plan Page Three End-->
+     <!--Plan Page Four-->
       <div id="four" class="plan-container col-lg-8">
         <div class="plan-head">
           <div class="plan-title">
@@ -575,12 +586,12 @@
               <div id="club" class="col-lg-offset-2 col-lg-8">
                <div id="p4-l1-op" class=" l1-op col-lg-10 col-lg-offset-1">
                   <span>Mileage:</span>
-                  <span style="margin-left: 20px;"><input id="mileage" class="p4-vs" type="text" name="mileage"></span> 
+                  <span style="margin-left: 20px;"><input id="mileage" class="p4-vs" type="text" ></span> 
                 </div>
                 <div id="p4-l1-op" class=" l1-op col-lg-11 col-lg-offset-1">
                   <div class="fuel">
                     <span class="tag-fuel">Price/Litre:</span>
-                    <span class="inp-fuel" style="margin-left: 4px;"><input id="fuel_price" class="p4-vs" type="text" name="mileage"></span>
+                    <span class="inp-fuel" style="margin-left: 4px;"><input id="fuel_price" class="p4-vs" type="text" ></span>
                   </div>
                   <div class="get-rate">
                     <span id="get_fuel_rate" class="a-rate"><a href="#">Get Rate</a></span>
@@ -588,7 +599,7 @@
                 </div>
                 <div id="p4-l1-op" class=" l1-op col-lg-10 col-lg-offset-1">
                   <span><b>Fuel Cost:</b></span>
-                  <span id="" style="margin-left: 8px;"><input id="fuel_cost" class="p4-vs" type="text" name="fuel-cost"></span> 
+                  <span id="" style="margin-left: 8px;"><input id="fuel_cost" class="p4-vs" type="text" ></span> 
                 </div>
               </div>
             </div>
@@ -607,7 +618,7 @@
                 </div>
                 <div id="p4-l1-op" class=" l1-op col-lg-10 col-lg-offset-1">
                   <span><b>Vehicle Cost:</b></span>
-                  <span><input id="vehcost" class="p4-vs" type="text" name="fuel-cost"></span> 
+                  <span><input id="vehcost" class="p4-vs" type="text" ></span> 
                 </div>
               </div>
             </div>
@@ -626,7 +637,7 @@
                 </div>
                 <div id="p4-l1-op" class=" l1-op col-lg-10 col-lg-offset-1" style="margin-top: -10px">
                   <span><b>Hotel Cost:</b></span>
-                  <span><input id="hotcost" class="p4-vs" type="text" name="fuel-cost"></span> 
+                  <span><input id="hotcost" class="p4-vs" type="text" ></span> 
                 </div>
               </div>
             </div>
@@ -635,7 +646,7 @@
             <div class="p4-l1-options col-lg-12">
               <div id="club" class="col-lg-offset-1 col-lg-10">
                 <div id="p4-l1-op" class=" l1-op col-lg-9" style="margin-top: -10px; margin-left: 50px;">
-                  <h3><span>Total Cost:</span><span><input id="total_cost" class="p4-vs" type="text" name="total-cost"></span></h3>
+                  <h3><span>Total Cost:</span><span><input id="total_cost" class="p4-vs" type="text"></span></h3>
                 </div>
               </div>
             </div>
@@ -643,22 +654,46 @@
           <div class="p4-layer-4">
             <div class="navigante">
               <div id="btn-cancel" class="btn-cancel">
-                <button class="btn btn-danger" onclick="abort()"><a href="{% url 'mytrip' %}">x</a></button>
+                <button type="button" class="btn btn-danger" onclick="abort()"><a href="{% url 'mytrip' %}">x</a></button>
               </div>
               <div id="btn-save" class="btn-save">
-                <button class="btn btn-success glyphicon glyphicon-floppy-disk" onclick="save()"><a href="{% url 'mytrip' %}"></a></button>
+                <button type="button" class="btn btn-success glyphicon glyphicon-floppy-disk" onclick="save()"><a href="{% url 'mytrip' %}"></a></button>
               </div>
               <div id=btn-prev class="btn-prev">
-                <button class="btn btn-primary" onclick="navigante('three','one','two','four'); focus_click('three', 'four')">Prev</button>
+                <button type="button" class="btn btn-primary" onclick="navigante('three','one','two','four'); focus_click('three', 'four')">Prev</button>
               </div>
               <div id=btn-next class="btn-next">
-                <button class="btn btn-primary" onclick="publishTrip()">Publish</button>
+                
+                <button id="plansubmit" name="finalsumit" class="btn btn-primary" type="submit">Publish</button>
               </div>
             </div>
           </div>
         </div>
       </div>
-  		
+      <!--Plan Page Four End-->
+      <div id="reponse_div" hidden="hidden">
+        <input id="company" type="hidden" name="company" value="">
+        <input id="moto" type="hidden" name="moto" value="">
+        <input id="source" type="hidden" name="source" value="">
+        <input id="destination" type="hidden" name="destination" value="">
+        <input id="mode" type="hidden" name="mode" value="">
+        <input id="pitstops" type="hidden" name="pitstops" value="">
+        <input id="pitstops_time" type="hidden" name="pitstops_time" value="">
+        <input id="timeperpit" type="hidden" name="timeperpit" value="">
+        <input id="start_date" type="hidden" name="start_date" value="">
+        <input id="gender" type="hidden" name="gender" value="">
+        <input id="age_group" type="hidden" name="age_group" value="">
+        <input id="participants" type="hidden" name="participants" value="">
+        <input id="title" type="hidden" name="title" value="">
+        <input id="description" type="hidden" name="description" value="">  
+        <input id="fuel" type="hidden" name="fuel" value="">
+        <input id="vehicle" type="hidden" name="vehicle" value="">
+        <input id="hotel" type="hidden" name="hotel" value="">
+        <input id="total" type="hidden" name="total" value="">
+      </div>
+      
+    </form>
+      <!--Progress Bar-->
   		<div id="progress-container" class="progress-container col-lg-offset-1 col-lg-3">
     		<div class="progress-main">
           <div class="prog-head">
@@ -782,7 +817,8 @@
           </div>
         </div>
   		</div>
-      
+      <!--Progress Bar End-->
+    
   {% endblock content %}
   {% block overlay %}
     <div class="album-overlay" id="olay" hidden="hidden">
@@ -790,6 +826,7 @@
   {% endblock overlay %}
 
   {% block custom_scripts %}
+  
     <script type="text/javascript">
       $(document).ready(function() {
           var addclass = 'company-select';
@@ -839,9 +876,11 @@
       }
       function get_company(id){
         post_dict['company'] = company_dict[id];
+        $("#company").val(company_dict[id])
       }
       function get_moto(id){
         post_dict['moto'] = moto_dict[id];
+        $("#moto").val(moto_dict[id])
       }
       function next_click1(main, s1, s2, s3, f, uf){
         var pb_company = document.getElementById('pb-company')
@@ -862,7 +901,7 @@
       }
     </script>
     <script type="text/javascript">
-    /*For displaying custom textboxes*/
+     /*For displaying custom textboxes*/
       $("#selectpit").change(function(){          
         var value = $("#selectpit option:selected").val();
         if (value === 'custom'){
@@ -894,22 +933,32 @@
       });
     </script>
     <script type="text/javascript">
+      var timeperpit = 0
+      var pits_time = 0
+      var pitstops = 0
+      var tppisel_val = 0
+      var tppinp_val = 0
+      var tppsel_val = 0
       $("#calctime").click(function(){
         var hours = 8;
         var min = 15;
         var time_dict = {'mins': 1, 'hours': 60, 'days': 60*24}
         var initial_min = hours*60 + min;
-        var pitstops = $("#selectpit option:selected").val();
+        pitstops = $("#selectpit option:selected").val();
         if (pitstops === "custom"){
           pitstops = $("#custpit").val();
         }
-        var pits_time = $("#tppsel option:selected").val()
+
+        timeperpit = $("#tppsel option:selected").val()
         if (pits_time === 'custom'){
-          var tppinp_val = $("#tppinp").val();
-          var tppisel_val = $("#tppisel option:selected").val();
-          pits_time = tppinp_val * time_dict[tppisel_val];
+          tppinp_val = $("#tppinp").val();
+          tppisel_val = $("#tppisel option:selected").val();
+          timeperpit = tppinp_val * time_dict[tppisel_val] 
         }
-        var total_min = (pitstops * pits_time) + initial_min;
+        
+        pits_time = pitstops * timeperpit
+        alert(pits_time)
+        var total_min = (pits_time) + initial_min;
         var total_hours = 0;
         var temp = total_min;
         while(temp > 0){
@@ -931,19 +980,27 @@
         $("#trip_duration").text(time_string)
         $("#pb_trip_duration").text(time_string)
         post_dict['pitstops'] = pitstops
-        post_dict['timeperpit'] = pits_time 
+        post_dict['timeperpit'] = pits_time
+        
         //alert('Hours: '+total_hours+' Mins:'+total_min);
       });
       $("#next_click2").click(function(){
         var source = $("#frominp").val()
         var destination = $("#toinp").val()
-        var mode_val = $("#mode option:selected").val()
+        var mode_val = $("#travel_mode option:selected").val()
         var mode = mode_dict[mode_val]
         trip_duration = $("#trip_duration").text()
         post_dict['source'] = source
         post_dict['destination'] = destination
         post_dict['mode'] = mode
         post_dict['duration'] = trip_duration
+        $("#source").val(source)
+        $("#destination").val(destination)
+        $("#mode").val(mode)
+        $("#pitstops").val(pitstops) 
+        $("#pitstops_time").val(pits_time) 
+        $("#timeperpit").val(timeperpit)
+        $("#duration").val(trip_duration)
         $("#pb_source").text(post_dict['source'])
         $("#pb_destination").text(post_dict['destination'])
         $("#pb_mode").text(post_dict['mode'])
@@ -1032,6 +1089,12 @@
         post_dict['participants'] = limit
         post_dict['title'] = title
         post_dict['description'] = desc
+        $("#start_date").val(post_dict['start_date'])
+        $("#gender").val(gender)
+        $("#age_group").val(age_group_str)
+        $("#participants").val(limit)
+        $("#title").val(title)
+        $("#description").val(desc)
         //$("#pb_start_date").text(year+" "+month_text+" "+day)
         $("#pb_start_date").text(post_dict['start_date'])
         $("#pb_start_time").text(time+meridiem)
@@ -1070,6 +1133,7 @@
           $("#fuel_cost").val(fuelcost)
           $("#total_cost").val(fuelcost)
           post_dict['fuel'] = fuelcost
+          $("#fuel").val(fuelcost)
         });
 
 
@@ -1085,6 +1149,7 @@
           total = vehcost+fuel
           $("#total_cost").val(total)
           post_dict['vehicle'] = vehcost
+          $("#vehicle").val(vehcost)
         });
 
         $("#get_hotel_rate").click(function(){
@@ -1100,6 +1165,28 @@
           total = hotcost+vehcost+fuel
           $("#total_cost").val(total)
           post_dict['hotel'] = hotcost
+          $("#hotel").val(hotcost)
+          $("#total").val(total)
         });
       </script>
+    <script>
+        $(document).ready(function() {
+            $("#plansubmit").click(function(){
+                  $.ajax({
+                    type: 'POST', 
+                    url: '#', 
+                    dataType: 'json',
+                    data: $('#trip_form').serialize(),
+                    success: function (x) {                
+                      alert("Changes have been saved") 
+                    },
+                    error:function(){
+                      alert("Changes cannot be saved.\nTry Again with proper inputs.") 
+                    }
+                });
+              return false;
+            });
+        })
+    </script>
   {% endblock custom_scripts %}
+
