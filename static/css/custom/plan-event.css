@@ -156,3 +156,6 @@ select {
 .limit-part, .charge {
   margin-top: 10px;
 }
+#logo-up-inp, #cover-up-inp {
+  display: none
+}

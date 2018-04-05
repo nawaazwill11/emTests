@@ -158,32 +158,30 @@ class Emergency(models.Model):
 
 
 class Event(models.Model):
-    event_id = models.CharField(primary_key=True, max_length=30)
-    event_privacy = models.IntegerField()
-    event_link = models.CharField(max_length=100)
-    event_request = models.IntegerField()
+    event_id = models.CharField(primary_key=True, max_length=32)
+    event_privacy = models.CharField(max_length=20)
     title = models.CharField(max_length=50, blank=True, null=True)
     description = models.CharField(max_length=50, blank=True, null=True)
     start_date = models.DateTimeField(blank=True, null=True)
     end_date = models.DateTimeField(blank=True, null=True)
     deadline = models.DateTimeField(blank=True, null=True)
-    username = models.ForeignKey(AuthUser, models.DO_NOTHING, db_column='username', blank=True, null=True)
-    location = models.IntegerField(blank=True, null=True)
+    location = models.CharField(max_length=10, blank=True, null=True)
     venue_name = models.CharField(max_length=100, blank=True, null=True)
     street_address = models.CharField(max_length=100, blank=True, null=True)
     city = models.CharField(max_length=100, blank=True, null=True)
     state = models.CharField(max_length=100, blank=True, null=True)
     country = models.CharField(max_length=100, blank=True, null=True)
     pincode = models.CharField(max_length=100, blank=True, null=True)
-    logo = models.BinaryField(blank=True, null=True)
-    cover = models.BinaryField(blank=True, null=True)
-    segment = models.CharField(max_length=50, blank=True, null=True)
+    logo = models.CharField(max_length=100, blank=True, null=True)
+    cover = models.CharField(max_length=100, blank=True, null=True)
     category = models.CharField(max_length=50, blank=True, null=True)
     activity = models.CharField(max_length=50, blank=True, null=True)
-    gender = models.IntegerField(blank=True, null=True)
+    gender = models.CharField(max_length=8, blank=True, null=True)
     age = models.CharField(max_length=20, blank=True, null=True)
-    participant = models.IntegerField(blank=True, null=True)
+    participants = models.IntegerField(blank=True, null=True)
     fees = models.FloatField(blank=True, null=True)
+    created_on = models.DateTimeField()
+    username = models.CharField(max_length=50)
 
     class Meta:
         managed = False
@@ -441,8 +439,8 @@ class Stupid(models.Model):
 
 
 class Trip(models.Model):
-    company = models.IntegerField(blank=True, null=True)
-    moto = models.IntegerField(blank=True, null=True)
+    company = models.CharField(max_length=5, blank=True, null=True)
+    moto = models.CharField(max_length=20, blank=True, null=True)
     fuel = models.FloatField(blank=True, null=True)
     vehicle = models.FloatField(blank=True, null=True)
     hotel = models.FloatField(blank=True, null=True)
@@ -460,13 +458,14 @@ class Trip(models.Model):
     source = models.CharField(max_length=100, blank=True, null=True)
     destination = models.CharField(max_length=100, blank=True, null=True)
     timeperpit = models.IntegerField(blank=True, null=True)
-    distance = models.FloatField(blank=True, null=True)
-    duration = models.IntegerField(blank=True, null=True)
+    distance = models.CharField(max_length=50, blank=True, null=True)
+    duration = models.CharField(max_length=50, blank=True, null=True)
     is_published = models.IntegerField(blank=True, null=True)
     trip_privacy = models.CharField(max_length=32, blank=True, null=True)
     trip_link = models.CharField(max_length=32, blank=True, null=True)
     trip_id = models.CharField(primary_key=True, max_length=32)
     created_on = models.DateTimeField()
+    mode = models.CharField(max_length=10, blank=True, null=True)
 
     class Meta:
         managed = False

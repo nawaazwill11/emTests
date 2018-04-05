@@ -14,6 +14,8 @@
 	{% block class_main %} col-lg-offset-2 col-lg-9 {% endblock class_main %}
 
   {% block content %}
+  <form id="event_form" method="POST" enctype="multipart/form-data" >
+    {% csrf_token %}
     <div id="one" class="plan-container col-lg-8" style="display: block;">
       <div class="plan-head">
         <div class="plan-title">
@@ -30,7 +32,7 @@
           <div class="pl-op nobo">
             <div class="lI-group">
               <label class="lI-label">Event Title <span style="color: red">*</span></label>
-              <input type="text" class="lI-input" style="margin-left: 0">
+              <input id="txt_title" type="text" class="lI-input" style="margin-left: 0">
             </div>  
           </div>
           <div class="pl-op nobo">
@@ -42,10 +44,9 @@
           <div class="pl-op">
             <div class="td">
               <div class="td-date">
-                <label>Startig Date <span style="color: red;">*</span></label>
+                <label>Starting Date <span style="color: red;">*</span></label>
                 <div class="selects">
-                  <select>
-                    <option></option>
+                  <select id="sel_start_year">
                     <option>2018</option>
                     <option>2019</option>
                     <option>2020</option>
@@ -60,32 +61,30 @@
                     <option>2029</option>
                     <option>2030</option>
                   </select>
-                  <select>
-                    <option></option>
-                    <option>Jan</option>
-                    <option>Feb</option>
-                    <option>Mar</option>
-                    <option>Apr</option>
-                    <option>May</option>
-                    <option>June</option>
-                    <option>July</option>
-                    <option>Aug</option>
-                    <option>Sep</option>
-                    <option>Oct</option>
-                    <option>Nov</option>
-                    <option>Dec</option>
+                  <select id="sel_start_month">
+                    <option value="01">Jan</option>
+                    <option value="02">Feb</option>
+                    <option value="03">Mar</option>
+                    <option value="04">Apr</option>
+                    <option value="05">May</option>
+                    <option value="06">Jun</option>
+                    <option value="07">Jul</option>
+                    <option value="08">Aug</option>
+                    <option value="09">Sep</option>
+                    <option value="10">Oct</option>
+                    <option value="11">Nov</option>
+                    <option value="12">Dec</option>
                   </select>
-                  <select>
-                    <option></option>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                    <option>6</option>
-                    <option>7</option>
-                    <option>8</option>
-                    <option>9</option>
+                  <select id="sel_start_date">
+                    <option>01</option>
+                    <option>02</option>
+                    <option>03</option>
+                    <option>04</option>
+                    <option>05</option>
+                    <option>06</option>
+                    <option>07</option>
+                    <option>08</option>
+                    <option>09</option>
                     <option>10</option>
                     <option>11</option>
                     <option>12</option>
@@ -114,8 +113,7 @@
               <div class="td-time">
                 <label>Starting Time <span style="color: red;">*</span></label>
                 <div class="selects">
-                  <select>
-                    <option></option>
+                  <select id="sel_start_time">
                     <option>12</option>
                     <option>11</option>
                     <option>10</option>
@@ -129,8 +127,7 @@
                     <option>2</option>
                     <option>1</option>
                   </select>
-                  <select>
-                    <option></option>
+                  <select id="sel_start_meridiem">
                     <option>am</option>
                     <option>pm</option>
                   </select>
@@ -143,8 +140,7 @@
               <div class="td-date">
                 <label>Ending Date <span style="color: red;">*</span></label>
                 <div class="selects">
-                  <select>
-                    <option></option>
+                  <select id="sel_end_year">
                     <option>2018</option>
                     <option>2019</option>
                     <option>2020</option>
@@ -159,32 +155,30 @@
                     <option>2029</option>
                     <option>2030</option>
                   </select>
-                  <select>
-                    <option></option>
-                    <option>Jan</option>
-                    <option>Feb</option>
-                    <option>Mar</option>
-                    <option>Apr</option>
-                    <option>May</option>
-                    <option>June</option>
-                    <option>July</option>
-                    <option>Aug</option>
-                    <option>Sep</option>
-                    <option>Oct</option>
-                    <option>Nov</option>
-                    <option>Dec</option>
+                  <select id="sel_end_month">
+                    <option value="01">Jan</option>
+                    <option value="02">Feb</option>
+                    <option value="03">Mar</option>
+                    <option value="04">Apr</option>
+                    <option value="05">May</option>
+                    <option value="06">Jun</option>
+                    <option value="07">Jul</option>
+                    <option value="08">Aug</option>
+                    <option value="09">Sep</option>
+                    <option value="10">Oct</option>
+                    <option value="11">Nov</option>
+                    <option value="12">Dec</option>
                   </select>
-                  <select>
-                    <option></option>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                    <option>6</option>
-                    <option>7</option>
-                    <option>8</option>
-                    <option>9</option>
+                  <select id="sel_end_date">
+                    <option>01</option>
+                    <option>02</option>
+                    <option>03</option>
+                    <option>04</option>
+                    <option>05</option>
+                    <option>06</option>
+                    <option>07</option>
+                    <option>08</option>
+                    <option>09</option>
                     <option>10</option>
                     <option>11</option>
                     <option>12</option>
@@ -213,8 +207,7 @@
               <div class="td-time">
                 <label>Ending Time <span style="color: red;">*</span></label>
                 <div class="selects">
-                  <select>
-                    <option></option>
+                  <select id="sel_end_time">
                     <option>12</option>
                     <option>11</option>
                     <option>10</option>
@@ -228,8 +221,7 @@
                     <option>2</option>
                     <option>1</option>
                   </select>
-                  <select>
-                    <option></option>
+                  <select id="sel_end_meridiem">
                     <option>am</option>
                     <option>pm</option>
                   </select>
@@ -254,8 +246,7 @@
               <div class="td-date">
                 <label>Deadline Date<span style="color: red;">*</span></label>
                 <div class="selects">
-                  <select>
-                    <option></option>
+                  <select id="sel_dead_year">
                     <option>2018</option>
                     <option>2019</option>
                     <option>2020</option>
@@ -270,32 +261,30 @@
                     <option>2029</option>
                     <option>2030</option>
                   </select>
-                  <select>
-                    <option></option>
-                    <option>Jan</option>
-                    <option>Feb</option>
-                    <option>Mar</option>
-                    <option>Apr</option>
-                    <option>May</option>
-                    <option>June</option>
-                    <option>July</option>
-                    <option>Aug</option>
-                    <option>Sep</option>
-                    <option>Oct</option>
-                    <option>Nov</option>
-                    <option>Dec</option>
+                  <select id="sel_dead_month">
+                    <option value="01">Jan</option>
+                    <option value="02">Feb</option>
+                    <option value="03">Mar</option>
+                    <option value="04">Apr</option>
+                    <option value="05">May</option>
+                    <option value="06">Jun</option>
+                    <option value="07">Jul</option>
+                    <option value="08">Aug</option>
+                    <option value="09">Sep</option>
+                    <option value="10">Oct</option>
+                    <option value="11">Nov</option>
+                    <option value="12">Dec</option>
                   </select>
-                  <select>
-                    <option></option>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                    <option>6</option>
-                    <option>7</option>
-                    <option>8</option>
-                    <option>9</option>
+                  <select id="sel_dead_date">
+                    <option>01</option>
+                    <option>02</option>
+                    <option>03</option>
+                    <option>04</option>
+                    <option>05</option>
+                    <option>06</option>
+                    <option>07</option>
+                    <option>08</option>
+                    <option>09</option>
                     <option>10</option>
                     <option>11</option>
                     <option>12</option>
@@ -324,8 +313,7 @@
               <div class="td-time">
                 <label>Deadline Time <span style="color: red;">*</span></label>
                 <div class="selects">
-                  <select>
-                    <option></option>
+                  <select id="sel_dead_time">
                     <option>12</option>
                     <option>11</option>
                     <option>10</option>
@@ -339,8 +327,7 @@
                     <option>2</option>
                     <option>1</option>
                   </select>
-                  <select>
-                    <option></option>
+                  <select id="sel_dead_meridiem">
                     <option>am</option>
                     <option>pm</option>
                   </select>
@@ -354,11 +341,11 @@
             <label>Event Privacy <span style="color: red;">*</span></label>
             <div class="rad-club">
               <div class="rads" style="flex: 4;">
-                <input type="radio" name="priv" style="margin-right: 10px;" checked="checked">
+                <input type="radio" name="priv" value="public" style="margin-right: 10px;" checked="checked">
                 <label style="font-weight: 400">Public</label>
               </div>
               <div class="priv-rad" style="flex: 4;">
-                <input type="radio" name="priv" style="margin-right: 10px;">
+                <input type="radio" name="priv" value="private" style="margin-right: 10px;">
                 <label style="font-weight: 400">Private</label>
               </div>
             </div>
@@ -366,16 +353,16 @@
         </div>
         <div class="navigante">
           <div id="btn-cancel" class="btn-cancel">
-            <button class="btn btn-danger" onclick="abort()"><a href="mytrip.html">x</a></button>
+            <button type="button" class="btn btn-danger" onclick="abort()"><a href="mytrip.html">x</a></button>
           </div>
           <div id="btn-save" class="btn-save">
-            <button class="btn btn-success glyphicon glyphicon-floppy-disk" style="color: white;" onclick="save()"><a href="mytrip.html"></a></button>
+            <button type="button" class="btn btn-success glyphicon glyphicon-floppy-disk" style="color: white;" onclick="save()"><a href="mytrip.html"></a></button>
           </div>
           <div id=btn-prev class="btn-prev" style="visibility: hidden;">
-            <button class="btn btn-primary">Prev</button>
+            <button type="button" class="btn btn-primary">Prev</button>
           </div>
           <div id="btn-next" class="btn-next">
-            <button class="btn btn-primary" onclick="navigante('two','one','three','four')">Next</button>
+            <button type="button" id="next_click1" class="btn btn-primary">Next</button>
           </div>
         </div>
       </div>
@@ -397,11 +384,11 @@
             <label>Event Location <span style="color: red;">*</span></label>
             <div class="rad-club">
               <div class="rads" style="flex: 4;">
-                <input type="radio" name="loc" value="venue" style="margin-right: 10px;" checked="checked">
+                <input type="radio" name="loc" value="Venue" style="margin-right: 10px;" checked="checked">
                 <label style="font-weight: 400">Venue</label>
               </div>
               <div class="priv-rad" style="flex: 4;">
-                <input type="radio" name="loc" value="online" style="margin-right: 10px;">
+                <input type="radio" name="loc" value="Online" style="margin-right: 10px;">
                 <label style="font-weight: 400">Online</label>
               </div>
             </div>
@@ -417,52 +404,52 @@
           <div class="pl-op nobo">
             <div class="lI-group">
               <label class="lI-label">Venue Name<span style="color: red">*</span></label>
-              <input type="text" class="lI-input" style="margin-left: 0">
+              <input id="the_venue" type="text" class="lI-input" style="margin-left: 0">
             </div>
           </div>
           <div class="pl-op nobo">
             <div class="lI-group">
               <label class="lI-label">Street Address<span style="color: red">*</span></label>
-              <input type="text" class="lI-input" style="margin-left: 0">
+              <input id="the_street" type="text" class="lI-input" style="margin-left: 0">
             </div>
           </div>
           <div class="pl-op nobo">
             <div class="lI-group">
               <label class="lI-label">City<span style="color: red">*</span></label>
-              <input type="text" class="lI-input" style="margin-left: 0">
+              <input id="the_city" type="text" class="lI-input" style="margin-left: 0">
             </div>
           </div>
           <div class="pl-op nobo">
             <div class="lI-group">
               <label class="lI-label">State<span style="color: red">*</span></label>
-              <input type="text" class="lI-input" style="margin-left: 0">
+              <input id="the_state" type="text" class="lI-input" style="margin-left: 0">
             </div>
           </div>
           <div class="pl-op nobo">
             <div class="lI-group">
               <label class="lI-label">Country<span style="color: red">*</span></label>
-              <input type="text" class="lI-input" style="margin-left: 0">
+              <input id="the_country" type="text" class="lI-input" style="margin-left: 0">
             </div>
           </div>
           <div class="pl-op nobo">
             <div class="lI-group">
               <label class="lI-label">Pincode<span style="color: red">*</span></label>
-              <input type="text" class="lI-input" style="margin-left: 0">
+              <input id="the_pincode" type="text" class="lI-input" style="margin-left: 0">
             </div>
           </div>
         </div>
         <div class="navigante">
           <div id="btn-cancel" class="btn-cancel">
-            <button class="btn btn-danger" onclick="abort()"><a href="mytrip.html">x</a></button>
+            <button type="button" class="btn btn-danger" onclick="abort()"><a href="mytrip.html">x</a></button>
           </div>
           <div id="btn-save" class="btn-save">
-            <button class="btn btn-success glyphicon glyphicon-floppy-disk" style="color: white;" onclick="save()"><a href="mytrip.html"></a></button>
+            <button type="button" class="btn btn-success glyphicon glyphicon-floppy-disk" style="color: white;" onclick="save()"><a href="mytrip.html"></a></button>
           </div>
           <div id=btn-prev class="btn-prev">
-            <button class="btn btn-primary" onclick="navigante('one','two','three','four')">Prev</button>
+            <button type="button" class="btn btn-primary" onclick="navigante('one','two','three','four'); focus_click('one', 'two')">Prev</button>
           </div>
           <div id="btn-next" class="btn-next">
-            <button class="btn btn-primary" onclick="navigante('three','one','two','four')">Next</button>
+            <button type="button" id="next_click2" class="btn btn-primary">Next</button>
           </div>
         </div>
       </div>
@@ -482,50 +469,30 @@
         <div class="plan-layer">
           <div class="pl-op nobo">
             <div class="cat-main">
-              <div class="search-cat cat-1 ">
-                <div class="lI-group">
-                  <label class="lI-label" >Event Segment <span style="color: red">*</span></label>
-                  <input class="lI-input" type="text" placeholder="Search..." list="cat" id="search" data-list-focus="true" style="margin-left: 0" autocomplete="off">Eg. Adventure or Business
-                    <datalist id="cat">
-                        <select>
-                            <option value="Talks"></option>
-                            <option value="Entertainment"></option>
-                            <option value="Adventure & Sports"></option>
-                            <option value="Business & Tech"></option>
-                            <option value="Society & Charity"></option>
-                            <option value="Interests"></option>
-                        </select>
-                    </datalist>
-                </div>
-              </div>
               <div class="search-cat cat-2">
                 <div class="lI-group">
                   <label class="lI-label">Event Category <span style="color: red">*</span></label>
-                  <input class="lI-input" type="text" placeholder="Search..." list="cat" id="search" data-list-focus="true" style="margin-left: 0" autocomplete="off">Eg. Air sports or Mountain Sports
+                  <input type="text" style="display: none"> 
+                  <input type="password" style="display: none">
+                  <input class="lI-input" type="text" placeholder="Search..." list="cat" id="txt_category" data-list-focus="true" style="margin-left: 0" autocomplete="off">Eg. Air sports or Mountain Sports
                     <datalist id="cat">
-                        <select>
+                        <select >
                             <option value="Talks"></option>
                             <option value="Entertainment"></option>
-                            <option value="Adventure & Sports"></option>
+                            <option value="Adventure"></option>
                             <option value="Business & Tech"></option>
-                            <option value="Society & Charity"></option>
-                            <option value="Interests"></option>
+                            <option value="Social"></option>
+                            <option value="Sports"></option>
                         </select>
                     </datalist>
                 </div>
               </div>
               <div class="search-cat cat-3">
-                <div class="lI-group">
+                <div id="txt_activity_div" class="lI-group">
                   <label class="lI-label">Event Activity <span style="color: red">*</span></label>
-                  <input class="lI-input" type="text" placeholder="Search..." list="cat" id="search" data-list-focus="true" style="margin-left: 0" autocomplete="off">Eg. Parasailing or Backpacking
-                    <datalist id="cat">
-                        <select>
-                            <option value="Talks"></option>
-                            <option value="Entertainment"></option>
-                            <option value="Adventure & Sports"></option>
-                            <option value="Business & Tech"></option>
-                            <option value="Society & Charity"></option>
-                            <option value="Interests"></option>
+                  <input class="lI-input" type="text" placeholder="Search..." list="act" id="txt_activity" data-list-focus="true" style="margin-left: 0" autocomplete="off">Eg. Parasailing or Backpacking
+                    <datalist id="act" >
+                        <select id="sel_activity">
                         </select>
                     </datalist>
                 </div>
@@ -535,8 +502,7 @@
           <div class="pl-op tupac">
             <div class="sub-pl-op">
               <label>Gender</label>
-              <select>
-                  <option></option>
+              <select id="sel_gender">
                   <option>Male</option>
                   <option>Female</option>
                   <option>Others</option>
@@ -546,16 +512,14 @@
             <div class="sub-pl-op">
               <label>Age Group:</label>
               <div class="sub2-pl-op">
-                <select>
+                <select id="sel_age_from">
                   <option disabled selected>From</option>
-                  <option>Under 18</option>
                   <option>18-30</option>
                   <option>30-50</option>
-                  <option>Above 50</option>
+                  <option>50+</option>
                 </select>
-                <select>
+                <select id="sel_age_to">
                   <option disabled selected>To</option>
-                  <option>Under 18</option>
                   <option>18-30</option>
                   <option>30-50</option>
                   <option>Above 50</option>
@@ -578,7 +542,7 @@
             <div class="limit-part" style="display: none;">
               <div class="lI-group">
                   <label class="lI-label">Enter Limit <span style="color: red">*</span></label>
-                  <input class="lI-input" type="text" placeholder="Eg. 10 or 50" id="search" style="margin-left: 0" autocomplete="off">
+                  <input class="lI-input" type="text" placeholder="Eg. 10 or 50" id="the_limit" style="margin-left: 0" autocomplete="off">
                 </div>
             </div>
           </div>
@@ -597,23 +561,23 @@
             <div class="charge" style="display: none;">
               <div class="lI-group">
                   <label class="lI-label">Enter amount (INR)<span style="color: red">*</span></label>
-                  <input class="lI-input" type="text" placeholder="Eg. 1000" id="search" style="margin-left: 0" autocomplete="off">
+                  <input class="lI-input" type="text" placeholder="Eg. 1000" id="the_fees" style="margin-left: 0" autocomplete="off">
                 </div>
             </div>
           </div>
         </div>
         <div class="navigante">
           <div id="btn-cancel" class="btn-cancel">
-            <button class="btn btn-danger" onclick="abort()"><a href="mytrip.html">x</a></button>
+            <button type="button" class="btn btn-danger" onclick="abort()"><a href="mytrip.html">x</a></button>
           </div>
           <div id="btn-save" class="btn-save">
-            <button class="btn btn-success glyphicon glyphicon-floppy-disk" style="color: white;" onclick="save()"><a href="mytrip.html"></a></button>
+            <button type="button" class="btn btn-success glyphicon glyphicon-floppy-disk" style="color: white;" onclick="save()"><a href="mytrip.html"></a></button>
           </div>
           <div id=btn-prev class="btn-prev">
-            <button class="btn btn-primary" onclick="navigante('two','one','three','four')">Prev</button>
+            <button type="button" class="btn btn-primary" onclick="navigante('two','one','three','four'); focus_click('two', 'three')">Prev</button>
           </div>
           <div id="btn-next" class="btn-next">
-            <button class="btn btn-primary" onclick="navigante('four','one','two','three')">Next</button>
+            <button type="button" id="next_click3" class="btn btn-primary">Next</button>
           </div>
         </div>
       </div>
@@ -635,7 +599,7 @@
             <label>Upload a Logo</label>
             <div class="logo-up">
 
-              <input class="file-upload-input" id="logo-up-inp" type="file" id="logoImage" accept="image/*" style="display: none;">
+              {{ form.logo }}
               <label for="logo-up-inp"><img src="{% static "img/stamp.png" %}" style="width: 40px; margin-right: 13px;">Choose a file</label>  
             </div>
             <p>
@@ -645,8 +609,8 @@
           <div class="pl-op">
             <label>Cover Photo <span style="color: red;">*</span></label>
             <div class="cover-up" >
-              <input class="file-upload-input" id="cover-up-inp" type="file" id="coverImage" accept="image/*" style="display: none;">
-              <label for="logo-up-inp"><img src="{% static "img/cover.png" %}" style="width: 80px; margin-right: 13px;">Choose a file</label>
+              {{ form.cover }}
+              <label for="cover-up-inp"><img src="{% static "img/cover.png" %}" style="width: 80px; margin-right: 13px;">Choose a file</label>
             </div>
             <p>
               NOTE : Minimum size should be 850x550 pixels. Maximum file size is 900KB
@@ -655,20 +619,45 @@
         </div>
         <div class="navigante">
           <div id="btn-cancel" class="btn-cancel">
-            <button class="btn btn-danger" onclick="abort()"><a href="mytrip.html">x</a></button>
+            <button type="button" class="btn btn-danger" onclick="abort()"><a href="mytrip.html">x</a></button>
           </div>
           <div id="btn-save" class="btn-save">
-            <button class="btn btn-success glyphicon glyphicon-floppy-disk" style="color: white;" onclick="save()"><a href="mytrip.html"></a></button>
+            <button type="button" class="btn btn-success glyphicon glyphicon-floppy-disk" style="color: white;" onclick="save()"><a href="mytrip.html"></a></button>
           </div>
           <div id=btn-prev class="btn-prev">
-            <button class="btn btn-primary" onclick="navigante('three','one','two','four')">Prev</button>
+            <button type="button" class="btn btn-primary" onclick="navigante('three','one','two','four');; focus_click('three', 'four')">Prev</button>
           </div>
           <div id="btn-next" class="btn-next">
-            <button class="btn btn-primary" onclick="">Publish</button>
+            <button id="formsubmit" type="submit" class="btn btn-primary" >Publish</button>
           </div>
         </div>
       </div>
     </div>
+    <div class="response_div" hidden="hidden">
+      <input id="title" type="hidden" name="title" value="">
+      <input id="description" type="hidden" name="description" value="">
+      <input id="start_date" type="hidden" name="start_date" value="">
+      <input id="start_time" type="hidden" name="start_time" value="">
+      <input id="end_date" type="hidden" name="end_date" value="">
+      <input id="end_time" type="hidden" name="end_time" value="">
+      <input id="dead_date" type="hidden" name="dead_date" value="">
+      <input id="dead_time" type="hidden" name="dead_time" value="">
+      <input id="privacy" type="hidden" name="privacy" value="">
+      <input id="location" type="hidden" name="location" value="">
+      <input id="venue_name" type="hidden" name="venue_name" value="">
+      <input id="street_addr" type="hidden" name="street_addr" value="">
+      <input id="city" type="hidden" name="city" value="">
+      <input id="state" type="hidden" name="state" value="">
+      <input id="country" type="hidden" name="country" value="">
+      <input id="pincode" type="hidden" name="pincode" value="">
+      <input id="category" type="hidden" name="category" value="">
+      <input id="activity" type="hidden" name="activity" value="">
+      <input id="gender" type="hidden" name="gender" value="">
+      <input id="age_group" type="hidden" name="age_group" value="">
+      <input id="participants" type="hidden" name="participants" value="">
+      <input id="fees" type="hidden" name="fees" value="">
+    </div>
+  </form>
     <div id="progress-container" class="progress-container col-lg-offset-1 col-lg-3">
   		<div class="progress-main">
         <div class="prog-head">
@@ -679,135 +668,131 @@
         <div class="prog-body">
           <div class="club">
             <div class="prog-layer" style="margin-top: 10px;">
-              <div class="hash first" onclick="navigante('one','two','three','four')">
+              <div id="pb-one" class="hash first" onclick="navigante('one','two','three','four')">
                 <div class="sub-hash p-heads">
                   <h4><b>#1 Basic Details</b></h4>
                 </div>
                 <div class="sub-hash p-bot">
                   <div class="s-sh">
                     <span class="hash-content-left"><b>Ev. Title:</b></span>
-                    <span class="hash-content-right">A Travel</span>
+                    <span id="pb_title" class="hash-content-right"></span>
                   </div>
                   <div class="s-sh">
                     <span class="hash-content-left"><b>Ev. Desc:</b></span>
-                    <span class="hash-content-right help" title="Tour the beautiful streets of Daman to find some memarizing momuments and sculptures of the Portuguese era">Tour the beautiful streets of Daman to find some memarizing momuments and sculptures of the Portuguese era</span>
+                    <span id="pb_desc" class="hash-content-right help"></span>
                   </div>
                   <div class="s-sh">
                     <span class="hash-content-left">Start Date:</span>
-                    <span class="hash-content-right">28/02/18</span>
+                    <span id="pb_start_date" class="hash-content-right"></span>
                   </div>
                   <div class="s-sh">
                     <span class="hash-content-left">Start Time:</span>
-                    <span class="hash-content-right">10:00 am</span>
+                    <span id="pb_start_time" class="hash-content-right"></span>
                   </div>
                   <div class="s-sh">
                     <span class="hash-content-left">End Date:</span>
-                    <span class="hash-content-right">30/02/18</span>
+                    <span id="pb_end_date" class="hash-content-right"></span>
                   </div>
                   <div class="s-sh">
                     <span class="hash-content-left">End Time:</span>
-                    <span class="hash-content-right">11:00 pm</span>
+                    <span id="pb_end_time" class="hash-content-right"></span>
                   </div>
                   <div class="s-sh">
                     <span class="hash-content-left">Deadline:</span>
-                    <span class="hash-content-right">Anytime</span>
+                    <span id="pb_dead_datetime" class="hash-content-right"></span>
                   </div>
                   <div class="s-sh">
                     <span class="hash-content-left">Privacy:</span>
-                    <span class="hash-content-right">Public</span>
+                    <span id="pb_privacy" class="hash-content-right"></span>
                   </div>
                 </div>  
               </div>
             </div>
             <div class="prog-layer">
-              <div class="hash" onclick="navigante('two','one','three','four')">
+              <div id="pb-two" class="hash" onclick="navigante('two','one','three','four')">
                 <div class="sub-hash p-heads">
                   <h4><b>#2 Location Details</b></h4>
                 </div>
                 <div class="sub-hash p-bot">
                   <div class="s-sh">
                     <span class="hash-content-left">Ev. Loc.:</span>
-                    <span class="hash-content-right">Venue</span>
+                    <span id="pb_location" class="hash-content-right"></span>
                   </div>
                   <div class="s-sh">
                     <span class="hash-content-left">Venue Name:</span>
-                    <span class="hash-content-right">The Lounge</span>
+                    <span id="pb_venue_name" class="hash-content-right"></span>
                   </div>
                   <div class="s-sh">
                     <span class="hash-content-left">Street Addr.:</span>
-                    <span class="hash-content-right">KK Marg</span>
+                    <span id="pb_street_addr" class="hash-content-right"></span>
                   </div>
                   <div class="s-sh">
                     <span class="hash-content-left">City:</span>
-                    <span class="hash-content-right">Daman</span>
+                    <span id="pb_city" class="hash-content-right"></span>
                   </div>
                   <div class="s-sh">
                     <span class="hash-content-left">State:</span>
-                    <span class="hash-content-right">D&D</span>
+                    <span id="pb_state" class="hash-content-right"></span>
                   </div>
                   <div class="s-sh">
                     <span class="hash-content-left">Country:</span>
-                    <span class="hash-content-right">India</span>
+                    <span id="pb_country" class="hash-content-right"></span>
                   </div>
                   <div class="s-sh">
                     <span class="hash-content-left">Pincode:</span>
-                    <span class="hash-content-right">396210</span>
+                    <span id="pb_pincode" class="hash-content-right"></span>
                   </div>
                 </div>   
               </div>
             </div>
           </div>
-          <div class="club">
+          <div  class="club">
             <div class="prog-layer">
-              <div class="hash" onclick="navigante('three','two','one','four')">
+              <div id="pb-three" class="hash" onclick="navigante('three','two','one','four')">
                 <div class="sub-hash p-heads">
                   <h4><b>#3 Misc Details</b></h4>
                 </div>
                 <div class="sub-hash p-bot">
                   <div class="s-sh">
-                    <span class="hash-content-left">Ev. Segment:</span>
-                    <span class="hash-content-right">Adventure</span>
-                  </div>
-                  <div class="s-sh">
                     <span class="hash-content-left help" title="Event Category">Ev. Categ.:</span>
-                    <span class="help hash-content-right" title="Mountain Sports">Mountain Sport</span>
+                    <span id="pb_category" class="help hash-content-right" title="Mountain Sports"></span>
                   </div>
                   <div class="s-sh">
                     <span class="hash-content-left help" title="Event Category">Ev. Activity.:</span>
-                    <span class="hash-content-right">Backpacking</span>
+                    <span id="pb_activity" class="hash-content-right"></span>
                   </div>
                   <div class="s-sh">
                     <span class="hash-content-left"><b>Gender:</b></span>
-                    <span class="hash-content-right">Men Only</span>
+                    <span id="pb_gender" class="hash-content-right"></span>
                   </div>
                   <div class="s-sh">
                     <span class="hash-content-left"><b>Age Group:</b></span>
-                    <span class="hash-content-right">U-18, 18-30</span>
+                    <span id="pb_age_group" class="hash-content-right"></span>
                   </div>
                   <div class="s-sh">
                     <span class="hash-content-left"><b>Limit:</b></span>
-                    <span class="hash-content-right">Any</span>
+                    <span id="pb_participants" class="hash-content-right"></span>
                   </div>
                   <div class="s-sh">
                     <span class="hash-content-left"><b>Entry Fee</b></span>
-                    <span class="hash-content-right">Any</span>
+                    <span id="pb_fees" class="hash-content-right"></span>
                   </div>
                 </div>
               </div>
             </div>
             <div class="prog-layer">
-            <div class="hash" onclick="navigante('four','two','three','one')">
+            <div id="pb-four" class="hash" onclick="navigante('four','two','three','one')">
               <div class="sub-hash p-heads">
                 <h4><b>#4 Photo Upload</b></h4>
               </div>
               <div class="sub-hash p-bot">
                 <div class="s-sh">
-                  <span class="hash-content-left"><b>Logo:</b></span>
-                  <span class="hash-content-right">Yes</span>
+                  <span  class="hash-content-left"><b>Logo:</b></span>
+                  <span id="pb_logo" class="hash-content-right"></span>
                 </div>
                 <div class="s-sh">
                   <span class="hash-content-left"><b>Cover Photo:</b></span>
-                  <span class="hash-content-right">Yes</span>
+                  <span id="pb_cover" class="hash-content-right"></span>
                 </div>
               </div>
             </div>
@@ -855,12 +840,21 @@
       })  
     </script>
     <script type="text/javascript">
+      var addclass = 'prog-focus';
+      var initremove = 'first';
+      var $cols = $('.hash').click(function(e) {
+        $cols.removeClass(addclass);
+        $cols.removeClass(initremove);
+        $(this).addClass(addclass);
+      });
+    </script>
+    <script type="text/javascript">
       $(document).ready(function() {
         $('input[type=radio][name=loc]').change(function() {
-            if (this.value == 'venue') {
+            if (this.value == 'Venue') {
                 $(".nobo").show();
             }
-            else if (this.value == 'online') {
+            else if (this.value == 'Online') {
                 $(".nobo").hide();
             }
         });
@@ -912,12 +906,214 @@
          });
     </script>
     <script type="text/javascript">
-      var addclass = 'prog-focus';
-      var initremove = 'first';
-      var $cols = $('.hash').click(function(e) {
-        $cols.removeClass(addclass);
-        $cols.removeClass(initremove);
-        $(this).addClass(addclass);
+      var focus_dict = {'one': 'pb-one', 'two': 'pb-two', 'three': 'pb-three', 'four': 'pb-four'};
+      function pb_focus(pb_id) {
+        focus = document.getElementById(pb_id);
+        focus.classList.add('prog-focus');
+      }
+      function pb_unfocus(pb_id) {
+        unfocus = document.getElementById(pb_id);
+        unfocus.classList.remove('first');
+        unfocus.classList.remove('prog-focus');
+      }
+      function focus_click(f, uf){
+        pb_focus(focus_dict[f]);
+        pb_unfocus(focus_dict[uf]);
+      }
+    </script>
+    <script type="text/javascript">
+      var start_date = ''
+      var time = ''
+      var meri = ''
+      pb_dict = {}
+      function abstime(time, meridiem){
+        if (meridiem == "pm"){
+          if (time != 12){
+            time = parseInt(time) + 12
+          }
+        }
+        time = time.toString() + ":00"
+        return time
+      }
+      $("#next_click1").click(function () {
+        pb_dict['title'] = $("#txt_title").val()
+        pb_dict['description'] = $("#ta-desc").val()
+        pb_dict["start_year"] = $("#sel_start_year option:selected").text()
+        pb_dict["start_month"] = $("#sel_start_month option:selected").val()
+        pb_dict["start_date"] = $("#sel_start_date option:selected").text()
+        time = $("#sel_start_time option:selected").text()
+        meri = $("#sel_start_meridiem option:selected").text()
+        pb_dict['start_time'] = abstime(time,meri)
+        pb_dict["end_year"] = $("#sel_end_year option:selected").text()
+        pb_dict["end_month"] = $("#sel_end_month option:selected").val()
+        pb_dict["end_date"] = $("#sel_end_date option:selected").text()
+        time = $("#sel_end_time option:selected").text()
+        meri = $("#sel_end_meridiem option:selected").text()
+        pb_dict["end_time"] = abstime(time,meri)
+        pb_dict["dead_year"] = ''
+        pb_dict["dead_month"] = ''
+        pb_dict["dead_date"] = ''
+        pb_dict["dead_time"] = ''
+        pb_dict["dead_meridiem"] = ''
+        is_dead = $("input[name=dj]:checked").val()
+        if (is_dead == 'dj-yes'){
+          pb_dict["dead_year"] = $("#sel_dead_year option:selected").text()
+          pb_dict["dead_month"] = $("#sel_dead_month option:selected").val()
+          pb_dict["dead_date"] = $("#sel_dead_date option:selected").text()
+          time = $("#sel_dead_time option:selected").text()
+          meri = $("#sel_dead_meridiem option:selected")
+          pb_dict["dead_time"] = abstime(time,meri)
+        }
+        pb_dict['privacy'] = $("input[name=priv]:checked").val()
+        $("#title").val(pb_dict['title'])
+        $("#description").val(pb_dict['description'])
+        $("#start_date").val(pb_dict['start_year']+"-"+pb_dict['start_month']+"-"+pb_dict['start_date'])
+        $("#start_time").val(pb_dict['start_time'])
+        $("#end_date").val(pb_dict['end_year']+"-"+pb_dict['end_month']+"-"+pb_dict['end_date'])
+        $("#end_time").val(pb_dict['end_time'])
+        $("#dead_date").val(pb_dict['dead_year']+"-"+pb_dict['dead_month']+"-"+pb_dict['dead_date'])
+        $("#dead_time").val(pb_dict['dead_time'])
+        $("#privacy").val(pb_dict['privacy'])
+        $("#pb_title").text(pb_dict['title'])
+        $("#pb_desc").text(pb_dict['description'])
+        $("#pb_start_date").text(pb_dict['start_year']+"-"+pb_dict['start_month']+"-"+pb_dict['start_date'])
+        $("#pb_start_time").text(pb_dict['start_time'])
+        $("#pb_end_date").text(pb_dict['end_time'])
+        $("#pb_end_time").text(pb_dict['end_time'])
+        $("#pb_dead_datetime").text(pb_dict['dead_year']+"-"+pb_dict['dead_month']+"-"+pb_dict['dead_date']+" "+pb_dict['dead_time'])
+        $("#pb_privacy").text(pb_dict['privacy'])
+        focus_click('two', 'one')
+        navigante('two', 'one', 'three', 'four')
+      })
+    </script>
+    <script type="text/javascript">
+      $("#next_click2").click(function () {
+        pb_dict['location'] = $("input[name=loc]:checked").val()
+        if (pb_dict['location'] != 'Online'){
+          pb_dict['venue_name'] = $("#the_venue").val()
+          pb_dict['street_addr'] = $("#the_street").val()
+          pb_dict['city'] = $("#the_city").val()
+          pb_dict['state'] = $("#the_state").val()
+          pb_dict['country'] = $("#the_country").val()
+          pb_dict['pincode'] = $("#the_pincode").val()
+        }
+        $("#location").val(pb_dict['location'])
+        $("#venue_name").val(pb_dict['venue_name'])
+        $("#street_addr").val(pb_dict['street_addr'])
+        $("#city").val(pb_dict['city'])
+        $("#state").val(pb_dict['state'])
+        $("#country").val(pb_dict['country'])
+        $("#pincode").val(pb_dict['pincode'])
+
+        $("#pb_location").text(pb_dict['location'])
+        $("#pb_venue_name").text(pb_dict['venue_name'])
+        $("#pb_street_addr").text(pb_dict['street_addr'])
+        $("#pb_city").text(pb_dict['city'])
+        $("#pb_state").text(pb_dict['state'])
+        $("#pb_country").text(pb_dict['country'])
+        $("#pb_pincode").text(pb_dict['pincode'])
+
+        focus_click('three', 'two')
+        navigante('three', 'one', 'two', 'four')
+      })
+    </script>
+    <script type="text/javascript">
+      var adventure_list = ['Skydiving', 'Rafting', 'Bungee Jumping', 'Swimming', 'Parasailing', 'Tracking', 'Extreme Cycling', 'Kayaking', 'Ice Skiing', 'Surfing', 'Rappelling', 'Biking']
+      var business_list = ['Seminar & Conference', 'Product Launch', 'Appreciation Party', 'Charity Function', 'Award Ceremony', 'Meeting', 'Training & Development', 'Startup Event']
+      var social_list = ['Meeting', 'Ceremony', 'Party']
+      var talks_list = ['Spiritual', 'Psychological', 'Political', 'Awareness', 'Life Experiences', 'Counceilling', 'Medical', 'Science', 'Philosophy']
+      var entertainment_list = ['Plays', 'Live Concerts', 'Stand-up Comedy', 'Music', 'Party']
+      var sports_list = ['Marathon', 'Championship', 'Meet', 'Tournament', 'Rallying']
+      var option_dict = {'Adventure': adventure_list, 'Business & Tech': business_list, 'Social': social_list, 'Talks': talks_list, 'Entertainment': entertainment_list, 'Sports': sports_list}
+      var category_list = ['Adventure', 'Business & Tech', 'Entertainment','Social','Sports', 'Talks']
+      
+      function actop(activity_list){
+        $("#sel_activity").html("")
+        datalist = $("#act")
+        datalist.empty()
+        for (var i = 0; i < activity_list.length; i++){
+          datalist.append("<option>"+activity_list[i]+"</option")
+        }
+      }
+      
+      $("#txt_category").blur(function(){
+        category = $("#txt_category").val()
+        if (option_dict[category] != null){
+          actop(option_dict[category])
+        }
+      })
+
+      $("#next_click3").click(function () {
+        pb_dict['category'] = $("#txt_category").val()
+        pb_dict['activity'] = $("#txt_activity").val()
+        pb_dict['gender'] = $("#sel_gender option:selected").val()
+        age_from = $("#sel_age_from option:selected").val()
+        age_to = $("#sel_age_to option:selected").val()
+        pb_dict['age_group'] = age_from.slice(-2,)+"-"+age_to.slice(-2,)
+        pb_dict['participants'] = ''
+        limit_part = $("input[name=limit]:checked").val()
+        if (limit_part == 'limit-yes'){
+          pb_dict['participants'] = $("#the_limit").val()
+        }
+        pb_dict['fees'] = ''
+        charge = $("input[name=charge]:checked").val()
+        if (charge = 'charge-yes'){
+          pb_dict['fees'] = $("#the_fees").val()
+        }
+        $("#category").val(pb_dict['category'])
+        $("#activity").val(pb_dict['activity'])
+        $("#gender").val(pb_dict['gender'])
+        $("#age_group").val(pb_dict['age_group'])
+        $("#participants").val(pb_dict['participants'])
+        $("#fees").val(pb_dict['fees'])
+
+        $("#pb_category").text(pb_dict['category'])
+        $("#pb_activity").text(pb_dict['activity'])
+        $("#pb_gender").text(pb_dict['gender'])
+        $("#pb_age_group").text(pb_dict['age_group'])
+        $("#pb_participants").text(pb_dict['participants'])
+        $("#pb_fees").text(pb_dict['fees'])
+        focus_click('four', 'three')
+        navigante('four', 'one', 'two', 'three')
+      })
+    </script>
+    <script type="text/javascript">
+      $("#formsubmit").hover(function(){
+        pb_dict['logo'] = $("#logo-up-inp").val()
+        if (pb_dict['logo'] != null){
+          $("#pb_logo").text('Yes')
+        }
+        else{
+          $("#pb_logo").text('No') 
+        }
+        pb_dict['cover'] =$("#cover-up-inp").val()
+        if (pb_dict['cover'] != null){
+          $("#pb_cover").text('Yes')
+        }
+        else{
+          $("#pb_cover").text('No')
+        }
       });
     </script>
+    <script>
+        $(document).ready(function() {
+          $("#formsubmit").click(function(){
+            $.ajax({
+              type: 'POST', 
+              url: '#', 
+              dataType: 'json',
+              data: $('#event_form').serialize(),
+              success: function (x) {                
+                alert("Event Created")
+                setTimeout(function(){ window.location =  x.redirect_url;}); 
+              },
+              error:function(){
+                alert("Changes cannot be saved.\nTry Again with proper inputs.") 
+              }
+          });
+              return false;
+            });
+        })
+    </script>
+   
   {% endblock custom_scripts %}

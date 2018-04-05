@@ -10,7 +10,7 @@ from django.http import HttpResponseRedirect, HttpResponsePermanentRedirect, Jso
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from .models import Login, Pi
-from .mods.forms import LoginForm, RegistrationForm, Printer, AboutEditForm, GetAboutInitial, ProfileForm, TripPlanValidation, MyTripForm
+from .mods.forms import LoginForm, RegistrationForm, Printer, AboutEditForm, GetAboutInitial, ProfileForm, TripPlanValidation, MyTripForm, EventPlanForm
 from .mods.test import SharingForm
 import re
 
@@ -56,6 +56,31 @@ class PlanTripPageView(TemplateView):
 			redirect_url = '../mytrip/'
 			return JsonResponse({"success": True, 'redirect_url': redirect_url })
 		return render(request, self.template_name, context=None)
+
+
+class PlanEventPageView(TemplateView):
+	template_name = 'plan_event.html'
+	form = EventPlanForm
+
+	def get(self, request, *args, **kwargs):
+		form = self.form()
+		context = {'form': form}
+		#print(form)
+		return render(request, self.template_name, context)
+
+	def post(self, request, *args, **kwargs):
+		form = self.form(request.POST, request.FILES)
+		if form.is_valid():
+			cleaned = form.cleaned_data
+			logo = cleaned['logo']
+			cover = cleaned['cover']
+			recorded = EventPlanForm.validation(request.session['username'], logo, cover, request.POST)
+			if recorded:
+				redirect_url = '../myevent/'
+				return JsonResponse({"success": 'OK', 'redirect_url': redirect_url })
+		else:
+			print(False)
+		return render(request, self.template_name, {'form': self.form})
 
 
 class IndexPageView(TemplateView):
@@ -175,16 +200,17 @@ class AboutPageView(TemplateView):
 		form = self.form(initial=initials)
 		profilepic_init=''
 		coverpic_init = ''
-		Printer.print('ere')
+		#Printer.print('ere')
+		Printer.print(request.FILES)
 		if 'profilepic' in request.FILES:
 			if imgform.is_valid():
-				Printer.print('in profile')
+				#Printer.print('in profile')
 				cleaned = imgform.cleaned_data
 				propic = cleaned['profilepic']
 				pi = Pi.objects.get(username=request.session['username'])
 				pi.profilepic = propic
 				pi.save()
-				Printer.print('ahiya')
+				#Printer.print('ahiya')
 				profilepic_init = Printer.img(request.session['username'])
 				coverpic_init = Printer.covimg(request.session['username'])
 				return render(request, self.template_name, context={'form':form, 'imgform': imgform, 'profilep': profilepic_init, 'coverp': coverpic_init})
@@ -354,14 +380,7 @@ class MyTripPageView(TemplateView):
 		return render(request, self.template_name, context=None)
 
 
-class PlanEventPageView(TemplateView):
-	template_name = 'plan_event.html'
 
-	def get(self, request, *args, **kwargs):
-		return render(request, self.template_name, context=None)
-
-	def post(self, request, *args, **kwargs):
-		return render(request, self.template_name, context=None)
 
 
 

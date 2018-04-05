@@ -5,7 +5,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.models import User
 import hashlib
 import re
-from em.models import Login, Pi, AuthUser, Trip
+from em.models import Login, Pi, AuthUser, Trip, Event
 
 
 #Using clean_<field_name>. This is the best choice.
@@ -574,19 +574,148 @@ class MyTripForm():
 		for record in records_list:
 			print (record)
 		return records_list
-		
 
 
+class EventPlanForm(forms.Form):
 
 
+	logo = forms.FileField(required=False, widget=forms.FileInput(attrs={'id': 'logo-up-inp', 'class': 'file-upload-input'}))
+	cover = forms.FileField(required=False, widget=forms.FileInput(attrs={'id': 'cover-up-inp', 'class': 'file-upload-input'}))
+
+	def clean_logo(self):
+		isclean = self.cleaned_data['logo']
+		return isclean
+
+	def clean_cover(self):
+		isclean = self.cleaned_data['cover']
+		return isclean
 
 
+	def validation(username, logo, cover, response):
+		kwargs = dict(response.lists())
+		print(kwargs)
+		title = kwargs['title'][0]
+		description = kwargs['description'][0]
+		start_date_raw = kwargs['start_date'][0]
+		start_time = kwargs['start_time'][0]
+		end_date_raw = kwargs['end_date'][0]
+		end_time = kwargs['end_time'][0]
+		dead_date_raw = kwargs['dead_date'][0]
+		dead_time = kwargs['dead_time'][0]
+		privacy = kwargs['privacy'][0]
+		location = kwargs['location'][0]
+		venue_name = kwargs['venue_name'][0]
+		street_address = kwargs['street_addr'][0]
+		city = kwargs['city'][0]
+		state = kwargs['state'][0]
+		country = kwargs['country'][0]
+		pincode = kwargs['pincode'][0]
+		category = kwargs['category'][0]
+		activity = kwargs['activity'][0]
+		gender = kwargs['gender'][0]
+		age_group_raw = kwargs['age_group'][0]
+		participants = kwargs['participants'][0]
+		fees = kwargs['fees'][0]
+
+		v_title_desc = TripPlanValidation.titlecheck(title, description)
+		start_date, v_start_date = EventPlanForm.datevalid(start_date_raw, start_time)
+		end_date, v_end_date = EventPlanForm.datevalid(end_date_raw, end_time)
+		dead_date, v_dead_date = EventPlanForm.datevalid(dead_date_raw, dead_time)
+		v_privacy = EventPlanForm.privcheck(privacy)
+		has_cat, v_location = EventPlanForm.loccheck(location, venue_name, city, state, country, pincode)
+		v_cat_act = True
+		if has_cat and v_location:
+			v_cat_act = EventPlanForm.catcheck(category, activity)
+		v_gender = EventPlanForm.gencheck(gender)
+		age_group, v_age_group = EventPlanForm.checkagegroup(age_group_raw)
+		v_participants_fees = EventPlanForm.checkpart(participants, fees)
+
+		if(v_title_desc and v_start_date and v_end_date and v_dead_date and v_privacy and v_location and v_cat_act and v_gender and v_age_group and v_participants_fees):
+			recorded = EventPlanForm.event_recorded(username, title, description, start_date, end_date, dead_date, privacy, location, venue_name, city, state, country, pincode, category, activity, gender, age_group, participants, fees)
+		else:
+			print(False)
+
+	def datevalid(date, time):
+		if date and time:
+			datetime = date +" "+ time
+			madedate = dt.strptime(datetime, '%Y-%m-%d %H:%M')
+			return madedate, True
+		return False
+
+	def privcheck(private):
+		priv_list = ['private', 'public']
+		if private in priv_list:
+			return True
+		return False
+
+	def loccheck(loc, venue, city, state, country, pin):
+		loc_list = ['Venue', 'Online']
+		if loc in loc_list:
+			if loc == 'Online':
+				return (False, True)
+			else:
+				has_valid = EventPlanForm.venuecheck(venue, city, state, country, pin)
+				if has_valid:
+					return (True, True)
+		return (False, False)
+
+	def venuecheck(venue, city, state, country, pin):
+		if (venue and city and state and country and pin) is not None:
+			return True
+		return False
+
+	def catcheck(cat, act):
+		adventure_list = ['Skydiving', 'Rafting', 'Bungee Jumping', 'Swimming', 'Parasailing', 'Tracking', 'Extreme Cycling', 'Kayaking', 'Ice Skiing', 'Surfing', 'Rappelling', 'Biking']
+		business_list = ['Seminar & Conference', 'Product Launch', 'Appreciation Party', 'Charity Function', 'Award Ceremony', 'Meeting', 'Training & Development', 'Startup Event']
+		social_list = ['Meeting', 'Ceremony', 'Party']
+		talks_list = ['Spiritual', 'Psychological', 'Political', 'Awareness', 'Life Experiences', 'Counceilling', 'Medical', 'Science', 'Philosophy']
+		entertainment_list = ['Plays', 'Live Concerts', 'Stand-up Comedy', 'Music', 'Party']
+		sports_list = ['Marathon', 'Championship', 'Meet', 'Tournament', 'Rallying']
+		option_dict = {'Adventure': adventure_list, 'Business & Tech': business_list, 'Social': social_list, 'Talks': talks_list, 'Entertainment': entertainment_list, 'Sports': sports_list}
+		category_list = ['Adventure', 'Business & Tech', 'Entertainment','Social','Sports', 'Talks']
+
+		if cat in category_list:
+			act_list = option_dict[cat]
+			if act in act_list:
+				return True
+		return False
+
+	def gencheck(gender):
+		gen_list = ['Male', 'Female', 'Others', 'Any']
+		if gender in gen_list:
+			return True
+		return False
 
 
+	def checkagegroup(age_group):
+		age= ''
+		if age_group is not None:
+			if age_group[-1:] == "+":
+				latter = "50+"
+				age = age_group[:2]+"-"+latter
+				return age, True
+			age = age_group
+			return age, True
+		return (age, False)
 
+	def checkpart(part, fees):
+		if (part and fees) is not None: 
+			is_val = re.search(r'\d+', part)
+			is_fal = re.search(r'\d+', fees)
+			if is_val and is_fal:
+				return True
+		return False
 
+	def event_recorded(username, title, description, start_date, end_date, dead_date, privacy, location, venue_name, city, state, country, pincode, category, activity, gender, age_group, participants, fees):
+		print(username, title, description, start_date, end_date, dead_date, privacy, location, venue_name, city, state, country, pincode, category, activity, gender, age_group, participants, fees)
 
-
+		event_id = TripPlanValidation.hexer(username)
+		timenow = datetime.datetime.now()
+		event = Event.objects.create(username=username, event_id=event_id, title=title, description=description, start_date=start_date, end_date=end_date, deadline=dead_date, event_privacy=privacy, location=location, venue_name=venue_name, city=city, state=state, country=country, pincode=pincode, category=category, activity=activity, gender=gender,age=age_group, participants=participants, fees=fees, created_on=timenow)
+		if event:
+			return True
+		else:
+			print('Error in Creating')
 '''
 #Using clean()
 class LoginForm(forms.Form):
