@@ -575,12 +575,21 @@ class MyTripForm():
 			print (record)
 		return records_list
 
+class MyEventForm():
+
+	def form_base(username):
+		event = Event.objects.filter(username='nwillo').order_by('-created_on').values()
+		records_list = list(event)
+		for record in records_list:
+			print (record)
+		return records_list
+
 
 class EventPlanForm(forms.Form):
 
 
-	logo = forms.FileField(required=False, widget=forms.FileInput(attrs={'id': 'logo-up-inp', 'class': 'file-upload-input'}))
-	cover = forms.FileField(required=False, widget=forms.FileInput(attrs={'id': 'cover-up-inp', 'class': 'file-upload-input'}))
+	logo = forms.FileField(required=False, widget=forms.FileInput(attrs={'id': 'logo-up-inp', 'class': 'file-upload-input', 'accept': 'image/*'}))
+	cover = forms.FileField(required=False, widget=forms.FileInput(attrs={'id': 'cover-up-inp', 'class': 'file-upload-input', 'accept': 'image/*'}))
 
 	def clean_logo(self):
 		isclean = self.cleaned_data['logo']
@@ -631,7 +640,8 @@ class EventPlanForm(forms.Form):
 		v_participants_fees = EventPlanForm.checkpart(participants, fees)
 
 		if(v_title_desc and v_start_date and v_end_date and v_dead_date and v_privacy and v_location and v_cat_act and v_gender and v_age_group and v_participants_fees):
-			recorded = EventPlanForm.event_recorded(username, title, description, start_date, end_date, dead_date, privacy, location, venue_name, city, state, country, pincode, category, activity, gender, age_group, participants, fees)
+			recorded = EventPlanForm.event_recorded(username, title, description, start_date, end_date, dead_date, privacy, location, venue_name, city, state, country, pincode, category, activity, gender, age_group, participants, fees, logo, cover)
+			return True
 		else:
 			print(False)
 
@@ -706,14 +716,15 @@ class EventPlanForm(forms.Form):
 				return True
 		return False
 
-	def event_recorded(username, title, description, start_date, end_date, dead_date, privacy, location, venue_name, city, state, country, pincode, category, activity, gender, age_group, participants, fees):
-		print(username, title, description, start_date, end_date, dead_date, privacy, location, venue_name, city, state, country, pincode, category, activity, gender, age_group, participants, fees)
+	def event_recorded(username, title, description, start_date, end_date, dead_date, privacy, location, venue_name, city, state, country, pincode, category, activity, gender, age_group, participants, fees, logo, cover):
+		print(username, title, description, start_date, end_date, dead_date, privacy, location, venue_name, city, state, country, pincode, category, activity, gender, age_group, participants, fees, logo, cover)
 
 		event_id = TripPlanValidation.hexer(username)
 		timenow = datetime.datetime.now()
-		event = Event.objects.create(username=username, event_id=event_id, title=title, description=description, start_date=start_date, end_date=end_date, deadline=dead_date, event_privacy=privacy, location=location, venue_name=venue_name, city=city, state=state, country=country, pincode=pincode, category=category, activity=activity, gender=gender,age=age_group, participants=participants, fees=fees, created_on=timenow)
+		ownership = "admin"
+		event = Event.objects.create(username=username, event_id=event_id, title=title, description=description, start_date=start_date, end_date=end_date, deadline=dead_date, event_privacy=privacy, location=location, venue_name=venue_name, city=city, state=state, country=country, pincode=pincode, category=category, activity=activity, gender=gender,age=age_group, participants=participants, fees=fees, created_on=timenow, logo=logo, cover=cover, ownership=ownership)
 		if event:
-			return True
+			print(True)
 		else:
 			print('Error in Creating')
 '''

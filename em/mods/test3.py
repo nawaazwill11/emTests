@@ -1,4 +1,7 @@
-import re
-age_group = ('18-50').isDigit()
-if not(re.match(r'\D', age_group)):
-	print('yes')
+def ann(input):
+	print(input)
+
+def pann(input, ann):
+	ann(input)
+
+pann('works', ann)

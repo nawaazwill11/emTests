@@ -51,12 +51,15 @@
           </div>
         </div>
         <div class="right-panel-body">
+          {% for record in records_list  %}
+            
+          
           <div class="section">
             <div id="box" class="box col-lg-8">
               <div id="tbl1" class="box-layer-1 col-lg-12 layers">
                 <div id="tbl1l" class="box-l1-left col-lg-7">
                   <div class="tbl1l-title">
-                      <span><i>Around the state in 20 days</i></span>
+                      <span><i>{{ record.title}}</i></span>
                   </div>
                 </div>
                 <div id="tbl1r" class="box-l1-right col-lg-5">
@@ -75,79 +78,83 @@
               </div>
               <div id="box-img" class="box-layer col-lg-12 layers box-img">
                 <div class="sub-layer logo">
-                  <img src="{% static "img/ny.jpg" %}">
+                  <img src="{{ MEDIA_URL }}{{ record.logo }}">
                 </div>
                 <div class="sub-layer cover">
-                  <img src="{% static "img/adventure.jpg" %}">
+                  <img src="{{ MEDIA_URL }}{{ record.cover }}">
                 </div>
               </div>
               <div class="box-layer-2 col-lg-12 layers">
                 <div class="src-dest sub-layer">
                   <div class="src sub-layer-1">
-                    <span><b>Type:</b></span>&nbsp <span>Venue</span>
-                  </div>
-                  <div class="dest sub-layer-2">
-                    <span><b>Place:</b></span>&nbsp <span>Pune, Maharashtra</span>
-                  </div>
+                    <span style="flex: 1"><b>Type:</b></span>&nbsp <span style="flex: 1">{{ record.title }}</span>
+                  </div> 
                 </div>
               </div>
               <div class="box-layer col-lg-12 layers">
-                <div class="sub-layer">
-                  <span><b>Activity:</b></span>&nbsp <span>Backpacking, Mountain Sports, Adventure</span>
+                <div class="dest sub-layer-2">
+                    <span style="flex: 1"><b>Activity:</b></span>&nbsp <span class="noflow" style="flex: 1">{{ record.activity }}, &nbsp {{ record.category }}</span>
+                </div>
+              </div>
+              <div class="box-layer col-lg-12 layers">
+                <div class="dest sub-layer-2">
+                    <span style="flex: 1"><b>Place:</b></span>&nbsp <span class="noflow" style="flex: 1">{{ record.venue_name }}, &nbsp{{ record.street_address }}, &nbsp{{ record.city }}, &nbsp{{ record.state }}, &nbsp{{ record.state }}</span>
+                 </div>
+              </div>
+              <div class="box-layer col-lg-12 layers">
+                <div class="mode-type-veh sub-layer">
+                  <div class="mode sub-layer-1">
+                    <span style="flex: 1"><b>Start Date & Time:</b></span>&nbsp <span style="flex: 1">{{ record.start_date }}</span>
+                  </div>
                 </div>
               </div>
               <div class="box-layer col-lg-12 layers">
                 <div class="mode-type-veh sub-layer">
                   <div class="mode sub-layer-1">
-                    <span><b>Start Date:</b></span>&nbsp <span>28-02-2018</span>
-                  </div>
-                  <div class="type sub-layer-2">
-                    <span><b>Start Time:</b></span>&nbsp <span>10:00 am</span>
-                  </div>
-                </div>
-              </div>
-              <div class="box-layer col-lg-12 layers">
-                <div class="mode-type-veh sub-layer">
-                  <div class="mode sub-layer-1">
-                    <span><b>End Date:</b></span>&nbsp <span>01-03-2018</span>
-                  </div>
-                  <div class="type sub-layer-2">
-                    <span><b>End Time:</b></span>&nbsp <span>11:00 pm</span>
-                  </div>
-                </div>
-              </div>
-              <div class="box-layer col-lg-12 layers">
-                <div class="date-time sub-layer">
-                  <div class="date sub-layer-1">
-                    <span><b>Gender:</b></span>&nbsp <span>Any</span>
-                  </div>
-                  <div class="time sub-layer-2">
-                    <span><b>Age Group:</b></span>&nbsp <span>18-35</span>
+                    <span style="flex: 1"><b>End Date & Time:</b></span>&nbsp <span style="flex: 1">{{ record.end_date }}</span>
                   </div>
                 </div>
               </div>
               <div class="box-layer-4 col-lg-12 layers">
                 <div class="nop-vac sub-layer">
                   <div class="nop sub-layer-1">
-                    <span><b>Participation Deadline:</b></span>&nbsp <span>27-02-2018 12:00 pm</span>
+                    <span style="flex: 1"><b>Participation Deadline:</b></span>&nbsp <span style="flex: 1">{{ record.deadline }}</span>
                   </div>
                 </div>
               </div>
               <div class="box-layer-4 col-lg-12 layers">
                 <div class="nop-vac sub-layer">
                   <div class="nop sub-layer-1">
-                    <span><b>People Travelling:</b></span>&nbsp <span>28&nbsp<a href="#">(View)</a></span>
-                  </div>
-                  <div class="vac sub-layer-2">
-                    <span><b>Vacancy:</b></span>&nbsp <span>7</span>
+                    <span style="flex: 1"><b>Gender</b></span>&nbsp <span style="flex: 1">{{ record.gender }}</span>
                   </div>
                 </div>
               </div>
-              
+              <div class="box-layer-4 col-lg-12 layers">
+                <div class="nop-vac sub-layer">
+                  <div class="nop sub-layer-1">
+                    <span style="flex: 1"><b> Age Group:</b></span>&nbsp <span style="flex: 1">{{ record.age }} </span>
+                  </div>
+                </div>
+              </div>
+              <div class="box-layer-4 col-lg-12 layers">
+                <div class="nop-vac sub-layer">
+                  <div class="nop sub-layer-1">
+                    <span style="flex: 1"><b> Participants:</b></span>&nbsp <span style="flex: 1">28&nbsp<a href="#">(View)</a></span>
+                  </div>
+                </div>
+              </div>
+              <div class="box-layer-4 col-lg-12 layers">
+                <div class="nop-vac sub-layer">
+                  <div class="nop sub-layer-1">
+                    <span style="flex: 1"><b> Vacany:</b></span>&nbsp <span style="flex: 1"> 7 </span>
+                  </div>
+                </div>
+              </div>
               <div id="tbl5" class="box-layer-5 col-lg-12 layers">
                 <div class="sub-layer">
                   <div class="sub-layer-1">
-                    <span><b>Description:</b></span>&nbsp <span>Tour the beautiful streets of Daman to find some memarizing momuments and sculptures of the Portuguese era. Tour the beautiful streets of Daman to find some memarizing momuments and sculptures of the Portuguese era.</span>
+                    <span style="flex: 1"><b>Description:</b></span>&nbsp 
+                    <span style="flex: 1">{{ record.description }}</span>
                   </div>
                   
                 </div>
@@ -166,7 +173,8 @@
                 </div>
               </div>
             </div>
-          </div>      
+          </div>
+          {% endfor %}
         </div>
       </div>
     </div>

@@ -45,21 +45,22 @@
 }
 #sb {
     width: 18%;
-    margin-top: 86px;
+    margin-top: 7%;
 }
 .sb {
-    margin-bottom: 29px;
+    margin-bottom: 100px;
 }
 .sb-cancel-btn {
     margin-bottom: 25px;
 }
 .sb > button {
-    width: 92px;
+    width: 140px;
+    height: 60px;
 }
 /****box****/
 .layers {
     position: relative;
-    margin-top: 5px;
+    margin-top: 5p;
     border-bottom: 1px solid #edf2f6
 }
 
@@ -79,6 +80,7 @@
 .box-layer-1 {
     position: relative;
     border-bottom: 2px solid #edf2f6;
+    background-color: #edf2f7;
 
 }
 .tbl1 {
@@ -181,7 +183,7 @@
     flex: 2;
 }
 .sub-layer-1 > span,.sub-layer-2 > span {
-    
+    padding: 6px;
 }
 span:nth-child(2) {
     text-overflow: ellipsis;
@@ -229,4 +231,10 @@ span:nth-child(2) {
     display: flex;
     padding: 0;
     margin: 0;
+}
+
+.noflow {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }

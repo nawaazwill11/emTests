@@ -155,3 +155,24 @@ function profileupload(lin, olay, D) {
               }
           });
 }
+
+function txtInputNotNulla(inputString){
+  if (/^(?!\s*$).+/.test(inputString)){
+    if (/^(?![0-9]).+/.test(inputString)){
+      return [true, error=""]
+    }
+    return[false, "Cannot begins with Digit"]
+  }
+  return[false, "Empty Input"]
+  
+}
+
+
+
+function desginatora(func, inputString){
+  var valid = func(inputString)
+  if (valid[0] == true) {
+    return [true, valid[1], flag=0]
+  }
+  return [false, valid[1], flag=1]
+}

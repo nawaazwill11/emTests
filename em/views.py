@@ -10,7 +10,7 @@ from django.http import HttpResponseRedirect, HttpResponsePermanentRedirect, Jso
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from .models import Login, Pi
-from .mods.forms import LoginForm, RegistrationForm, Printer, AboutEditForm, GetAboutInitial, ProfileForm, TripPlanValidation, MyTripForm, EventPlanForm
+from .mods.forms import LoginForm, RegistrationForm, Printer, AboutEditForm, GetAboutInitial, ProfileForm, TripPlanValidation, MyTripForm, EventPlanForm, MyEventForm
 from .mods.test import SharingForm
 import re
 
@@ -70,14 +70,20 @@ class PlanEventPageView(TemplateView):
 
 	def post(self, request, *args, **kwargs):
 		form = self.form(request.POST, request.FILES)
+		print(request.FILES)
 		if form.is_valid():
 			cleaned = form.cleaned_data
-			logo = cleaned['logo']
-			cover = cleaned['cover']
+			#logo = cleaned['logo']
+			#cover = cleaned['cover']
+			logo = request.FILES['logo']
+			cover = request.FILES['cover']
 			recorded = EventPlanForm.validation(request.session['username'], logo, cover, request.POST)
 			if recorded:
+				print(recorded)
 				redirect_url = '../myevent/'
-				return JsonResponse({"success": 'OK', 'redirect_url': redirect_url })
+				return HttpResponseRedirect(reverse('myevent'))
+			else:
+				print(False)
 		else:
 			print(False)
 		return render(request, self.template_name, {'form': self.form})
@@ -90,7 +96,7 @@ class IndexPageView(TemplateView):
 
 	def get(self, request, *args, **kwargs):
 		if request.session.has_key('username'):
-			return HttpResponseRedirect('story/')
+			return HttpResponseRedirect('../story/')
 		form = self.form(initial='')
 		rform  = self.rform(initial='')
 		#Printer.print(rform)
@@ -362,7 +368,9 @@ class MyEventPageView(TemplateView):
 	template_name = 'myevent.html'
 
 	def get(self, request, *args, **kwargs):
-		return render(request, self.template_name, context=None)
+		records_list = MyEventForm.form_base(request.session['username'])
+		context = {'records_list': records_list, 'username': request.session['username'] }
+		return render(request, self.template_name, context)
 
 	def post(self, request, *args, **kwargs):
 		return render(request, self.template_name, context=None)
@@ -378,11 +386,6 @@ class MyTripPageView(TemplateView):
 
 	def post(self, request, *args, **kwargs):
 		return render(request, self.template_name, context=None)
-
-
-
-
-
 
 
 class SearchEventPageView(TemplateView):

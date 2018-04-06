@@ -32,13 +32,15 @@
           <div class="pl-op nobo">
             <div class="lI-group">
               <label class="lI-label">Event Title <span style="color: red">*</span></label>
-              <input id="txt_title" type="text" class="lI-input" style="margin-left: 0">
+              <input id="txt_title" type="text" class="lI-input" style="margin-left: 0" maxlength="30" title="Eg. Party of the Century">
+              <span id="title_error" class="form_error"></span>
             </div>  
           </div>
           <div class="pl-op nobo">
             <div class="lI-group">
               <label>Event Description <span style="color: red">*</span></label>
-              <textarea id="ta-desc" rows="7"></textarea>
+              <textarea id="ta-desc" rows="3" maxlength="160"></textarea>
+              <span id="desc_error" class="form_error"></span>
             </div>
           </div>
           <div class="pl-op">
@@ -228,6 +230,7 @@
                 </div>
               </div>
             </div>
+            <span id="start_end_date_error" class="form_error"></span>
           </div>
           <div class="pl-op">
             <label>Deadline <span class="help glyphicon glyphicon-question-sign" title="Participation Deadline"></span></label>
@@ -243,97 +246,98 @@
             </div>
             <div class="dead-join" style="display: none;">
               <div class="td">
-              <div class="td-date">
-                <label>Deadline Date<span style="color: red;">*</span></label>
-                <div class="selects">
-                  <select id="sel_dead_year">
-                    <option>2018</option>
-                    <option>2019</option>
-                    <option>2020</option>
-                    <option>2021</option>
-                    <option>2022</option>
-                    <option>2023</option>
-                    <option>2024</option>
-                    <option>2025</option>
-                    <option>2026</option>
-                    <option>2027</option>
-                    <option>2028</option>
-                    <option>2029</option>
-                    <option>2030</option>
-                  </select>
-                  <select id="sel_dead_month">
-                    <option value="01">Jan</option>
-                    <option value="02">Feb</option>
-                    <option value="03">Mar</option>
-                    <option value="04">Apr</option>
-                    <option value="05">May</option>
-                    <option value="06">Jun</option>
-                    <option value="07">Jul</option>
-                    <option value="08">Aug</option>
-                    <option value="09">Sep</option>
-                    <option value="10">Oct</option>
-                    <option value="11">Nov</option>
-                    <option value="12">Dec</option>
-                  </select>
-                  <select id="sel_dead_date">
-                    <option>01</option>
-                    <option>02</option>
-                    <option>03</option>
-                    <option>04</option>
-                    <option>05</option>
-                    <option>06</option>
-                    <option>07</option>
-                    <option>08</option>
-                    <option>09</option>
-                    <option>10</option>
-                    <option>11</option>
-                    <option>12</option>
-                    <option>13</option>
-                    <option>14</option>
-                    <option>15</option>
-                    <option>16</option>
-                    <option>17</option>
-                    <option>18</option>
-                    <option>19</option>
-                    <option>20</option>
-                    <option>21</option>
-                    <option>21</option>
-                    <option>23</option>
-                    <option>24</option>
-                    <option>25</option>
-                    <option>26</option>
-                    <option>27</option>
-                    <option>28</option>
-                    <option>29</option>
-                    <option>30</option>
-                    <option>31</option>
-                  </select>
+                <div class="td-date">
+                  <label>Deadline Date<span style="color: red;">*</span></label>
+                  <div class="selects">
+                    <select id="sel_dead_year">
+                      <option>2018</option>
+                      <option>2019</option>
+                      <option>2020</option>
+                      <option>2021</option>
+                      <option>2022</option>
+                      <option>2023</option>
+                      <option>2024</option>
+                      <option>2025</option>
+                      <option>2026</option>
+                      <option>2027</option>
+                      <option>2028</option>
+                      <option>2029</option>
+                      <option>2030</option>
+                    </select>
+                    <select id="sel_dead_month">
+                      <option value="01">Jan</option>
+                      <option value="02">Feb</option>
+                      <option value="03">Mar</option>
+                      <option value="04">Apr</option>
+                      <option value="05">May</option>
+                      <option value="06">Jun</option>
+                      <option value="07">Jul</option>
+                      <option value="08">Aug</option>
+                      <option value="09">Sep</option>
+                      <option value="10">Oct</option>
+                      <option value="11">Nov</option>
+                      <option value="12">Dec</option>
+                    </select>
+                    <select id="sel_dead_date">
+                      <option>01</option>
+                      <option>02</option>
+                      <option>03</option>
+                      <option>04</option>
+                      <option>05</option>
+                      <option>06</option>
+                      <option>07</option>
+                      <option>08</option>
+                      <option>09</option>
+                      <option>10</option>
+                      <option>11</option>
+                      <option>12</option>
+                      <option>13</option>
+                      <option>14</option>
+                      <option>15</option>
+                      <option>16</option>
+                      <option>17</option>
+                      <option>18</option>
+                      <option>19</option>
+                      <option>20</option>
+                      <option>21</option>
+                      <option>21</option>
+                      <option>23</option>
+                      <option>24</option>
+                      <option>25</option>
+                      <option>26</option>
+                      <option>27</option>
+                      <option>28</option>
+                      <option>29</option>
+                      <option>30</option>
+                      <option>31</option>
+                    </select>
+                  </div>
                 </div>
-              </div>
-              <div class="td-time">
-                <label>Deadline Time <span style="color: red;">*</span></label>
-                <div class="selects">
-                  <select id="sel_dead_time">
-                    <option>12</option>
-                    <option>11</option>
-                    <option>10</option>
-                    <option>9</option>
-                    <option>8</option>
-                    <option>7</option>
-                    <option>6</option>
-                    <option>5</option>
-                    <option>4</option>
-                    <option>3</option>
-                    <option>2</option>
-                    <option>1</option>
-                  </select>
-                  <select id="sel_dead_meridiem">
-                    <option>am</option>
-                    <option>pm</option>
-                  </select>
+                <div class="td-time">
+                  <label>Deadline Time <span style="color: red;">*</span></label>
+                  <div class="selects">
+                    <select id="sel_dead_time">
+                      <option>12</option>
+                      <option>11</option>
+                      <option>10</option>
+                      <option>9</option>
+                      <option>8</option>
+                      <option>7</option>
+                      <option>6</option>
+                      <option>5</option>
+                      <option>4</option>
+                      <option>3</option>
+                      <option>2</option>
+                      <option>1</option>
+                    </select>
+                    <select id="sel_dead_meridiem">
+                      <option>am</option>
+                      <option>pm</option>
+                    </select>
+                  </div>
                 </div>
-              </div>
             </div>
+            <span id="dead_date_error" class="form_error"></span>
             </div>
           </div>
 
@@ -406,36 +410,42 @@
               <label class="lI-label">Venue Name<span style="color: red">*</span></label>
               <input id="the_venue" type="text" class="lI-input" style="margin-left: 0">
             </div>
+            <span id="venue_name_error" class="form_error"></span>
           </div>
           <div class="pl-op nobo">
             <div class="lI-group">
               <label class="lI-label">Street Address<span style="color: red">*</span></label>
               <input id="the_street" type="text" class="lI-input" style="margin-left: 0">
             </div>
+            <span id="street_error" class="form_error"></span>
           </div>
           <div class="pl-op nobo">
             <div class="lI-group">
               <label class="lI-label">City<span style="color: red">*</span></label>
               <input id="the_city" type="text" class="lI-input" style="margin-left: 0">
             </div>
+            <span id="city_error" class="form_error"></span>
           </div>
           <div class="pl-op nobo">
             <div class="lI-group">
               <label class="lI-label">State<span style="color: red">*</span></label>
               <input id="the_state" type="text" class="lI-input" style="margin-left: 0">
             </div>
+            <span id="state_error" class="form_error"></span>
           </div>
           <div class="pl-op nobo">
             <div class="lI-group">
               <label class="lI-label">Country<span style="color: red">*</span></label>
               <input id="the_country" type="text" class="lI-input" style="margin-left: 0">
             </div>
+            <span id="country_error" class="form_error"></span>
           </div>
           <div class="pl-op nobo">
             <div class="lI-group">
               <label class="lI-label">Pincode<span style="color: red">*</span></label>
               <input id="the_pincode" type="text" class="lI-input" style="margin-left: 0">
             </div>
+            <span id="pin_error" class="form_error"></span>
           </div>
         </div>
         <div class="navigante">
@@ -487,6 +497,7 @@
                     </datalist>
                 </div>
               </div>
+              <span id="category_error" class="form_error"></span>
               <div class="search-cat cat-3">
                 <div id="txt_activity_div" class="lI-group">
                   <label class="lI-label">Event Activity <span style="color: red">*</span></label>
@@ -497,6 +508,7 @@
                     </datalist>
                 </div>
               </div>
+              <span id="activity_error" class="form_error"></span>
             </div>
           </div>
           <div class="pl-op tupac">
@@ -544,6 +556,7 @@
                   <label class="lI-label">Enter Limit <span style="color: red">*</span></label>
                   <input class="lI-input" type="text" placeholder="Eg. 10 or 50" id="the_limit" style="margin-left: 0" autocomplete="off">
                 </div>
+                <span id="part_error" class="form_error"></span>
             </div>
           </div>
           <div class="pl-op">
@@ -563,6 +576,7 @@
                   <label class="lI-label">Enter amount (INR)<span style="color: red">*</span></label>
                   <input class="lI-input" type="text" placeholder="Eg. 1000" id="the_fees" style="margin-left: 0" autocomplete="off">
                 </div>
+                <span id="fees_error" class="form_error"></span>
             </div>
           </div>
         </div>
@@ -928,16 +942,91 @@
       pb_dict = {}
       function abstime(time, meridiem){
         if (meridiem == "pm"){
-          if (time != 12){
             time = parseInt(time) + 12
-          }
         }
         time = time.toString() + ":00"
+
         return time
       }
+      function txtInputNotNull(inputString){
+        if (/^(?!\s*$).+/.test(inputString)){
+            return [true, error=""]
+        }
+        return[false, "Please fill this field"]
+        
+      }
+      function dateCompare(date_list){
+        start_year = parseInt(date_list[0][0])
+        end_year = parseInt(date_list[0][1])
+        start_month = parseInt(date_list[1][0])
+        end_month = parseInt(date_list[1][1])
+        start_date = parseInt(date_list[2][0])
+        end_date = parseInt(date_list[2][1])
+        start_time = parseInt(date_list[3][0].slice(0,2))
+        end_time = parseInt(date_list[3][1].slice(0,2))
+        /*
+        alert(start_year)
+        alert(end_year)
+        alert(start_month)
+        alert(end_month)
+        alert(start_date)
+        alert(end_date)
+        alert(start_time)
+        alert(end_time)
+        */
+        if (start_year > end_year){
+          return [false, 'Error in selecting Year', flag=1]
+        }
+        else if (start_year == end_year){
+          if (start_month > end_month){
+            return [false, 'Error in selecting Month', flag=1]
+          }
+          else if (start_month == end_month){
+            if (start_date > end_date){
+              return[false, 'Error in selecting Date', flag=1]
+            }
+            else if (start_date == end_date) {
+              if ((start_time > end_time) || (start_time == end_time)) {
+                return[false, 'Time mismatch', flag=1]
+              }
+              else{
+                return[true, '', 0]
+              }
+            }
+            else{
+              return[true, '', 0]  
+            }
+            
+          }
+          else {
+            return[true, '', 0]  
+          }
+          
+        }
+        else{
+          return[true, '', 0]
+        }
+    }
+
+      function desginator(func, inputString){
+        var valid = func(inputString)
+        if (valid[0] == true) {
+          return [true, valid[1], flag=0]
+        }
+        return [false, valid[1], flag=1]
+      }
+
       $("#next_click1").click(function () {
+        var flags = []
+        var flag = 0
         pb_dict['title'] = $("#txt_title").val()
+        var valid = desginator(txtInputNotNull, pb_dict['title'])
+        $("#title_error").text(valid[1])
+        flags[0] = valid[2]
         pb_dict['description'] = $("#ta-desc").val()
+        valid = desginator(txtInputNotNull, pb_dict['description'])
+        $("#desc_error").text(valid[1])
+        flags[1] = valid[2]
         pb_dict["start_year"] = $("#sel_start_year option:selected").text()
         pb_dict["start_month"] = $("#sel_start_month option:selected").val()
         pb_dict["start_date"] = $("#sel_start_date option:selected").text()
@@ -950,6 +1039,10 @@
         time = $("#sel_end_time option:selected").text()
         meri = $("#sel_end_meridiem option:selected").text()
         pb_dict["end_time"] = abstime(time,meri)
+        valid = dateCompare([[pb_dict['start_year'], pb_dict['end_year']], [pb_dict['start_month'], pb_dict['end_month']],[pb_dict['start_date'],pb_dict['end_date']], [pb_dict['start_time'], pb_dict['end_time']]])
+        $("#start_end_date_error").text(valid[1])
+        flags[2] = valid[2]
+
         pb_dict["dead_year"] = ''
         pb_dict["dead_month"] = ''
         pb_dict["dead_date"] = ''
@@ -961,8 +1054,12 @@
           pb_dict["dead_month"] = $("#sel_dead_month option:selected").val()
           pb_dict["dead_date"] = $("#sel_dead_date option:selected").text()
           time = $("#sel_dead_time option:selected").text()
-          meri = $("#sel_dead_meridiem option:selected")
+          meri = $("#sel_dead_meridiem option:selected").text()
           pb_dict["dead_time"] = abstime(time,meri)
+          valid = dateCompare([[pb_dict['start_year'], pb_dict['dead_year']], [pb_dict['start_month'], pb_dict['dead_month']],[pb_dict['start_date'],pb_dict['dead_date']], [pb_dict['start_time'], pb_dict['dead_time']]])
+          $("#dead_date_error").text(valid[1])
+          flags[3] = valid[2]
+
         }
         pb_dict['privacy'] = $("input[name=priv]:checked").val()
         $("#title").val(pb_dict['title'])
@@ -978,24 +1075,67 @@
         $("#pb_desc").text(pb_dict['description'])
         $("#pb_start_date").text(pb_dict['start_year']+"-"+pb_dict['start_month']+"-"+pb_dict['start_date'])
         $("#pb_start_time").text(pb_dict['start_time'])
-        $("#pb_end_date").text(pb_dict['end_time'])
+        $("#pb_end_date").text(pb_dict['end_year']+"-"+pb_dict['end_month']+"-"+pb_dict['end_date'])
         $("#pb_end_time").text(pb_dict['end_time'])
         $("#pb_dead_datetime").text(pb_dict['dead_year']+"-"+pb_dict['dead_month']+"-"+pb_dict['dead_date']+" "+pb_dict['dead_time'])
         $("#pb_privacy").text(pb_dict['privacy'])
-        focus_click('two', 'one')
-        navigante('two', 'one', 'three', 'four')
+        for (var i =0; i< flags.length; i++) {
+            if (flags[i]==1){
+              flag = 1
+              break;
+            }
+        }
+
+        if (flag != 1){
+          focus_click('two', 'one')
+          navigante('two', 'one', 'three', 'four')  
+        }
+        else{
+          alert("Page has errors.")
+        }
+        
       })
     </script>
     <script type="text/javascript">
+      var flags = []
+      var flag = 0
       $("#next_click2").click(function () {
         pb_dict['location'] = $("input[name=loc]:checked").val()
         if (pb_dict['location'] != 'Online'){
           pb_dict['venue_name'] = $("#the_venue").val()
+          valid = desginator(txtInputNotNull, pb_dict['venue_name'])
+          $("#venue_name_error").text(valid[1])
+          flag[0] = valid[2]
           pb_dict['street_addr'] = $("#the_street").val()
+          valid = desginator(txtInputNotNull, pb_dict['street_addr'])
+          $("#street_error").text(valid[1])
+          flag[1] = valid[2]
           pb_dict['city'] = $("#the_city").val()
+          valid = desginator(txtInputNotNull, pb_dict['city'])
+          $("#city_error").text(valid[1])
+          flag[2] = valid[2]
           pb_dict['state'] = $("#the_state").val()
+          valid = desginator(txtInputNotNull, pb_dict['state'])
+          $("#state_error").text(valid[1])
+          flag[3] = valid[2]
           pb_dict['country'] = $("#the_country").val()
+          valid = desginator(txtInputNotNull, pb_dict['country'])
+          $("#country_error").text(valid[1])
+          flag[4] = valid[2]
           pb_dict['pincode'] = $("#the_pincode").val()
+          valid = desginator(txtInputNotNull, pb_dict['pincode'])
+          if (valid[0] != true){
+            $("#pin_error").text(valid[1])
+            flags[5] = valid[2]
+            alert('if')
+          }
+          else if (/(?![0-9]).+/.test(pb_dict['pincode'])){
+            $("#pin_error").text("Please enter digits only")
+            flags[5] = 1
+          }
+          else{
+            flags[5] = 0
+          }
         }
         $("#location").val(pb_dict['location'])
         $("#venue_name").val(pb_dict['venue_name'])
@@ -1013,8 +1153,20 @@
         $("#pb_country").text(pb_dict['country'])
         $("#pb_pincode").text(pb_dict['pincode'])
 
-        focus_click('three', 'two')
-        navigante('three', 'one', 'two', 'four')
+        for (var i =0; i< flags.length; i++) {
+            if (flags[i]==1){
+              flag = 1
+              break;
+            }
+        }
+
+        if (flag != 1){
+          focus_click('three', 'two')
+          navigante('three', 'one', 'two', 'four') 
+        }
+        else{
+          alert("Page has errors.")
+        }
       })
     </script>
     <script type="text/javascript">
@@ -1044,8 +1196,37 @@
       })
 
       $("#next_click3").click(function () {
+        var flags = []
+        var flag = 0
         pb_dict['category'] = $("#txt_category").val()
-        pb_dict['activity'] = $("#txt_activity").val()
+        for (var i=0; i < category_list.length; i++){
+          if (pb_dict['category'] == category_list[i]){
+            flags[0] = 0
+            $("#category_error").text("")
+            break
+          }
+          else{
+            flags[0] = 1
+            $("#category_error").text("Please select Category from the list only")
+          }
+        }
+
+        category = $("#txt_category").val()
+        activity = $("#txt_activity").val()
+        activity_list = option_dict[category]
+        for (var i=0; i < activity_list.length; i++){
+          if (activity == activity_list[i]){
+            flags[1] = 0
+
+            $("#activity_error").text("")
+            break
+          }
+          else{
+            flags[1] = 1
+            $("#activity_error").text("Please select Activity from the list only")
+          }
+        }
+        pb_dict['activity'] = activity
         pb_dict['gender'] = $("#sel_gender option:selected").val()
         age_from = $("#sel_age_from option:selected").val()
         age_to = $("#sel_age_to option:selected").val()
@@ -1054,12 +1235,27 @@
         limit_part = $("input[name=limit]:checked").val()
         if (limit_part == 'limit-yes'){
           pb_dict['participants'] = $("#the_limit").val()
+          if (/(?![0-9]).+/.test(pb_dict['participants'])){
+            $("#part_error").text("Please enter a valid number")
+            flags[2] = 1
+          }
+          else{
+            flags[2] = 0
+          }
         }
         pb_dict['fees'] = ''
         charge = $("input[name=charge]:checked").val()
         if (charge = 'charge-yes'){
           pb_dict['fees'] = $("#the_fees").val()
+          if (/(?![0-9]).+/.test(pb_dict['fees'])){
+            $("#fees_error").text("Please enter a valid amount")
+            flags[3] = 1
+          }
+          else{
+            flags[3] = 0
+          }
         }
+
         $("#category").val(pb_dict['category'])
         $("#activity").val(pb_dict['activity'])
         $("#gender").val(pb_dict['gender'])
@@ -1073,8 +1269,22 @@
         $("#pb_age_group").text(pb_dict['age_group'])
         $("#pb_participants").text(pb_dict['participants'])
         $("#pb_fees").text(pb_dict['fees'])
-        focus_click('four', 'three')
-        navigante('four', 'one', 'two', 'three')
+
+        for (var i =0; i< flags.length; i++) {
+            if (flags[i]==1){
+              flag = 1
+              break;
+            }
+        }
+
+        if (flag != 1){
+          focus_click('four', 'three')
+          navigante('four', 'one', 'two', 'three')
+        }
+        else{
+          alert("Page has errors.")
+        }
+        
       })
     </script>
     <script type="text/javascript">
@@ -1094,26 +1304,6 @@
           $("#pb_cover").text('No')
         }
       });
-    </script>
-    <script>
-        $(document).ready(function() {
-          $("#formsubmit").click(function(){
-            $.ajax({
-              type: 'POST', 
-              url: '#', 
-              dataType: 'json',
-              data: $('#event_form').serialize(),
-              success: function (x) {                
-                alert("Event Created")
-                setTimeout(function(){ window.location =  x.redirect_url;}); 
-              },
-              error:function(){
-                alert("Changes cannot be saved.\nTry Again with proper inputs.") 
-              }
-          });
-              return false;
-            });
-        })
     </script>
    
   {% endblock custom_scripts %}

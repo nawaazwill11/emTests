@@ -165,7 +165,7 @@ class Event(models.Model):
     event_id = models.CharField(primary_key=True, max_length=32)
     event_privacy = models.CharField(max_length=20)
     title = models.CharField(max_length=50, blank=True, null=True)
-    description = models.CharField(max_length=50, blank=True, null=True)
+    description = models.CharField(max_length=160, blank=True, null=True)
     start_date = models.DateTimeField(blank=True, null=True)
     end_date = models.DateTimeField(blank=True, null=True)
     deadline = models.DateTimeField(blank=True, null=True)
@@ -176,8 +176,8 @@ class Event(models.Model):
     state = models.CharField(max_length=100, blank=True, null=True)
     country = models.CharField(max_length=100, blank=True, null=True)
     pincode = models.CharField(max_length=100, blank=True, null=True)
-    logo = models.CharField(max_length=100, blank=True, null=True)
-    cover = models.CharField(max_length=100, blank=True, null=True)
+    logo = models.FileField(upload_to='logo/',blank=True, null=True)
+    cover = models.FileField(upload_to='cover/')
     category = models.CharField(max_length=50, blank=True, null=True)
     activity = models.CharField(max_length=50, blank=True, null=True)
     gender = models.CharField(max_length=8, blank=True, null=True)
@@ -186,6 +186,7 @@ class Event(models.Model):
     fees = models.FloatField(blank=True, null=True)
     created_on = models.DateTimeField()
     username = models.CharField(max_length=50)
+    ownership = models.CharField(max_length=15)
 
     class Meta:
         managed = False

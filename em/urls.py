@@ -78,7 +78,7 @@ searcheventpatterns = [
 ]
 
 searchtrippatterns = [
-    url(r'^$',login_required(views.IndexPageView.as_view()), name='searchtrip')
+    url(r'^$',login_required(views.SearchTripPageView.as_view()), name='searchtrip')
 
 ]
 
