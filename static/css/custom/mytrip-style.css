@@ -69,7 +69,7 @@
     padding: 2px;
     flex-direction: column;
     border-radius: 3px;
-    box-shadow: 0px 0px 4px 1px #888da6;
+    box-shadow: 0px 0px 20px -7px #888da6;
     margin-bottom: 15px;
 }
 
@@ -84,6 +84,14 @@
     background-color: #edf2f7;
     color: #888da6;
     margin-top: 0;
+        background-color: #edf2f7;
+    color: #888da6;
+    margin-top: -2px;
+    margin-left: -2px;
+    width: 494px;
+    height: 65px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 .tbl1l {
     padding: 0;
@@ -125,6 +133,8 @@
     display: flex;
     float: right;
     padding: 0;
+    right: 0px;
+    top: 10px;
 }
 .trip-creator > span {
     display: flex;
@@ -153,6 +163,10 @@
     display: flex;
 }
 .sub-layer-1, .sub-layer-2 {
+    display: flex;
+    flex: 1;
+}
+.sub-layer-1 > span, .sub-layer-2 > span {
     display: flex;
     flex: 1;
 }
@@ -201,5 +215,30 @@
     height: 50px;
 }
 .timedate{
+    flex: 1;
+}
+
+.TD {
+    position: fixed;
+    align-items: center;
+    justify-content: center;
+    top: 100px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: white;
+    width: 40%;
+    margin-left: 30%;
+    height: 84%;
+    border-radius: 5px;
+    margin-top: -10px;
+    z-index: 1045;
+    overflow-y: scroll;
+}
+.tbb-op {
+    display: flex;
+}
+.tbb-op * {
+
     flex: 1;
 }

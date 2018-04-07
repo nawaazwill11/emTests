@@ -78,7 +78,7 @@
   							
   								<div id="sports" class="sl2-op2 sop" onclick="get_moto(this.id)">
 		  							<img src="{% static "img/sports.jpg" %}">
-		  							<span><h3>Sport Event</h3></span>
+		  							<span><h3>Sports Event</h3></span>
   								</div>
   							</div>
   							<div class="sl3 op">
@@ -1054,7 +1054,7 @@
         var meridiem = $("#meridiem option:selected").val()
         var gender = $("#gender_list option:selected").val()
         var age_group_list =[]
-        age_group_list_text =[]
+        age_group_list_string =[]
 
         for (var i=1; i <= age_group_count;i++) {
           var agegroup = "#age_group"+i+" option:selected"

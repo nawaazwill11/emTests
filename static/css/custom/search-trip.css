@@ -180,6 +180,7 @@
     height: 84%;
     border-radius: 5px;
     margin-top: -10px;
+    z-index: 1040
 }
 .trip-box-big {
     
@@ -194,7 +195,7 @@
     background-color: #edf2f6;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
-    margin-bottom: 0;
+    margin-bottom: 8px;
 }
 .join-btn {
     position: absolute;
@@ -212,7 +213,14 @@
 }
 .tbb-title {
     text-align: center;
-    
+    font-weight: 600;
+    margin-bottom: 8px
+
+}
+.tbb-title > h3 {
+    font-weight: 600;
+    font-size: 30px;
+    word-spacing: 5px;
 }
 .tbb-bck-main {
     margin-top: 0;
@@ -223,15 +231,17 @@
     left: 0;
 }
 .tbb-bck > img {
-    width: 100%;
-    opacity: 0.2;
+    width: 585px;
+    max-width: 100%;
+    opacity: 0.4;
     height: 230px;
+    margin-top: 15px;
 }
 .creator {
     display: flex;
     /* margin: 0 auto; */
     flex-direction: column;
-    margin-left: 43%;
+    margin-left: 43.5%;
     margin-top: 25px;
 }
 .creator > img {
@@ -248,8 +258,11 @@
 }
 .part {
     text-align: center;
-    margin-left: 93px;
+    margin-left: 21.5%;
     z-index: 101;
+}
+.part > label {
+    margin-left: -3.5%;
 }
 .tbb-low {
     padding: 0 40px;

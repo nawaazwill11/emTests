@@ -380,8 +380,8 @@ class MyTripPageView(TemplateView):
 	template_name = 'mytrip.html'
 
 	def get(self, request, *args, **kwargs):
-		records_list = MyTripForm.form_base(request.session['username'])
-		context = {'records_list': records_list}
+		records_list, ids_list = MyTripForm.form_base(request.session['username'])
+		context = {'records_list': records_list, 'ids_list': ids_list }
 		return render(request, self.template_name, context)
 
 	def post(self, request, *args, **kwargs):
