@@ -93,6 +93,12 @@
 .l3-o4 > label {
     margin-right: 6.3px;
 }
+#submit_btn {
+    position: relative;
+    left: 43.5%;
+    width: 145px;
+    height: 40px;
+}
 .search-low-header {
     border-bottom: 1px solid lightgrey;
     margin: 0 10px;
@@ -102,12 +108,21 @@
 
 }
 .result-layer {
-	display: flex;
+	position: relative;
+    display: inline-block;
+
 }
 .result-box {
-    box-shadow: 0px 0px 4px 1px #888da6;
-    flex: 1;
+    position: relative;
+    display: -webkit-inline-box;
+    min-width: 324px;
+    width: 324px;
+    max-width: 324px;
+    height: 431px;
+    min-height: 431px;
+    max-height: 431px; 
     margin: 20px;
+    box-shadow: 0px 0px 4px 1px #888da6;
 }
 .trip-box {
     border: 1px solid lightgrey;
@@ -141,6 +156,9 @@
 }
 .tb-op > a:visited {
     color: #ef0707;
+}
+.tb-op > img {
+    height: 190px;
 }
 .join-button {
     padding: 0;
@@ -292,4 +310,37 @@
 ::placeholder {
 	color: #888da6;
 	padding-left: 10px;
+}
+
+.TD {
+    position: fixed;
+    align-items: center;
+    justify-content: center;
+    top: 100px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: white;
+    width: 40%;
+    margin-left: 30%;
+    height: 84%;
+    border-radius: 5px;
+    margin-top: -10px;
+    z-index: 1045;
+    overflow-y: scroll;
+}
+.tbb-op {
+    display: flex;
+}
+.tbb-op * {
+
+    flex: 1;
+}
+
+.l3-o1 > input {
+    width: 65px;
+    border: none;
+    height: 30px;
+    border-radius: 5px;
+    padding: 0px 5px;
 }

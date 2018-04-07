@@ -11,12 +11,18 @@
     background-color: white;
 }
 .left-panel-body-low {
-    margin-bottom: 60px;
+    margin-bottom: 35px;
 }
 .left-panel-body-low > ul > li > span{
-    margin-left: 10px;
+    margin-left: 10p;
 }
-
+#refine_button{
+    text-align: center;
+    margin-top: 45px;
+}
+#refine_button > button {
+    width: 190px;
+}
 /*****Left Panel end*****/
 /*****Right Panel*****/
 
@@ -37,11 +43,14 @@
     border-top: 1px solid #edf2f7;
 
     border-bottom: 1px solid #edf2f7;
+    position: relative;
+    right: 20px;
+    top: 23px;
 }
 .side-box-body {
     display: flex;
     flex-direction: column;
-    margin-top: 15px;
+    margin-top: 27px;
 }
 .sb {
     width: 18%;
@@ -71,6 +80,7 @@
     border-radius: 3px;
     box-shadow: 0px 0px 20px -7px #888da6;
     margin-bottom: 15px;
+    display: flex;
 }
 
 /****trip-box-layer-1****/
@@ -212,7 +222,7 @@
 /****right-panel end****/
 
 .trip-box-layer-5 {
-    height: 50px;
+    height: 35px;
 }
 .timedate{
     flex: 1;

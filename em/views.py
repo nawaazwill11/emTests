@@ -9,8 +9,9 @@ from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect, HttpResponsePermanentRedirect, JsonResponse
 from django.shortcuts import render
 from django.views.generic import TemplateView
-from .models import Login, Pi
+from .models import Login, Pi, Trip, Event
 from .mods.forms import LoginForm, RegistrationForm, Printer, AboutEditForm, GetAboutInitial, ProfileForm, TripPlanValidation, MyTripForm, EventPlanForm, MyEventForm
+from .mods.filters import TripSearchFilter, EventSearchFilter
 from .mods.test import SharingForm
 import re
 
@@ -20,26 +21,16 @@ def save_uploaded_file_to_media_root(f):
             destination.write(chunk)
 
 class TestPageView(TemplateView):
-	template_name = 'test/test1.html'
-	form = ProfileForm
-
-	
+	template_name = 'test.html'
 
 	def get(self, request, *args, **kwargs):
-		ppic = Printer.img(request.session['username'])
-		form = self.form(initial='')
-		return render(request, self.template_name, {'form': form,'ppic': ppic})	
+		print(request.GET)
+		trip_list = Trip.objects.all()
+		trip_filter = TripSearchFilter(request.GET, queryset=trip_list)
+		context = {'filter': trip_filter}
+		return render(request, self.template_name, context)
 
 	def post(self, request, *args, **kwargs):
-		form = self.form(request.POST, request.FILES)
-		if form.is_valid():
-			pic = Pi.objects.get(username=request.session['username'])
-			pic.profilepic = request.FILES['profilepic']
-			pic.save()
-			ppic = Printer.img(request.session['username'])
-			return render(request, self.template_name, {'form': form,'ppic': ppic})	
-		else:
-			return JsonResponse({'success':False})
 		return render(request, self.template_name, context=None)
 
 #Plan Trip Class-View
@@ -368,20 +359,37 @@ class MyEventPageView(TemplateView):
 	template_name = 'myevent.html'
 
 	def get(self, request, *args, **kwargs):
-		records_list = MyEventForm.form_base(request.session['username'])
-		context = {'records_list': records_list, 'username': request.session['username'] }
+		context = {}
+		event_list = Event.objects.all()
+		event_filter = EventSearchFilter(request.GET, queryset=event_list)
+		context['filters'] = event_filter
+		records_list, ids_list = MyEventForm.form_base(request.session['username'])
+		context['ids_list'] = ids_list
+		context['username'] = request.session['username']
 		return render(request, self.template_name, context)
 
 	def post(self, request, *args, **kwargs):
-		return render(request, self.template_name, context=None)
+		context = {}
+		event_list = Event.objects.all()
+		event_filter = EventSearchFilter(request.GET, queryset=event_list)
+		context['filters'] = event_filter
+		records_list, ids_list = MyEventForm.form_base(request.session['username'])
+		context['ids_list'] = ids_list
+		context['username'] = request.session['username']
+		return render(request, self.template_name, context)
 
 
 class MyTripPageView(TemplateView):
 	template_name = 'mytrip.html'
 
 	def get(self, request, *args, **kwargs):
+		context = {}
+		trip_list = Trip.objects.all().order_by('created_on')
+		trip_filter = TripSearchFilter(request.GET, queryset=trip_list)
+		context['filters'] = trip_filter
 		records_list, ids_list = MyTripForm.form_base(request.session['username'])
-		context = {'records_list': records_list, 'ids_list': ids_list }
+		context['ids_list'] = ids_list
+		#context = {'records_list': records_list, 'ids_list': ids_list }
 		return render(request, self.template_name, context)
 
 	def post(self, request, *args, **kwargs):
@@ -392,7 +400,14 @@ class SearchEventPageView(TemplateView):
 	template_name = 'search_event.html'
 
 	def get(self, request, *args, **kwargs):
-		return render(request, self.template_name, context=None)
+		context = {}
+		event_list = Event.objects.all()
+		event_filter = EventSearchFilter(request.GET, queryset=event_list)
+		context['filters'] = event_filter
+		records_list, ids_list = MyEventForm.form_base(request.session['username'])
+		context['ids_list'] = ids_list
+		context['username'] = request.session['username']
+		return render(request, self.template_name, context)
 
 	def post(self, request, *args, **kwargs):
 		return render(request, self.template_name, context=None)
@@ -402,7 +417,14 @@ class SearchTripPageView(TemplateView):
 	template_name = 'search_trip.html'
 
 	def get(self, request, *args, **kwargs):
-		return render(request, self.template_name, context=None)
+		context = {}
+		trip_list = Trip.objects.all().order_by('created_on')
+		trip_filter = TripSearchFilter(request.GET, queryset=trip_list)
+		context['filters'] = trip_filter
+		records_list, ids_list = MyTripForm.form_base(request.session['username'])
+		context['ids_list'] = ids_list
+		#print(context)
+		return render(request, self.template_name, context)
 
 	def post(self, request, *args, **kwargs):
 		return render(request, self.template_name, context=None)

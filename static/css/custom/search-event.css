@@ -107,17 +107,24 @@
 
 }
 .result-layer {
-	display: flex;
+	position: relative;
+    display: inline-block;
 }
 .result-box {
+    position: relative;
+    display: -webkit-inline-box;
+    width: 324px;
+    max-width: 324px;
+    min-width: 324px;     
     box-shadow: 0px 0px 4px 1px #888da6;
-    flex: 1;
     margin: 20px;
+    border-radius:5px;
+    width: 100%
 }
 .trip-box {
     border: 1px solid lightgrey;
     border-radius: 5px;
-    margin: 20px;  
+    width: 100%;
 }
 .tb-layer {
     display: flex;
@@ -154,10 +161,11 @@
     vertical-align: -webkit-baseline-middle;
 }
 .tb-op {
-    flex: 1;
+    display: flex;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+    width: 100%;
 }
 .tb-op > img {
     width: 50%;
@@ -167,6 +175,17 @@
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+
+}
+.tb-op > label {
+    flex: 1;
+}
+.tb-op > span {
+    flex: 3;
+}
+.tb-op > a {
+    position: relative;
+    right: 0;
 }
 .tb-op > a:visited {
     color: #ef0707;
@@ -389,3 +408,37 @@
 #dlink {
     margin-left: 34%;
 }
+.TD {
+    position: fixed;
+    align-items: center;
+    justify-content: center;
+    top: 100px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: white;
+    width: 40%;
+    margin-left: 30%;
+    height: 84%;
+    border-radius: 5px;
+    margin-top: -10px;
+    z-index: 1045;
+    overflow-y: scroll;
+}
+.tbb-op {
+    display: flex;
+}
+.tbb-op * {
+
+    flex: 1;
+}
+#left {
+    width: 50%;
+}
+
+#right {
+    position: relative;
+    right: -285px;
+    width: 50%;
+}
+    

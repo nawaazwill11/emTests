@@ -456,6 +456,7 @@ class Trip(models.Model):
     trip_link = models.CharField(max_length=32, blank=True, null=True)
     trip_id = models.CharField(primary_key=True, max_length=32)
     created_on = models.DateTimeField()
+    ownership = models.CharField(max_length=15)
 
     class Meta:
         managed = False

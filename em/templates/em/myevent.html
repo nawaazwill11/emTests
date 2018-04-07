@@ -4,12 +4,14 @@
   {% block title %}Myevent{% endblock title %}
   {% block static_files %}
     <link rel="stylesheet" type="text/css" href="{% static "css/custom/myevent-style.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "css/custom/search-trip.css" %}">
   {% endblock static_files %}
   {% block page_name %}Myevent{% endblock page_name %}
         
   {% block class_main %} col-lg-offset-1 col-lg-10 {% endblock class_main %}
   
   {% block content %}
+  <form method="GET">
     <div id="left-panel" class="left-panel col-lg-3">
       <div class="left-panel-body">
         <div class="left-panel-body-top">
@@ -20,9 +22,10 @@
         </div>
         <div class="left-panel-body-low">
           <ul style="list-style: none;">
-            <li><h4><b>Type</b></h4></li>
-            <li><input type="checkbox" name="type-created" value="created"><span>Created</span></li>
-            <li><input type="checkbox" name="type-joined" value="joined"><span>Joined</span></li>
+            <li><h4><b>{{ filters.form.ownership.label_tag }}</b></h4></li>
+            {% for owner in filters.form.ownership  %}
+            <li><span>{{ owner.tag }}</span><span style="position: relative;top: -2px;">{{ owner.choice_label }} </span></li>
+            {% endfor %}
             <hr>
             <li><h4><b>Status</b></h4></li>
             <li><input type="checkbox" name="status-starting-soon" value="starting-soon"><span>Starting Soon</span></li>
@@ -33,13 +36,14 @@
             <li><input type="checkbox" name="others-favorites" value="favorites"><span>Favorites</span></li>
             <li><input type="checkbox" name="others-drafts" value="drafts"><span>Drafts</span></li>
             <li><input type="checkbox" name="others-cancelled" value="cancelled"><span>Cancelled</span></li>
-            <li><hr></li>
-            <li><h4><b>Tickets</b></h4></li>
-            <li><input type="checkbox" name="others-favorites" value="favorites"><span>Show All</span></li>
           </ul>
+          <div id="refine_button">
+            <button type="submit" class="btn btn-primary">Refine</button>
+          </div> 
         </div>
       </div>
     </div>
+    </form>
     <div class="right-panel col-lg-offset-1 col-lg-8">
       <div class="right-panel-main">
         <div class="right-panel-head">
@@ -51,7 +55,7 @@
           </div>
         </div>
         <div class="right-panel-body">
-          {% for record in records_list  %}
+        {% for record in filters.qs %}
             
           
           <div class="section">
@@ -63,7 +67,7 @@
                   </div>
                 </div>
                 <div id="tbl1r" class="box-l1-right col-lg-5">
-                  <div id="tc" class="creator col-lg-12">
+                  <div id="tc" class="creator col-lg-12" style="flex-direction: row; margin-top: 0;">
                     <span>Created By:</span>
                     <div class="creator-club">
                       <div class="creator-img">
@@ -87,7 +91,7 @@
               <div class="box-layer-2 col-lg-12 layers">
                 <div class="src-dest sub-layer">
                   <div class="src sub-layer-1">
-                    <span style="flex: 1"><b>Type:</b></span>&nbsp <span style="flex: 1">{{ record.title }}</span>
+                    <span style="flex: 1"><b>Type:</b></span>&nbsp <span style="flex: 1">{{ record.location }}</span>
                   </div> 
                 </div>
               </div>
@@ -98,67 +102,31 @@
               </div>
               <div class="box-layer col-lg-12 layers">
                 <div class="dest sub-layer-2">
-                    <span style="flex: 1"><b>Place:</b></span>&nbsp <span class="noflow" style="flex: 1">{{ record.venue_name }}, &nbsp{{ record.street_address }}, &nbsp{{ record.city }}, &nbsp{{ record.state }}, &nbsp{{ record.state }}</span>
+                    <span style="flex: 1;"><b>Place:</b></span>&nbsp <span class="noflow" style="flex: 1">{{ record.venue_name }}, &nbsp{{ record.street_address }}, &nbsp{{ record.city }}, &nbsp{{ record.state }}, &nbsp{{ record.state }}</span>
                  </div>
               </div>
               <div class="box-layer col-lg-12 layers">
                 <div class="mode-type-veh sub-layer">
                   <div class="mode sub-layer-1">
-                    <span style="flex: 1"><b>Start Date & Time:</b></span>&nbsp <span style="flex: 1">{{ record.start_date }}</span>
+                    <span style="flex: 1"><b>Start Date & Time:</b></span>&nbsp <span style="flex: 1">{{ record.start_date|date:"d M Y" }}</span>
                   </div>
                 </div>
               </div>
               <div class="box-layer col-lg-12 layers">
                 <div class="mode-type-veh sub-layer">
                   <div class="mode sub-layer-1">
-                    <span style="flex: 1"><b>End Date & Time:</b></span>&nbsp <span style="flex: 1">{{ record.end_date }}</span>
+                    <span style="flex: 1"><b>End Date & Time:</b></span>&nbsp <span style="flex: 1">{{ record.end_date|date:"d M Y" }}</span>
                   </div>
                 </div>
               </div>
               <div class="box-layer-4 col-lg-12 layers">
                 <div class="nop-vac sub-layer">
                   <div class="nop sub-layer-1">
-                    <span style="flex: 1"><b>Participation Deadline:</b></span>&nbsp <span style="flex: 1">{{ record.deadline }}</span>
+                    <span style="flex: 1"><b> Detailed-Info:</b></span>&nbsp <span style="flex: 1"><a id="{{ record.event_id }}" class="dlink" style="cursor: pointer">Click to View</a></span>
                   </div>
                 </div>
               </div>
-              <div class="box-layer-4 col-lg-12 layers">
-                <div class="nop-vac sub-layer">
-                  <div class="nop sub-layer-1">
-                    <span style="flex: 1"><b>Gender</b></span>&nbsp <span style="flex: 1">{{ record.gender }}</span>
-                  </div>
-                </div>
-              </div>
-              <div class="box-layer-4 col-lg-12 layers">
-                <div class="nop-vac sub-layer">
-                  <div class="nop sub-layer-1">
-                    <span style="flex: 1"><b> Age Group:</b></span>&nbsp <span style="flex: 1">{{ record.age }} </span>
-                  </div>
-                </div>
-              </div>
-              <div class="box-layer-4 col-lg-12 layers">
-                <div class="nop-vac sub-layer">
-                  <div class="nop sub-layer-1">
-                    <span style="flex: 1"><b> Participants:</b></span>&nbsp <span style="flex: 1">28&nbsp<a href="#">(View)</a></span>
-                  </div>
-                </div>
-              </div>
-              <div class="box-layer-4 col-lg-12 layers">
-                <div class="nop-vac sub-layer">
-                  <div class="nop sub-layer-1">
-                    <span style="flex: 1"><b> Vacany:</b></span>&nbsp <span style="flex: 1"> 7 </span>
-                  </div>
-                </div>
-              </div>
-              <div id="tbl5" class="box-layer-5 col-lg-12 layers">
-                <div class="sub-layer">
-                  <div class="sub-layer-1">
-                    <span style="flex: 1"><b>Description:</b></span>&nbsp 
-                    <span style="flex: 1">{{ record.description }}</span>
-                  </div>
-                  
-                </div>
-              </div>
+              
             </div>
             <div id="sb" class="side-box col-lg-offset-1 col-lg-3">
               <div class="side-box-body">
@@ -174,8 +142,174 @@
               </div>
             </div>
           </div>
-          {% endfor %}
+        {% endfor %}
         </div>
       </div>
     </div>
+
+    <div id="main_TD">
+      {% for record in filters.qs %}
+        <div id="{{ record.event_id }}" class="event-details TD" hidden="hidden">
+            <div class="trip-box-big"> 
+              <div class="tbb-layer tbb-zero">
+                <div class="tbb-layer tbb-bck-main">
+                <div class="tbb-bck">
+                  <img id="left" src="{{ MEDIA_URL }}{{ record.logo }}">
+                </div>
+              </div>
+                <div class="tbb-op tbb-title">
+                  <h3><i>{{ record.title }}</i></h3>
+                </div>
+
+              </div>
+              <div class="tbb-layer tbb-bck-main">
+                <div class="tbb-bck">
+                  <img id="right" src="{{ MEDIA_URL }}{{ record.cover }}">
+                </div>
+              </div>
+              <div class="tbb-layer">
+                
+                <div class="tbb-op creator" style="margin-left: 44.5%">
+                  <label style="color: black">Created By</label>
+                  <img src="{% static "img/user-black.png" %}">
+                </div>
+              </div>
+              <div class="tbb-layer">
+                <div class="part" style="margin-left: 20%">
+                  <label style="color: black">Participants: 23</label>
+                  <div class="tbb-subop">
+                    <img src="{% static "img/user-black.png" %}">
+                    <img src="{% static "img/user-black.png" %}">
+                    <img src="{% static "img/user-black.png" %}">
+                    <img src="{% static "img/user-black.png" %}">
+                    <img src="{% static "img/user-black.png" %}">
+                  </div>
+                </div>
+              </div>
+              <div class="tbb-layer">
+                <div class="tbb-op" style="text-align: center; margin-bottom: 20px;">
+                  <label style="color: black">Vacancy:
+                  <span style="color: black">7</span></label>
+                </div>
+              </div>
+              <div class="tbb-low">
+                <div class="tbb-layer lw">
+                  <div class="tbb-op">
+                    <label>Place:</label>
+                    <span style="white-space: unset">{{ record.venue_name }},&nbsp {{ record.street_address }},&nbsp {{ record.city }}, &nbsp {{record.state}}- &nbsp {{record.pincode}} </span>
+                  </div>
+                </div>
+                <div class="tbb-layer lw">
+                  <div class="tbb-op">
+                    <label>Type:</label>
+                    <span>{{ record.location }}</span>
+                  </div>
+                </div>
+                <div class="tbb-layer lw">
+                  <div class="tbb-op">
+                    <label>Category/Activity:</label>
+                    <span>{{ record.category }}, &nbsp {{ record.activity }}</span>
+                  </div>
+                </div>
+                <div class="tbb-layer lw">
+                  <div class="tbb-op">
+                    <label>Start Date & Time:</label>
+                    <span>{{ record.start_date|date:"d M Y" }}</span>
+                  </div>
+                </div>
+                <div class="tbb-layer lw">
+                  <div class="tbb-op">
+                    <label>End Date & Time:</label>
+                    <span>{{ record.end_date|date:"d M Y" }}</span>
+                  </div>
+                </div>
+                <div class="tbb-layer lw">
+                  <div class="tbb-op">
+                    <label>Deadline</label>
+                    <span>{{ record.deadline|date:"d M Y" }}</span>
+                  </div>
+                </div>
+                <div class="tbb-layer lw">
+                  <div class="tbb-op">
+                    <label>Gender:</label>
+                    <span>{{ record.gender }}</span>
+                  </div>
+                </div>
+                <div class="tbb-layer lw">
+                  <div class="tbb-op">
+                    <label>Age Group:</label>
+                    <span>{{ record.age }}</span>
+                  </div>
+                </div>
+                <div class="tbb-layer lw">
+                  <div class="tbb-op">
+                    <label>Fees:</label>
+                    <span>{{ record.fees }}</span>
+                  </div>
+                </div>
+                <div class="tbb-layer lw">
+                  <div class="tbb-op">
+                    <label>Description:</label>
+                    <span style="white-space: unset">{{ record.description }}</span>
+                  </div>
+                </div>
+                <div class="tbb-layer lw" style="border: 0;">
+                  <div class="tbb-op tbb-route">
+                    <label>Route Info: <a href="#!">Click to View</a></label>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+      {% endfor %}
+    </div>
+    
   {% endblock content %}
+
+  {% block overlay %}
+  
+    <div id="olay" class="overlay" hidden="hidden">
+      
+      <div class="route-details">
+        
+      </div>
+    </div>
+  {% endblock overlay %}
+   {% block custom_scripts %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="{% static "js/custom.js" %}"></script>
+    <script type="text/javascript">
+          var overlay = $( '#olay' )[0];
+          var TD = ''
+          var id_toFind = ''
+
+          $(".dlink" ).on( 'click', function ( e ) {
+              
+              link = $(this).attr('id')
+              //alert(link)
+              id_toFind = "#"+link
+              //alert(id_toShow)
+              $("#main_TD").find(id_toFind).show()
+
+              $( overlay ).show();
+              e.stopPropagation();
+              
+              
+          });
+
+          $( document ).on( 'click', function ( e ) {
+              if ( $( e.target ).closest( TD ).length === 0 ) {
+                  $( overlay ).hide();
+                  $("#main_TD").find(id_toFind).hide()
+              }
+          });
+                          
+          $( document ).on( 'keydown', function ( e ) {
+              if ( e.keyCode === 27 ) {
+                  $( overlay ).hide();
+                  $("#main_TD").find(id_toFind).hide()
+              }
+          });
+    </script>
+  {% endblock custom_scripts %}

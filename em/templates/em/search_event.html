@@ -1,7 +1,7 @@
 {% extends 'event.html' %}
 {% load staticfiles %}
 
-  {% block title %}Event-Search{% endblock title %}
+  {% block title %}Search Event{% endblock title %}
 	
   {% block sub_sf %}
     <link rel="stylesheet" type="text/css" href="{% static "css/custom/search-event.css" %}">
@@ -265,72 +265,12 @@
       </div>
       <div class="result-container">
         <div class="result-layer">
-	        <div class="result-box">
-	          <div class="trip-box">
-	            <div class="tb-layer layer-zero">
-	              <div class="tb-title">
-	                <label>Around the state in 7 Days</label>
-	              </div>
-	              <div class="tb-credit">
-	                <label>By:</label>
-	                <a href=""><img src="{% static "img/obama-face.png" %}"></a>
-	              </div>
-	            </div>
-	            <div class="tb-layer" style="padding: 0;">
-	              <div class="tb-op" style="display: flex;">
-	                <img src="{% static "img/adventure.jpg" %}" style=" width: 50%;">
-                  <img src="{% static "img/adventure.jpg" %}" style=" width: 50%;">
-	              </div> 
-	            </div>
-	            <div class="tb-layer">
-	              <div class="tb-op">
-	                <label>Type:</label>
-	                <span>Venue</span>
-	              </div>
-	            </div>
-              <div class="tb-layer">
-                <div class="tb-op" style="flex: 2;">
-                  <label>Place:</label>
-                  <span title="Daman, Daman & Diu">Daman, Daman & Diu</span>
-                </div>
-              </div>
-	            <div class="tb-layer">
-                <div class="tb-op">
-                  <label>Activity:</label>
-                  <span title="Backpacking">Backpacking, Adventure</span>
-                </div>
-              </div>
-              <div class="tb-layer">
-	              <div class="tb-op">
-	                <label>Date:</label>
-	                <span>28-02-2018</span>
-	              </div>
-	            </div>
-	            <div class="tb-layer">
-	              <div class="tb-op">
-	                <label>Vacancy:</label>
-	                <span>11</span>
-	              </div>
-	              <div class="tb-op">
-	                <label>Entry Fee:</label>
-                  <span>Free</span>
-	              </div>
-	            </div>
-              <div class="tb-layer">
-                <div class="tb-op">
-                  <a id="dlink" href="#!">+More Details</a>
-                </div>
-              </div>
-	            <div class="tb-layer join-button">
-	              <button>Join</button>
-	            </div>
-	          </div>
-	        </div>
+        {% for record in filters.qs %}
           <div class="result-box">
             <div class="trip-box">
               <div class="tb-layer layer-zero">
                 <div class="tb-title">
-                  <label>Around the state in 7 Days</label>
+                  <label>{{ record.title }}</label>
                 </div>
                 <div class="tb-credit">
                   <label>By:</label>
@@ -339,32 +279,32 @@
               </div>
               <div class="tb-layer" style="padding: 0;">
                 <div class="tb-op" style="display: flex;">
-                  <img src="{% static "img/adventure.jpg" %}" style=" width: 50%;">
-                  <img src="{% static "img/adventure.jpg" %}" style=" width: 50%;">
+                  <img src="{{ MEDIA_URL }}{{ record.logo }}" style=" width: 50%;">
+                  <img src="{{ MEDIA_URL }}{{ record.cover }}" style=" width: 50%;">
                 </div> 
               </div>
               <div class="tb-layer">
                 <div class="tb-op">
                   <label>Type:</label>
-                  <span>Venue</span>
+                  <span>{{ record.location }}</span>
                 </div>
               </div>
               <div class="tb-layer">
                 <div class="tb-op" style="flex: 2;">
                   <label>Place:</label>
-                  <span title="Daman, Daman & Diu">Daman, Daman & Diu</span>
+                  <span title="Daman, Daman & Diu">{{ record.venue_name }}, &nbsp{{ record.street_address }}, &nbsp{{ record.city }}, &nbsp{{ record.state }}, &nbsp{{ record.state }}</span>
                 </div>
               </div>
               <div class="tb-layer">
                 <div class="tb-op">
                   <label>Activity:</label>
-                  <span title="Backpacking">Backpacking, Adventure</span>
+                  <span>{{ record.activity }}, &nbsp{{ record.category }}</span>
                 </div>
               </div>
               <div class="tb-layer">
                 <div class="tb-op">
                   <label>Date:</label>
-                  <span>28-02-2018</span>
+                  <span>{{ record.start_date|date:'d M Y' }}</span>
                 </div>
               </div>
               <div class="tb-layer">
@@ -372,14 +312,10 @@
                   <label>Vacancy:</label>
                   <span>11</span>
                 </div>
-                <div class="tb-op">
-                  <label>Entry Fee:</label>
-                  <span>Free</span>
-                </div>
               </div>
               <div class="tb-layer">
                 <div class="tb-op">
-                  <a id="dlink" href="#!">+More Details</a>
+                  <a id="{{ record.event_id }}" class="dlink" style="cursor: pointer">+More Details</a>
                 </div>
               </div>
               <div class="tb-layer join-button">
@@ -387,247 +323,168 @@
               </div>
             </div>
           </div>
-          <div class="result-box">
-            <div class="trip-box">
-              <div class="tb-layer layer-zero">
-                <div class="tb-title">
-                  <label>Around the state in 7 Days</label>
-                </div>
-                <div class="tb-credit">
-                  <label>By:</label>
-                  <a href=""><img src="{% static "img/obama-face.png" %}"></a>
-                </div>
-              </div>
-              <div class="tb-layer" style="padding: 0;">
-                <div class="tb-op" style="display: flex;">
-                  <img src="{% static "img/adventure.jpg" %}" style=" width: 50%;">
-                  <img src="{% static "img/adventure.jpg" %}" style=" width: 50%;">
-                </div> 
-              </div>
-              <div class="tb-layer">
-                <div class="tb-op">
-                  <label>Type:</label>
-                  <span>Venue</span>
-                </div>
-              </div>
-              <div class="tb-layer">
-                <div class="tb-op" style="flex: 2;">
-                  <label>Place:</label>
-                  <span title="Daman, Daman & Diu">Daman, Daman & Diu</span>
-                </div>
-              </div>
-              <div class="tb-layer">
-                <div class="tb-op">
-                  <label>Activity:</label>
-                  <span title="Backpacking">Backpacking, Adventure</span>
-                </div>
-              </div>
-              <div class="tb-layer">
-                <div class="tb-op">
-                  <label>Date:</label>
-                  <span>28-02-2018</span>
-                </div>
-              </div>
-              <div class="tb-layer">
-                <div class="tb-op">
-                  <label>Vacancy:</label>
-                  <span>11</span>
-                </div>
-                <div class="tb-op">
-                  <label>Entry Fee:</label>
-                  <span>Free</span>
-                </div>
-              </div>
-              <div class="tb-layer">
-                <div class="tb-op">
-                  <a id="dlink" href="#!">+More Details</a>
-                </div>
-              </div>
-              <div class="tb-layer join-button">
-                <button>Join</button>
-              </div>
-            </div>
-          </div>
+        {% endfor %}
 	        
       </div>
       
     </div>
+  <div id="main_TD">
+      {% for record in filters.qs %}
+        <div id="{{ record.event_id }}" class="event-details TD" hidden="hidden">
+            <div class="trip-box-big"> 
+              <div class="tbb-layer tbb-zero">
+                <div class="tbb-layer tbb-bck-main">
+                <div class="tbb-bck">
+                  <img id="left" src="{{ MEDIA_URL }}{{ record.logo }}">
+                </div>
+              </div>
+                <div class="tbb-op tbb-title">
+                  <h3><i>{{ record.title }}</i></h3>
+                </div>
+
+              </div>
+              <div class="tbb-layer tbb-bck-main">
+                <div class="tbb-bck">
+                  <img id="right" src="{{ MEDIA_URL }}{{ record.cover }}">
+                </div>
+              </div>
+              <div class="tbb-layer">
+                
+                <div class="tbb-op creator" style="margin-left: 44.5%">
+                  <label style="color: black">Created By</label>
+                  <img src="{% static "img/user-black.png" %}">
+                </div>
+              </div>
+              <div class="tbb-layer">
+                <div class="part" style="margin-left: 20%">
+                  <label style="color: black">Participants: 23</label>
+                  <div class="tbb-subop">
+                    <img src="{% static "img/user-black.png" %}">
+                    <img src="{% static "img/user-black.png" %}">
+                    <img src="{% static "img/user-black.png" %}">
+                    <img src="{% static "img/user-black.png" %}">
+                    <img src="{% static "img/user-black.png" %}">
+                  </div>
+                </div>
+              </div>
+              <div class="tbb-layer">
+                <div class="tbb-op" style="text-align: center; margin-bottom: 20px;">
+                  <label style="color: black">Vacancy:
+                  <span style="color: black">7</span></label>
+                </div>
+              </div>
+              <div class="tbb-low">
+                <div class="tbb-layer lw">
+                  <div class="tbb-op">
+                    <label>Place:</label>
+                    <span>{{ record.venue_name }},&nbsp {{ record.street_address }},&nbsp {{ record.city }}, &nbsp {{record.state}}- &nbsp {{record.pincode}} </span>
+                  </div>
+                </div>
+                <div class="tbb-layer lw">
+                  <div class="tbb-op">
+                    <label>Category/Activity:</label>
+                    <span>{{ record.category }}, &nbsp {{ record.activity }}</span>
+                  </div>
+                </div>
+                <div class="tbb-layer lw">
+                  <div class="tbb-op">
+                    <label>Start Date & Time:</label>
+                    <span>{{ record.start_date }}</span>
+                  </div>
+                </div>
+                <div class="tbb-layer lw">
+                  <div class="tbb-op">
+                    <label>End Date & Time:</label>
+                    <span>{{ record.end_date }}</span>
+                  </div>
+                </div>
+                <div class="tbb-layer lw">
+                  <div class="tbb-op">
+                    <label>Deadline</label>
+                    <span>{{ record.deadline }}</span>
+                  </div>
+                </div>
+                <div class="tbb-layer lw">
+                  <div class="tbb-op">
+                    <label>Gender:</label>
+                    <span>{{ record.gender }}</span>
+                  </div>
+                </div>
+                <div class="tbb-layer lw">
+                  <div class="tbb-op">
+                    <label>Age Group:</label>
+                    <span>{{ record.age }}</span>
+                  </div>
+                </div>
+                <div class="tbb-layer lw">
+                  <div class="tbb-op">
+                    <label>Fees:</label>
+                    <span>{{ record.fees }}</span>
+                  </div>
+                </div>
+                <div class="tbb-layer lw">
+                  <div class="tbb-op">
+                    <label>Description:</label>
+                    <span>{{ record.description }}</span>
+                  </div>
+                </div>
+                <div class="tbb-layer lw" style="border: 0;">
+                  <div class="tbb-op tbb-route">
+                    <label>Route Info: <a href="#!">Click to View</a></label>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+      {% endfor %}
+    </div>
+    
   {% endblock content %}
 
-  {% block overlayTD %}
+  {% block overlay %}
+  
     <div id="olay" class="overlay" hidden="hidden">
       
       <div class="route-details">
         
       </div>
     </div>
-    <div id="TD" class="trip-details" hidden="hidden">
-        <div class="trip-box-big"> 
-          <div class="tbb-layer tbb-zero">
-            <div class="tbb-op tbb-title">
-              <h3>Around the state in 7 Days</h3>
-            </div>
-            <div class="tbb-op join-btn">
-              <button>Join</button>
-            </div>
-          </div>
-          <div class="tbb-layer tbb-bck-main">
-            <div class="tbb-bck">
-              <img src="{% static "img/food.jpg" %}">
-            </div>
-          </div>
-          <div class="tbb-layer">
-            
-            <div class="tbb-op creator">
-              <label>Created By</label>
-              <img src="{% static "img/user-black.png" %}">
-            </div>
-          </div>
-          <div class="tbb-layer">
-            <div class="part">
-              <label>Participants: 23</label>
-              <div class="tbb-subop">
-                <img src="{% static "img/user-black.png" %}">
-                <img src="{% static "img/user-black.png" %}">
-                <img src="{% static "img/user-black.png" %}">
-                <img src="{% static "img/user-black.png" %}">
-                <img src="{% static "img/user-black.png" %}">
-              </div>
-            </div>
-          </div>
-          <div class="tbb-layer">
-            <div class="tbb-op" style="text-align: center; margin-bottom: 20px;">
-              <label>Vacancy:</label>
-              <span>11</span>
-            </div>
-          </div>
-          <div class="tbb-low">
-            <div class="tbb-layer lw">
-              <div class="tbb-op">
-                <label>Type:</label>
-                <span>Online</span>
-              </div>
-              <div class="tbb-op">
-                <label>Place:</label>
-                <span>Daman, Daman & Diu</span>
-              </div>
-            </div>
-            <div class="tbb-layer lw">
-              <div class="tbb-op">
-                <label>Activity:</label>
-                <span>Backpacking, Mountain Sports, Adventure</span>
-              </div>
-            </div>
-            <div class="tbb-layer lw">
-              <div class="tbb-op">
-                <label>Start Date:</label>
-                <span>28-02-2018</span>
-              </div>
-              <div class="tbb-op">
-                <label>Start Time:</label>
-                <span>10:00 am</span>
-              </div>
-            </div>
-            <div class="tbb-layer lw">
-              <div class="tbb-op">
-                <label>End Date:</label>
-                <span>01-03-2018</span>
-              </div>
-              <div class="tbb-op">
-                <label>End Time:</label>
-                <span>11:00 am</span>
-              </div>
-            </div>
-            <div class="tbb-layer lw">
-              <div class="tbb-op">
-                <label>Gender:</label>
-                <span>Any</span>
-              </div>
-              <div class="tbb-op">
-                <label>Age Group:</label>
-                <span>18-35</span>
-              </div>
-            </div>
-            <div class="tbb-layer">
-              <div class="tbb-op">
-                <label>Deadline:</label>
-                <span>01-03-2018</span>
-              </div>
-              <div class="tbb-op">
-                <label>Entry Fee:</label>
-                <span>Free</span>
-              </div>
-            </div>
-            <div class="tbb-layer lw" style="border: 0;">
-              <div class="tbb-op">
-                <label>Description:</label>
-                <span><p>Tour the beautiful streets of Daman to find some memarizing momuments and sculptures of the Portuguese era. Tour the beautiful streets of Daman to find some memarizing momuments and sculptures of the Portuguese era.</p></span>
-              </div>
-            </div>
-          </div>
-        </div>
-    </div>
-  {% endblock overlayTD %}
-
-  {% block custom_scripts %}
+  {% endblock overlay %}
+   {% block custom_scripts %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <script src='{% static "js/jquery-ui.min.js" %}'></script>
-    <script type="text/javascript" src="{% static "js/jquery.qtip.min.js" %}"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="{% static "js/custom.js" %}"></script>
     <script type="text/javascript">
-        var link = $( '#dlink' )[0];
-        var overlay = $( '#olay' )[0];
-        var TD = $( '#TD' )[0];
+          var overlay = $( '#olay' )[0];
+          var TD = ''
+          var id_toFind = ''
 
-        $( link ).on( 'click', function ( e ) {
-            $( overlay ).show();
-            $( TD ).show();
-            e.stopPropagation();
-        });
+          $(".dlink" ).on( 'click', function ( e ) {
+              
+              link = $(this).attr('id')
+              //alert(link)
+              id_toFind = "#"+link
+              //alert(id_toShow)
+              $("#main_TD").find(id_toFind).show()
 
-        $( document ).on( 'click', function ( e ) {
-            if ( $( e.target ).closest( TD ).length === 0 ) {
-                $( overlay ).hide();
-                $( TD ).hide();
-            }
-        });
-                        
-        $( document ).on( 'keydown', function ( e ) {
-            if ( e.keyCode === 27 ) {
-                $( overlay ).hide();
-                $( TD ).hide();
-            }
-        });
-    </script>
-    <script type="text/javascript">
-      $(document).ready(function() {
-        $('input[type=radio][name=cs]').change(function() {
-            if (this.value == 'cs-sel') {
-                $(".gayab-sr").hide();
-                $(".gayab-sel").show();
-                
-            }
-            else if (this.value == 'cs-sr') {
-                $(".gayab.sel").hide();
-                $(".gayab-sr").show()
-                
-            }
-        });
-      });
-    </script>
-    <script type="text/javascript" name="qtip">
-       $('.help').qtip({
-          show: {
-              effect: function() {
-                  $(this).show('slide', 500);
+              $( overlay ).show();
+              e.stopPropagation();
+              
+              
+          });
+
+          $( document ).on( 'click', function ( e ) {
+              if ( $( e.target ).closest( TD ).length === 0 ) {
+                  $( overlay ).hide();
+                  $("#main_TD").find(id_toFind).hide()
               }
-          },
-          hide: {
-              effect: function() {
-                  $(this).hide('slide', 500);
+          });
+                          
+          $( document ).on( 'keydown', function ( e ) {
+              if ( e.keyCode === 27 ) {
+                  $( overlay ).hide();
+                  $("#main_TD").find(id_toFind).hide()
               }
-          }
-       });
+          });
     </script>
-    {% endblock custom_scripts %}
+  {% endblock custom_scripts %}

@@ -523,7 +523,10 @@ class TripPlanValidation():
 		return False
 
 	def agegrouping(agestring):
-		
+		for ch in ['[',']',"'"]:
+			if ch in agestring:
+				agestring = agestring.replace(ch,'')
+		agestring = agestring.replace(',', '')
 		return (agestring, True)
 
 	def partcheck(participants):
@@ -582,9 +585,11 @@ class MyEventForm():
 	def form_base(username):
 		event = Event.objects.filter(username='nwillo').order_by('-created_on').values()
 		records_list = list(event)
+		ids_list = []	
 		for record in records_list:
-			print (record)
-		return records_list
+			ids_list = ids_list + [(record['event_id'])]
+		print (ids_list)
+		return (records_list, ids_list)
 
 
 class EventPlanForm(forms.Form):

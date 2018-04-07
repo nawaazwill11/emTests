@@ -19,50 +19,24 @@
             <h3>Refine Search</h3>  
           </div>
         </div>
+    <form method="GET">
         <div class="search-layer l1">
           <div class="search-op l1-o1">
-            <label>Source:</label>
-            <input type="text" name="source">
+            {{ filters.form.source.label_tag}}{{ filters.form.source}}
           </div>
           <div class="search-op l1-o2">
-            <label>Destination:</label>
-            <input type="text" name="dest">
+            {{ filters.form.destination.label_tag}}{{ filters.form.destination}}
           </div>
         </div>
         <div class="search-layer l2">
           <div class="search-op l2-o1">
-            <label>Company:</label>
-            <select>
-              <option>Any</option>
-              <option>Solo</option>
-              <option>Group</option>
-            </select>
+            {{ filters.form.company.label_tag}}{{ filters.form.company}}
           </div>
           <div class="search-op l2-o2">
-            <label>Travel Moto:</label>
-            <select>
-              <option>Any</option>
-              <option>Adventure</option>
-              <option>Exploring</option>
-              <option>Photography</option>
-              <option>Sport Events</option>
-              <option>Food & Cuisine</option>
-              <option>Exercise</option>
-              <option>Shopping</option>
-              <option>Travel Blogging</option>
-              <option>Partying</option>
-              <option>Backtracking</option>
-            </select>
+           {{ filters.form.moto.label_tag}}{{ filters.form.moto}}
           </div>
           <div class="search-op l2-o3">
-            <label>Mode:</label>
-            <select>
-              <option>Any</option>
-              <option>Car</option>
-              <option>Motorbike</option>
-              <option>Cycle</option>
-              <option>On-Foot</option>
-            </select>
+            {{ filters.form.mode.label_tag}}{{ filters.form.mode}}
           </div>
           <div class="search-op l2-o4">
             <label>Participants:</label>
@@ -75,38 +49,8 @@
         </div>
         <div class="search-layer l3">
           <div class="search-op l3-o1">
-            <label>Start Date:</label>
-            <select>
-              <option>Any</option>
-              <option>2018</option>
-              <option>2019</option>
-              <option>2020</option>
-              <option>2021</option>
-              <option>2022</option>
-              <option>2023</option>
-              <option>2024</option>
-              <option>2025</option>
-              <option>2026</option>
-              <option>2027</option>
-              <option>2028</option>
-              <option>2029</option>
-              <option>2030</option>
-            </select>
-            <select>
-              <option>Any</option>
-              <option>Jan</option>
-              <option>Feb</option>
-              <option>March</option>
-              <option>April</option>
-              <option>May</option>
-              <option>June</option>
-              <option>July</option>
-              <option>Aug</option>
-              <option>Sep</option>
-              <option>Oct</option>
-              <option>Nov</option>
-              <option>Dec</option>
-            </select>
+            {{ filters.form.start_date.label_tag}}{{ filters.form.start_date}}
+            {{ filters.form.start_date}}
             <select>
               <option>Any</option>
               <option>1</option>
@@ -192,6 +136,10 @@
             </select>
           </div>
         </div>
+        <div id="search_submit">
+        	<button id="submit_btn" class="btn btn-primary">Search</button>
+        </div>
+    </form>
       </div>
     </div>
     <div class="search-low col-lg-12">
@@ -200,11 +148,12 @@
       </div>
       <div class="result-container">
         <div class="result-layer">
+        	{% for record in filters.qs %}
 	        <div class="result-box">
 	          <div class="trip-box">
 	            <div class="tb-layer layer-zero">
 	              <div class="tb-title">
-	                <h4><b>Around the state in 7 Days</b></h4></label>
+	                <h4><b>{{ record.title }}</b></h4></label>
 	              </div>
 	              <div class="tb-credit">
 	                <h4>By:</h4>
@@ -213,27 +162,27 @@
 	            </div>
 	            <div class="tb-layer" style="padding: 0;">
 	              <div class="tb-op">
-	                <img src="{% static "img/adventure.jpg" %}" style=" width: 100%;">
+	                <img src="{% static "img/"|add:record.moto|add:".jpg" %}" style=" width: 100%;">
 	              </div> 
 	            </div>
 	            <div class="tb-layer">
 	              <div class="tb-op">
-	                <label>From:</label>
-	                <span>Daman</span>
+	                <label>Source:</label>
+	                <span>{{ record.source }}</span>
 	              </div>
 	              <div class="tb-op">
-	                <label>To:</label>
-	                <span>Pune</span>
+	                <label>Destination:</label>
+	                <span>{{ record.destination }}</span>
 	              </div>
 	            </div>
 	            <div class="tb-layer">
 	              <div class="tb-op">
 	                <label>Date:</label>
-	                <span>28-2-2018</span>
+	                <span>{{ record.start_date|date:'d M Y' }}</span>
 	              </div>
 	              <div class="tb-op">
 	                <label>Mode:</label>
-	                <span>Motorbike</span>
+	                <span>{{ record.mode }}</span>
 	              </div>
 	            </div>
 	            <div class="tb-layer">
@@ -242,7 +191,7 @@
 	                <span>11</span>
 	              </div>
 	              <div class="tb-op">
-	                <a id="dlink" href="#!">+More Details</a>
+	                <a id="{{ record.trip_id }}" class="dlink" style="cursor: pointer">+More Details</a>
 	              </div>
 	            </div>
 	            <div class="tb-layer join-button">
@@ -250,695 +199,159 @@
 	            </div>
 	          </div>
 	        </div>
-	        <div class="result-box">
-	          <div class="trip-box">
-	            <div class="tb-layer layer-zero">
-	              <div class="tb-title">
-	                <h4><b>Around the state in 7 Days</b></h4></label>
-	              </div>
-	              <div class="tb-credit">
-	                <h4>By:</h4>
-	                <a href=""><img src="{% static "img/obama-face.png" %}"></a>
-	              </div>
-	            </div>
-	            <div class="tb-layer" style="padding: 0;">
-	              <div class="tb-op">
-	                <img src="{% static "img/adventure.jpg" %}" style=" width: 100%;">
-	              </div> 
-	            </div>
-	            <div class="tb-layer">
-	              <div class="tb-op">
-	                <label>From:</label>
-	                <span>Daman</span>
-	              </div>
-	              <div class="tb-op">
-	                <label>To:</label>
-	                <span>Pune</span>
-	              </div>
-	            </div>
-	            <div class="tb-layer">
-	              <div class="tb-op">
-	                <label>Date:</label>
-	                <span>28-2-2018</span>
-	              </div>
-	              <div class="tb-op">
-	                <label>Mode:</label>
-	                <span>Motorbike</span>
-	              </div>
-	            </div>
-	            <div class="tb-layer">
-	              <div class="tb-op">
-	                <label>Vacancy:</label>
-	                <span>11</span>
-	              </div>
-	              <div class="tb-op">
-	                <a id="dlink" href="#!">+More Details</a>
-	              </div>
-	            </div>
-	            <div class="tb-layer join-button">
-	              <button>Join</button>
-	            </div>
-	          </div>
-	        </div>
-	        <div class="result-box">
-	          <div class="trip-box">
-	            <div class="tb-layer layer-zero">
-	              <div class="tb-title">
-	                <h4><b>Around the state in 7 Days</b></h4></label>
-	              </div>
-	              <div class="tb-credit">
-	                <h4>By:</h4>
-	                <a href=""><img src="{% static "img/obama-face.png" %}"></a>
-	              </div>
-	            </div>
-	            <div class="tb-layer" style="padding: 0;">
-	              <div class="tb-op">
-	                <img src="{% static "img/adventure.jpg" %}" style=" width: 100%;">
-	              </div> 
-	            </div>
-	            <div class="tb-layer">
-	              <div class="tb-op">
-	                <label>From:</label>
-	                <span>Daman</span>
-	              </div>
-	              <div class="tb-op">
-	                <label>To:</label>
-	                <span>Pune</span>
-	              </div>
-	            </div>
-	            <div class="tb-layer">
-	              <div class="tb-op">
-	                <label>Date:</label>
-	                <span>28-2-2018</span>
-	              </div>
-	              <div class="tb-op">
-	                <label>Mode:</label>
-	                <span>Motorbike</span>
-	              </div>
-	            </div>
-	            <div class="tb-layer">
-	              <div class="tb-op">
-	                <label>Vacancy:</label>
-	                <span>11</span>
-	              </div>
-	              <div class="tb-op">
-	                <a id="dlink" href="#!">+More Details</a>
-	              </div>
-	            </div>
-	            <div class="tb-layer join-button">
-	              <button>Join</button>
-	            </div>
-	          </div>
-	        </div>	
-        </div>
-        <div class="result-layer">
-	        <div class="result-box">
-	          <div class="trip-box">
-	            <div class="tb-layer layer-zero">
-	              <div class="tb-title">
-	                <h4><b>Around the state in 7 Days</b></h4></label>
-	              </div>
-	              <div class="tb-credit">
-	                <h4>By:</h4>
-	                <a href=""><img src="{% static "img/obama-face.png" %}"></a>
-	              </div>
-	            </div>
-	            <div class="tb-layer" style="padding: 0;">
-	              <div class="tb-op">
-	                <img src="{% static "img/adventure.jpg" %}" style=" width: 100%;">
-	              </div> 
-	            </div>
-	            <div class="tb-layer">
-	              <div class="tb-op">
-	                <label>From:</label>
-	                <span>Daman</span>
-	              </div>
-	              <div class="tb-op">
-	                <label>To:</label>
-	                <span>Pune</span>
-	              </div>
-	            </div>
-	            <div class="tb-layer">
-	              <div class="tb-op">
-	                <label>Date:</label>
-	                <span>28-2-2018</span>
-	              </div>
-	              <div class="tb-op">
-	                <label>Mode:</label>
-	                <span>Motorbike</span>
-	              </div>
-	            </div>
-	            <div class="tb-layer">
-	              <div class="tb-op">
-	                <label>Vacancy:</label>
-	                <span>11</span>
-	              </div>
-	              <div class="tb-op">
-	                <a id="dlink" href="#!">+More Details</a>
-	              </div>
-	            </div>
-	            <div class="tb-layer join-button">
-	              <button>Join</button>
-	            </div>
-	          </div>
-	        </div>
-	        <div class="result-box">
-	          <div class="trip-box">
-	            <div class="tb-layer layer-zero">
-	              <div class="tb-title">
-	                <h4><b>Around the state in 7 Days</b></h4></label>
-	              </div>
-	              <div class="tb-credit">
-	                <h4>By:</h4>
-	                <a href=""><img src="{% static "img/obama-face.png" %}"></a>
-	              </div>
-	            </div>
-	            <div class="tb-layer" style="padding: 0;">
-	              <div class="tb-op">
-	                <img src="{% static "img/adventure.jpg" %}" style=" width: 100%;">
-	              </div> 
-	            </div>
-	            <div class="tb-layer">
-	              <div class="tb-op">
-	                <label>From:</label>
-	                <span>Daman</span>
-	              </div>
-	              <div class="tb-op">
-	                <label>To:</label>
-	                <span>Pune</span>
-	              </div>
-	            </div>
-	            <div class="tb-layer">
-	              <div class="tb-op">
-	                <label>Date:</label>
-	                <span>28-2-2018</span>
-	              </div>
-	              <div class="tb-op">
-	                <label>Mode:</label>
-	                <span>Motorbike</span>
-	              </div>
-	            </div>
-	            <div class="tb-layer">
-	              <div class="tb-op">
-	                <label>Vacancy:</label>
-	                <span>11</span>
-	              </div>
-	              <div class="tb-op">
-	                <a id="dlink" href="#!">+More Details</a>
-	              </div>
-	            </div>
-	            <div class="tb-layer join-button">
-	              <button>Join</button>
-	            </div>
-	          </div>
-	        </div>
-	        <div class="result-box">
-	          <div class="trip-box">
-	            <div class="tb-layer layer-zero">
-	              <div class="tb-title">
-	                <h4><b>Around the state in 7 Days</b></h4></label>
-	              </div>
-	              <div class="tb-credit">
-	                <h4>By:</h4>
-	                <a href=""><img src="{% static "img/obama-face.png" %}"></a>
-	              </div>
-	            </div>
-	            <div class="tb-layer" style="padding: 0;">
-	              <div class="tb-op">
-	                <img src="{% static "img/adventure.jpg" %}" style=" width: 100%;">
-	              </div> 
-	            </div>
-	            <div class="tb-layer">
-	              <div class="tb-op">
-	                <label>From:</label>
-	                <span>Daman</span>
-	              </div>
-	              <div class="tb-op">
-	                <label>To:</label>
-	                <span>Pune</span>
-	              </div>
-	            </div>
-	            <div class="tb-layer">
-	              <div class="tb-op">
-	                <label>Date:</label>
-	                <span>28-2-2018</span>
-	              </div>
-	              <div class="tb-op">
-	                <label>Mode:</label>
-	                <span>Motorbike</span>
-	              </div>
-	            </div>
-	            <div class="tb-layer">
-	              <div class="tb-op">
-	                <label>Vacancy:</label>
-	                <span>11</span>
-	              </div>
-	              <div class="tb-op">
-	                <a id="dlink" href="#!">+More Details</a>
-	              </div>
-	            </div>
-	            <div class="tb-layer join-button">
-	              <button>Join</button>
-	            </div>
-	          </div>
-	        </div>	
-        </div>
-        <div class="result-layer">
-	        <div class="result-box">
-	          <div class="trip-box">
-	            <div class="tb-layer layer-zero">
-	              <div class="tb-title">
-	                <h4><b>Around the state in 7 Days</b></h4></label>
-	              </div>
-	              <div class="tb-credit">
-	                <h4>By:</h4>
-	                <a href=""><img src="{% static "img/obama-face.png" %}"></a>
-	              </div>
-	            </div>
-	            <div class="tb-layer" style="padding: 0;">
-	              <div class="tb-op">
-	                <img src="{% static "img/adventure.jpg" %}" style=" width: 100%;">
-	              </div> 
-	            </div>
-	            <div class="tb-layer">
-	              <div class="tb-op">
-	                <label>From:</label>
-	                <span>Daman</span>
-	              </div>
-	              <div class="tb-op">
-	                <label>To:</label>
-	                <span>Pune</span>
-	              </div>
-	            </div>
-	            <div class="tb-layer">
-	              <div class="tb-op">
-	                <label>Date:</label>
-	                <span>28-2-2018</span>
-	              </div>
-	              <div class="tb-op">
-	                <label>Mode:</label>
-	                <span>Motorbike</span>
-	              </div>
-	            </div>
-	            <div class="tb-layer">
-	              <div class="tb-op">
-	                <label>Vacancy:</label>
-	                <span>11</span>
-	              </div>
-	              <div class="tb-op">
-	                <a id="dlink" href="#!">+More Details</a>
-	              </div>
-	            </div>
-	            <div class="tb-layer join-button">
-	              <button>Join</button>
-	            </div>
-	          </div>
-	        </div>
-	        <div class="result-box">
-	          <div class="trip-box">
-	            <div class="tb-layer layer-zero">
-	              <div class="tb-title">
-	                <h4><b>Around the state in 7 Days</b></h4></label>
-	              </div>
-	              <div class="tb-credit">
-	                <h4>By:</h4>
-	                <a href=""><img src="{% static "img/obama-face.png" %}"></a>
-	              </div>
-	            </div>
-	            <div class="tb-layer" style="padding: 0;">
-	              <div class="tb-op">
-	                <img src="{% static "img/adventure.jpg" %}" style=" width: 100%;">
-	              </div> 
-	            </div>
-	            <div class="tb-layer">
-	              <div class="tb-op">
-	                <label>From:</label>
-	                <span>Daman</span>
-	              </div>
-	              <div class="tb-op">
-	                <label>To:</label>
-	                <span>Pune</span>
-	              </div>
-	            </div>
-	            <div class="tb-layer">
-	              <div class="tb-op">
-	                <label>Date:</label>
-	                <span>28-2-2018</span>
-	              </div>
-	              <div class="tb-op">
-	                <label>Mode:</label>
-	                <span>Motorbike</span>
-	              </div>
-	            </div>
-	            <div class="tb-layer">
-	              <div class="tb-op">
-	                <label>Vacancy:</label>
-	                <span>11</span>
-	              </div>
-	              <div class="tb-op">
-	                <a id="dlink" href="#!">+More Details</a>
-	              </div>
-	            </div>
-	            <div class="tb-layer join-button">
-	              <button>Join</button>
-	            </div>
-	          </div>
-	        </div>
-	        <div class="result-box">
-	          <div class="trip-box">
-	            <div class="tb-layer layer-zero">
-	              <div class="tb-title">
-	                <h4><b>Around the state in 7 Days</b></h4></label>
-	              </div>
-	              <div class="tb-credit">
-	                <h4>By:</h4>
-	                <a href=""><img src="{% static "img/obama-face.png" %}"></a>
-	              </div>
-	            </div>
-	            <div class="tb-layer" style="padding: 0;">
-	              <div class="tb-op">
-	                <img src="{% static "img/adventure.jpg" %}" style=" width: 100%;">
-	              </div> 
-	            </div>
-	            <div class="tb-layer">
-	              <div class="tb-op">
-	                <label>From:</label>
-	                <span>Daman</span>
-	              </div>
-	              <div class="tb-op">
-	                <label>To:</label>
-	                <span>Pune</span>
-	              </div>
-	            </div>
-	            <div class="tb-layer">
-	              <div class="tb-op">
-	                <label>Date:</label>
-	                <span>28-2-2018</span>
-	              </div>
-	              <div class="tb-op">
-	                <label>Mode:</label>
-	                <span>Motorbike</span>
-	              </div>
-	            </div>
-	            <div class="tb-layer">
-	              <div class="tb-op">
-	                <label>Vacancy:</label>
-	                <span>11</span>
-	              </div>
-	              <div class="tb-op">
-	                <a id="dlink" href="#!">+More Details</a>
-	              </div>
-	            </div>
-	            <div class="tb-layer join-button">
-	              <button>Join</button>
-	            </div>
-	          </div>
-	        </div>	
-        </div>
-        <div class="result-layer">
-	        <div class="result-box">
-	          <div class="trip-box">
-	            <div class="tb-layer layer-zero">
-	              <div class="tb-title">
-	                <h4><b>Around the state in 7 Days</b></h4></label>
-	              </div>
-	              <div class="tb-credit">
-	                <h4>By:</h4>
-	                <a href=""><img src="{% static "img/obama-face.png" %}"></a>
-	              </div>
-	            </div>
-	            <div class="tb-layer" style="padding: 0;">
-	              <div class="tb-op">
-	                <img src="{% static "img/adventure.jpg" %}" style=" width: 100%;">
-	              </div> 
-	            </div>
-	            <div class="tb-layer">
-	              <div class="tb-op">
-	                <label>From:</label>
-	                <span>Daman</span>
-	              </div>
-	              <div class="tb-op">
-	                <label>To:</label>
-	                <span>Pune</span>
-	              </div>
-	            </div>
-	            <div class="tb-layer">
-	              <div class="tb-op">
-	                <label>Date:</label>
-	                <span>28-2-2018</span>
-	              </div>
-	              <div class="tb-op">
-	                <label>Mode:</label>
-	                <span>Motorbike</span>
-	              </div>
-	            </div>
-	            <div class="tb-layer">
-	              <div class="tb-op">
-	                <label>Vacancy:</label>
-	                <span>11</span>
-	              </div>
-	              <div class="tb-op">
-	                <a id="dlink" href="#!">+More Details</a>
-	              </div>
-	            </div>
-	            <div class="tb-layer join-button">
-	              <button>Join</button>
-	            </div>
-	          </div>
-	        </div>
-	        <div class="result-box">
-	          <div class="trip-box">
-	            <div class="tb-layer layer-zero">
-	              <div class="tb-title">
-	                <h4><b>Around the state in 7 Days</b></h4></label>
-	              </div>
-	              <div class="tb-credit">
-	                <h4>By:</h4>
-	                <a href=""><img src="{% static "img/obama-face.png" %}"></a>
-	              </div>
-	            </div>
-	            <div class="tb-layer" style="padding: 0;">
-	              <div class="tb-op">
-	                <img src="{% static "img/adventure.jpg" %}" style=" width: 100%;">
-	              </div> 
-	            </div>
-	            <div class="tb-layer">
-	              <div class="tb-op">
-	                <label>From:</label>
-	                <span>Daman</span>
-	              </div>
-	              <div class="tb-op">
-	                <label>To:</label>
-	                <span>Pune</span>
-	              </div>
-	            </div>
-	            <div class="tb-layer">
-	              <div class="tb-op">
-	                <label>Date:</label>
-	                <span>28-2-2018</span>
-	              </div>
-	              <div class="tb-op">
-	                <label>Mode:</label>
-	                <span>Motorbike</span>
-	              </div>
-	            </div>
-	            <div class="tb-layer">
-	              <div class="tb-op">
-	                <label>Vacancy:</label>
-	                <span>11</span>
-	              </div>
-	              <div class="tb-op">
-	                <a id="dlink" href="#!">+More Details</a>
-	              </div>
-	            </div>
-	            <div class="tb-layer join-button">
-	              <button>Join</button>
-	            </div>
-	          </div>
-	        </div>
-	        <div class="result-box">
-	          <div class="trip-box">
-	            <div class="tb-layer layer-zero">
-	              <div class="tb-title">
-	                <h4><b>Around the state in 7 Days</b></h4></label>
-	              </div>
-	              <div class="tb-credit">
-	                <h4>By:</h4>
-	                <a href=""><img src="{% static "img/obama-face.png" %}"></a>
-	              </div>
-	            </div>
-	            <div class="tb-layer" style="padding: 0;">
-	              <div class="tb-op">
-	                <img src="{% static "img/adventure.jpg" %}" style=" width: 100%;">
-	              </div> 
-	            </div>
-	            <div class="tb-layer">
-	              <div class="tb-op">
-	                <label>From:</label>
-	                <span>Daman</span>
-	              </div>
-	              <div class="tb-op">
-	                <label>To:</label>
-	                <span>Pune</span>
-	              </div>
-	            </div>
-	            <div class="tb-layer">
-	              <div class="tb-op">
-	                <label>Date:</label>
-	                <span>28-2-2018</span>
-	              </div>
-	              <div class="tb-op">
-	                <label>Mode:</label>
-	                <span>Motorbike</span>
-	              </div>
-	            </div>
-	            <div class="tb-layer">
-	              <div class="tb-op">
-	                <label>Vacancy:</label>
-	                <span>11</span>
-	              </div>
-	              <div class="tb-op">
-	                <a id="dlink" href="#!">+More Details</a>
-	              </div>
-	            </div>
-	            <div class="tb-layer join-button">
-	              <button>Join</button>
-	            </div>
-	          </div>
-	        </div>	
+	        {% endfor %}
         </div>
       </div>
-      
     </div>
   </div>
+   <div id="main_TD">
+    	{% for record in filters.qs  %}
+	        <div id="{{ record.trip_id }}" class="trip-details TD" hidden="hidden">
+	            <div class="trip-box-big"> 
+	              <div class="tbb-layer tbb-zero">
+	                <div class="tbb-op tbb-title">
+	                  <h3><i>{{ record.title }}</i></h3>
+	                </div>
+	              </div>
+	              <div class="tbb-layer tbb-bck-main">
+	                <div class="tbb-bck">
+	                  <img src="{% static "img/"|add:record.moto|add:".jpg" %}">
+	                </div>
+	              </div>
+	              <div class="tbb-layer">
+	                
+	                <div class="tbb-op creator">
+	                  <label style="color: black">Created By</label>
+	                  <img src="{% static "img/user-black.png" %}">
+	                </div>
+	              </div>
+	              <div class="tbb-layer">
+	                <div class="part">
+	                  <label style="color: black">Participants: 23</label>
+	                  <div class="tbb-subop">
+	                    <img src="{% static "img/user-black.png" %}">
+	                    <img src="{% static "img/user-black.png" %}">
+	                    <img src="{% static "img/user-black.png" %}">
+	                    <img src="{% static "img/user-black.png" %}">
+	                    <img src="{% static "img/user-black.png" %}">
+	                  </div>
+	                </div>
+	              </div>
+	              <div class="tbb-layer">
+	                <div class="tbb-op" style="text-align: center; margin-bottom: 20px;">
+	                  <label style="color: black">Vacancy:
+	                  <span style="color: black">7</span></label>
+	                </div>
+	              </div>
+	              <div class="tbb-low">
+	                <div class="tbb-layer lw">
+	                  <div class="tbb-op">
+	                    <label>Source:</label>
+	                    <span>{{ record.source }}</span>
+	                  </div>
+	                </div>
+	                <div class="tbb-layer lw">
+	                  <div class="tbb-op">
+	                    <label>Destination:</label>
+	                    <span>{{ record.destination }}</span>
+	                  </div>
+	                </div>
+	                <div class="tbb-layer lw">
+	                  <div class="tbb-op">
+	                    <label>Travel Moto:</label>
+	                    <span>{{ record.moto }}</span>
+	                  </div>
+	                </div>
+	                <div class="tbb-layer lw">
+	                  <div class="tbb-op">
+	                    <label>Travelling Mode:</label>
+	                    <span>{{ record.mode }}</span>
+	                  </div>
+	                </div>
+	                <div class="tbb-layer lw">
+	                  <div class="tbb-op">
+	                    <label>Start Date & Time:</label>
+	                    <span>{{ record.start_date }}</span>
+	                  </div>
+	                </div>
+	                <div class="tbb-layer lw">
+	                  <div class="tbb-op">
+	                    <label>Gender:</label>
+	                    <span>{{ record.gender }}</span>
+	                  </div>
+	                </div>
+	                <div class="tbb-layer lw">
+	                  <div class="tbb-op">
+	                    <label>Age Group:</label>
+	                    <span>{{ record.age_group|slice:"2,8" }}</span>
+	                  </div>
+	                </div>
+	                <div class="tbb-layer lw">
+	                  <div class="tbb-op">
+	                    <label>Description:</label>
+	                    <span>{{ record.description }}</span>
+	                  </div>
+	                </div>
+	                <div class="tbb-layer lw" style="border: 0;">
+	                  <div class="tbb-op tbb-route">
+	                    <label>Route Info: <a href="#!">Click to View</a></label>
+	                  </div>
+	                </div>
+	              </div>
+	            </div>
+	        </div>
+      {% endfor %}
+    </div>
+    
   {% endblock content %}
 
   {% block overlay %}
+  
     <div id="olay" class="overlay" hidden="hidden">
       
       <div class="route-details">
         
       </div>
     </div>
-    <div id="TD" class="trip-details" hidden="hidden">
-        <div class="trip-box-big"> 
-          <div class="tbb-layer tbb-zero">
-            <div class="tbb-op tbb-title">
-              <h3>Around the state in 7 Days</h3>
-            </div>
-            <div class="tbb-op join-btn">
-              <button>Join</button>
-            </div>
-          </div>
-          <div class="tbb-layer tbb-bck-main">
-            <div class="tbb-bck">
-              <img src="{% static "img/food.jpg" %}">
-            </div>
-          </div>
-          <div class="tbb-layer">
-            
-            <div class="tbb-op creator">
-              <label>Created By</label>
-              <img src="{% static "img/user-black.png" %}">
-            </div>
-          </div>
-          <div class="tbb-layer">
-            <div class="part">
-              <label>Participants: 23</label>
-              <div class="tbb-subop">
-                <img src="{% static "img/user-black.png" %}">
-                <img src="{% static "img/user-black.png" %}">
-                <img src="{% static "img/user-black.png" %}">
-                <img src="{% static "img/user-black.png" %}">
-                <img src="{% static "img/user-black.png" %}">
-              </div>
-            </div>
-          </div>
-          <div class="tbb-layer">
-            <div class="tbb-op" style="text-align: center; margin-bottom: 20px;">
-              <label>Vacancy:</label>
-              <span>7</span>
-            </div>
-          </div>
-          <div class="tbb-low">
-            <div class="tbb-layer lw">
-              <div class="tbb-op">
-                <label>Source:</label>
-                <span>Daman, Daman & Diu</span>
-              </div>
-              <div class="tbb-op">
-                <label>Destination:</label>
-                <span>Calungute, Goa</span>
-              </div>
-            </div>
-            <div class="tbb-layer lw">
-              <div class="tbb-op">
-                <label>Travel Moto:</label>
-                <span>Adventure</span>
-              </div>
-              <div class="tbb-op">
-                <label>Travelling Mode:</label>
-                <span>Motorbike</span>
-              </div>
-            </div>
-            <div class="tbb-layer lw">
-              <div class="tbb-op">
-                <label>Start Date:</label>
-                <span>28-02-2018</span>
-              </div>
-              <div class="tbb-op">
-                <label>Start Time:</label>
-                <span>10:00 am</span>
-              </div>
-            </div>
-            <div class="tbb-layer lw">
-              <div class="tbb-op">
-                <label>Gender:</label>
-                <span>Any</span>
-              </div>
-              <div class="tbb-op">
-                <label>Age Group:</label>
-                <span>18-35</span>
-              </div>
-            </div>
-            <div class="tbb-layer lw" style="border: 0;">
-              <div class="tbb-op tbb-route">
-                <label>Route Info:</label>
-                <span><a href="#!">Click to View</a></span>
-              </div>
-            </div>
-          </div>
-        </div>
-    </div>
+   
   {% endblock overlay %}
-  
+
   {% block custom_scripts %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="{% static "js/custom.js" %}"></script>
     <script type="text/javascript">
-          var link = $( '#dlink' )[0];
           var overlay = $( '#olay' )[0];
-          var TD = $( '#TD' )[0];
+          var TD = ''
+          var id_toFind = ''
 
-          $( link ).on( 'click', function ( e ) {
+          $(".dlink" ).on( 'click', function ( e ) {
+              
+              link = $(this).attr('id')
+              //alert(link)
+              id_toFind = "#"+link
+              //alert(id_toShow)
+              $("#main_TD").find(id_toFind).show()
+
               $( overlay ).show();
-              $( TD ).show();
               e.stopPropagation();
+              
+              
           });
 
           $( document ).on( 'click', function ( e ) {
               if ( $( e.target ).closest( TD ).length === 0 ) {
                   $( overlay ).hide();
-                  $( TD ).hide();
+                  $("#main_TD").find(id_toFind).hide()
               }
           });
                           
           $( document ).on( 'keydown', function ( e ) {
               if ( e.keyCode === 27 ) {
                   $( overlay ).hide();
-                  $( TD ).hide();
+                  $("#main_TD").find(id_toFind).hide()
               }
           });
-</script>
+    </script>
   {% endblock custom_scripts %}
+

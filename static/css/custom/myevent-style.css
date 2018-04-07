@@ -17,6 +17,14 @@
     margin-left: 10px;
 }
 
+#refine_button {
+    text-align: center;
+    margin-top: 45px;
+}
+
+#refine_button >button {
+    width: 190px;
+}
 /*****Left Panel end*****/
 /*****Right Panel*****/
 
@@ -45,10 +53,10 @@
 }
 #sb {
     width: 18%;
-    margin-top: 7%;
+    margin-top: 4%;
 }
 .sb {
-    margin-bottom: 100px;
+    margin-bottom: 70px;
 }
 .sb-cancel-btn {
     margin-bottom: 25px;
@@ -72,7 +80,7 @@
     flex-direction: column;
     border-radius: 3px;
     box-shadow: 0px 0px 4px 1px #888da6;
-    margin-bottom: 15px;
+    margin-bottom: 50px;
 }
 
 /****box-layer-1****/
@@ -125,6 +133,8 @@
     display: flex;
     float: right;
     padding: 0;
+    flex-direction: row;
+    margin-top: 0;
 }
 .creator > span {
     display: flex;
@@ -238,4 +248,39 @@ span:nth-child(2) {
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+}
+
+
+.TD {
+    position: fixed;
+    align-items: center;
+    justify-content: center;
+    top: 100px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: white;
+    width: 40%;
+    margin-left: 30%;
+    height: 84%;
+    border-radius: 5px;
+    margin-top: -10px;
+    z-index: 1045;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.tbb-op {
+    display: flex;
+}
+.tbb-op * {
+
+    flex: 1;
+}
+#left {
+    width: 50%;
+}
+#right {
+    position: relative;
+    right: -285px;
+    width: 50%;
 }
