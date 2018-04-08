@@ -401,12 +401,12 @@ class SearchEventPageView(TemplateView):
 
 	def get(self, request, *args, **kwargs):
 		context = {}
-		event_list = Event.objects.all()
+		event_list = Event.objects.all().order_by('created_on')
 		event_filter = EventSearchFilter(request.GET, queryset=event_list)
 		context['filters'] = event_filter
 		records_list, ids_list = MyEventForm.form_base(request.session['username'])
 		context['ids_list'] = ids_list
-		context['username'] = request.session['username']
+		print(context)
 		return render(request, self.template_name, context)
 
 	def post(self, request, *args, **kwargs):

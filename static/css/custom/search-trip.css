@@ -21,7 +21,7 @@
 .search-layer{
     display: flex;
     padding-left: 55px;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
 }
 .search-op {
 
@@ -93,11 +93,19 @@
 .l3-o4 > label {
     margin-right: 6.3px;
 }
-#submit_btn {
+.filter-btn {
     position: relative;
-    left: 43.5%;
+    left: 40.6%;
     width: 145px;
     height: 40px;
+    margin-bottom: 15px;
+}
+#clear_filters {
+    color: white;
+    padding-top: 9px;
+}
+#search_submit {
+    width: 93%
 }
 .search-low-header {
     border-bottom: 1px solid lightgrey;
@@ -338,9 +346,17 @@
 }
 
 .l3-o1 > input {
-    width: 65px;
+    width: 70px;
     border: none;
     height: 30px;
     border-radius: 5px;
     padding: 0px 5px;
+}
+.l3-o1 {
+    position: relative;
+    left: 100%;
+    flex: 0;
+}
+::placeholder {
+    padding: 0;
 }

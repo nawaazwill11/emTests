@@ -21,7 +21,7 @@
 .search-layer{
     display: flex;
     padding-left: 55px;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
 }
 .search-op {
 
@@ -62,7 +62,7 @@
     width: 398px;
 }
 .l1-o2 > input {
-    width: 450px;
+    width: 178px;
 }
 .l2 .search-op {
     flex: 1;
@@ -85,7 +85,7 @@
     width: 59px;
 }
 .l3-o2 > label {
-    margin-right: 11px;
+    margin-right: 18px;
 }
 .l3-o2 > select {
     width: 62px;
@@ -400,7 +400,7 @@
     margin-left: 23px;
 }
 .cat-show {
-    flex: 37;
+    display: flex;
 }
 .gayab-sr {
     display: none;
@@ -441,4 +441,31 @@
     right: -285px;
     width: 50%;
 }
-    
+
+.filter-btn {
+    position: relative;
+    left: 40.5%;
+    width: 145px;
+    height: 40px;
+    margin-bottom: 15px;
+}
+#clear_filters {
+    color: white;
+    padding-top: 9px;
+}
+#search_submit {
+    width: 83%
+}
+
+.form_inps {
+    width: 70px;
+    border: none;
+    height: 30px;
+    border-radius: 5px;
+    padding: 0px 5px;
+}
+
+::placeholder {
+    padding: 0;
+    padding-left: 2px;
+}

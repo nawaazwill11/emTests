@@ -1,7 +1,3 @@
-def ann(input):
-	print(input)
+yearslist = [(i, i) for i in range(1930,2004)]
 
-def pann(input, ann):
-	ann(input)
-
-pann('works', ann)
+print(yearslist)

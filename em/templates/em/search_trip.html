@@ -29,115 +29,33 @@
           </div>
         </div>
         <div class="search-layer l2">
-          <div class="search-op l2-o1">
-            {{ filters.form.company.label_tag}}{{ filters.form.company}}
-          </div>
           <div class="search-op l2-o2">
            {{ filters.form.moto.label_tag}}{{ filters.form.moto}}
           </div>
           <div class="search-op l2-o3">
             {{ filters.form.mode.label_tag}}{{ filters.form.mode}}
           </div>
-          <div class="search-op l2-o4">
-            <label>Participants:</label>
-            <select>
-              <option>Any</option>
-              <option>Open</option>
-              <option>Limited</option>
-            </select>
-          </div>
-        </div>
-        <div class="search-layer l3">
-          <div class="search-op l3-o1">
-            {{ filters.form.start_date.label_tag}}{{ filters.form.start_date}}
-            {{ filters.form.start_date}}
-            <select>
-              <option>Any</option>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-              <option>6</option>
-              <option>7</option>
-              <option>8</option>
-              <option>9</option>
-              <option>10</option>
-              <option>11</option>
-              <option>12</option>
-              <option>13</option>
-              <option>14</option>
-              <option>15</option>
-              <option>16</option>
-              <option>17</option>
-              <option>18</option>
-              <option>19</option>
-              <option>20</option>
-              <option>21</option>
-              <option>21</option>
-              <option>23</option>
-              <option>24</option>
-              <option>25</option>
-              <option>26</option>
-              <option>27</option>
-              <option>28</option>
-              <option>29</option>
-              <option>30</option>
-              <option>31</option>
-            </select>
-          </div>
-          <div class="search-op l3-o2">
-            <label>Start Time:</label>
-            <select>
-              <option>Any</option>
-              <option>12</option>
-              <option>11</option>
-              <option>10</option>
-              <option>9</option>
-              <option>8</option>
-              <option>7</option>
-              <option>6</option>
-              <option>5</option>
-              <option>4</option>
-              <option>3</option>
-              <option>2</option>
-              <option>1</option>
-            </select>
-            <select>
-              <option></option>
-              <option>am</option>
-              <option>pm</option>
-            </select>
-          </div>
           <div class="search-op l3-o3">
-            <label>Gender:</label>
-            <select>
-              <option>Any</option>
-              <option>Male</option>
-              <option>Female</option>
-              <option>Others</option>
-            </select>
+            {{ filters.form.gender.label_tag }}{{ filters.form.gender }}
           </div>
           <div class="search-op l3-o4">
-            <label>Age Group:</label>
-            <select>
-              <option disabled selected>From</option>
-              <option>Under 18</option>
-              <option>18-30</option>
-              <option>30-50</option>
-              <option>Above 50</option>
-            </select>
-            <select>
-              <option disabled selected>To</option>
-              <option>Under 18</option>
-              <option>18-30</option>
-              <option>30-50</option>
-              <option>Above 50</option>
-            </select>
+            {{ filters.form.age_group.label_tag }}{{ filters.form.age_group }}
+            
           </div>
         </div>
+        <div class="search-layer l3" style="width: fit-content;">
+          <div class="search-op l3-o1">
+            {{ filters.form.year.label_tag }}{{ filters.form.year }}
+            {{ filters.form.month }}
+            {{ filters.form.day }}
+            
+          </div>
+          
+          
+        </div>
         <div id="search_submit">
-        	<button id="submit_btn" class="btn btn-primary">Search</button>
+        	<button id="submit_btn" class="btn btn-primary filter-btn">Search</button>
+        	<a id="clear_filters" class="btn btn-danger filter-btn" type="button" href="{% url 'searchtrip' %}">Clear</a>
         </div>
     </form>
       </div>
@@ -352,6 +270,13 @@
                   $("#main_TD").find(id_toFind).hide()
               }
           });
+    </script>
+    <script type="text/javascript">
+    $("#submit_btn").click(function	() {
+    	selected = $("#id_year option:selected").val()
+    	selected = parseInt(selected)
+    	//alert('')
+    });
     </script>
   {% endblock custom_scripts %}
 

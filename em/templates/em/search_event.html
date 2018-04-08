@@ -10,6 +10,7 @@
   {% block page_name %}<div style="font-size: 32px; margin-left:-10px">Search Event</div>{% endblock page_name %}
 
   {% block content %}
+  <form method="GET">
     <div class="search-top">
       <div class="sub-title">
         <h1>Search Trip</h1>
@@ -21,244 +22,64 @@
           </div>
         </div>
         <div class="search-layer l1">
-          <div class="search-op l1-o1">
+          <div class="search-op l1-o1" style="flex:20">
             <label>Event Location:</label>
-            <select>
-              <option>Any</option>
-              <option>Venue</option>
-              <option>Online</option>
-            </select>
+            {{ filters.form.location }}
           </div>
-          <div class="search-op l1-o2" style="flex: 2;">
+          <div class="search-op l1-o2" style="flex: 45;">
             <label>Place:</label>
-            <input type="text" name="location" placeholder="Eg. Daman, Daman & Diu">
-          </div>
-          <div class="search-op l1-o3">
-            <label>/</label>
-            <a href="#">(Locate on Maps)</a>
-            <!--<button class="btn btn-success">Locate on maps</button> -->
+              {{ filters.form.city }}
+              {{ filters.form.state }}
+              {{ filters.form.country }}
           </div>
         </div>
       <div class="search-layer l1" style="display: flex;">
-          <div class="search-op cat-search" style="flex: 15;">
-            <label style="margin-right: 35px;">Type:</label>
-            <div class="rad-club">
-              <div class="rads" style="flex: 4;">
-                <input type="radio" name="cs" value="cs-sel" style="margin-right: 10px;" checked>
-                <label style="font-weight: 400">Select</label>
-              </div>
-              <div class="rads" style="flex: 4;">
-                <input type="radio" name="cs" value="cs-sr" style="margin-right: 10px;">
-                <label style="font-weight: 400">Search</label>
-              </div>
+          <div class="cat-show" style="flex: 10">
+            <div class="gayab-sel" style="flex: 1"> 
+              <label style="margin-right: 53px;">Category:</label>
+              {{ filters.form.category }}
             </div>
-          </div>
-          <div class="cat-show">
-            <div class="gayab-sel" style="margin-left: 22px;"> 
-              <select class="selects">
-                <option selected disabled>Event Segment</option>
-                <option>Any</option>
-                <option>Adventure</option>
-                <option>Exploring</option>
-                <option>Photography</option>
-                <option>Sport Events</option>
-                <option>Food & Cuisine</option>
-                <option>Exercise</option>
-                <option>Shopping</option>
-                <option>Travel Blogging</option>
-                <option>Partying</option>
-                <option>Backtracking</option>
-              </select> 
-              <select class="selects">
-                <option selected disabled>Event Category</option>
-                <option>Any</option>
-                <option>Adventure</option>
-                <option>Exploring</option>
-                <option>Photography</option>
-                <option>Sport Events</option>
-                <option>Food & Cuisine</option>
-                <option>Exercise</option>
-                <option>Shopping</option>
-                <option>Travel Blogging</option>
-                <option>Partying</option>
-                <option>Backtracking</option>
+            <div class="gayab-sel" style="flex: 1"> 
+              <label style="margin-right: 15px;">Activity:</label>
+              <select id="sel_activity" class="selects">
+                <option value="">----------</option>
               </select>
-              <select class="selects">
-                <option selected disabled>Event Segment</option>
-                <option>Any</option>
-                <option>Adventure</option>
-                <option>Exploring</option>
-                <option>Photography</option>
-                <option>Sport Events</option>
-                <option>Food & Cuisine</option>
-                <option>Exercise</option>
-                <option>Shopping</option>
-                <option>Travel Blogging</option>
-                <option>Partying</option>
-                <option>Backtracking</option>
-              </select>
-            </div>
-            <div class="search-op cat-search">
-                <input class="gayab-sr cat-search-input" type="text" name="location" placeholder="Eg. Daman, Daman & Diu">
             </div>
           </div>  
-            
+        <div class="search-op l3-o3" style="flex: 6; margin-left: 18px;">
+              <label>Age Group:</label>
+              {{ filters.form.age_group }}
+            </div>
       </div> 
         <div class="search-layer l3">
-          <div class="search-op l3-o1">
-            <label>Start Date:</label>
-            <select>
-              <option>Any</option>
-              <option>2018</option>
-              <option>2019</option>
-              <option>2020</option>
-              <option>2021</option>
-              <option>2022</option>
-              <option>2023</option>
-              <option>2024</option>
-              <option>2025</option>
-              <option>2026</option>
-              <option>2027</option>
-              <option>2028</option>
-              <option>2029</option>
-              <option>2030</option>
-            </select>
-            <select>
-              <option>Any</option>
-              <option>Jan</option>
-              <option>Feb</option>
-              <option>March</option>
-              <option>April</option>
-              <option>May</option>
-              <option>June</option>
-              <option>July</option>
-              <option>Aug</option>
-              <option>Sep</option>
-              <option>Oct</option>
-              <option>Nov</option>
-              <option>Dec</option>
-            </select>
-            <select>
-              <option>Any</option>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-              <option>6</option>
-              <option>7</option>
-              <option>8</option>
-              <option>9</option>
-              <option>10</option>
-              <option>11</option>
-              <option>12</option>
-              <option>13</option>
-              <option>14</option>
-              <option>15</option>
-              <option>16</option>
-              <option>17</option>
-              <option>18</option>
-              <option>19</option>
-              <option>20</option>
-              <option>21</option>
-              <option>21</option>
-              <option>23</option>
-              <option>24</option>
-              <option>25</option>
-              <option>26</option>
-              <option>27</option>
-              <option>28</option>
-              <option>29</option>
-              <option>30</option>
-              <option>31</option>
-            </select>
-          </div>
-          <div class="search-op l3-o2" style="margin-left: 71px;">
-            <label>Start Time:</label>
-            <select>
-              <option>Any</option>
-              <option>12</option>
-              <option>11</option>
-              <option>10</option>
-              <option>9</option>
-              <option>8</option>
-              <option>7</option>
-              <option>6</option>
-              <option>5</option>
-              <option>4</option>
-              <option>3</option>
-              <option>2</option>
-              <option>1</option>
-            </select>
-            <select>
-              <option></option>
-              <option>am</option>
-              <option>pm</option>
-            </select>
-          </div>
-          <div class="search-op" style="margin-left: 70px;">
-            <label style="margin-right: 16px;">Deadline:</label>
-            <select style="width: 86px;">
-              <option>Any</option>
-              <option>Anytime</option>
-              <option>Limit</option>
-            </select>
-          </div>
-          <div class="search-op" style="margin-left: 55px;">
-            <label>Privacy:</label>
+           <div class="search-op" style="margin-right: 115px;">
+            <label style="margin-right: 64px;">Privacy:</label>
             <select style="width: 90px;">
               <option>Any</option>
               <option>Public</option>
               <option>Private</option>
             </select>
           </div>
-        </div>
-        <div class="search-layer l4">
-          <div class="search-op l3-o3">
-            <label>Age Group:</label>
-            <select>
-              <option disabled selected>From</option>
-              <option>Under 18</option>
-              <option>18-30</option>
-              <option>30-50</option>
-              <option>Above 50</option>
-            </select>
-            <select>
-              <option disabled selected>To</option>
-              <option>Under 18</option>
-              <option>18-30</option>
-              <option>30-50</option>
-              <option>Above 50</option>
-            </select>
-          </div>
-          <div class="search-op l3-o3" style="margin-left: 70px;">
-            <label>Limit Participants:</label>
-            <select>
-              <option>Any</option>
-              <option>Yes</option>
-              <option>No</option>
-            </select>
-          </div>
-          <div class="search-op l3-o3" style="margin-left: 70px;">
-            <label style="margin-right: 5px;">Entry Fees:</label>
-            <select style="width: 86px">
-              <option>Any</option>
-              <option>Free</option>
-              <option>Payable</option>
-            </select>
-          </div>
+          <div class="search-op l3-o1" style="margin-right: 5px;">
+            <label style="margin-right: 11px;">Start Date:</label>
+            {{ filters.form.year }}
+            {{ filters.form.month }}
+            {{ filters.form.day }}
+          </div> 
           <div class="search-op l3-o3" style="margin-left: 54px;">
             <label>Gender:</label>
-            <select>
-              <option>Any</option>
-              <option>Male</option>
-              <option>Female</option>
-              <option>Others</option>
-            </select>
+            {{ filters.form.gender }}
+          </div>
+        </div>
+        <div class="search-layer l4" style="margin-bottom: 10px">
+          <div id="search_submit">
+            <button id="submit_btn" class="btn btn-primary filter-btn">Search</button>
+            <a id="clear_filters" class="btn btn-danger filter-btn" type="button" href="{% url 'searchevent' %}">Clear</a>
           </div>
         </div>
       </div>
     </div>
+  </form>
     <div class="search-low col-lg-12">
       <div class="search-low-header">
         <h3>Results - Choose And Join</h3>    
@@ -486,5 +307,29 @@
                   $("#main_TD").find(id_toFind).hide()
               }
           });
+    </script>
+    <script type="text/javascript">
+      var adventure_list = ['Skydiving', 'Rafting', 'Bungee Jumping', 'Swimming', 'Parasailing', 'Tracking', 'Extreme Cycling', 'Kayaking', 'Ice Skiing', 'Surfing', 'Rappelling', 'Biking']
+      var business_list = ['Seminar & Conference', 'Product Launch', 'Appreciation Party', 'Charity Function', 'Award Ceremony', 'Meeting', 'Training & Development', 'Startup Event']
+      var social_list = ['Meeting', 'Ceremony', 'Party']
+      var talks_list = ['Spiritual', 'Psychological', 'Political', 'Awareness', 'Life Experiences', 'Counceilling', 'Medical', 'Science', 'Philosophy']
+      var entertainment_list = ['Plays', 'Live Concerts', 'Stand-up Comedy', 'Music', 'Party']
+      var sports_list = ['Marathon', 'Championship', 'Meet', 'Tournament', 'Rallying']
+      var option_dict = {'Adventure': adventure_list, 'Business & Tech': business_list, 'Social': social_list, 'Talks': talks_list, 'Entertainment': entertainment_list, 'Sports': sports_list}
+      var category_list = ['Adventure', 'Business & Tech', 'Entertainment','Social','Sports', 'Talks']
+      
+      function actop(activity_list){
+        $("#sel_activity").html("<option value=''>----------</option>")
+        for (var i = 0; i < activity_list.length; i++){
+          $("#sel_activity").append("<option>"+activity_list[i]+"</option")
+        }
+      }
+      
+      $("#id_category").blur(function(){
+        category = $("#id_category").val()
+        if (option_dict[category] != null){
+          actop(option_dict[category])
+        }
+      })
     </script>
   {% endblock custom_scripts %}
