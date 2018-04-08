@@ -10,7 +10,7 @@ from django.http import HttpResponseRedirect, HttpResponsePermanentRedirect, Jso
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from .models import Login, Pi, Trip, Event
-from .mods.forms import LoginForm, RegistrationForm, Printer, AboutEditForm, GetAboutInitial, ProfileForm, TripPlanValidation, MyTripForm, EventPlanForm, MyEventForm
+from .mods.forms import LoginForm, RegistrationForm, Printer, AboutEditForm, GetAboutInitial, ProfileForm, TripPlanValidation, MyTripForm, EventPlanForm, MyEventForm, FeedbackForm, ContributeForm
 from .mods.filters import TripSearchFilter, EventSearchFilter
 from .mods.test import SharingForm
 import re
@@ -172,6 +172,32 @@ def logout_page (request):
 					logout(request)
 					return HttpResponsePermanentRedirect('../')'''
 
+class RootHandler():
+	def photos(username, files):
+		if 'profilepic' in files:
+			form = ProfileForm
+			if form.is_valid:
+				cleaned = form.cleaned_data
+				propic = cleaned['profilepic']
+				pi = Pi.objects.get(username=username)
+				pi.profilepic = propic
+				pi.save()
+				profilepic_init = Printer.img(request.session['username'])
+				coverpic_init = Printer.covimg(request.session['username'])
+				return render(request, self.template_name, context={'form':form, 'imgform': imgform, 'profilep': profilepic_init, 'coverp': coverpic_init})
+		if 'coverpic' in files:
+			form = ProfileForm
+			if form.is_valid:
+				cleaned = form.cleaned_data
+				covpic = cleaned['coverpic']
+				pi = Pi.objects.get(username=request.session['username'])
+				pi.coverpic = covpic
+				pi.save()
+				profilepic_init = Printer.img(request.session['username'])
+				coverpic_init = Printer.covimg(request.session['username'])
+				return render(request, self.template_name, context={'form':form, 'imgform': imgform, 'profilep': profilepic_init, 'coverp': coverpic_init})
+
+
 
 
 
@@ -198,6 +224,7 @@ class AboutPageView(TemplateView):
 		profilepic_init=''
 		coverpic_init = ''
 		#Printer.print('ere')
+		#RootHandler.photos(request.session['username'], request.FILES)
 		Printer.print(request.FILES)
 		if 'profilepic' in request.FILES:
 			if imgform.is_valid():
@@ -208,9 +235,6 @@ class AboutPageView(TemplateView):
 				pi.profilepic = propic
 				pi.save()
 				#Printer.print('ahiya')
-				profilepic_init = Printer.img(request.session['username'])
-				coverpic_init = Printer.covimg(request.session['username'])
-				return render(request, self.template_name, context={'form':form, 'imgform': imgform, 'profilep': profilepic_init, 'coverp': coverpic_init})
 		elif 'coverpic' in request.FILES:
 			if imgform.is_valid():
 				cleaned = imgform.cleaned_data
@@ -234,7 +258,7 @@ class AboutFillPageView(TemplateView):
 
 	def get(self, request, *args, **kwargs):
 		if check_session_valid:
-			initial = GetInitial.initial(request.session['username'])
+			initial = GetAboutInitial.initial(request.session['username'])
 			form = self.form(initial=initial)
 			context = {'form': form}
 			return render(request, self.template_name, context)
@@ -297,12 +321,24 @@ class AlbumPageView(TemplateView):
 
 class ContributePageView(TemplateView):
 	template_name = 'contribute.html'
+	form = ContributeForm
 
 	def get(self, request, *args, **kwargs):
-		return render(request, self.template_name, context=None)
+		form = self.form()
+		return render(request, self.template_name, context={'form': form})
 
 	def post(self, request, *args, **kwargs):
-		return render(request, self.template_name, context=None)
+		print(request.POST)
+		form = self.form(request.POST, request.FILES)
+		print(request.FILES)
+		if form.is_valid():
+			cleaned = form.cleaned_data
+			photo = request.FILES['photo']
+			video = request.FILES['video']
+			recorded = ContributeForm.save_record(request.session['username'], request.POST, photo, video)
+		else:
+			print('invalid form')
+		return render(request, self.template_name, context={'form': form})
 
 
 class EmergencyPageView(TemplateView):
@@ -337,11 +373,14 @@ class EventMainPageView(TemplateView):
 
 class FeedbackPageView(TemplateView):
 	template_name = 'feedback.html'
-
+	
 	def get(self, request, *args, **kwargs):
 		return render(request, self.template_name, context=None)
 
 	def post(self, request, *args, **kwargs):
+		recorded = FeedbackForm.save_feedback(request.session['username'], request.POST)
+		if recorded:
+			return JsonResponse({'success': True})
 		return render(request, self.template_name, context=None)
 
 

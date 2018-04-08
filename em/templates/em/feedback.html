@@ -39,6 +39,8 @@
 					<h3>Provide Feedback</h3>
 				</div>
 			</div>
+			<form id="feedback_form" method="POST">
+				{% csrf_token %}
 			<table class="table table-responsive feed-table" cellspacing="50">
 				<col width="30">
 				<col width="250">
@@ -56,84 +58,151 @@
 					<tr class="active">
 						<td>1</td>
 						<td id="keep-left">Did you like using Endless Miles?</td>
-						<td><input type="radio" name="one">Absolutely Not</td>
-						<td><input type="radio" name="one">Somewhat</td>
-						<td><input type="radio" name="one">50-50</td>
-						<td><input type="radio" name="one">Alot</td>
-						<td><input type="radio" name="one">Super Yes</td>
+						<td><input type="radio" name="one" value="Super Yes">Super Yes</td>
+						<td><input type="radio" name="one" value="Alot">Alot</td>
+						<td><input type="radio" name="one" value="50-50">50-50</td>
+						<td><input type="radio" name="one" value="Somewhat">Somewhat</td>
+						<td><input type="radio" name="one" value="Absolutely Not">Absolutely Not</td>
 					</tr>
 					<tr class="">
 						<td>2</td>
 						<td id="keep-left">How much did Endless Miles assist you?</td>
-						<td><input type="radio" name="two">Absolutely Not</td>
-						<td><input type="radio" name="two">Somewhat</td>
-						<td><input type="radio" name="two">50-50</td>
-						<td><input type="radio" name="two">Alot</td>
-						<td><input type="radio" name="two">Super Yes</td>
+						<td><input type="radio" name="two" value="Super Yes">Super Yes</td>
+						<td><input type="radio" name="two" value="Alot">Alot</td>
+						<td><input type="radio" name="two" value="50-50">50-50</td>
+						<td><input type="radio" name="two" value="Somewhat">Somewhat</td>
+						<td><input type="radio" name="two" value="Absolutely Not">Absolutely Not</td>
 					</tr>
 					<tr class="active">
 						<td>3</td>
 						<td id="keep-left">Will you recommend a friend<?/td>
-						<td><input type="radio" name="one">Absolutely Not</td>
-						<td><input type="radio" name="one">Somewhat</td>
-						<td><input type="radio" name="one">50-50</td>
-						<td><input type="radio" name="one">Alot</td>
-						<td><input type="radio" name="one">Super Yes</td>
+						<td><input type="radio" name="three" value="Super Yes">Super Yes</td>
+						<td><input type="radio" name="three" value="Alot">Alot</td>
+						<td><input type="radio" name="three" value="50-50">50-50</td>
+						<td><input type="radio" name="three" value="Somewhat">Somewhat</td>
+						<td><input type="radio" name="three" value="Absolutely Not">Absolutely Not</td>
 					</tr>
 					<tr>
 						<div class="input-group">
 						<td>4</td>
 						<td id="keep-left">What did you liked most?</td>
-						<td><input type="checkbox"  class="" name="one">Look and Feel</td>
-						<td><input type="checkbox" name="two">Concept</td>
-						<td><input type="checkbox" name="three">Usablity</td>
-						<td><input type="checkbox" name="four">Performance</td>
+						<td><input type="checkbox" name="four" value="Look and Feel">Look and Feel</td>
+						<td><input type="checkbox" name="four" value="Concept">Concept</td>
+						<td><input type="checkbox" name="four" value="Performance">Performance</td>
+						<td><input type="checkbox" name="four" value="Everything">Everything</td>
+						<td><input type="checkbox" name="four" value="Other">Other</td>
 						</div>
-						<td><input type="checkbox" name="five">Everything</td>
 					</tr>
 					<tr class="active">
 						<div class="input-group">
 						<td>5</td>
 						<td id="keep-left">What needs improvement?</td>
-						<td><input type="checkbox"  class="" name="one">Look and Feel</td>
-						<td><input type="checkbox" name="two">Concept</td>
-						<td><input type="checkbox" name="three">Performance</td>
-						<td><input type="checkbox" name="four">Everything</td>
-						<td><input type="checkbox" class="other-check" name="five" onchange="showOther()">Other</td>
+						<td><input type="checkbox" name="five" value="Look and Feel">Look and Feel</td>
+						<td><input type="checkbox" name="five" value="Concept">Concept</td>
+						<td><input type="checkbox" name="five" value="Performance">Performance</td>
+						<td><input type="checkbox" name="five" value="Everything">Everything</td>
+						<td><input type="checkbox" name="five" value="Other">Other</td>
 						</div>
 					</tr>
 					<tr>
-						<td>7</td>
+						<td>6</td>
 						<td id="keep-left">Will you use it again?</td>
-						<td><input type="radio" name="two">Never</td>
-						<td><input type="radio" name="two">Maybe</td>
-						<td><input type="radio" name="two">Sometimes</td>
-						<td><input type="radio" name="two">Frequent</td>
-						<td><input type="radio" name="two">Very Frequent</td>
+						<td><input type="radio" name="six" value="Very Frequent">Very Frequent</td>
+						<td><input type="radio" name="six" value="Sometimes">Sometimes</td>
+						<td><input type="radio" name="six" value="Maybe">Maybe</td>
+						<td><input type="radio" name="six" value="Frequent">Frequent</td>
+						<td><input type="radio" name="six" value="Never">Never</td>
 					</tr>
 					<tr class="active">
-						<td>6</td>
+						<td>7</td>
 						<td id="keep-left">Over-all Experience</td>
-						<td><input type="radio" name="two">Amazing</td>
-						<td><input type="radio" name="two">Good</td>
-						<td><input type="radio" name="two">Okay-Okay</td>
-						<td><input type="radio" name="two">Poor</td>
-						<td><input type="radio" name="two">Very Poor</td>
+						<td><input type="radio" name="seven" value="Amazing">Amazing</td>
+						<td><input type="radio" name="seven" value="Good">Good</td>
+						<td><input type="radio" name="seven" value="Okay-Okay">Okay-Okay</td>
+						<td><input type="radio" name="seven" value="Poor">Poor</td>
+						<td><input type="radio" name="seven" value="Very Poor">Very Poor</td>
 					</tr>
 					
 				</tbody>
 			</table>
 			<div class="feed-text">
-				<label>Write what you feel..</label>
-				<textarea>
-					
-				</textarea>
+				<textarea id="desc" placeholder="Describe to us what you feel...." name="eight"></textarea>
 			</div>
-			<div class="feed-submit">
+			<div id="submit" class="feed-submit">
 				<button class="btn btn-success"> Submit</button>
 			</div>
 		</div>
+		<div id="response_div" hidden="hidden">
+			<input id="liked_using" type="hidden" name="liked_using" value="">
+			<input id="assist" type="hidden" name="assist" value="">
+			<input id="recommend" type="hidden" name="recommend" value="">
+			<input id="liked_most" type="hidden" name="liked_most" value="">
+			<input id="improvement" type="hidden" name="improvement" value="">
+			<input id="use_again" type="hidden" name="use_again" value="">
+			<input id="overall" type="hidden" name="overall" value="">
+			<input id="description" type="hidden" name="description" value="">
+
+		</div>
+	</form>
 	{% endblock content %}
 
 
-	{% block custom_scripts %}{% endblock custom_scripts %}
+	{% block custom_scripts %}
+		<script type="text/javascript">
+			$("#submit").click(function (){
+			var vals = {};
+			vals['liked_using'] = $("input[name=one]:checked").val()
+			vals['assist'] = $("input[name=two]:checked").val()
+			vals['recommend'] = $("input[name=three]:checked").val()
+			var li = []
+			$("input[name=four]:checked").each(function(){
+				li.push([$(this).val()])
+			})
+			vals['liked_most'] = li
+			$("input[name=five]:checked").each(function(){
+				li.push([$(this).val()])
+			})
+			vals['improvement'] = li
+			vals['use_again'] = $("input[name=six]:checked").val()
+			vals['overall'] = $("input[name=seven]:checked").val()
+			vals['description'] = $("#desc").val()
+
+			$('#liked_using').val(vals['liked_using'])
+			$('#assist').val(vals['assist'])
+			$('#recommend').val(vals['recommend'])
+			$('#liked_most').val(vals['liked_most'])
+			$('#improvement').val(vals['improvement'])
+			$('#use_again').val(vals['use_again'])
+			$('#overall').val(vals['overall'])
+			$("#description").val(vals['description'])
+						//alert($('#liked_using').val()		    $('#liked_').val()	        $("input[name=like]:checked").each(function(i){
+		  
+
+		   });
+
+		</script>
+		 <script>
+        $(document).ready(function() {
+            $("#submit").click(function(){
+                  $.ajax({
+                    type: 'POST', 
+                    url: '#', 
+                    dataType: 'json',
+                    data: $('#feedback_form').serialize(),
+                    success: function (x) {                
+                      if(confirm("Feedback Added.\nWould you like to give another?")){
+
+                      }
+                      else{
+                      	window.location = '../timeline/'
+                      }
+                    },
+                    error:function(){
+                      alert("Changes cannot be saved.\nTry Again with proper inputs.") 
+                    }
+                });
+              return false;
+            });
+        })
+    </script>
+	{% endblock custom_scripts %}

@@ -5,7 +5,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.models import User
 import hashlib
 import re
-from em.models import Login, Pi, AuthUser, Trip, Event
+from em.models import Login, Pi, AuthUser, Trip, Event, Feedback, Contribute
 
 
 #Using clean_<field_name>. This is the best choice.
@@ -406,6 +406,17 @@ class AboutEditForm(forms.Form):
 					return True
 		return False
 
+class GetInitial(forms.Form):
+	def initial(username):
+		if (AuthUser.objects.filter(username=username).exists()):
+			pi = Pi.objects.filter(username=username)
+			for i in pi.values():
+				data = i
+			return data
+		return None
+
+
+
 class ProfileForm(forms.Form):
 	profilepic = forms.FileField(required=False)
 	coverpic = forms.FileField(required=False)
@@ -734,6 +745,57 @@ class EventPlanForm(forms.Form):
 			print(True)
 		else:
 			print('Error in Creating')
+
+
+class FeedbackForm(forms.Form):
+
+	def save_feedback(username, response):
+		kwargs = dict(response.lists())
+		liked_using = kwargs['liked_using'][0]
+		assist = kwargs['assist'][0]
+		recommend = kwargs['recommend'][0]
+		improvement = kwargs['improvement'][0]
+		use_again = kwargs['use_again'][0]
+		liked_most = kwargs['liked_most'][0]
+		overall = kwargs['overall'][0]
+		description = kwargs['description'][0]
+		feedback_id = TripPlanValidation.hexer(username)
+
+		feed = Feedback.objects.create(feedback_id=feedback_id, username=username, liked_using=liked_using, assist=assist, recommend=recommend, improvement=improvement, use_again=use_again, liked_most=liked_most, overall=overall, description=description)
+		
+		if feed:
+			return True
+		
+		return False
+
+class ContributeForm(forms.Form):
+
+	photo = forms.FileField(required=False, widget=forms.FileInput(attrs={'id': 'photo-up-inp','name': 'photo', 'class': 'file-upload-input', 'accept': 'image/*', 'hidden': 'hidden'}))
+	video = forms.FileField(required=False, widget=forms.FileInput(attrs={'id': 'video-up-inp', 'name': 'video', 'class': 'file-upload-input', 'accept': 'video/mp4', 'hidden': 'hidden' }))
+
+	def clean_photo(self):
+		isclean = self.cleaned_data['photo']
+		return isclean
+
+	def clean_video(self):
+		isclean = self.cleaned_data['video']
+		return isclean
+
+	def save_record(username, response, photo, video):
+		kwargs = dict(response.lists())
+		location_name = kwargs['location_name'][0]
+		types = kwargs['type'][0]
+		season = kwargs['season'][0]
+		attractions = kwargs['attractions'][0]
+
+		contribute_id = TripPlanValidation.hexer(username)
+
+		cont = Contribute.objects.create(username=username, contribute_id=contribute_id, location_name=location_name, location_type=types, season=season, attractions=attractions, photo=photo, video=video)
+		if cont:
+			print('yesy')
+		else:
+			print('nesy')
+
 '''
 #Using clean()
 class LoginForm(forms.Form):

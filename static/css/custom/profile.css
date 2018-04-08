@@ -134,3 +134,20 @@
 ::placeholder {
 	color: #888da6;
 }
+.upload-overlay {
+	position: fixed;
+    align-items: center;
+    justify-content: center;
+    top: 100px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: white;
+    width: 40%;
+    margin-left: 30%;
+    height: 84%;
+    border-radius: 5px;
+    margin-top: -10px;
+    z-index: 1045;
+    overflow-y: scroll;
+}

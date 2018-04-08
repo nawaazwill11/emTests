@@ -120,6 +120,8 @@
 <div id="main" class="container {% block class_main %}{% endblock class_main %}">
  {% block content %}{% endblock content %}
 </div><!--container-feed end-->
+
+{% block pc_pics %}{% endblock pc_pics %}
 {% block overlay %}
     
 {% endblock overlay %}
@@ -127,6 +129,33 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="{% static "js/custom.js" %}"></script>
+<script type="text/javascript">
+     $('input').focus(function(){
+       $(this).parents('.lI-group').addClass('focused');
+      });
+      $('textarea').focus(function(){
+       $(this).parents('.lI-group').addClass('focused');
+      });
+
+      $('input').blur(function(){
+        var inputValue = $(this).val();
+        if ( inputValue == "" ) {
+          $(this).removeClass('filled');
+          $(this).parents('.lI-group').removeClass('focused');  
+        } else {
+          $(this).addClass('filled');
+        }
+      })  
+      $('textarea').blur(function(){
+        var inputValue = $(this).val();
+        if ( inputValue == "" ) {
+          $(this).removeClass('filled');
+          $(this).parents('.lI-group').removeClass('focused');  
+        } else {
+          $(this).addClass('filled');
+        }
+      })  
+</script>
 {% block custom_scripts %}{% endblock custom_scripts %}
 </body>
 </html>

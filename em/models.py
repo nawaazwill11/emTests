@@ -92,15 +92,14 @@ class AuthUserUserPermissions(models.Model):
 
 
 class Contribute(models.Model):
-    contribute_id = models.CharField(primary_key=True, max_length=26)
-    user = models.ForeignKey('Login', models.DO_NOTHING)
+    contribute_id = models.CharField(primary_key=True, max_length=32)
     location_name = models.CharField(max_length=100)
-    type = models.IntegerField()
-    season = models.IntegerField(blank=True, null=True)
+    location_type = models.CharField(max_length=100)
+    season = models.CharField(max_length=100, blank=True, null=True)
     attractions = models.CharField(max_length=1000, blank=True, null=True)
-    photo = models.BinaryField(blank=True, null=True)
-    video = models.BinaryField(blank=True, null=True)
-
+    photo = models.FileField(upload_to='contribute/',blank=True, null=True)
+    video = models.FileField(upload_to='contribute/',blank=True, null=True)
+    username = models.CharField(max_length=200)
     class Meta:
         managed = False
         db_table = 'contribute'
@@ -262,15 +261,16 @@ class EventRequest(models.Model):
 
 
 class Feedback(models.Model):
-    feedback_id = models.CharField(primary_key=True, max_length=26)
-    user = models.ForeignKey('Login', models.DO_NOTHING)
-    liking = models.IntegerField()
-    assist = models.IntegerField()
-    recommend = models.IntegerField()
-    improvement = models.IntegerField()
-    use_again = models.IntegerField()
-    overall = models.IntegerField()
+    feedback_id = models.CharField(primary_key=True, max_length=32)
+    liked_using = models.CharField(max_length=30)
+    assist = models.CharField(max_length=30)
+    recommend = models.CharField(max_length=30)
+    improvement = models.CharField(max_length=30)
+    use_again = models.CharField(max_length=30)
+    overall = models.CharField(max_length=30)
     description = models.CharField(max_length=160, blank=True, null=True)
+    liked_most = models.CharField(max_length=30, blank=True, null=True)
+    username = models.CharField(max_length=200)
 
     class Meta:
         managed = False

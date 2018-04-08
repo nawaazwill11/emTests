@@ -89,13 +89,13 @@ class AuthUserUserPermissions(models.Model):
 
 class Contribute(models.Model):
     contribute_id = models.CharField(primary_key=True, max_length=26)
-    user = models.ForeignKey('Login', models.DO_NOTHING)
     location_name = models.CharField(max_length=100)
-    type = models.IntegerField()
-    season = models.IntegerField(blank=True, null=True)
+    location_type = models.CharField(max_length=100)
+    season = models.CharField(max_length=100, blank=True, null=True)
     attractions = models.CharField(max_length=1000, blank=True, null=True)
-    photo = models.BinaryField(blank=True, null=True)
-    video = models.BinaryField(blank=True, null=True)
+    photo = models.CharField(max_length=100, blank=True, null=True)
+    video = models.CharField(max_length=100, blank=True, null=True)
+    username = models.CharField(max_length=200)
 
     class Meta:
         managed = False
@@ -161,7 +161,7 @@ class Event(models.Model):
     event_id = models.CharField(primary_key=True, max_length=32)
     event_privacy = models.CharField(max_length=20)
     title = models.CharField(max_length=50, blank=True, null=True)
-    description = models.CharField(max_length=50, blank=True, null=True)
+    description = models.CharField(max_length=160, blank=True, null=True)
     start_date = models.DateTimeField(blank=True, null=True)
     end_date = models.DateTimeField(blank=True, null=True)
     deadline = models.DateTimeField(blank=True, null=True)
@@ -178,10 +178,12 @@ class Event(models.Model):
     activity = models.CharField(max_length=50, blank=True, null=True)
     gender = models.CharField(max_length=8, blank=True, null=True)
     age = models.CharField(max_length=20, blank=True, null=True)
-    participants = models.IntegerField(blank=True, null=True)
+    participants = models.CharField(max_length=32, blank=True, null=True)
     fees = models.FloatField(blank=True, null=True)
     created_on = models.DateTimeField()
     username = models.CharField(max_length=50)
+    vacancy = models.IntegerField(blank=True, null=True)
+    ownership = models.CharField(max_length=15)
 
     class Meta:
         managed = False
@@ -257,15 +259,16 @@ class EventRequest(models.Model):
 
 
 class Feedback(models.Model):
-    feedback_id = models.CharField(primary_key=True, max_length=26)
-    user = models.ForeignKey('Login', models.DO_NOTHING)
-    liking = models.IntegerField()
-    assist = models.IntegerField()
-    recommend = models.IntegerField()
-    improvement = models.IntegerField()
-    use_again = models.IntegerField()
-    overall = models.IntegerField()
+    feedback_id = models.CharField(primary_key=True, max_length=32)
+    liked_using = models.CharField(max_length=30)
+    assist = models.CharField(max_length=30)
+    recommend = models.CharField(max_length=30)
+    improvement = models.CharField(max_length=30)
+    use_again = models.CharField(max_length=30)
+    overall = models.CharField(max_length=30)
     description = models.CharField(max_length=160, blank=True, null=True)
+    liked_most = models.CharField(max_length=30, blank=True, null=True)
+    username = models.CharField(max_length=200)
 
     class Meta:
         managed = False
@@ -318,6 +321,16 @@ class Notification(models.Model):
     class Meta:
         managed = False
         db_table = 'notification'
+
+
+class Participants(models.Model):
+    phenomenon = models.CharField(max_length=30, blank=True, null=True)
+    part_id = models.CharField(max_length=32, blank=True, null=True)
+    username = models.CharField(max_length=200, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'participants'
 
 
 class Photo(models.Model):
@@ -466,6 +479,7 @@ class Trip(models.Model):
     trip_id = models.CharField(primary_key=True, max_length=32)
     created_on = models.DateTimeField()
     mode = models.CharField(max_length=10, blank=True, null=True)
+    ownership = models.CharField(max_length=15)
 
     class Meta:
         managed = False

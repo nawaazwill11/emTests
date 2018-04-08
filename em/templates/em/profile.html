@@ -67,8 +67,8 @@
               <span class="glyphicon glyphicon-cog"></span>
               </button>
               <ul id="root-content-set" class="dropdown-menu" aria-labelledby="photo-edit">
-                <li><a id="profileedit" href="#" onclick="letupload(this.id)">Update Profile Picture</a></li>
-                <li><a id="coveredit" href="#" onclick="letupload(this.id)">Update Cover Photo</a></li>
+                <li><a id="profileedit" href="#">Update Profile Picture</a></li>
+                <li><a id="coveredit">Update Cover Photo</a></li>
                 <li role="separator" class="divider"></li>
                 <li><a href="#">Remove Profile Photo</a></li>
                 <li><a href="#">Remove Cover Photo</a></li>
@@ -76,63 +76,67 @@
           </div>
           </div>
         </div>
-      <form id="propic_form" method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        <div id="upload-overlay-photo" class="upload-overlay" class="testpicupload" hidden="hidden">
-          <label>Mast mast profile</label>
-          {{ imgform.profilepic }}
-          <input type="submit" name="ProfileUpload">
-        </div>
-      <form id="cover_form" method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        <div id="upload-overlay-cover" class="upload-overlay" class="testpicupload" hidden="hidden">
-          <label>Mast mast cover</label>
-          {{ imgform.coverpic }}
-          <input type="submit" name="CoverUpload">
-        </div>
-    </form>
   </div>
 
 {% block boot %}{% endblock boot %}
 {% endblock content %}
+{% block pc_pics %}
+  <form id="propic_form" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div id="upload-overlay-photo" class="upload-overlay" class="testpicupload" hidden="hidden">
+      <label>Mast mast profile</label>
+      {{ imgform.profilepic }}
+      <input type="submit" name="ProfileUpload">
+    </div>
+  </form>
 
+  <form id="cover_form" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div id="upload-overlay-cover" class="upload-overlay" class="testpicupload" hidden="hidden">
+      <label>Mast mast cover</label>
+      {{ imgform.coverpic }}
+      <input type="submit" name="CoverUpload">
+    </div>
+  </form>
+{% endblock pc_pics %}
 {% block overlay %}
 <div class="album-overlay" id="olay" hidden="hidden">
     </div>
+  {% block olay %}{% endblock olay %}
 {% endblock overlay %}
 
 {% block custom_scripts %}
 <script type="text/javascript">
-function letupload(link){
-          if (link == "coveredit"){
-            var link = $( '#coveredit' )[0];
-            var overlay = $( '#olay' )[0];
-            var TD = $( '#upload-overlay-cover' )[0];
-          }
-          else if (link == "profileedit"){
-            var link = $( '#profileedit' )[0];
-            var overlay = $( '#olay' )[0];
-            var TD = $( '#upload-overlay-photo')[0]; 
-          }
-          $( link ).on( 'click', function ( e ) {
-              $( overlay ).show();
-              $( TD ).show();
-              e.stopPropagation();
-          });
+    var link =''
+    var overlay = "#olay"
+    $("#coveredit").click(function(e){
+      link = '#upload-overlay-cover'
+      $("#olay").show()
+      $(link).show()
+      e.stopPropagation()
 
-          $( document ).on( 'click', function ( e ) {
-              if ( $( e.target ).closest( TD ).length === 0 ) {
-                  $( overlay ).hide();
-                  $( TD ).hide();
-              }
-          });
-                          
-          $( document ).on( 'keydown', function ( e ) {
-              if ( e.keyCode === 27 ) {
-                  $( overlay ).hide();
-                  $( TD ).hide();
-              }
-          });
+    });
+    $("#profileedit").click(function(e){
+      link = '#upload-overlay-photo'
+      $("#olay").show()
+      $(link).show()
+      e.stopPropagation()
+
+    });
+    $( document ).on( 'click', function ( e ) {
+        if ( $( e.target ).closest( link ).length === 0 ) {
+            $( overlay ).hide();
+            $(link).hide()
         }
-    </script>
+    });
+                          
+    $( document ).on( 'keydown', function ( e ) {
+        if ( e.keyCode === 27 ) {
+            $( overlay ).hide();
+            $(link).hide()
+        }
+    });
+  
+</script>
+{% block cs %}{% endblock cs %}
 {% endblock custom_scripts %}

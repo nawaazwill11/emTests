@@ -78,9 +78,11 @@
 
 .colt-op > ol > li > span {
 	color: red;
-    font-size: small;
-    float: right;
-    margin-top: 3px;
+  font-size: 44px;
+  float: right;
+  /* margin-top: 3px; */
+  margin-top: -25px;
+  cursor: pointer;
 }
 
 .loc-attr{
@@ -180,6 +182,9 @@ td {
   padding: 25px;
   padding-left: 0;
   margin-bottom: 20px;
+  position: relative;
+    left: 25%;
+
 }
 .feed-text > label {
   font-size: larger;
@@ -192,4 +197,13 @@ td {
     border-radius: 5px;
     border-width: 2px;
     height: 150px;
+}
+textarea {
+  padding: 10px;
+}
+::placeholder {
+  
+}
+#photo-up-inp, #video-up-inp {
+  display: none;
 }

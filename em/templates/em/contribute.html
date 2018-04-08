@@ -33,135 +33,205 @@
 				</p>
 			</div>
 		</div>
-		<div class="colt-body-low">
-			<div class="colt-content">
-				<div class="mini-head">
-					<h3>Fill Details</h3>
-				</div>
-				<ol class="colt-list">
-          <li>
-            <div class="colt-layer">
-              <div class="colt-op">
-                <div class="lI-group">
-                  <label class="lI-label">Location Name <span style="color: red">*</span></label>
-                  <input type="text" class="lI-input" style="margin-left: 0">
-                </div>  
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="colt-layer">
-              <div class="colt-op">
-                <div class="lI-group">
-                  <label class="lI-label">Type of Location <span style="color: red">*</span></label>
-                  <input type="text" class="lI-input" style="margin-left: 0" list="loc-type" data-list-focus="true" autocomplete="off">
-                  <datalist id="loc-type">
-                    <select>
-                        <option value="Adventure"></option>
-                        <option value="Exploring"></option>
-                        <option value="Photography"></option>
-                        <option value="Sports Event"></option>
-                        <option value="Food &amp; Cuisine"></option>
-                        <option value="Exercise"></option>
-                        <option value="Shopping"></option>
-                        <option value="Travel-Blogging"></option>
-                        <option value="Partying"></option>
-                        <option value="Family"></option>
-                        <option value="Romantic"></option>
-                        <option value="Long-Ranging"></option>
-                        <option value="Spiritual and Calm"></option>
-                    </select>
-                   </datalist>
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+  		<div class="colt-body-low">
+  			<div class="colt-content">
+  				<div class="mini-head">
+  					<h3>Fill Details</h3>
+  				</div>
+  				<ol class="colt-list">
+            <li>
+              <div class="colt-layer">
+                <div class="colt-op">
+                  <div class="lI-group">
+                    <label class="lI-label">Location Name <span style="color: red">*</span></label>
+                    <input type="text" class="lI-input" name="location_name" style="margin-left: 0">
+                  </div>  
                 </div>
               </div>
-            </div>
-          </li>
-          <li>
-            <div class="colt-layer">
-              <div class="colt-op">
-                <div class="lI-group">
-                  <label class="lI-label">Visiting Season <span style="color: red">*</span></label>
-                  <input type="text" class="lI-input" style="margin-left: 0" list="season" data-list-focus="true" autocomplete="off">
-                  <datalist id="season">
-                    <select>
-                        <option value="Any"></option>
-                        <option value="Spring"></option>
-                        <option value="Summer"></option>
-                        <option value="Monsoon"></option>
-                        <option value="Autumn"></option>
-                        <option value="Winter"></option>
-                    </select>
-                   </datalist>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="colt-layer">
-              <div class="colt-op" >
-                <div class="lI-group" style="display: flex;">
-                  <label class="lI-label">Local Attractions</label>
-                  <input type="text" class="lI-input" style="margin-left: 0" list="attractions" data-list-focus="true" autocomplete="off">
-                  <datalist id="attractions">
-                    <select>
-                        <option value="Hill Climbing"></option>
-                        <option value="Sight Seeing"></option>
-                        <option value="Romance"></option>
-                        <option value="Meditation"></option>
-                        <option value="Cycling"></option>
-                        <option value="Temple"></option>
-                    </select>
-                   </datalist>
-                   <button>Add</button>
-                </div>
-                <ol class="loc-attr" type="i" >
-                   		<li>
-                   			Rafting <span class="glyphicon glyphicon-minus"></span>
-                   		</li>
-                   		<li>Scuba Diving <span class="glyphicon glyphicon-minus"></span></li>
-                   </ol>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="colt-layer">
-              <div class="colt-op">
-                <label>Upload Media</label>
-                <div class="colt-media">
-                  <div class="colt-photo">
-                    <div class="media-holder">
-                      <input class="file-upload-input" id="logo-up-inp" type="file" accept="image/*" style="display: none;">
-                      
-                      <label for="logo-up-inp"><span class="glyphicon glyphicon-plus"></span><span>Add Photos</span></label> 
-                    </div>
-                    <div class="media-desc">
-                      <p>
-                        NOTE : The maximum dimension is 1600x900 pixels and the maximum image size is below 2MB
-                      </p>
-                    </div>                
+            </li>
+            <li>
+              <div class="colt-layer">
+                <div class="colt-op">
+                  <div class="lI-group">
+                    <label class="lI-label">Type of Location <span style="color: red">*</span></label>
+                    <input type="text" class="lI-input" style="margin-left: 0" list="loc-type" data-list-focus="true" autocomplete="off" name="type">
+                    <datalist id="loc-type">
+                      <select>
+                          <option value="Adventure"></option>
+                          <option value="Exploring"></option>
+                          <option value="Photography"></option>
+                          <option value="Sports Event"></option>
+                          <option value="Food &amp; Cuisine"></option>
+                          <option value="Exercise"></option>
+                          <option value="Shopping"></option>
+                          <option value="Travel-Blogging"></option>
+                          <option value="Partying"></option>
+                          <option value="Family"></option>
+                          <option value="Romantic"></option>
+                          <option value="Long-Ranging"></option>
+                          <option value="Spiritual and Calm"></option>
+                      </select>
+                     </datalist>
                   </div>
-                  <div class="colt-video">
-                    <div class="media-holder">
-                      <input class="file-upload-input" id="logo-up-inp" type="file" accept="image/*" style="display: none;">
-                      <label for="logo-up-inp"><span class="glyphicon glyphicon-plus"></span><span>Add Videos</span></label> 
-                    </div>
-                    <div class="media-desc">
-                      <p>
-                        NOTE : The maximum video size is 16MB
-                      </p>
-                    </div>                
-                  </div>
-                 </div>
                 </div>
               </div>
-            </div>
-          </li>
-  			</ol>
-  			<div class="contrib-submit">
-  				<button type="submit" class="btn btn-success">Submit</button>
+            </li>
+            <li>
+              <div class="colt-layer">
+                <div class="colt-op">
+                  <div class="lI-group">
+                    <label class="lI-label">Visiting Season <span style="color: red">*</span></label>
+                    <input type="text" class="lI-input" style="margin-left: 0" list="season" data-list-focus="true" autocomplete="off" name="season">
+                    <datalist id="season">
+                      <select>
+                          <option value="Any"></option>
+                          <option value="Spring"></option>
+                          <option value="Summer"></option>
+                          <option value="Monsoon"></option>
+                          <option value="Autumn"></option>
+                          <option value="Winter"></option>
+                      </select>
+                     </datalist>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="colt-layer">
+                <div class="colt-op" >
+                  <div class="lI-group" style="display: flex;">
+                    <label class="lI-label">Local Attractions</label>
+                    <input id="attraction" type="hidden" name="attractions">
+                    <input id="attr-inp" type="text" class="lI-input" style="margin-left: 0" list="attractions" data-list-focus="true" autocomplete="off">
+                    <datalist id="attractions">
+                      <select>
+                          <option value="Hill Climbing"></option>
+                          <option value="Sight Seeing"></option>
+                          <option value="Romance"></option>
+                          <option value="Meditation"></option>
+                          <option value="Cycling"></option>
+                          <option value="Temple"></option>
+                      </select>
+                     </datalist>
+                     <button id="attr-add" type="button">Add</button>
+                  </div>
+                  <ol id="attr-ol" class="loc-attr" type="i" >
+                     </ol>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="colt-layer">
+                <div class="colt-op">
+                  <label>Upload Media</label>
+                  <div class="colt-media">
+                    <div class="colt-photo">
+                      <div class="media-holder">
+                        {{ form.photo }}
+                        
+                        <label for="photo-up-inp"><span class="glyphicon glyphicon-plus"></span><span>Add Photos</span></label> 
+                      </div>
+                      <div class="media-desc">
+                        <p>
+                          NOTE : The maximum dimension is 1600x900 pixels and the maximum image size is below 2MB
+                        </p>
+                      </div>                
+                    </div>
+                    <div class="colt-video">
+                      <div class="media-holder">
+                        {{ form.video }}
+                        <label for="video-up-inp"><span class="glyphicon glyphicon-plus"></span><span>Add Videos</span></label> 
+                      </div>
+                      <div class="media-desc">
+                        <p>
+                          NOTE : The maximum video size is 16MB
+                        </p>
+                      </div>                
+                    </div>
+                   </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+    			</ol>
+    			<div class="contrib-submit">
+    				<button id="submit" type="submit" class="btn btn-success">Submit</button>
+    			</div>
   			</div>
-			</div>
-		</div>
+  		</div>
+    </form>
 	{% endblock content %}
 	
-  {% block custom_scripts %}{% endblock custom_scripts %}
+  {% block custom_scripts %}
+  <script type="text/javascript">
+    function removeA(arr) {
+      var what, a = arguments, L = a.length, ax;
+      while (L > 1 && arr.length) {
+          what = a[--L];
+          while ((ax= arr.indexOf(what)) !== -1) {
+              arr.splice(ax, 1);
+          }
+      }
+      return arr;
+    }
+  </script>
+  <script type="text/javascript">
+    dictionary = {"a": "a", "b": "b"}
+    for (var key in dictionary) {
+    // check if the property/key is defined in the object itself, not in parent
+      if (dictionary.hasOwnProperty(key)) {           
+        console.log(key, dictionary[key]);
+      }
+    }
+</script>
+  <script type="text/javascript">
+  var count = 1
+  var attr_dict = {}
+  var flag = 0
+  $("#attr-add").click(function(){
+    if ((Object.keys(attr_dict).length)==0){
+      flag = 0
+    }
+    attr_val = $("#attr-inp").val()
+    if (attr_val == '' || attr_val == " "){
+      flag = 1
+    }
+    for (var key in attr_dict) {
+        if (attr_val == attr_dict[key]){
+          alert('Already Added')
+          $("#attr-inp").val("")
+          flag = 1
+          break;
+        }
+    }
+    if (flag == 0) {
+        olist = $("#attr-ol")
+        olist.append("<li id='"+count+"'>"+attr_val+"<span class='attr-rm'>-</span></li>")
+        attr_dict[count] = attr_val
+        $("#attr-inp").val("")
+        console.log(count++)
+    }
+  }) 
+  $(document).on('click','.attr-rm',function(){
+    rm_id = $(this).parent(count)
+    rm_id.remove()
+    console.log(count--)
+  });
+
+  var attr_list = []
+  $("#submit").click(function (){
+    for(var key in attr_dict){
+      attr_list.push(attr_dict[key])
+    }
+    $("#attraction").val(attr_list)
+
+  })
+
+
+
+  </script>
+
+
+   {% endblock custom_scripts %}
