@@ -41,10 +41,10 @@
                     <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                         <a href="{% url 'timeline' %}">
                             <span style="font-size: 13px;">
-                                <img src="{% static 'img/user-white.png' %}" style="width: 30px">
+                                <img id="userpic" src="{{ MEDIA_URL }}{{ userpic }}">
                             </span>
-                            <span style="margin-left: 8px;">
-                                Willo Walker</a>
+                            <span id="username" style="margin-left: 8px;" title="{{ username }}">
+                                {{ username|title }}</a>
                             </span>
                         <span class="caret"></span>
                     </button>

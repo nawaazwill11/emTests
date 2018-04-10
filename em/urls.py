@@ -72,6 +72,11 @@ plantrippatterns = [
 
 ]
 
+reportspatterns = [
+    url(r'^$',login_required(views.ReportsPageView.as_view()), name='reports')
+
+]
+
 searcheventpatterns = [
     url(r'^$',login_required(views.SearchEventPageView.as_view()), name='searchevent')
 

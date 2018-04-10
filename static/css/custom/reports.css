@@ -1,0 +1,25 @@
+#main {
+	width: 90%;
+}
+
+.report-table th, td{
+	border: 1px solid;
+	padding: 10px;
+}
+.feedback-report th, td, event-report, th, td{
+	width: 170px;
+}
+.user-report th, td {
+	width: 234px;
+}
+.trip-report th, td {
+	width: 234px;
+}
+
+
+
+
+#th-desc {
+	width: 300px;
+    text-align: center;	
+}

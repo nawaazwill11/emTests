@@ -30,12 +30,12 @@
   <div class="root">
         <div class="root-content">
           <div class="cover">
-            <img src="{{ MEDIA_URL }}{{ coverp }}">
+            <img src="{{ MEDIA_URL }}{{ initials.coverpic }}">
           </div>
           <div class="sunglass">
             <div class="rowlo">
-              <div class="strap col-lg-5">
-                <ul type="none">
+              <div class="strap col-lg-5 col-lg-offset-1">
+                <ul type="none" style="padding: 0">
                   <li><a href="{% url "timeline" %}">Timeline</a></li>
                   <li><a href="{% url "about" %}">About</a></li>
                   <li><a href="{% url "album" %}">Album</a></li>
@@ -53,11 +53,11 @@
             <div class="author-content">
               <div class="onNose-photo">
                 <a href="#">
-                    <img class="round-ppic" src="{{ MEDIA_URL }}{{ profilep }}">
+                    <img class="round-ppic" src="{{ MEDIA_URL }}{{ initials.profilepic }}">
                 </a>
               </div>
               <div class="author-name">
-                <a href="{% url "about" %}">Willo Walker</a>
+                <a href="{% url "about" %}">{{ firstname|title }}&nbsp&nbsp{{ lastname|title }}</a>
               </div>
             </div>
           </div>
@@ -84,18 +84,24 @@
   <form id="propic_form" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <div id="upload-overlay-photo" class="upload-overlay" class="testpicupload" hidden="hidden">
-      <label>Mast mast profile</label>
-      {{ imgform.profilepic }}
-      <input type="submit" name="ProfileUpload">
+      <div class="up-bunch">
+        <label>Upload Profile Picture</label>
+        {{ rootform.profilepic }}  
+      </div>
+      
+
+      <input class="upload-btn-pc" type="submit" name="ProfileUpload">
     </div>
   </form>
 
   <form id="cover_form" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <div id="upload-overlay-cover" class="upload-overlay" class="testpicupload" hidden="hidden">
-      <label>Mast mast cover</label>
-      {{ imgform.coverpic }}
-      <input type="submit" name="CoverUpload">
+      <div class="up-bunch">
+        <label>Upload Cover Picture</label>
+        {{ rootform.coverpic }}  
+      </div>
+      <input class="upload-btn-pc" type="submit" name="CoverUpload">
     </div>
   </form>
 {% endblock pc_pics %}
@@ -112,21 +118,21 @@
     $("#coveredit").click(function(e){
       link = '#upload-overlay-cover'
       $("#olay").show()
-      $(link).show()
+      $(link).css('display', '-webkit-box')
       e.stopPropagation()
 
     });
     $("#profileedit").click(function(e){
       link = '#upload-overlay-photo'
       $("#olay").show()
-      $(link).show()
+      $(link).css('display', '-webkit-box')
       e.stopPropagation()
 
     });
     $( document ).on( 'click', function ( e ) {
         if ( $( e.target ).closest( link ).length === 0 ) {
-            $( overlay ).hide();
-            $(link).hide()
+            //$( overlay ).hide();
+            //$(link).css('display', 'none')
         }
     });
                           

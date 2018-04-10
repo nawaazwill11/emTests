@@ -366,30 +366,6 @@
 		</div>
 	{% endblock overlay %}
 
-	{% block custom_scripts %}
-		<script type="text/javascript">
-		      var link = $( '#album-select' )[0];
-		      var overlay = $( '#olay' )[0];
-		      var TD = $( '#album-selected' )[0];
-
-		      $( link ).on( 'click', function ( e ) {
-		          $( overlay ).show();
-		          $( TD ).show();
-		          e.stopPropagation();
-		      });
-
-		      $( document ).on( 'click', function ( e ) {
-		          if ( $( e.target ).closest( TD ).length === 0 ) {
-		              $( overlay ).hide();
-		              $( TD ).hide();
-		          }
-		      });
-		                      
-		      $( document ).on( 'keydown', function ( e ) {
-		          if ( e.keyCode === 27 ) {
-		              $( overlay ).hide();
-		              $( TD ).hide();
-		          }
-		      });
-		</script>
-	{% endblock custom_scripts %}
+	{% block cs %}
+		
+	{% endblock cs %}

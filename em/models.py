@@ -276,6 +276,10 @@ class Feedback(models.Model):
         managed = False
         db_table = 'feedback'
 
+    def __str__(self):
+        returns = '{0.username},{0.liked_using},{0.assist},{0.recommend},{0.use_again},{0.improvement},{0.overall},{0.description},{0.liked_most}'
+        return returns.format(self)
+
 
 class Friends(models.Model):
     user_one = models.CharField(max_length=26)
@@ -302,9 +306,9 @@ class Login(models.Model):
 
 
 class Misc(models.Model):
-    user = models.ForeignKey(Login, models.DO_NOTHING, blank=True, null=True)
+    username = models.CharField(max_length=200)
     flog = models.IntegerField()
-
+    misc_id = models.CharField(primary_key=True, max_length=32)
     class Meta:
         managed = False
         db_table = 'misc'

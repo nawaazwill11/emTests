@@ -20,7 +20,7 @@
               <i>Create your own <b>Journey Plan</b> and <b>Publish it</b>.</i>
             </div>
             <div class="pjt-push">
-              <button class="btn btn-danger btn-lg" onclick="one()"><b>Plan</b></button>
+              <button class="btn btn-danger btn-lg" type="button"><b><a href="{% url 'plantrip' %}" style="color: white">Plan</a></b></button>
             </div>
           </div>
         </div>
@@ -35,7 +35,7 @@
               <i>Search for a <b>Journey Plan</b> and choose to <b>Join it</b>.</i>
             </div>
             <div class="pjt-push pjt-push-join">
-              <button class="btn btn-danger btn-lg"><b>Search & Join</b></button>
+              <button class="btn btn-danger btn-lg" type="button"><b><a href="{% url 'searchtrip' %}" style="color: white">Search & Join</a></b></button>
             </div>
           </div>
         </div>

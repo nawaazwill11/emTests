@@ -31,6 +31,7 @@ urlpatterns = [
     url(r'^em/mytrip/', include(emurls.mytrippatterns)),
     url(r'^em/plan_event/', include(emurls.planeventpatterns)),
     url(r'^em/plan_trip/', include(emurls.plantrippatterns)),
+    url(r'^em/reports/', include(emurls.reportspatterns)),
     url(r'^em/search_event/', include(emurls.searcheventpatterns)),
     url(r'^em/search_trip/', include(emurls.searchtrippatterns)),
     url(r'^em/settings/', include(emurls.profilesettingspatterns)),

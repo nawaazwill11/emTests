@@ -155,7 +155,7 @@
 					      //alert("Welcome to Endless Miles. Happy Travelling!");
 					      setTimeout(function(){ window.location = redirect_url; }, delay);
 					    },
-					    beforeSend:function(){
+					    error:function(){
 					      $("#credential-error").html("Invalid Credentials");
 					    }
 				  	});

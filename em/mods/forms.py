@@ -124,14 +124,16 @@ class RegistrationForm(forms.Form):
 	def check_user_exists(username):
 		try:
 			if (AuthUser.objects.filter(username=username).exists()):
-				return AuthUser.objects.get(username=username)
+				return False
+			return True
 		except ObjectDoesNotExist:
 			raise forms.ValidationError('User Exists')
 
 	def check_email_exists(email):
 		try:
 			if (User.objects.filter(email=email).exists()):
-				return True
+				return False
+			return True
 		except ObjectDoesNotExist:
 			raise forms.ValidationError('Email Exists')
 
@@ -139,7 +141,9 @@ class RegistrationForm(forms.Form):
 	def register(username, email, password, repassword, contact):
 		has_user = RegistrationForm.check_user_exists(username)
 		has_email = RegistrationForm.check_email_exists(email)
-		if not(has_user and has_email):
+		print('here')
+		if has_user and has_email:
+			print('inside reg')
 			user = User(username=username, email=email, password=password)
 			user.is_staff = False
 			user.set_password(password)
@@ -147,8 +151,8 @@ class RegistrationForm(forms.Form):
 			user.is_active = True
 			user.save()
 			user = User.objects.get(username=username)
-			return({'success': True, 'message': 'User\'s up the arse'})
-		return({'success': False, 'message': 'Error. Try Again with other credentials.'})
+			return True
+		return False
 
 class Printer(forms.Form):
 
@@ -167,7 +171,17 @@ class Printer(forms.Form):
 		return cpic
 
 
+class ProfileRoot():
 
+	def img(username):
+		pi = Pi.objects.get(username=username)
+		ppic = pi.profilepic
+		return ppic
+
+	def covimg(username):
+		pi = Pi.objects.get(username=username)
+		cpic = pi.coverpic
+		return cpic
 
 class AboutEditForm(forms.Form):
 	dayslist = [(str(i),'0'+str(i)) for i in [i for i in range(1,10)]] + [(str(i),str(i)) for i in [i for i in range(10,32)]]
@@ -390,20 +404,21 @@ class AboutEditForm(forms.Form):
 		return isclean
 
 	def do_update(username, aboutme, dayz, monthz, yearz, birthplace, livesin, occupation, gender, relationstatus, email, website, mobile, travelledplaces, dreamplaces, favtravplaces, favtravseasons, favtravmoto, favtravmode, hobbies, skills, interests, school, college, aded, currwork, prevwork, workskills, facebook, twitter, instagram):
-
-		user_data_valid = RegistrationForm.check_user_exists(username)
-		if user_data_valid:
-			user = AuthUser.objects.get(username=username)
-			doj = user.date_joined
-			now = datetime.datetime.now()
-			dob = dt(year=int(yearz), month=int(monthz), day=int(dayz))
-			if (Pi.objects.filter(username=username).exists()):
-				pi = Pi.objects.filter(username=username).update(aboutme=aboutme, dob=dob, birthplace=birthplace, livesin=livesin, occupation=occupation, gender=gender, relationstatus=relationstatus, website=website, mobile=mobile, travelledplaces=travelledplaces, dreamplaces=dreamplaces, favtravplaces=favtravplaces, favtravseasons=favtravseasons, favtravmoto=favtravmoto, favtravmode=favtravmode, hobbies=hobbies, skills=skills, interests=interests, school=school, college=college, aded=aded, currwork=currwork, prevwork=prevwork, workskills=workskills, facebook=facebook, twitter=twitter, instagram=instagram)
+		
+		print('ahiya')
+		user = User.objects.get(username=username)
+		doj = user.date_joined
+		now = datetime.datetime.now()
+		dob = dt(year=int(yearz), month=int(monthz), day=int(dayz))
+		if (Pi.objects.filter(username=username).exists()):
+			pi = Pi.objects.filter(username=username).update(aboutme=aboutme, dob=dob, birthplace=birthplace, livesin=livesin, occupation=occupation, gender=gender, relationstatus=relationstatus, website=website, mobile=mobile, travelledplaces=travelledplaces, dreamplaces=dreamplaces, favtravplaces=favtravplaces, favtravseasons=favtravseasons, favtravmoto=favtravmoto, favtravmode=favtravmode, hobbies=hobbies, skills=skills, interests=interests, school=school, college=college, aded=aded, currwork=currwork, prevwork=prevwork, workskills=workskills, facebook=facebook, twitter=twitter, instagram=instagram)
+			print('update ma')
+			return True
+		else:
+			pi, created = Pi.objects.update_or_create(username=username, email=email, aboutme=aboutme, doj=doj, dob=dob, birthplace=birthplace, livesin=livesin, occupation=occupation, gender=gender, website=website, mobile=mobile, pi_id=username, travelledplaces=travelledplaces, dreamplaces=dreamplaces, favtravplaces=favtravplaces, favtravseasons=favtravseasons, favtravmoto=favtravmoto, favtravmode=favtravmode, hobbies=hobbies, skills=skills, interests=interests, school=school, college=college, aded=aded, currwork=currwork, prevwork=prevwork, workskills=workskills)
+			print('create ma')
+			if created:
 				return True
-			else:
-				pi, created = Pi.objects.update_or_create(username=username, email=email, aboutme=aboutme, doj=doj, dob=dob, birthplace=birthplace, livesin=livesin, occupation=occupation, gender=gender, website=website, mobile=mobile, pi_id=username, travelledplaces=travelledplaces, dreamplaces=dreamplaces, favtravplaces=favtravplaces, favtravseasons=favtravseasons, favtravmoto=favtravmoto, favtravmode=favtravmode, hobbies=hobbies, skills=skills, interests=interests, school=school, college=college, aded=aded, currwork=currwork, prevwork=prevwork, workskills=workskills)
-				if created:
-					return True
 		return False
 
 class GetInitial(forms.Form):
@@ -418,8 +433,8 @@ class GetInitial(forms.Form):
 
 
 class ProfileForm(forms.Form):
-	profilepic = forms.FileField(required=False)
-	coverpic = forms.FileField(required=False)
+	profilepic = forms.FileField(required=False, widget=forms.FileInput(attrs={'accept': 'image/*'}))
+	coverpic = forms.FileField(required=False, widget=forms.FileInput(attrs={'accept': 'image/*'}))
 
 	def clean_profilepic(self):
 		isclean = self.cleaned_data['profilepic']
@@ -430,7 +445,7 @@ class ProfileForm(forms.Form):
 		return isclean
 
 
-class GetAboutInitial(forms.Form):
+class GetInitial(forms.Form):
 	def initial(username):
 		data = {}
 		if (AuthUser.objects.filter(username=username).exists()):
@@ -795,6 +810,39 @@ class ContributeForm(forms.Form):
 			print('yesy')
 		else:
 			print('nesy')
+
+
+class ReportForm():
+
+	def get_records():
+		feed = Feedback.objects.filter()
+		feeds_list = []
+
+		for f in range(len(feed)):
+			feeds_list.append([feed[f].username, feed[f].liked_using, feed[f].liked_most, feed[f].assist, feed[f].recommend, feed[f].improvement, feed[f].use_again, feed[f].overall, feed[f].description])
+
+
+		user = User.objects.filter()
+		users_list = []
+		for u in range(len(user)):
+			users_list.append([user[u].username, user[u].email, user[u].first_name, user[u].last_name, str(user[u].date_joined)[0:10]])
+
+
+		trip = Trip.objects.filter()
+		trips_list = []
+		for t in range(len(trip)):
+			trips_list.append([trip[t].username, trip[t].company, trip[t].moto, trip[t].mode, trip[t].source, trip[t].destination, trip[t].gender, str(trip[u].start_date)[0:10] ])
+		
+		event = Event.objects.filter()
+		events_list = []
+		for e in range(len(event)):
+			events_list.append([event[e].username, event[e].location, event[e].category, event[e].activity, str(event[e].start_date)[0:10], str(event[e].end_date)[0:10] ])
+
+		return(feeds_list, users_list, trips_list, events_list)
+
+
+
+
 
 '''
 #Using clean()

@@ -18,7 +18,7 @@
           <div class="plan-trip-body-main">
               <h4>Create an Event</h4>
               <i>Create your own <b>Event</b> and <b>Publish it</b>.</i>
-              <button class="btn btn-danger btn-lg btn-plan" onclick="one()"><b>Plan</b></button>
+              <button class="btn btn-danger btn-lg btn-plan" type="button"><b><a href="{% url 'planevent' %}" style="color: white">Plan</a></b></button>
           </div>
         </div>
       </div><!-- plan-trip-top end -->
@@ -27,7 +27,7 @@
           <div class="join-trip-body-main">
             <h4>Participate in an Event</h4>
             <i>Search for a <b>Events</b> and choose to <b>Join it</b>.</i>
-            <button class="btn btn-danger btn-lg btn-join"><b>Search & Join</b></button>
+            <button class="btn btn-danger btn-lg btn-join"><b><a href="{% url 'searchevent' %}" style="color: white">Search & Join</a></b></button>
           </div>
         </div>
       </div>

@@ -1,4 +1,4 @@
-/home/willo_buntu/emTests/media
+#/home/willo_buntu/emTests/media
 # This is an auto-generated Django model module.
 # You'll have to do the following manually to clean this up:
 #   * Rearrange models' order
@@ -88,7 +88,7 @@ class AuthUserUserPermissions(models.Model):
 
 
 class Contribute(models.Model):
-    contribute_id = models.CharField(primary_key=True, max_length=26)
+    contribute_id = models.CharField(primary_key=True, max_length=32)
     location_name = models.CharField(max_length=100)
     location_type = models.CharField(max_length=100)
     season = models.CharField(max_length=100, blank=True, null=True)
@@ -300,8 +300,9 @@ class Login(models.Model):
 
 
 class Misc(models.Model):
-    user = models.ForeignKey(Login, models.DO_NOTHING, blank=True, null=True)
     flog = models.IntegerField()
+    username = models.CharField(max_length=200)
+    misc_id = models.IntegerField(primary_key=True)
 
     class Meta:
         managed = False
