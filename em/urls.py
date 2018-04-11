@@ -1,14 +1,18 @@
 from django.conf.urls import url
 from em import views
 from django.contrib.auth.decorators import login_required, permission_required, user_passes_test
-from django.contrib.auth.models import Group
-
+from django.contrib.auth import (
+    REDIRECT_FIELD_NAME, get_user_model, login as auth_login,
+    logout as auth_logout, update_session_auth_hash,
+)
 
 indexpatterns = [
     url(r'^$',views.IndexPageView.as_view(), name='index'),
    # url(r'^?next=(?P<redirect_url>[/\w]+)$',login_required(views.IndexPageView.as_view()), name='index'),
-    url(r'^logout/', views.logout_page, name='logout_page')
 
+]
+logoutpatterns = [
+    url(r'^$', views.LogoutPageView.as_view(), name='signoff'),
 ]
 
 aboutpatterns = [

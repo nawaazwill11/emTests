@@ -307,8 +307,9 @@
                 data: $('#pi_form').serialize(),
                 success: function (x) {                
                   alert("Changes have been saved") 
+                  setTimeout(function(){ window.location = '../'; }, 100);
                 },
-                error:function(){
+                error:function(x){
                   alert("Changes cannot be saved.\nTry Again with proper inputs.") 
                 }
             });

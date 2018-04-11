@@ -5,7 +5,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.models import User
 import hashlib
 import re
-from em.models import Login, Pi, AuthUser, Trip, Event, Feedback, Contribute
+from em.models import Login, Pi, AuthUser, Trip, Event, Feedback, Contribute, Misc
 
 
 #Using clean_<field_name>. This is the best choice.
@@ -14,6 +14,7 @@ class LoginForm(forms.Form):
 	username = forms.CharField(required=True, initial='', widget=forms.TextInput(attrs={'id': 'sigin-username', 'class': 'full-width has-padding has-border', 'placeholder': 'Username'}))
 	password = forms.CharField(required=True, widget=forms.PasswordInput(attrs={'id': 'sigin-password', 'class': 'full-width has-padding has-border', 'placeholder': 'Password'}))
 	logid = forms.CharField(required=False, widget=forms.HiddenInput())
+	cookie = forms.CharField(required=False, widget=forms.HiddenInput(attrs={"id": 'cookie'}))
 
 	#image = forms.ImageField(label='Photoo', required=False, widget=forms.ClearableFileInput())
 	
@@ -35,6 +36,15 @@ class LoginForm(forms.Form):
 			self.add_error('password', message)
 			raise forms.ValidationError(message)
 		return isclean
+
+	def clean_logid(self):
+		isclean = self.cleaned_data['logid']
+		return isclean
+
+	def clean_cookie(self):
+		isclean= self.cleaned_data['cookie']
+		return isclean
+
 
 	def loginauth(email):
 		print(email)
@@ -113,6 +123,14 @@ class RegistrationForm(forms.Form):
 			raise forms.ValidationError(message)
 		return isclean
 
+	def clean_dob(self):
+		isclean = self.cleaned_data['dob']
+		madedate = dt.strptime(isclean, '%Y-%m-%d')
+		return madedate
+
+	def clean_gender(self):
+		isclean = self.cleaned_data['gender']
+		return isclean
 
 	def clean_contact(self, *args):
 		isclean = self.cleaned_data['contact']
@@ -140,7 +158,7 @@ class RegistrationForm(forms.Form):
 			raise forms.ValidationError('Email Exists')
 
 
-	def register(username, email, password, repassword, contact):
+	def register(username, email, password):
 		has_user = RegistrationForm.check_user_exists(username)
 		has_email = RegistrationForm.check_email_exists(email)
 		print('here')
@@ -199,7 +217,7 @@ class AboutEditForm(forms.Form):
 	occupation = forms.CharField(required=False, max_length=500, widget=forms.TextInput(attrs={'placeholder': 'Eg. Programmer'}))
 	gender = forms.ChoiceField(choices=[('none',' '), ('male','Male'),('female','Female'),('other','Other')], required=True, widget=forms.Select(attrs={'class': 'slt'}))
 	relationstatus = forms.ChoiceField(choices=[('none',' '), ('single','Single'),('relation','In a Relation'),('married','Married')], required=False, widget=forms.Select(attrs={'class': 'slt'}))
-	email = forms.EmailField(required=True, widget=forms.EmailInput(attrs={'placeholder': 'Eg. some@mail.com'}))
+	email = forms.EmailField(required=False, widget=forms.EmailInput(attrs={'placeholder': 'Eg. some@mail.com', 'disabled': 'disabled'}))
 	website = forms.CharField(required=False, max_length=500, widget=forms.TextInput(attrs={'placeholder': 'Website'}))
 	mobile = forms.CharField(required=False, max_length=10, widget=forms.TextInput(attrs={'placeholder': 'Eg. 999990000'}))
 	facebook = forms.CharField(required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'https://www.facebook.com/user'}))
@@ -275,13 +293,6 @@ class AboutEditForm(forms.Form):
 		isclean = self.cleaned_data['relationstatus']
 		if (isclean in range(0,3)):
 			raise forms.ValidationError('Error in Relation')
-		return isclean
-
-	def clean_email(self):
-		isclean = self.cleaned_data['email']
-		email_valid = re.search(r'^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$', isclean, re.I)
-		if not email_valid:
-			raise form.ValidationError('Error in Email')
 		return isclean
 
 	def clean_website(self):
@@ -405,11 +416,12 @@ class AboutEditForm(forms.Form):
 			raise forms.ValidationError('Error in Instragram')
 		return isclean
 
-	def do_update(username, aboutme, dayz, monthz, yearz, birthplace, livesin, occupation, gender, relationstatus, email, website, mobile, travelledplaces, dreamplaces, favtravplaces, favtravseasons, favtravmoto, favtravmode, hobbies, skills, interests, school, college, aded, currwork, prevwork, workskills, facebook, twitter, instagram):
+	def do_update(username, aboutme, dayz, monthz, yearz, birthplace, livesin, occupation, gender, relationstatus, website, mobile, travelledplaces, dreamplaces, favtravplaces, favtravseasons, favtravmoto, favtravmode, hobbies, skills, interests, school, college, aded, currwork, prevwork, workskills, facebook, twitter, instagram):
 		
 		print('ahiya')
 		user = User.objects.get(username=username)
 		doj = user.date_joined
+		email = user.email
 		now = datetime.datetime.now()
 		dob = dt(year=int(yearz), month=int(monthz), day=int(dayz))
 		if (Pi.objects.filter(username=username).exists()):
@@ -429,6 +441,7 @@ class GetInitial(forms.Form):
 			pi = Pi.objects.filter(username=username)
 			for i in pi.values():
 				data = i
+			print(data)
 			return data
 		return None
 
@@ -842,6 +855,31 @@ class ReportForm():
 
 		return(feeds_list, users_list, trips_list, events_list)
 
+class RegPi():
+	def pied(username, email, dob, gender, contact):
+		pi_id = TripPlanValidation.hexer(username)
+		doj = datetime.datetime.now()
+		pi = Pi.objects.create(pi_id=pi_id, username=username, email=email, dob=dob, doj=doj, gender=gender, mobile=contact, coverpic='dummy/cover.jpg', profilepic='dummy/user-gusta.png')
+		if pi: 
+			return True
+		return False
+
+
+class Miscer():
+
+	def misced(username):
+		misc_id = TripPlanValidation.hexer(username)
+		flog = 0
+		misc = Misc.objects.create(misc_id=misc_id, username=username, flog=flog)
+		if misc:
+			return True
+		return False
+
+	def miscZ(username):
+		misc = Misc.objects.get(username=username)
+		if misc.flog == 0:
+			return True
+		return False
 
 
 

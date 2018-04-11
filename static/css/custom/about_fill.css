@@ -1,6 +1,9 @@
 
 .container{}
-
+#id_email {
+	background-color: transparent;
+	cursor: not-allowed; 
+}
 #pi_form {
 	width: 100%;
 	display: flex;

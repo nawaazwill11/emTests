@@ -1,3 +1,5 @@
-yearslist = [(i, i) for i in range(1930,2004)]
+from datetime import datetime as dt
 
-print(yearslist)
+dob = "1993-11-24"
+madedate = dt.strptime(dob, '%Y-%m-%d')
+print(madedate)

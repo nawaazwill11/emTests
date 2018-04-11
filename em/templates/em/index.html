@@ -36,6 +36,7 @@
 					<form id="form_login" method="POST" class="cd-form">
 						{% csrf_token %}
 						{{ form.logid }}
+						{{ form.cookie }}
 						<p class="fieldset">
 							<label class="image-replace cd-email" for="signin-username">E-mail</label>
 							{{ form.username }}
@@ -108,6 +109,7 @@
 							<label class="image-replace cd-password" for="signup-contact">Contact</label>
 							{{rform.contact}}
 							<span id="sign_contact_error" class="index-errors"></span>
+							<span id="registererrors"></span>
 						</p>
 						
 						<p class="fieldset">
@@ -367,6 +369,11 @@
 	  		}
 	  	})
 
+	  	$("#remember-me").click(function(){
+	  			$("#cookie").val('yes')
+	  	})
+
+
     </script>
     <script type="text/javascript">
 
@@ -380,16 +387,14 @@
 					    dataType: 'json',
 					    data: $('#form_login').serialize(),
 					    success: function (x) {                
-					      $("#username-error").html(x.username_error)
-					      $("#password-error").html(x.password_error)
-					      $("#credential-error").html("Login Success");
+					      $("#credential-error").text("Login Success");
 					      var delay = 1000; 
 					      redirect_url = x.url
 					      //alert("Welcome to Endless Miles. Happy Travelling!");
 					      setTimeout(function(){ window.location = redirect_url; }, delay);
 					    },
 					    error:function(){
-					      $("#credential-error").html("Invalid Credentials");
+					      $("#credential-error").text("Invalid Credentials");
 					    }
 				  	});
 				  return false;
@@ -405,14 +410,14 @@
 					    dataType: 'json',
 					    data: $('#form_registration').serialize(),
 					    success: function (x) {                
-					      $("#registererrors").html(x.message);
-					      var delay = 1000; 
+					      $("#registererrors").text(x.message);
+					      //var delay = 1000; 
 					      //redirect_url = x.url
 					      //alert("Welcome to Endless Miles. Happy Travelling!");
 					      //setTimeout(function(){ window.location = redirect_url; }, delay);
 					    },
 					    error:function(err){
-					      $("#registererrors").html(err.message);
+					      $("#registererrors").text(err.message);
 					    }
 				  	});
 				  return false;

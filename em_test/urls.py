@@ -27,6 +27,7 @@ urlpatterns = [
     url(r'^em/event_main/', include(emurls.eventmainpatterns)),
     url(r'^em/feedback/', include(emurls.feedbackpatterns)),
     url(r'^em/friends/', include(emurls.friendspatterns)),
+    url(r'^em/signoff/',include(emurls.logoutpatterns)),
     url(r'^em/myevent/', include(emurls.myeventpatterns)),
     url(r'^em/mytrip/', include(emurls.mytrippatterns)),
     url(r'^em/plan_event/', include(emurls.planeventpatterns)),
