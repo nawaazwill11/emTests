@@ -62,11 +62,13 @@ class LoginForm(forms.Form):
 
 class RegistrationForm(forms.Form):
 
-	username = forms.CharField(required=True, initial='', widget=forms.TextInput(attrs={'id': 'sigup-username', 'class': 'full-width has-padding has-border', 'placeholder': 'Username'}))
-	email = forms.EmailField(required=True, widget=forms.EmailInput(attrs={'id': 'sigup-email', 'class': 'full-width has-padding has-border', 'placeholder': 'Email'}))
-	password = forms.CharField(required=True, widget=forms.PasswordInput(attrs={'id': 'sigup-password', 'class': 'full-width has-padding has-border', 'placeholder': 'Password'}))
-	repassword = forms.CharField(required=True, widget=forms.PasswordInput(attrs={'id': 'sigup-repassword', 'class': 'full-width has-padding has-border', 'placeholder': 'Re-Enter Password'}))
-	contact = forms.RegexField(regex=r'^\d{10}$', max_length=10, required=True, widget=forms.TextInput(attrs={'id': 'sigup-contact', 'class': 'full-width has-padding has-border', 'placeholder': 'Contact Number '}))
+	username = forms.CharField(required=True, initial='', widget=forms.TextInput(attrs={'id': 'signup-username', 'class': 'full-width has-padding has-border', 'placeholder': 'Username'}))
+	email = forms.EmailField(required=True, widget=forms.EmailInput(attrs={'id': 'signup-email', 'class': 'full-width has-padding has-border', 'placeholder': 'Email'}))
+	password = forms.CharField(required=True, widget=forms.PasswordInput(attrs={'id': 'signup-password', 'class': 'full-width has-padding has-border', 'placeholder': 'Password'}))
+	repassword = forms.CharField(required=True, widget=forms.PasswordInput(attrs={'id': 'signup-repassword', 'class': 'full-width has-padding has-border', 'placeholder': 'Re-Enter Password'}))
+	dob = forms.CharField(required=True, widget=forms.TextInput(attrs={'id': 'signup-dob', 'class': 'full-width has-padding has-border', 'placeholder': 'Date of Birth (YYYY-MM-DD)'}))
+	gender = forms.CharField(required=True, widget=forms.TextInput(attrs={'id': 'signup-gender', 'class': 'full-width has-padding has-border', 'placeholder': 'Gender (Male, Female, Others)'}))
+	contact = forms.RegexField(regex=r'^\d{10}$', max_length=10, required=True, widget=forms.TextInput(attrs={'id': 'signup-contact', 'class': 'full-width has-padding has-border', 'placeholder': 'Contact Number '}))
 	#regid = forms.CharField(required=False, widget=forms.HiddenInput())
 
 

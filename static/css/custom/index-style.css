@@ -522,3 +522,8 @@ label {
   left: -15px;
   color: #ef0707;
 }
+.index-errors {
+  color: red;
+  font-size: 15px;
+  position: absolute;
+}

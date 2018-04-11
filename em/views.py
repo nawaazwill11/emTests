@@ -17,35 +17,12 @@ from .mods.required import UserInfo
 import re
 
 
-
-
-def save_uploaded_file_to_media_root(f):
-    with open('%s%s' % (settings.MEDIA_ROOT,f.name), 'wb+') as destination:
-        for chunk in f.chunks():
-            destination.write(chunk)
-
-class TestPageView(TemplateView):
-	template_name = 'test.html'
-
-	def get(self, request, *args, **kwargs):
-		print(request.GET)
-		trip_list = Trip.objects.all()
-		trip_filter = TripSearchFilter(request.GET, queryset=trip_list)
-		context = {'filter': trip_filter}
-		return render(request, self.template_name, context)
-
-	def post(self, request, *args, **kwargs):
-		return render(request, self.template_name, context=None)
-
-
-
 class IndexPageView(TemplateView):
 	template_name = 'index.html'
 	form = LoginForm
 	rform = RegistrationForm
 
 	def get(self, request, *args, **kwargs):
-	
 		form = self.form(initial='')
 		rform  = self.rform(initial='')
 		#Printer.print(rform)
@@ -54,59 +31,15 @@ class IndexPageView(TemplateView):
 	def post(self, request, *args, **kwargs):
 		form = self.form(request.POST)
 		rform = self.rform(request.POST)
-		check_user_form = re.search(r'^\w+', form['username'].value(), re.I)
-		
-		if 'contact' in request.POST:
-			if rform.is_valid():
-				cleaned = rform.cleaned_data
-				username = cleaned['username']
-				email = cleaned['email']
-				password = cleaned['password']
-				repassword = cleaned['repassword']
-				contact = cleaned['contact']
-				recorded = RegistrationForm.register(username, email, password, repassword, contact)
-				if recorded:
-					misc_id = TripPlanValidation.hexer(username)
-					print(misc_id)
-					misc = Misc.objects.create(username=username, flog=0, misc_id=misc_id)
-					if misc_id:	
-						return JsonResponse({"success": True, 'message': 'User Created'})
-				return JsonResponse({"success": False, 'message': 'Error! Check credentials.'})
-				error = recorded['error']
-				return render(request, self.template_name, {'error': error })
-			return render(request, self.template_name, {'form': form,'rform': rform})
-	#			return HttpResponseRedirect(template_name)
+		print(form)
+		if 'logid' in request.POST:
+			cleaned = form.cleaned_data
+			username = cleaned['username']
+			password = cleaned['password']
+			user = authenticate(request, username=password, password=password)
+			#if user:
 
-		else:
-			if form.is_valid():
-				cleaned = form.cleaned_data
-				username = cleaned['username']
-				password = cleaned['password']
-				user = authenticate(request, username=username, password=password)
-				Printer.print(user)
-				#l = LoginForm.loginauth(user)
-				if user is not None:				
-					in_session = create_session(request, username)
-					print(in_session)
-					if in_session:
-						l = LoginForm.loginauth(in_session)
-						auth_login(request, user)
-						next_url = request.GET.get('next')
-						misc = Misc.objects.get(username=username)
-						if misc.flog == 0:
-							pi = Pi.objects.get(username=username)
-							pi.coverpic = 'dummy/cover.jpg'
-							pi.profilepic = "dummy/user-gusta.png"
-							pi.save()
-							request.session['username'] = username
-							request.session['firstname'] = " "
-							request.session['lastname'] = " "
-							return JsonResponse({'success': True, 'url': 'about/about_fill/'})
-						create_session_rest(request, username)
-						return JsonResponse({'success': True, 'url': 'story/'})
-				else:
-					raise ValidationError('nope')
-			return render(request, self.template_name, context=None)
+
 
 
 
@@ -146,6 +79,25 @@ def logout_page (request):
 	'''def get(request):
 					logout(request)
 					return HttpResponsePermanentRedirect('../')'''
+
+
+def save_uploaded_file_to_media_root(f):
+    with open('%s%s' % (settings.MEDIA_ROOT,f.name), 'wb+') as destination:
+        for chunk in f.chunks():
+            destination.write(chunk)
+
+class TestPageView(TemplateView):
+	template_name = 'test.html'
+
+	def get(self, request, *args, **kwargs):
+		print(request.GET)
+		trip_list = Trip.objects.all()
+		trip_filter = TripSearchFilter(request.GET, queryset=trip_list)
+		context = {'filter': trip_filter}
+		return render(request, self.template_name, context)
+
+	def post(self, request, *args, **kwargs):
+		return render(request, self.template_name, context=None)
 
 class RootHandler(TemplateView):
 
