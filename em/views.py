@@ -11,7 +11,7 @@ from django.http import HttpResponseRedirect, HttpResponsePermanentRedirect, Jso
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from .models import Login, Pi, Trip, Event, Misc
-from .mods.forms import LoginForm, RegistrationForm, Printer, AboutEditForm, GetInitial, ProfileForm, TripPlanValidation, MyTripForm, EventPlanForm, MyEventForm, FeedbackForm, ContributeForm, ReportForm, ProfileRoot, Miscer, RegPi
+from .mods.forms import LoginForm, RegistrationForm, Printer, AboutEditForm, GetInitial, ProfileForm, TripPlanValidation, MyTripForm, EventPlanForm, MyEventForm, FeedbackForm, ContributeForm, ReportForm, ProfileRoot, Miscer, RegPi, Bifurcator
 from .mods.filters import TripSearchFilter, EventSearchFilter
 from .mods.test import SharingForm
 from .mods.required import UserInfo
@@ -397,14 +397,14 @@ class MyTripPageView(TemplateView):
 
 	def get(self, request, *args, **kwargs):
 		context = {}
-		trip_list = Trip.objects.all().order_by('created_on')
-		trip_filter = TripSearchFilter(request.GET, queryset=trip_list)
-		context['filters'] = trip_filter
-		records_list, ids_list = MyTripForm.form_base(request.session['username'])
-		context['ids_list'] = ids_list
+		
+		parameter = (request.GET.get('ownership'))
+		print(parameter)
 		context['username'] = request.session['username']
 		context['userpic'] = request.session['userpic']
-		#context = {'records_list': records_list, 'ids_list': ids_list }
+		trip_contents_list = Bifurcator.getTripContents(request.session['username'], parameter)
+		
+		context['trip_contents_list'] = trip_contents_list
 		return render(request, self.template_name, context)
 
 	def post(self, request, *args, **kwargs):

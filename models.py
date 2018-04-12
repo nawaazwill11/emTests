@@ -1,4 +1,4 @@
-#/home/willo_buntu/emTests/media
+/home/willo_buntu/emTests/media
 # This is an auto-generated Django model module.
 # You'll have to do the following manually to clean this up:
 #   * Rearrange models' order
@@ -302,7 +302,7 @@ class Login(models.Model):
 class Misc(models.Model):
     flog = models.IntegerField()
     username = models.CharField(max_length=200)
-    misc_id = models.IntegerField(primary_key=True)
+    misc_id = models.CharField(primary_key=True, max_length=32)
 
     class Meta:
         managed = False
@@ -322,16 +322,6 @@ class Notification(models.Model):
     class Meta:
         managed = False
         db_table = 'notification'
-
-
-class Participants(models.Model):
-    phenomenon = models.CharField(max_length=30, blank=True, null=True)
-    part_id = models.CharField(max_length=32, blank=True, null=True)
-    username = models.CharField(max_length=200, blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'participants'
 
 
 class Photo(models.Model):
@@ -526,6 +516,17 @@ class TripDate(models.Model):
     class Meta:
         managed = False
         db_table = 'trip_date'
+
+
+class TripParticipants(models.Model):
+    part_id = models.CharField(primary_key=True, max_length=32)
+    trip_id = models.CharField(max_length=32)
+    username = models.CharField(max_length=200)
+    ownership = models.CharField(max_length=15)
+
+    class Meta:
+        managed = False
+        db_table = 'trip_participants'
 
 
 class TripRequest(models.Model):

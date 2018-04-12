@@ -5,8 +5,8 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.models import User
 import hashlib
 import re
-from em.models import Login, Pi, AuthUser, Trip, Event, Feedback, Contribute, Misc
-
+from em.models import Login, Pi, AuthUser, Trip, Event, Feedback, Contribute, Misc, TripParticipants
+from copy import deepcopy
 
 #Using clean_<field_name>. This is the best choice.
 class LoginForm(forms.Form):
@@ -882,8 +882,66 @@ class Miscer():
 		return False
 
 
+class Bifurcator():
+	def getTripContents(username, parameter):
+		print('ikde')
+		print(parameter)
+		if parameter is None:
+			print('in none')
+			part = TripParticipants.objects.filter(username=username).values('trip_id')
+			trip_id_list = []
+			for p in part:
+				trip_id_list.append(p['trip_id'])
+			#print(trip_id_list)
+			trip_contents_list = Bifurcator.fetcher(username, trip_id_list)
+			
+			
+		elif parameter == 'created':
+			print('in created')
+			part = TripParticipants.objects.filter(username=username, ownership=parameter).values('trip_id')
+			trip_id_list = []
+			for p in part:
+				trip_id_list.append(p['trip_id'])
+			print(trip_id_list)
+			trip_contents_list = Bifurcator.fetcher(username, trip_id_list)
+
+		elif parameter == 'joined':
+			print('in joined')
+			part = TripParticipants.objects.filter(username=username, ownership=parameter).values('trip_id')
+			trip_id_list = []
+			for p in part:
+				trip_id_list.append(p['trip_id'])
+			print(trip_id_list)
+			trip_contents_list = Bifurcator.fetcher(username, trip_id_list)
+
+		return trip_contents_list
+
+	def fetcher(username,id_list):
+		trip_contents_list = []
+		part_contents_list = []
+		for trip_id in id_list:
+			trip = Trip.objects.filter(username=username, trip_id=trip_id).values()
+			parts = TripParticipants.objects.filter(trip_id=trip_id).values('username')
+			users_list = []
+			for p in parts:
+				users_list.append(p['username'])
+			#print(trip_id, users_list)
+			part_contents_list = (Bifurcator.sub_fetcher(username, users_list))
+			#print(part_contents_list)
+			trip_total = deepcopy(trip[0])
+			trip_total['plist'] = part_contents_list
+			trip_contents_list.append(trip_total)
+			#print(trip_contents_list)
+		return trip_contents_list
 
 
+	def sub_fetcher(username, users_list):
+		name_pic_list = []
+		for username in users_list:
+			pi = Pi.objects.filter(username=username).values('username','profilepic')
+			name_pic_list.append(pi[0])
+		#print(name_pic_list)
+		return name_pic_list
 '''
 #Using clean()
 class LoginForm(forms.Form):

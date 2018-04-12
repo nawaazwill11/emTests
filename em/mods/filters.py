@@ -25,10 +25,11 @@ class TripSearchFilter(django_filters.FilterSet):
 	ownership = MultipleChoiceFilter(choices=[('admin','Created'), ('joined',' Joined')], widget=forms.CheckboxSelectMultiple )
 	location = ChoiceFilter(choices=[('male','Male'), ('female','Female'), ('others','Others'), ('any','Any')], widget=forms.Select())
 	gender = ChoiceFilter(choices=[('male','Male'), ('female','Female'), ('others','Others'), ('Any', 'Any')], widget=forms.Select(attrs={'class': 'selects'}))
+	trip_id = django_filters.CharFilter(label="Trip id:", name="trip_id", lookup_expr='icontains', widget=forms.TextInput(attrs={}))
 
 	class Meta:
 		model = Trip
-		fields = ['ownership']
+		fields = []
 		#fields = ['username', 'trip_id', 'company', 'moto', 'destination', 'fuel', 'vehicle', 'hotel', 'total', 'start_date', 'gender', 'age_group', 'participants', 'title', 'description', 'pitstops', 'pitstops_time', 'source', 'destination', 'timeperpit','distance', 'duration', 'created_on', 'is_published',]
 
 class EventSearchFilter(django_filters.FilterSet):

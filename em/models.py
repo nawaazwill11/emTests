@@ -512,6 +512,21 @@ class TripDate(models.Model):
         db_table = 'trip_date'
 
 
+class TripParticipants(models.Model):
+    part_id = models.CharField(primary_key=True, max_length=32)
+    trip_id = models.CharField(max_length=32)
+    username = models.CharField(max_length=200)
+    ownership = models.CharField(max_length=15)
+
+    class Meta:
+        managed = False
+        db_table = 'trip_participants'
+
+    def __str__(self):
+        returns = '{0.trip_id}'
+        return returns.format(self)
+
+
 class TripRequest(models.Model):
     trip = models.ForeignKey(Trip, models.DO_NOTHING, primary_key=True)
     trip_admin = models.ForeignKey(Login, models.DO_NOTHING, db_column='trip_admin')
