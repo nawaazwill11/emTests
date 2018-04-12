@@ -236,6 +236,17 @@ class EventMisc(models.Model):
         db_table = 'event_misc'
 
 
+class EventParticipants(models.Model):
+    part_id = models.CharField(primary_key=True, max_length=32)
+    event_id = models.CharField(max_length=32)
+    username = models.CharField(max_length=200)
+    ownership = models.CharField(max_length=15)
+
+    class Meta:
+        managed = False
+        db_table = 'event_participants'
+
+
 class EventPhoto(models.Model):
     event = models.ForeignKey(Event, models.DO_NOTHING, primary_key=True)
     user = models.ForeignKey('Login', models.DO_NOTHING)
@@ -471,6 +482,7 @@ class Trip(models.Model):
     created_on = models.DateTimeField()
     mode = models.CharField(max_length=10, blank=True, null=True)
     ownership = models.CharField(max_length=15)
+    status = models.CharField(max_length=30, blank=True, null=True)
 
     class Meta:
         managed = False

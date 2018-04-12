@@ -889,15 +889,15 @@
         var pb_moto = document.getElementById('pb-moto');
         pb_company.innerHTML = "";
         pb_moto.innerHTML = "";
-        //if (post_dict['company'] && post_dict['moto']){
+        if (post_dict['company'] && post_dict['moto']){
           pb_company.innerHTML = post_dict['company'];
           pb_moto.innerHTML = post_dict['moto'];
           navigante(main, s1, s2, s3);
           focus_click(f,uf);
-        //}
-        //else{
-          //alert('Please select Company and Travel-Moto')
-        //}
+        }
+        else{
+          alert('Please select Company and Travel-Moto')
+        }
       }
       function prev_click1() {
       }
@@ -1012,8 +1012,13 @@
         $("#pb_destination").text(post_dict['destination'])
         $("#pb_mode").text(post_dict['mode'])
         $("#pb_trip_duration").text(post_dict['duration'])
-        focus_click('three', 'two')
-        navigante('three', 'one', 'two', 'four')
+        if (source != '' && destination != '' && mode != ''){
+          focus_click('three', 'two')
+          navigante('three', 'one', 'two', 'four')
+        }
+        else{
+          alert("Please enter Source, Destination and Mode to continue")
+        }
       });
 
     </script>
@@ -1054,7 +1059,7 @@
         var meridiem = $("#meridiem option:selected").val()
         var gender = $("#gender_list option:selected").val()
         var age_group_list =[]
-        age_group_list_string =[]
+        age_group_list_text =[]
 
         for (var i=1; i <= age_group_count;i++) {
           var agegroup = "#age_group"+i+" option:selected"

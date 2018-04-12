@@ -5,7 +5,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.models import User
 import hashlib
 import re
-from em.models import Login, Pi, AuthUser, Trip, Event, Feedback, Contribute, Misc, TripParticipants
+from em.models import Login, Pi, AuthUser, Trip, Event, Feedback, Contribute, Misc, TripParticipants, EventParticipants
 from copy import deepcopy
 
 #Using clean_<field_name>. This is the best choice.
@@ -432,6 +432,7 @@ class AboutEditForm(forms.Form):
 			pi, created = Pi.objects.update_or_create(username=username, email=email, aboutme=aboutme, doj=doj, dob=dob, birthplace=birthplace, livesin=livesin, occupation=occupation, gender=gender, website=website, mobile=mobile, pi_id=username, travelledplaces=travelledplaces, dreamplaces=dreamplaces, favtravplaces=favtravplaces, favtravseasons=favtravseasons, favtravmoto=favtravmoto, favtravmode=favtravmode, hobbies=hobbies, skills=skills, interests=interests, school=school, college=college, aded=aded, currwork=currwork, prevwork=prevwork, workskills=workskills)
 			print('create ma')
 			if created:
+
 				return True
 		return False
 
@@ -596,6 +597,9 @@ class TripPlanValidation():
 		timenow = datetime.datetime.now()
 		trip = Trip.objects.create(username=username, trip_group=trip_group, trip_id=trip_id, created_on=timenow, company=company, moto=moto, source=source, destination=destination, mode=mode, pitstops=pitstops, timeperpit=timeperpit, pitstops_time=pitstops_time, distance= distance, duration=duration, start_date=start_date, gender=gender, age_group=age_group, participants=participants, title=title, description=description, fuel=fuel, vehicle=vehicle, hotel=hotel, total=total)
 		if trip:
+			part_id = TripPlanValidation.hexer(username) 
+			trip_id = trip.trip_id
+			part = TripParticipants.objects.create(part_id=part_id, trip_id=trip_id, ownership='created')
 			return True
 		else:
 			print('Error in Creating')
@@ -772,6 +776,9 @@ class EventPlanForm(forms.Form):
 		ownership = "admin"
 		event = Event.objects.create(username=username, event_id=event_id, title=title, description=description, start_date=start_date, end_date=end_date, deadline=dead_date, event_privacy=privacy, location=location, venue_name=venue_name, city=city, state=state, country=country, pincode=pincode, category=category, activity=activity, gender=gender,age=age_group, participants=participants, fees=fees, created_on=timenow, logo=logo, cover=cover, ownership=ownership)
 		if event:
+			part_id = TripPlanValidation.hexer(username) 
+			event_id = event.event_id
+			part = EventParticipants.objects.create(part_id=part_id, event_id=event_id, ownership='created')
 			print(True)
 		else:
 			print('Error in Creating')
@@ -893,7 +900,7 @@ class Bifurcator():
 			for p in part:
 				trip_id_list.append(p['trip_id'])
 			#print(trip_id_list)
-			trip_contents_list = Bifurcator.fetcher(username, trip_id_list)
+			trip_contents_list = Bifurcator.Tfetcher(username, trip_id_list)
 			
 			
 		elif parameter == 'created':
@@ -903,7 +910,7 @@ class Bifurcator():
 			for p in part:
 				trip_id_list.append(p['trip_id'])
 			print(trip_id_list)
-			trip_contents_list = Bifurcator.fetcher(username, trip_id_list)
+			trip_contents_list = Bifurcator.Tfetcher(username, trip_id_list)
 
 		elif parameter == 'joined':
 			print('in joined')
@@ -912,11 +919,11 @@ class Bifurcator():
 			for p in part:
 				trip_id_list.append(p['trip_id'])
 			print(trip_id_list)
-			trip_contents_list = Bifurcator.fetcher(username, trip_id_list)
+			trip_contents_list = Bifurcator.Tfetcher(username, trip_id_list)
 
 		return trip_contents_list
 
-	def fetcher(username,id_list):
+	def Tfetcher(username,id_list):
 		trip_contents_list = []
 		part_contents_list = []
 		for trip_id in id_list:
@@ -926,13 +933,73 @@ class Bifurcator():
 			for p in parts:
 				users_list.append(p['username'])
 			#print(trip_id, users_list)
-			part_contents_list = (Bifurcator.sub_fetcher(username, users_list))
+			part_contents_list = (Bifurcator.sub_Tfetcher(username, users_list))
 			#print(part_contents_list)
 			trip_total = deepcopy(trip[0])
 			trip_total['plist'] = part_contents_list
 			trip_contents_list.append(trip_total)
 			#print(trip_contents_list)
 		return trip_contents_list
+
+
+	def sub_Tfetcher(username, users_list):
+		name_pic_list = []
+		for username in users_list:
+			pi = Pi.objects.filter(username=username).values('username','profilepic')
+			name_pic_list.append(pi[0])
+		#print(name_pic_list)
+		return name_pic_list
+
+	def getEventContents(username, parameter):
+		print('ikde')
+		print(parameter)
+		if parameter is None:
+			print('in none')
+			part = EventParticipants.objects.filter(username=username).values('event_id')
+			event_id_list = []
+			for p in part:
+				event_id_list.append(p['event_id'])
+			#print(event_id_list)
+			event_contents_list = Bifurcator.fetcher(username, event_id_list)
+			
+			
+		elif parameter == 'created':
+			print('in created')
+			part = EventParticipants.objects.filter(username=username, ownership=parameter).values('event_id')
+			event_id_list = []
+			for p in part:
+				event_id_list.append(p['event_id'])
+			print(event_id_list)
+			event_contents_list = Bifurcator.fetcher(username, event_id_list)
+
+		elif parameter == 'joined':
+			print('in joined')
+			part = EventParticipants.objects.filter(username=username, ownership=parameter).values('event_id')
+			event_id_list = []
+			for p in part:
+				event_id_list.append(p['event_id'])
+			print(event_id_list)
+			event_contents_list = Bifurcator.fetcher(username, event_id_list)
+
+		return event_contents_list
+
+	def fetcher(username,id_list):
+		event_contents_list = []
+		part_contents_list = []
+		for event_id in id_list:
+			event = Event.objects.filter(username=username, event_id=event_id).values()
+			parts = EventParticipants.objects.filter(event_id=event_id).values('username')
+			users_list = []
+			for p in parts:
+				users_list.append(p['username'])
+			#print(event_id, users_list)
+			part_contents_list = (Bifurcator.sub_fetcher(username, users_list))
+			#print(part_contents_list)
+			event_total = deepcopy(event[0])
+			event_total['plist'] = part_contents_list
+			event_contents_list.append(event_total)
+			#print(event_contents_list)
+		return event_contents_list
 
 
 	def sub_fetcher(username, users_list):
@@ -942,6 +1009,14 @@ class Bifurcator():
 			name_pic_list.append(pi[0])
 		#print(name_pic_list)
 		return name_pic_list
+
+class Listing():
+	def username_lister():
+		user = AuthUser.objects.filter().values('username')
+		user_list = []
+		for u in user:
+			user_list.append(u['username'])
+		return user_list
 '''
 #Using clean()
 class LoginForm(forms.Form):

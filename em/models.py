@@ -238,6 +238,17 @@ class EventMisc(models.Model):
         db_table = 'event_misc'
 
 
+class EventParticipants(models.Model):
+    part_id = models.CharField(primary_key=True, max_length=32)
+    event_id = models.CharField(max_length=32)
+    username = models.CharField(max_length=200)
+    ownership = models.CharField(max_length=15)
+
+    class Meta:
+        managed = False
+        db_table = 'event_participants'
+
+
 class EventPhoto(models.Model):
     event = models.ForeignKey(Event, models.DO_NOTHING, primary_key=True)
     user = models.ForeignKey('Login', models.DO_NOTHING)

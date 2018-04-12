@@ -102,8 +102,8 @@ storypatterns = [
 ]
 
 timelinepatterns = [
-    url(r'^$',login_required(views.TimelinePageView.as_view()), name='timeline')
-
+    url(r'^$',login_required(views.TimelinePageView.as_view()), name='timeline'),
+    #url(r'^?search=(?P<redirect_url>[\w]+)$',login_required(views.IndexPageView.as_view()), name='index'),
 ]
 
 travellermainpatterns = [

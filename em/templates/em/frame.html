@@ -28,10 +28,20 @@
                 <div class="page-title col-lg-1"><h1><i>{% block page_name %}{% endblock page_name %}</i></h1></div>
                 <div class="input-group input-group-md col-lg-offset-2 col-lg-3" id="nav-search">
                 {% block top_nav_search %}
-                    <input type="text" name="search" class="form-control search-input-top" placeholder="Search places or events">
+                <form id="navsearch_form" method="GET" style="display: flex">
+                    <input type="text" name="search" list="search_list" data-list-focus="true" class="form-control search-input-top" placeholder="Search people..." style="color:white;">
+                    <datalist id="search_list">
+                        <select>
+                            {% for user in ulist  %}
+                                <option>{{ user }}</option>
+                            {% endfor %}
+                        </select>
+                        
+                    </datalist>
                     <span class="input-group-btn">
-                        <button class="btn btn-danger search-button-top"><span class="glyphicon glyphicon-search"></span></button>
+                        <button class="btn btn-danger search-button-top" style="left: -45px; z-index: 1000; width: 50px"><span class="glyphicon glyphicon-search"></span></button>
                     </span>
+                </form>
                 {% endblock top_nav_search %}
                     
             </div>
@@ -155,6 +165,25 @@
           $(this).addClass('filled');
         }
       })  
+</script>
+<script>
+    $(document).ready(function() {
+        $("#aboutsubmit").click(function(){
+              $.ajax({
+                type: 'GET', 
+                url: '#', 
+                dataType: 'json',
+                data: $('#navsearch_form').serialize(),
+                success: function (x) {                
+                  
+                },
+                error:function(x){
+                  
+                }
+            });
+          return false;
+        });
+    })
 </script>
 {% block custom_scripts %}{% endblock custom_scripts %}
 </body>

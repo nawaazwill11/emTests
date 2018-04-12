@@ -69,10 +69,10 @@
                   <div id='' class='trip-creator col-lg-12 tc'>
                     <div class='creator-club'>
                       <div class='trip-creator-img'>
-                        <img src='{% static 'img/user-black.png' %}'>
+                        <img src='{{ MEDIA_URL }}{{ userpic }}'>
                       </div>
                       <div class='trip-creator-name'>
-                        Willo Walker
+                        {{ record.username }}
                       </div>
                     </div>
                   </div>
@@ -165,7 +165,7 @@
               </div>
               <div class="tbb-layer">
                 <div class="tbb-op" style="text-align: center; margin-bottom: 20px;">
-                  <span style="z-index:1047"><a class="view_part">View Participants</a></span>
+                  <span style="z-index:1047"><a style="cursor: pointer" class="view_part">View Participants</a></span>
                 </div>
               </div>
               <div class="tbb-low">

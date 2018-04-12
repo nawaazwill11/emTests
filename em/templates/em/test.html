@@ -1,9 +1,37 @@
-<form id="one">
-	
-	
-</form>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>test</title>
+<style type="text/css">
+	body {
+		display: flex;
+		flex-direction: column;
+	}
+	img {
+		width: 40%;
+		height: 50%
+	}
+	input {
+		width: 1300px;
+	}
+	button {
+		width: 8%;
+	}
+</style>
+</head>
+<body>
+	<img id="mapimage" src="https://maps.googleapis.com/maps/api/staticmap?center=40.714728,-73.998672&zoom=14&size=2048x2048&key=AIzaSyAZYM2Gy5WRKux6HoGom5QNXmrjpmYBAe8">
+	<input type="text" id="mapinput">
+	<button id="hitme">Hit It!!!</button>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-<form id="two">
+	<script type="text/javascript">
+		$("#hitme").click(function(){
+			map_url = $("#mapinput").val()
+			$("#mapimage").prop("src", map_url)
+		})
+	</script>
+</body>
+</html>
 	
-	
-</form>
+
