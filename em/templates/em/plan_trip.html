@@ -176,22 +176,18 @@
               </select>
               </div>
             </div>
-            <div>
-              <button id="route" type="button">Route</button>
+            <div class="vehicle l1-op col-lg-7 col-lg-offset-4" style="margin-top: 0px; text-align: center; margin-left: 127px;">
+              <button id="route" class="btn btn-success" type="button">Route</button>
             </div>
           </div>
           <div id="map-container" class="map-container col-lg-offset-1 col-lg-10">
-            <div id="map" class="map col-lg-12" style="padding: 0;">
+            <div id="map" class="map col-lg-12" style="padding: 0; margin-bottom: 20px;">
               <img src="{% static "img/maps.png" %}" >
             </div>
             
           </div>
-          <div class="p2-layer-2 col-lg-offset-1 col-lg-10">
-          <div class="p2-sub-layer-1">
-            <div class="add-stop">
-              <button id="addstop" type="button" class="btn btn-success"><span>+</span>AddStop</button>
-            </div>
-          </div>
+          <div class="p2-layer-2 col-lg-offset-1 col-lg-10" style="padding: 0">
+          
           <div class="p2-sub-layer-2">
             <div class="pits-handler">
               <div class="pitstops pb">
@@ -218,7 +214,7 @@
               <div class="time-per-pitstop pb">
                 <div class="pitstime-club">
                   <span>Time Per Pitstop:</span>
-                  <select id="tppsel" class="select-pitstime p2-vs" style="margin-left: 14px;">
+                  <select id="tppsel" class="select-pitstime p2-vs">
                     <option value="">--------</option>
                     <option value="5">5 min</option>
                     <option value="10">10 min</option>
@@ -242,23 +238,23 @@
             <div class="p2-time-distance pb">
               <div class="p2-distance">
                   <span style="flex: 1"><strong>Initial Distance:</strong></span>
-                  <span id="init_distance"><u>300 km</u></span>
+                  <span id="init_distance"><u></u></span>
               </div>
             </div>
             <div class="p2-time-distance pb">
               <div class="p2-time">
                   <span style="flex: 1"><strong>Initial Travel Time:</strong></span>
-                  <span id="init_duration"><u> 8 hours 15 min</u></span>
+                  <span id="init_duration"><u></u></span>
               </div>
             </div>
             <div class="p2-total-time-distance pb">
               <div class="p2-total-time">
                 <span style="display: flex; flex: 1;">Total Journey Time:</span>
-                <span id="trip_duration">9 hours 20 min</span>
+                <span id="trip_duration"></span>
               </div>
               <div class="p2-total-distance">
                 <span style="display: flex; flex: 1;">Total Distance:</span>
-                <span id="trip_distance">310 km</span>
+                <span id="trip_distance"></span>
               </div>
             </div>
           </div>
@@ -297,17 +293,17 @@
                           </div>
                           <div class="subtrip-pitstime st">
                             <b>Time/Pitstop:</b>
-                            <span>15 min</span>
+                            <span></span>
                           </div>
                       </div>
                       <div class="bottom-sublayer col-lg-11 sts">
                           <div class="subtrip-ttime st">
                             <b>Trip Distance: </b>
-                            <span>300 km</span>
+                            <span></span>
                           </div>
                           <div class="subtrip-tdist st">
                             <b>Trip Time:</b>
-                            <span>6 hour 20 min</span>
+                            <span></span>
                           </div>
                       </div>
                       <div class="subtrip-edit">
@@ -749,11 +745,11 @@
                     </div>
                     <div class="s-sh">
                       <span class="hash-content-left"><b>Distance:</b></span>
-                      <span id="pb_trip_distance" class="hash-content-right">550 km</span>
+                      <span id="pb_trip_distance" class="hash-content-right"></span>
                     </div>
                     <div class="s-sh">
                       <span class="hash-content-left"><b>T. Time:</b></span>
-                      <span id="pb_trip_duration" class="hash-content-right">9 hr 20 min</span>
+                      <span id="pb_trip_duration" class="hash-content-right"</span>
                     </div>
                   </div>   
                 </div>
@@ -856,8 +852,30 @@
       current_location = []
       lat = position.coords.latitude
       lng = position.coords.longitude
-      document.getElementById('pb-company').innerHTML = lat+', '+lng 
+      //document.getElementById('inputs').innerHTML = lat+', '+lng 
+      alert('loaded')
+      initMap();
 }
+</script>
+<script type="text/javascript">
+  function initMap() {
+      var im = 'http://www.robotwoods.com/dev/misc/bluecircle.png';
+      var myLatLng = {lat: lat, lng: lng};
+
+      var map = new google.maps.Map(document.getElementById('map'), {
+        center: myLatLng,
+        zoom: 7,
+
+      });
+
+      var userMarker = new google.maps.Marker({
+            position: myLatLng,
+            map: map,
+            icon: im
+      });
+      infoWindow = new google.maps.InfoWindow;
+      infoWindow.setContent('Location found.');
+  }
 </script>
 <script>
      var id = ''
@@ -935,10 +953,10 @@
         origin_geo = formattedAddress_list[0]
         destination_geo = formattedAddress_list[1]
         alert(formattedAddress_list)
-        initMap();
+        createMarkers();
       })
 
-      function initMap(){
+      function createMarkers(){
         var bounds = new google.maps.LatLngBounds;
         var markersArray = [];
 
@@ -991,8 +1009,12 @@
               for (var j = 0; j < results.length; j++) {
                 geocoder.geocode({'address': destinationList[j]},
                     showGeocodedAddressOnMap(true));
+                    routeDistance = results[j].distance.text
+                    routeDuration = results[j].duration.text
                     document.getElementById('init_distance').innerHTML = results[j].distance.text;
+                    document.getElementById('trip_distance').innerHTML = results[j].distance.text;
                     document.getElementById('init_duration').innerHTML = results[j].duration.text;
+                    document.getElementById('trip_duration').innerHTML = results[j].duration.text;
               }
             }
           }
@@ -1141,10 +1163,49 @@
       var tppinp_val = 0
       var tppsel_val = 0
       $("#calctime").click(function(){
-        var hours = 8;
-        var min = 15;
+        var time = routeDuration
+        var days_index = '0'
+        var hours_index = '0'
+        var mins_index = '0'
+
+        
+        if (time.indexOf('day') == -1){
+          days_index = 0
+          days = 0
+        }
+        else{
+          days_index = time.indexOf('day');
+          days = parseInt(time.slice(0,days_index-1))
+          if (time.indexOf('days')){
+            days_index += 4
+          }
+          else if (time.indexOf('day')){
+            days_index += 3
+          } 
+        }
+        
+        if (time.indexOf('hour') == -1){
+          hours_index = 0
+          hours = 0
+        }
+        else{
+          hours_index = time.indexOf('hour')
+          hours = parseInt(time.slice(days_index,hours_index-1))
+
+          if (time.indexOf('hours')){
+            hours_index += 5
+          }
+          else if (time.indexOf('hour')){
+            hours_index += 4
+          }
+        }
+        
+        mins_index = time.indexOf('min')
+        min = parseInt(time.slice(hours_index,mins_index-1))
+  
         var time_dict = {'mins': 1, 'hours': 60, 'days': 60*24}
-        var initial_min = hours*60 + min;
+        var initial_min = days*60*24 + hours*60 + min;
+        alert(initial_min)
         pitstops = $("#selectpit option:selected").val();
         if (pitstops === "custom"){
           pitstops = $("#custpit").val();
@@ -1340,7 +1401,7 @@
         $("#fuel_cost").focus(function(){
           mileage = $("#mileage").val()
           fuelprice = $("#fuel_price").val()
-          distance = 300
+          distance = $("#trip_distance").text()
           fuelcost = distance / mileage * fuelprice
           $("#fuel_cost").val(fuelcost)
           $("#total_cost").val(fuelcost)

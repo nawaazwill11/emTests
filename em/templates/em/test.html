@@ -1,85 +1,63 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Distance Matrix service</title>
-    <style>
-      #right-panel {
-        font-family: 'Roboto','sans-serif';
-        line-height: 30px;
-        padding-left: 10px;
-      }
+<head>
+	<title></title>
+</head>
+<body>
+	<input type="text" id="inp" name="">
+	<button id="hit">Hit me</button>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		$("#hit").click(function(){
+			var time  = $("#inp").val()
+			var days_index = '0'
+			var hours_index = '0'
+			var mins_index = '0'
 
-      #right-panel select, #right-panel input {
-        font-size: 15px;
-      }
+			
+			if (time.indexOf('day') == -1){
+				days_index = 0
+				days = 0
+			}
+			else{
+				days_index = time.indexOf('day');
+				days = parseInt(time.slice(0,days_index-1))
+				if (time.indexOf('days')){
+					days_index += 4
+				}
+				else if (time.indexOf('day')){
+					days_index += 3
+				}	
+			}
+			
+			if (time.indexOf('hour') == -1){
+				hours_index = 0
+				hours = 0
+			}
+			else{
+				hours_index = time.indexOf('hour')
+				hours = parseInt(time.slice(days_index,hours_index-1))
 
-      #right-panel select {
-        width: 100%;
-      }
+				if (time.indexOf('hours')){
+					hours_index += 5
+				}
+				else if (time.indexOf('hour')){
+					hours_index += 4
+				}
+			}
+			
 
-      #right-panel i {
-        font-size: 12px;
-      }
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-      #map {
-        height: 100%;
-        width: 50%;
-      }
-      #right-panel {
-        float: right;
-        width: 48%;
-        padding-left: 2%;
-      }
-      #output {
-        font-size: 11px;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="right-panel">
-      <div id="inputs">
-        <pre>
-var origin1 = {lat: 55.930, lng: -3.118};
-var origin2 = 'Greenwich, England';
-var destinationA = 'Stockholm, Sweden';
-var destinationB = {lat: 50.087, lng: 14.421};
-        </pre>
-      </div>
-      <div>
-        <strong>Results</strong>
-      </div>
-      <div id="output"></div>
-    </div>
-    <div id="map"></div>
-    	<button id="hit">Hit me</button>
-    <script>
+			mins_index = time.indexOf('min')
+			min = parseInt(time.slice(hours_index,mins_index-1))
 
+			var time_values = "Days: "+days+" Hours: "+hours+" Mins: "+min
+			alert(time_values) 
 
-</script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+			var initial_min = days*60*24 + hours*60 + min;
+			alert(initial_min)
 
-<script type="text/javascript">
-	$("#hit").click(function(){
-		});
-		$("#hit").promise(function(){
-			if ("geolocation" in navigator){ //check geolocation available 
-        //try to get user current location using getCurrentPosition() method
-        navigator.geolocation.getCurrentPosition(function(position){ 
-                alert("Lat : "+position.coords.latitude)
-                alert("Lang : "+ position.coords.longitude)
-            });
-    }else{
-        console.log("Browser doesn't support geolocation!");
-    }
 
 		})
-    
-
-</script>
-
-  </body>
+	</script>
+</body>
 </html>
