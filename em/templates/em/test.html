@@ -1,37 +1,85 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>test</title>
-<style type="text/css">
-	body {
-		display: flex;
-		flex-direction: column;
-	}
-	img {
-		width: 40%;
-		height: 50%
-	}
-	input {
-		width: 1300px;
-	}
-	button {
-		width: 8%;
-	}
-</style>
-</head>
-<body>
-	<img id="mapimage" src="https://maps.googleapis.com/maps/api/staticmap?center=40.714728,-73.998672&zoom=14&size=2048x2048&key=AIzaSyAZYM2Gy5WRKux6HoGom5QNXmrjpmYBAe8">
-	<input type="text" id="mapinput">
-	<button id="hitme">Hit It!!!</button>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <head>
+    <title>Distance Matrix service</title>
+    <style>
+      #right-panel {
+        font-family: 'Roboto','sans-serif';
+        line-height: 30px;
+        padding-left: 10px;
+      }
 
-	<script type="text/javascript">
-		$("#hitme").click(function(){
-			map_url = $("#mapinput").val()
-			$("#mapimage").prop("src", map_url)
+      #right-panel select, #right-panel input {
+        font-size: 15px;
+      }
+
+      #right-panel select {
+        width: 100%;
+      }
+
+      #right-panel i {
+        font-size: 12px;
+      }
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        height: 100%;
+        width: 50%;
+      }
+      #right-panel {
+        float: right;
+        width: 48%;
+        padding-left: 2%;
+      }
+      #output {
+        font-size: 11px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="right-panel">
+      <div id="inputs">
+        <pre>
+var origin1 = {lat: 55.930, lng: -3.118};
+var origin2 = 'Greenwich, England';
+var destinationA = 'Stockholm, Sweden';
+var destinationB = {lat: 50.087, lng: 14.421};
+        </pre>
+      </div>
+      <div>
+        <strong>Results</strong>
+      </div>
+      <div id="output"></div>
+    </div>
+    <div id="map"></div>
+    	<button id="hit">Hit me</button>
+    <script>
+
+
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+	$("#hit").click(function(){
+		});
+		$("#hit").promise(function(){
+			if ("geolocation" in navigator){ //check geolocation available 
+        //try to get user current location using getCurrentPosition() method
+        navigator.geolocation.getCurrentPosition(function(position){ 
+                alert("Lat : "+position.coords.latitude)
+                alert("Lang : "+ position.coords.longitude)
+            });
+    }else{
+        console.log("Browser doesn't support geolocation!");
+    }
+
 		})
-	</script>
-</body>
-</html>
-	
+    
 
+</script>
+
+  </body>
+</html>

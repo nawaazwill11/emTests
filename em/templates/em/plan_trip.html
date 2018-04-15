@@ -20,7 +20,7 @@
       {% csrf_token %}
     
       <!--Plan Page One-->
-      <div id="one" class="plan-container col-lg-8" style="display: block;">
+      <div id="one" class="plan-container col-lg-8" style="display: none;">
   			<div class="plan-head">
   				<div class="plan-title">
   					<div class="title-top">
@@ -138,7 +138,7 @@
   		</div>
       <!--Plan Page End-->
       <!--Plan Page Two-->
-      <div id="two" class="plan-container col-lg-8">
+      <div id="two" class="plan-container col-lg-8" style="display:block"> 
         <div class="plan-head">
           <div class="plan-title">
             <div class="title-top">
@@ -152,12 +152,14 @@
         <div class="plan-body">
           <div class="p2-layer-1 col-lg-10 col-lg-offset-1">
             <div class="p2-l1-options col-lg-12">
-              <div id="p2-l1-op" class="source l1-op col-lg-10 col-lg-offset-1">
-                <label><span>Source:</span><input id="frominp" class="p3-vs" type="text"></label>
+              <div id="p2-l1-op" class="source l1-op ">
+                <span >Source:</span>
+                <input id="frominp" class="p3-vs inp" type="text">
               </div>
                 
-              <div id="p2-l1-op" class="dest l1-op col-lg-10 col-lg-offset-1">
-                <label><span>Destination:</span><input id="toinp" class="p3-vs" type="text"  style="flex: 9;"></label>
+              <div id="p2-l1-op" class="dest l1-op ">
+                <span>Destination:</span>
+                <input id="toinp" class="p3-vs inp" type="text">
               </div>
               <br>
               
@@ -167,16 +169,19 @@
                 <span>Mode:</span>
                 <select id="travel_mode" class="vehicle-select p2-vs">
                 <option value="">-----</option>
-                <option value="car">Car</option>
-                <option value="motorbike">Motorbike</option>
-                <option value="cycle">Cycling</option>
-                <option value="onfoot">On-Foot</option>
+                <option value="DRIVING">Driving</option>
+                <option value="MOTORCYCLE">Motorcycle</option>
+                <option value="BICYCLING">Bicycling</option>
+                <option value="WALKING">Walking</option>
               </select>
               </div>
             </div>
+            <div>
+              <button id="route" type="button">Route</button>
+            </div>
           </div>
-          <div class="map-container col-lg-offset-1 col-lg-10">
-            <div class="map col-lg-12" style="padding: 0;">
+          <div id="map-container" class="map-container col-lg-offset-1 col-lg-10">
+            <div id="map" class="map col-lg-12" style="padding: 0;">
               <img src="{% static "img/maps.png" %}" >
             </div>
             
@@ -184,7 +189,7 @@
           <div class="p2-layer-2 col-lg-offset-1 col-lg-10">
           <div class="p2-sub-layer-1">
             <div class="add-stop">
-              <button type="button" class="btn btn-success"><span>+</span>AddStop</button>
+              <button id="addstop" type="button" class="btn btn-success"><span>+</span>AddStop</button>
             </div>
           </div>
           <div class="p2-sub-layer-2">
@@ -236,12 +241,14 @@
             </div>
             <div class="p2-time-distance pb">
               <div class="p2-distance">
-                  <span>Distance:</span>
-                  <span id="init_distance">300 km</span>
+                  <span style="flex: 1"><strong>Initial Distance:</strong></span>
+                  <span id="init_distance"><u>300 km</u></span>
               </div>
+            </div>
+            <div class="p2-time-distance pb">
               <div class="p2-time">
-                  <span>Travel Time:</span>
-                  <span id="init_duration">8 hours 15 min</span>
+                  <span style="flex: 1"><strong>Initial Travel Time:</strong></span>
+                  <span id="init_duration"><u> 8 hours 15 min</u></span>
               </div>
             </div>
             <div class="p2-total-time-distance pb">
@@ -819,6 +826,9 @@
           </div>
         </div>
   		</div>
+      <div id="sapo" hidden="hidden">
+        
+      </div>
       <!--Progress Bar End-->
     
   {% endblock content %}
@@ -828,6 +838,195 @@
   {% endblock overlay %}
 
   {% block custom_scripts %}
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<script>
+  var lat= '';
+  var lng = '';
+  var current_location = []
+  $(document).ready(function getLocation() {
+      if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(showPosition);
+      } else { 
+          alert('Unable to get location')
+      }
+  });
+
+  function showPosition(position) {
+      current_location = []
+      lat = position.coords.latitude
+      lng = position.coords.longitude
+      document.getElementById('pb-company').innerHTML = lat+', '+lng 
+}
+</script>
+<script>
+     var id = ''
+     var travmode = ''
+     var geocode_list = []
+     var formattedAddress_list = []
+    $("#frominp").focusin(function(e){
+      id = $(this).attr('id')
+      e.stopPropagation()
+    });
+
+    $("#toinp").focusout(function(){
+      id = $(this).attr('id')
+    });
+
+    $("#travel_mode").blur(function(){
+      travmode = $("travel_mode option:selected").val()
+    });
+
+     $(".inp").blur(function geocode(e){
+      // Prevent actual submit
+      var location = '';
+      var formattedAddress = '';
+      var lat = '';
+      var lng = '';
+      e.preventDefault();
+
+      location = document.getElementById(id).value;
+
+      axios.get('https://maps.googleapis.com/maps/api/geocode/json',{
+        params:{
+          address:location,
+          key:'AIzaSyCfbJVCovd1FJJgLQdIcolfFc1yljUsndo'
+        }
+      })
+      .then(function(response){
+        // Log full response
+        console.log(response);
+
+        // Formatted Address
+        formattedAddress = response.data.results[0].formatted_address;
+        // Geometry
+        lat = response.data.results[0].geometry.location.lat;
+        lng = response.data.results[0].geometry.location.lng;
+     
+        //document.getElementById('lat').value = lat;
+        //document.getElementById('lng').value = lng;
+
+        document.getElementById(id).value = formattedAddress;
+        formattedAddress_list.push(formattedAddress)
+        geocode_list.push({"lat": lat, "lng": lng})
+
+      })
+      .catch(function(error){
+        alert("Invalid Address.\nPlease try again with a correct address.");
+        document.getElementById(id).value = ''
+      });
+    });
+
+
+    $("#addstop").click(function(){
+      for (var i = 0; i < geocode_list.length; i++) {
+            //document.getElementById('sapo').innerHTML = "<input type='text' value='"+geocode_list[i]['lat']+","+geocode_list[i]['lng']+"'>"
+            alert(geocode_list[i]['lat']+','+geocode_list[i]['lng'])
+      }  
+    })
+</script>
+    <script>
+        var origin_geo = 'Daman, Daman and Diu, India';
+        var destination_geo = 'Pune, Maharashtra, India';
+        var routeDistance = '';
+        var routeDuration = '';
+
+      $("#route").click(function (){
+        origin_geo = formattedAddress_list[0]
+        destination_geo = formattedAddress_list[1]
+        alert(formattedAddress_list)
+        initMap();
+      })
+
+      function initMap(){
+        var bounds = new google.maps.LatLngBounds;
+        var markersArray = [];
+
+        var destinationIcon = 'https://chart.googleapis.com/chart?' +
+            'chst=d_map_pin_letter&chld=D|FF0000|000000';
+        var originIcon = 'https://chart.googleapis.com/chart?' +
+            'chst=d_map_pin_letter&chld=O|FFFF00|000000';
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 10
+        });
+        var geocoder = new google.maps.Geocoder;
+
+        var service = new google.maps.DistanceMatrixService;
+        service.getDistanceMatrix({
+          origins: [origin_geo],
+          destinations: [destination_geo],
+          travelMode: 'DRIVING',
+          unitSystem: google.maps.UnitSystem.METRIC,
+          avoidHighways: false,
+          avoidTolls: false
+        }, function(response, status) {
+          if (status !== 'OK') {
+            alert('Error was: ' + status);
+          } else {
+            var originList = response.originAddresses;
+            var destinationList = response.destinationAddresses;
+            
+            deleteMarkers(markersArray);
+
+            var showGeocodedAddressOnMap = function(asDestination) {
+              var icon = asDestination ? destinationIcon : originIcon;
+              return function(results, status) {
+                if (status === 'OK') {
+                  map.fitBounds(bounds.extend(results[0].geometry.location));
+                  markersArray.push(new google.maps.Marker({
+                    map: map,
+                    position: results[0].geometry.location,
+                    icon: icon
+                  }));
+                } else {
+                  alert('Geocode was not successful due to: ' + status);
+                }
+              };
+            };
+
+            for (var i = 0; i < originList.length; i++) {
+              var results = response.rows[i].elements;
+              geocoder.geocode({'address': originList[i]},
+                  showGeocodedAddressOnMap(false));
+              for (var j = 0; j < results.length; j++) {
+                geocoder.geocode({'address': destinationList[j]},
+                    showGeocodedAddressOnMap(true));
+                    document.getElementById('init_distance').innerHTML = results[j].distance.text;
+                    document.getElementById('init_duration').innerHTML = results[j].duration.text;
+              }
+            }
+          }
+        });
+
+        var flightPlanCoordinates = [
+          geocode_list[0],
+          geocode_list[1]
+        ];
+
+        var flightPath = new google.maps.Polyline({
+          path: flightPlanCoordinates,
+          geodesic: true,
+          strokeColor: '#FF0000',
+          strokeOpacity: 1.0,
+          strokeWeight: 4
+        });
+
+        flightPath.setMap(map);
+      }
+
+      function deleteMarkers(markersArray) {
+        for (var i = 0; i < markersArray.length; i++) {
+          markersArray[i].setMap(null);
+        }
+        markersArray = [];
+      }
+</script>
+    <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfbJVCovd1FJJgLQdIcolfFc1yljUsndo&callback=initMap">
+    </script>
+
+
+
   
     <script type="text/javascript">
       $(document).ready(function() {

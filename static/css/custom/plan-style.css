@@ -208,7 +208,7 @@
 .p2-layer-1 {
 	display: flex;
 	flex-direction: column;
-	padding-left: 60px;
+	padding-left: 15px;
 	background-color: #edf2f7;
 	border-radius: 5px;
 	margin-bottom: 20px;
@@ -216,22 +216,19 @@
 .p2-l1-options {
 	display: flex;
 	flex-direction: column;
-	padding: 15px 0 0 15px; 
+	padding-top: 15px; 
 }
 #p2-l1-op {
+	display: flex;
 	padding: 0;
 	margin-bottom: 12px;
 }
-#p2-l1-op > label {
-	display: flex;
-}
-#p2-l1-op > label > span {
-	display: flex;
+
+#p2-l1-op > span {
 	flex: 1;
 }
-#p2-l1-op > label > input {
-	display: flex;
-	flex: 10;
+#p2-l1-op > input {
+	flex: 5;
 }
 
 .vehicle {
@@ -247,13 +244,16 @@
     height: 30px;
     margin-left: 5px;
 }
-.map-container {
+#map-container {
 	position: relative;
 	padding-left: 22px;
+	width: 88.3%;
+    margin-left: 32px;
 }
-.map {
+
+#map {
 	position: relative;
-	height: 300px;
+	height: 350px;
 	padding: 0;
 	margin-left: 5px;
 }

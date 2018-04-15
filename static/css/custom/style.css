@@ -115,12 +115,10 @@ margin-bottom: 14px;
 .search-input-top::placeholder{
     color: #6a6169;
 }
-#search-button-top{
+.search-button-top{
     height: 82px;
     border-radius: 0;
-    left: -45px;
-    z-index: 1000;
-    width: 50px
+    
 }
 
 .nav-fmn {
