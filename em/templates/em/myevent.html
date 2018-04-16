@@ -143,7 +143,7 @@
         </div>
       </div>
     </div>
-
+ 
     <div id="main_TD">
       {% for record in event_contents_list %}
         <div id="{{ record.event_id }}" class="event-details TD" hidden="hidden">
@@ -161,7 +161,7 @@
               </div>
               <div class="tbb-layer tbb-bck-main">
                 <div class="tbb-bck">
-                  <img id="right" src="{{ MEDIA_URL }}{{ record.cover }}">
+                  <img id="right" src="{{ MEDIA_URL }}{{ record.cover }}" style="    right: -356px;">
                 </div>
               </div>
               <div class="tbb-layer">

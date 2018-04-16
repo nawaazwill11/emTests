@@ -398,7 +398,9 @@
             </div>
           </div>
           <div class="pl-op nobo" style="margin: 0;">
-            <img src="{% static "img/maps.png" %}" style="width: 100%;">
+            <div id="map" class="map col-lg-12" style="padding: 0; margin-bottom: 20px;">
+              <img src="{% static "img/maps.png" %}" style="width: 100%;">
+            </div>
           </div>
           <div class="divide nobo">
             <label class="divide-top" style="text-align: right;"><u>Choose a location on Maps</u></label>
@@ -818,13 +820,162 @@
 	{% endblock content %}
 
   {% block custom_scripts %}
+
+      <script>
+        var lat= '';
+        var lng = '';
+        var current_location = []
+        $(document).ready(function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else { 
+                alert('Unable to get location')
+            }
+        });
+
+        function showPosition(position) {
+            current_location = []
+            lat = position.coords.latitude
+            lng = position.coords.longitude
+            //document.getElementById('inputs').innerHTML = lat+', '+lng 
+            alert('loaded')
+            initMap();
+        }
+        var map;
+        var markers = [];
+        var latlng = {}
+        
+        var addressComponents = ''
+        function initMap() {
+          var im = 'http://www.robotwoods.com/dev/misc/bluecircle.png';
+
+          var currentLocation = {lat: lat, lng: lng};
+          map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 16,
+            center: currentLocation,
+            mapTypeId: 'roadmap'
+          });
+
+          var currentMarker = new google.maps.Marker({
+            position: currentLocation,
+            map: map,
+            icon: im,
+            title: 'Current Position'
+          })
+
+          var geocoder = new google.maps.Geocoder;
+          var infowindow = new google.maps.InfoWindow;
+          
+          map.addListener('click', function(event) {
+            deleteMarkers();
+
+            addMarker(event.latLng, geocoder, infowindow);
+          });
+
+          // Adds a marker at the center of the map.
+          //addMarker(haightAshbury);
+        }
+
+        // Adds a marker to the map and push to the array.
+        function addMarker(location, geocoder, infowindow) {
+          var marker = new google.maps.Marker({
+            position: location,
+            map: map
+          });
+          markers.push(marker);
+          latlng = {lat: marker.getPosition().lat(), lng: marker.getPosition().lng()}
+          geocoder.geocode({'location': latlng}, function(result, status){
+            if (status === 'OK'){
+              if (result[0]){
+                addressComponents = result[0].address_components
+                console.log(addressComponents)
+                proveHasDict();
+                infowindow.setContent(result[0].formatted_address);
+                infowindow.open(map, markers[0]);
+              }
+            }
+          });
+          alert(latlng['lat']+", "+latlng['lng'])
+
+        }
+
+        // Sets the map on all markers in the array.
+        function setMapOnAll(map) {
+          for (var i = 0; i < markers.length; i++) {
+            markers[i].setMap(map);
+          }
+        }
+
+        // Removes the markers from the map, but keeps them in the array.
+        function clearMarkers() {
+          setMapOnAll(null);
+        }
+
+
+        // Deletes all markers in the array by removing references to them.
+        function deleteMarkers() {
+          clearMarkers();
+          markers = [];
+        }
+      </script>
+      <script type="text/javascript">
+        function proveHasDict(){
+          addressDict = {}
+          for (var i = 0; i < addressComponents.length; i++) {
+            addressDict[addressComponents[i].types[0]] = addressComponents[i].long_name
+          }
+          for (var key in addressDict){
+           // alert(addressDict[key])
+          }
+          outputToText(addressDict);
+        }
+        function outputToText(addressDict){
+          $("#the_pincode").val(addressDict['postal_code'])
+          $("#the_country").val(addressDict['country'])
+          $("#the_state").val(addressDict['administrative_area_level_1'])
+          $("#the_city").val(addressDict['administrative_area_level_2'])
+          var streetAdd = addressDict['establishment']+","+addressDict['premise']+", "+addressDict['street_number']+", "+addressDict['route']+", "+addressDict["neighborhood"]+", "+addressDict['political']
+          while(true){
+            if (streetAdd.indexOf('undefined') !== -1){
+              var txt = streetAdd.replace(/undefined/i, "");
+              streetAdd = txt;
+              if (streetAdd.indexOf(', ,') !== -1){
+                var txt = streetAdd.replace(/, ,/i, ",");
+                streetAdd = txt;
+                streetAdd = streetAdd.trim();
+              }
+            }
+            else{
+                break;
+            }
+          }
+          while(true){
+            streetAdd = streetAdd.trim();
+            if (streetAdd.charAt(0) === ','){
+                var txt = streetAdd.replace(/,/,"");
+                streetAdd = txt
+            }
+            else{
+                break;
+            }
+          }
+          $("#the_street").val(streetAdd)
+        }
+      </script>
+      <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfbJVCovd1FJJgLQdIcolfFc1yljUsndo&callback=initMap">
+      </script>
+
+
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script
-    src="https://code.jquery.com/jquery-3.3.1.min.js"
-    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-    crossorigin="anonymous"></script>
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"></script>
     <script src='{% static "js/jquery-ui.min.js" %}'></script>
-    <script type="text/javascript" src="{% static "js/jquery.qtip.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/jquery.qtip.min.js" %}">
+    </script>
     <script type="text/javascript" src="{% static "js/custom.js" %}"></script>
     <script type="text/javascript" name="hide-show">
       $('input').focus(function(){
@@ -974,6 +1125,7 @@
         alert(start_time)
         alert(end_time)
         */
+
         if (start_year > end_year){
           return [false, 'Error in selecting Year', flag=1]
         }
@@ -1006,7 +1158,7 @@
         else{
           return[true, '', 0]
         }
-    }
+      }
 
       function desginator(func, inputString){
         var valid = func(inputString)
@@ -1061,6 +1213,7 @@
           flags[3] = valid[2]
 
         }
+
         pb_dict['privacy'] = $("input[name=priv]:checked").val()
         $("#title").val(pb_dict['title'])
         $("#description").val(pb_dict['description'])

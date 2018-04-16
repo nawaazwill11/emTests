@@ -20,7 +20,7 @@
       {% csrf_token %}
     
       <!--Plan Page One-->
-      <div id="one" class="plan-container col-lg-8" style="display: none;">
+      <div id="one" class="plan-container col-lg-8" style="display: block;">
   			<div class="plan-head">
   				<div class="plan-title">
   					<div class="title-top">
@@ -138,7 +138,7 @@
   		</div>
       <!--Plan Page End-->
       <!--Plan Page Two-->
-      <div id="two" class="plan-container col-lg-8" style="display:block"> 
+      <div id="two" class="plan-container col-lg-8"> 
         <div class="plan-head">
           <div class="plan-title">
             <div class="title-top">
@@ -168,10 +168,7 @@
               <div class="veh-club">
                 <span>Mode:</span>
                 <select id="travel_mode" class="vehicle-select p2-vs">
-                <option value="">-----</option>
                 <option value="DRIVING">Driving</option>
-                <option value="MOTORCYCLE">Motorcycle</option>
-                <option value="BICYCLING">Bicycling</option>
                 <option value="WALKING">Walking</option>
               </select>
               </div>
@@ -892,7 +889,8 @@
     });
 
     $("#travel_mode").blur(function(){
-      travmode = $("travel_mode option:selected").val()
+      travmode = $("#travel_mode option:selected").val()
+      
     });
 
      $(".inp").blur(function geocode(e){
@@ -973,7 +971,7 @@
         service.getDistanceMatrix({
           origins: [origin_geo],
           destinations: [destination_geo],
-          travelMode: 'DRIVING',
+          travelMode: travmode,
           unitSystem: google.maps.UnitSystem.METRIC,
           avoidHighways: false,
           avoidTolls: false
@@ -1169,6 +1167,7 @@
         var mins_index = '0'
 
         
+
         if (time.indexOf('day') == -1){
           days_index = 0
           days = 0
@@ -1200,17 +1199,23 @@
           }
         }
         
-        mins_index = time.indexOf('min')
-        min = parseInt(time.slice(hours_index,mins_index-1))
-  
+        if (time.indexOf('min') == -1){
+          min_index = 0
+          min = 0
+        }
+        else{
+          mins_index = time.indexOf('min')
+          min = parseInt(time.slice(hours_index,mins_index-1))
+        }
+        
         var time_dict = {'mins': 1, 'hours': 60, 'days': 60*24}
         var initial_min = days*60*24 + hours*60 + min;
-        alert(initial_min)
+        
         pitstops = $("#selectpit option:selected").val();
         if (pitstops === "custom"){
           pitstops = $("#custpit").val();
         }
-
+        
         timeperpit = $("#tppsel option:selected").val()
         if (pits_time === 'custom'){
           tppinp_val = $("#tppinp").val();
@@ -1219,25 +1224,36 @@
         }
         
         pits_time = pitstops * timeperpit
+        
         var total_min = (pits_time) + initial_min;
+        
         var total_hours = 0;
-        var temp = total_min;
-        while(temp > 0){
-          if (!(temp-60 < 0)){
-            temp = temp - 60;
-            total_hours++;
+        var time = total_min;
+        
+        dayz = 0
+        while(time-1440 > 0 ){
+          time -= 1440
+            dayz++
+        }
+        
+        hourz = 0
+        while (time - 60 > 0){
+          time -= 60
+          hourz++
+        }
+        
+        if (dayz < 1){
+          if (hourz < 1){
+            time_string = time+" mins"
           }
           else{
-            break
+            time_string = hourz+" hours "+time+" mins"
           }
         }
-        total_min = temp;
-        if (total_min == 0){
-          time_string = total_hours+" hours "
-        }
         else{
-          time_string = total_hours+" hours "+total_min+" mins" 
+          time_string = dayz+" days "+hourz+" hours "+time+" mins"
         }
+        
         $("#trip_duration").text(time_string)
         $("#pb_trip_duration").text(time_string)
         post_dict['pitstops'] = pitstops
@@ -1401,7 +1417,7 @@
         $("#fuel_cost").focus(function(){
           mileage = $("#mileage").val()
           fuelprice = $("#fuel_price").val()
-          distance = $("#trip_distance").text()
+          distance = parseInt($("#trip_distance").text())
           fuelcost = distance / mileage * fuelprice
           $("#fuel_cost").val(fuelcost)
           $("#total_cost").val(fuelcost)

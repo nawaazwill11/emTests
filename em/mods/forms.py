@@ -474,6 +474,7 @@ class GetInitial(forms.Form):
 class TripPlanValidation():
 	def validate(response, username):
 		kwargs = dict(response.lists())
+		print('ere')
 		print(kwargs)
 		count = 0
 		company  = kwargs['company'][0]
@@ -509,27 +510,23 @@ class TripPlanValidation():
 		total, v_costing = TripPlanValidation.costcheck(fuel, vehicle, hotel)
 
 		if (v_source and v_destination and v_mode and v_pits and v_start_date and v_gender and v_age_group and v_part and v_title_desc and v_duration and v_distance ):
-			#print(True)
+			print(True)
 			recorded = TripPlanValidation.trip_record(username, company, moto, source, destination, mode, pitstops, timeperpit, pitstops_time, distance, duration, start_date, gender, age_group, participants, title, description, fuel, vehicle, hotel, total)
 			if recorded:
+
 				return True
 		else:
 			print('Error in Values')
 			return (False)
 
 	def alpha(string):
-		valid = re.search(r'^[a-z]+$', string, re.I)
-		if valid:
-			string = string.title()
-			return string
-		else:
-			return False
+		print('Source')
+		return True
 
 	def modecheck(mode):
-		mode_dict = {'cycle': 'Cycle', 'motorbike': 'Motorbike', 'car': 'Car', 'onfoot': 'On Foot'}
-		if mode in mode_dict.values():
-			return True
-		return False
+		print('mode')
+		return True
+		
 
 	def calcpits(pit, time, ptime):
 		pit = int(pit)
@@ -537,15 +534,18 @@ class TripPlanValidation():
 		ptime = int(ptime)
 
 		if ((pit*time) == ptime):
+			print('pits')
 			return True
 		return False
 
 	def extractdistance(distance):
 		extracted = re.findall('\d+', distance)
+		print('extradis')
 		return (extracted[0], True)
 
 	def extractduration(duration):
 		extracted = re.findall('\d+', duration)
+		print('extradur')
 		return (extracted[0], True)
 
 	def datemade(date):
@@ -553,6 +553,7 @@ class TripPlanValidation():
 			sdate = date + ":00"
 			madedate = dt.strptime(sdate, '%Y-%m-%d %H:%M')
 			if isinstance(madedate, datetime.datetime):
+				print('date')
 				return (madedate, True)
 		except ValueError as v:
 			raise v("Date isn't right")
@@ -561,6 +562,7 @@ class TripPlanValidation():
 		gender = gender.title()
 		gendict = {'male': 'Male', 'female': 'Female', 'others': 'Others', 'any': 'Any'}
 		if gender in gendict.values():
+			print('dagen')
 			return True
 		return False
 
@@ -569,17 +571,20 @@ class TripPlanValidation():
 			if ch in agestring:
 				agestring = agestring.replace(ch,'')
 		agestring = agestring.replace(',', '')
+		print('agegroup')
 		return (agestring, True)
 
 	def partcheck(participants):
 		isclean = re.search(r'^[\d]+$', participants)
 		if isclean:
+			print('part')
 			return True
 		return False
 
 	def titlecheck(title, desc):
 		if (len(title) > 30) or (len(desc) > 160) :
 			return False
+		print('title')
 		return True
 
 	def costcheck(fuel, veh, hot):
@@ -587,6 +592,7 @@ class TripPlanValidation():
 		veh = int(veh)
 		hot = int(hot)
 		total = (fuel+veh+hot)
+		print('cost')
 		return (total, True)
 
 	def trip_record(username, company, moto, source, destination, mode, pitstops, timeperpit, pitstops_time, distance, duration, start_date, gender, age_group, participants, title, description, fuel, vehicle, hotel, total):
@@ -599,8 +605,9 @@ class TripPlanValidation():
 		if trip:
 			part_id = TripPlanValidation.hexer(username) 
 			trip_id = trip.trip_id
-			part = TripParticipants.objects.create(part_id=part_id, trip_id=trip_id, ownership='created')
-			return True
+			part = TripParticipants.objects.create(part_id=part_id, trip_id=trip_id, ownership='created', username=username)
+			if part:
+				return True
 		else:
 			print('Error in Creating')
 
@@ -692,7 +699,7 @@ class EventPlanForm(forms.Form):
 		v_participants_fees = EventPlanForm.checkpart(participants, fees)
 
 		if(v_title_desc and v_start_date and v_end_date and v_dead_date and v_privacy and v_location and v_cat_act and v_gender and v_age_group and v_participants_fees):
-			recorded = EventPlanForm.event_recorded(username, title, description, start_date, end_date, dead_date, privacy, location, venue_name, city, state, country, pincode, category, activity, gender, age_group, participants, fees, logo, cover)
+			recorded = EventPlanForm.event_recorded(username, title, description, start_date, end_date, dead_date, privacy, location, venue_name, street_address, city, state, country, pincode, category, activity, gender, age_group, participants, fees, logo, cover)
 			return True
 		else:
 			print(False)
@@ -768,18 +775,19 @@ class EventPlanForm(forms.Form):
 				return True
 		return False
 
-	def event_recorded(username, title, description, start_date, end_date, dead_date, privacy, location, venue_name, city, state, country, pincode, category, activity, gender, age_group, participants, fees, logo, cover):
-		print(username, title, description, start_date, end_date, dead_date, privacy, location, venue_name, city, state, country, pincode, category, activity, gender, age_group, participants, fees, logo, cover)
+	def event_recorded(username, title, description, start_date, end_date, dead_date, privacy, location, venue_name, street_address, city, state, country, pincode, category, activity, gender, age_group, participants, fees, logo, cover):
+		print(username, title, description, start_date, end_date, dead_date, privacy, location, venue_name, street_address, city, state, country, pincode, category, activity, gender, age_group, participants, fees, logo, cover)
 
 		event_id = TripPlanValidation.hexer(username)
 		timenow = datetime.datetime.now()
 		ownership = "admin"
-		event = Event.objects.create(username=username, event_id=event_id, title=title, description=description, start_date=start_date, end_date=end_date, deadline=dead_date, event_privacy=privacy, location=location, venue_name=venue_name, city=city, state=state, country=country, pincode=pincode, category=category, activity=activity, gender=gender,age=age_group, participants=participants, fees=fees, created_on=timenow, logo=logo, cover=cover, ownership=ownership)
+		event = Event.objects.create(username=username, event_id=event_id, title=title, description=description, start_date=start_date, end_date=end_date, deadline=dead_date, event_privacy=privacy, location=location, venue_name=venue_name,street_address=street_address, city=city, state=state, country=country, pincode=pincode, category=category, activity=activity, gender=gender,age=age_group, participants=participants, fees=fees, created_on=timenow, logo=logo, cover=cover, ownership=ownership)
 		if event:
 			part_id = TripPlanValidation.hexer(username) 
 			event_id = event.event_id
-			part = EventParticipants.objects.create(part_id=part_id, event_id=event_id, ownership='created')
-			print(True)
+			part = EventParticipants.objects.create(part_id=part_id, event_id=event_id, ownership='created', username=username)
+			if part:
+				print(True)
 		else:
 			print('Error in Creating')
 
