@@ -66,6 +66,8 @@
       </div>
       <div class="result-container">
         <div class="result-layer">
+         <form id="join_form" method="POST">
+         	{% csrf_token %}
         	{% for record in filters.qs %}
 	        <div class="result-box">
 	          <div class="trip-box">
@@ -112,12 +114,18 @@
 	                <a id="{{ record.trip_id }}" class="dlink" style="cursor: pointer">+More Details</a>
 	              </div>
 	            </div>
-	            <div class="tb-layer join-button">
-	              <button>Join</button>
-	            </div>
+	            
+	            	
+		            <div class="tb-layer join-button">
+		            	
+		              <button id="{{ record.trip_id }}" class="join_click" type="submit">Join</button>
+		            </div>
+	            
 	          </div>
 	        </div>
 	        {% endfor %}
+	        <input id="join" type="hidden" name="join" value="">
+	       </form>
         </div>
       </div>
     </div>
@@ -278,5 +286,26 @@
     	//alert('')
     });
     </script>
+    <script>
+			    $(".join_click").click(function(){
+			    	id = $(this).attr('id')
+						$("#join").val(id)			    
+					  $.ajax({
+					    type: 'POST', 
+					    url: '#', 
+					    dataType: 'json',
+					    data: $('#join_form').serialize(),
+					    success: function(x) {   
+					    	if (x['success'] == true) {
+					      	alert('Joined Trip')
+					    	}     
+					    	else{
+					    		alert('Already Joined')
+					    	}
+					    }
+				  	});
+				  return false;
+				});
+		</script>
   {% endblock custom_scripts %}
 

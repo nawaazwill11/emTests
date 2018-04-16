@@ -86,66 +86,69 @@
       </div>
       <div class="result-container">
         <div class="result-layer">
-        {% for record in filters.qs %}
-          <div class="result-box">
-            <div class="trip-box">
-              <div class="tb-layer layer-zero">
-                <div class="tb-title">
-                  <label>{{ record.title }}</label>
+        <form method="POST" id="join_form">
+          {% csrf_token %}
+          {% for record in filters.qs %}
+            <div class="result-box">
+              <div class="trip-box">
+                <div class="tb-layer layer-zero">
+                  <div class="tb-title">
+                    <label>{{ record.title }}</label>
+                  </div>
+                  <div class="tb-credit">
+                    <label>By:</label>
+                    <a href=""><img src="{% static "img/obama-face.png" %}"></a>
+                  </div>
                 </div>
-                <div class="tb-credit">
-                  <label>By:</label>
-                  <a href=""><img src="{% static "img/obama-face.png" %}"></a>
+                <div class="tb-layer" style="padding: 0;">
+                  <div class="tb-op" style="display: flex;">
+                    <img src="{{ MEDIA_URL }}{{ record.logo }}" style=" width: 50%;">
+                    <img src="{{ MEDIA_URL }}{{ record.cover }}" style=" width: 50%;">
+                  </div> 
                 </div>
-              </div>
-              <div class="tb-layer" style="padding: 0;">
-                <div class="tb-op" style="display: flex;">
-                  <img src="{{ MEDIA_URL }}{{ record.logo }}" style=" width: 50%;">
-                  <img src="{{ MEDIA_URL }}{{ record.cover }}" style=" width: 50%;">
-                </div> 
-              </div>
-              <div class="tb-layer">
-                <div class="tb-op">
-                  <label>Type:</label>
-                  <span>{{ record.location }}</span>
+                <div class="tb-layer">
+                  <div class="tb-op">
+                    <label>Type:</label>
+                    <span>{{ record.location }}</span>
+                  </div>
                 </div>
-              </div>
-              <div class="tb-layer">
-                <div class="tb-op" style="flex: 2;">
-                  <label>Place:</label>
-                  <span title="Daman, Daman & Diu">{{ record.venue_name }}, &nbsp{{ record.street_address }}, &nbsp{{ record.city }}, &nbsp{{ record.state }}, &nbsp{{ record.state }}</span>
+                <div class="tb-layer">
+                  <div class="tb-op" style="flex: 2;">
+                    <label>Place:</label>
+                    <span title="Daman, Daman & Diu">{{ record.venue_name }}, &nbsp{{ record.street_address }}, &nbsp{{ record.city }}, &nbsp{{ record.state }}, &nbsp{{ record.state }}</span>
+                  </div>
                 </div>
-              </div>
-              <div class="tb-layer">
-                <div class="tb-op">
-                  <label>Activity:</label>
-                  <span>{{ record.activity }}, &nbsp{{ record.category }}</span>
+                <div class="tb-layer">
+                  <div class="tb-op">
+                    <label>Activity:</label>
+                    <span>{{ record.activity }}, &nbsp{{ record.category }}</span>
+                  </div>
                 </div>
-              </div>
-              <div class="tb-layer">
-                <div class="tb-op">
-                  <label>Date:</label>
-                  <span>{{ record.start_date|date:'d M Y' }}</span>
+                <div class="tb-layer">
+                  <div class="tb-op">
+                    <label>Date:</label>
+                    <span>{{ record.start_date|date:'d M Y' }}</span>
+                  </div>
                 </div>
-              </div>
-              <div class="tb-layer">
-                <div class="tb-op">
-                  <label>Vacancy:</label>
-                  <span>11</span>
+                <div class="tb-layer">
+                  <div class="tb-op">
+                    <label>Vacancy:</label>
+                    <span>11</span>
+                  </div>
                 </div>
-              </div>
-              <div class="tb-layer">
-                <div class="tb-op">
-                  <a id="{{ record.event_id }}" class="dlink" style="cursor: pointer">+More Details</a>
+                <div class="tb-layer">
+                  <div class="tb-op">
+                    <a id="{{ record.event_id }}" class="dlink" style="cursor: pointer">+More Details</a>
+                  </div>
                 </div>
-              </div>
-              <div class="tb-layer join-button">
-                <button>Join</button>
+                <div class="tb-layer join-button">
+                  <button id="{{ record.event_id }}" class="join_click" type="submit">Join</button>
+                </div>
               </div>
             </div>
-          </div>
-        {% endfor %}
-	        
+          {% endfor %}
+  	     <input id="join" type="hidden" name="join" value="">
+        </form>   
       </div>
       
     </div>
@@ -331,5 +334,26 @@
           actop(option_dict[category])
         }
       })
+    </script>
+     <script>
+          $(".join_click").click(function(){
+            id = $(this).attr('id')
+            $("#join").val(id)          
+            $.ajax({
+              type: 'POST', 
+              url: '#', 
+              dataType: 'json',
+              data: $('#join_form').serialize(),
+              success: function(x) {   
+                if (x['success'] == true) {
+                  alert('Joined Trip')
+                }     
+                else{
+                  alert('Already Joined')
+                }
+              }
+            });
+          return false;
+        });
     </script>
   {% endblock custom_scripts %}

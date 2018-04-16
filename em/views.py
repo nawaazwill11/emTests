@@ -11,7 +11,7 @@ from django.http import HttpResponseRedirect, HttpResponsePermanentRedirect, Jso
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from .models import Login, Pi, Trip, Event, Misc
-from .mods.forms import LoginForm, RegistrationForm, Printer, AboutEditForm, GetInitial, ProfileForm, TripPlanValidation, MyTripForm, EventPlanForm, MyEventForm, FeedbackForm, ContributeForm, ReportForm, ProfileRoot, Miscer, RegPi, Bifurcator, Listing
+from .mods.forms import LoginForm, RegistrationForm, Printer, AboutEditForm, GetInitial, ProfileForm, TripPlanValidation, MyTripForm, EventPlanForm, MyEventForm, FeedbackForm, ContributeForm, ReportForm, ProfileRoot, Miscer, RegPi, Bifurcator, Listing, JoinTrip, JoinEvent
 from .mods.filters import TripSearchFilter, EventSearchFilter
 from .mods.test import SharingForm
 from .mods.required import UserInfo
@@ -515,11 +515,26 @@ class SearchEventPageView(TemplateView):
 		context['filters'] = event_filter
 		records_list, ids_list = MyEventForm.form_base(request.session['username'])
 		context['ids_list'] = ids_list
-		print(context)
+		#print(context)
 		return render(request, self.template_name, context)
 
 	def post(self, request, *args, **kwargs):
-		return render(request, self.template_name, context=None)
+		context = {}
+		context['username'] = request.session['username']
+		context['userpic'] = request.session['userpic']
+		event_list = Event.objects.all().order_by('created_on')
+		event_filter = EventSearchFilter(request.GET, queryset=event_list)
+		context['filters'] = event_filter
+		records_list, ids_list = MyEventForm.form_base(request.session['username'])
+		context['ids_list'] = ids_list
+		print(request.POST)
+		joined = JoinEvent.join(request.session['username'], request.POST)
+		if joined:
+			print('joined')
+			return JsonResponse({"success": True})
+		print('failed')
+		return JsonResponse({"success": False})
+		#return render(request, self.template_name, context)
 
 
 class SearchTripPageView(TemplateView):
@@ -541,7 +556,18 @@ class SearchTripPageView(TemplateView):
 		context = {}
 		context['username'] = request.session['username']
 		context['userpic'] = request.session['userpic']
-		return render(request, self.template_name, context)
+		trip_list = Trip.objects.all().order_by('created_on')
+		trip_filter = TripSearchFilter(request.GET, queryset=trip_list)
+		context['filters'] = trip_filter
+		records_list, ids_list = MyTripForm.form_base(request.session['username'])
+		context['ids_list'] = ids_list
+		print(request.POST)
+		joined = JoinTrip.join(request.session['username'], request.POST)
+		if joined:
+			print('joined')
+			return JsonResponse({"success": True})
+		print('failed')
+		return JsonResponse({"success": False})
 
 
 

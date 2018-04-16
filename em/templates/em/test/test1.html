@@ -45,12 +45,7 @@
             }
             else if (start_date == end_date) {
                 return[true, '', 0]
-              }
-            }
-            else{
-              return[true, '', 0]  
-            }
-            
+            } 
           }
           else {
             return[true, '', 0]  
@@ -61,6 +56,10 @@
           return[true, '', 0]
         }
       }
+      this_year = d.getFullYear()
+  		this_month = d.getMonth()
+  		this_date = d.getDate()
+  		
 	       $("#demo").text(streetAdd) 
 		})
 </script>

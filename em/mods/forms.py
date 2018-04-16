@@ -640,7 +640,7 @@ class MyEventForm():
 		ids_list = []	
 		for record in records_list:
 			ids_list = ids_list + [(record['event_id'])]
-		print (ids_list)
+		#print (ids_list)
 		return (records_list, ids_list)
 
 
@@ -1025,6 +1025,58 @@ class Listing():
 		for u in user:
 			user_list.append(u['username'])
 		return user_list
+
+class JoinTrip():
+	def join(username, response):
+		kwargs = dict(response.lists())
+		print(kwargs)
+		trip_id = kwargs['join'][0]
+		#trip_id = ''
+		has_joined = JoinTrip.checkJoined(username, trip_id)
+		if not has_joined:
+			print('not joined')
+			part_id = TripPlanValidation.hexer(username)
+			trip = TripParticipants.objects.create(part_id=part_id, username=username, trip_id=trip_id, ownership="joined")
+			if trip:
+				print('trip created')
+				return True
+			else:
+				print('trip failed to create')
+
+		print('or already exists')
+		return False
+
+	def checkJoined(username, trip_id):
+		if (TripParticipants.objects.filter(username=username, trip_id=trip_id).exists()):
+			return True
+		return False
+
+class JoinEvent():
+	def join(username, response):
+		kwargs = dict(response.lists())
+		#print(kwargs)
+		event_id = kwargs['join'][0]
+		print(event_id)
+		has_joined = JoinEvent.checkJoined(username, event_id)
+		if not has_joined:
+			print('not joined')
+			part_id = TripPlanValidation.hexer(username)
+			event = EventParticipants.objects.create(part_id=part_id, username=username, event_id=event_id, ownership="joined")
+			if event:
+				print('event created')
+				return True
+			else:
+				print('event failed to create')
+
+		print('or already exists')
+		return False
+
+	def checkJoined(username, event_id):
+		if (EventParticipants.objects.filter(username=username, event_id=event_id).exists()):
+			return True
+		return False
+
+
 '''
 #Using clean()
 class LoginForm(forms.Form):
