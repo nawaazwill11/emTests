@@ -8,6 +8,7 @@ from django.contrib.auth import (
 
 indexpatterns = [
     url(r'^$',views.IndexPageView.as_view(), name='index'),
+    url(r'^old/$',views.IndexOldPageView.as_view(), name='indexold'),
    # url(r'^?next=(?P<redirect_url>[/\w]+)$',login_required(views.IndexPageView.as_view()), name='index'),
 
 ]

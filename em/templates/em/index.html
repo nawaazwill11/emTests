@@ -1,179 +1,422 @@
-{% extends 'frame.html' %}
 {% load staticfiles %}
 
-  {% block title %}Welcome To Endless Miles{% endblock title %}
-  {% block static_files %}
-	  <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='
-	  text/css'>
-		<link rel="stylesheet" href="{% static "css/custom/index-style.css" %}">
-	{% endblock static_files %}
+<!DOCTYPE html>
+<html lang="en">
 
-	{% block page_name %}Endless Miles{% endblock page_name %}
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Creative - Start Bootstrap Theme</title>
+
+    <!-- Bootstrap core CSS -->
+    {% block static_files %}
+      
+    
+    <link href="{% static "vendor/bootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="{% static "vendor/font-awesome/css/font-awesome.min.css" %}" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+
+    <!-- Plugin CSS -->
+    <link href="{% static "vendor/magnific-popup/magnific-popup.css" %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static "css/creative.min.css" %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static "css/custom/index-style.css" %}">
+
+    {% endblock static_files %}
+  </head>
+
+  <body id="page-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav" style="background-color: #505260;">
+      <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top"><i>Endless Miles</i></a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive" style="margin-right: 0">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#services">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+            </li>
+          </ul>
+          <div class="main-nav ">
+            <ul style="padding: 0; margin: 0">
+            <li class="nav-item">
+              <a id="signin" class="nav-link js-scroll-trigger cd-signin" href="#0">Dive-in!</a>
+              <a id="signup" hidden="hidden" class="nav-link js-scroll-trigger cd-signup" href="#0"></a>
+            </li>
+            </ul>
+          </div>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <header class="masthead text-center text-white d-flex">
+      <div class="container my-auto">
+        <div class="row">
+          <div class="col-lg-10 mx-auto">
+            <h1 class="text-uppercase">
+              <br>
+              <br>
+              <strong>Get Ready For A Completely Different Travel Experience</strong>
+            </h1>
+            <hr>
+          </div>
+          <div class="col-lg-8 mx-auto">
+            <p class="text-faded mb-5">Presenting Endless Miles - The One-Stop Website for All Your Travelling and Eventing Needs. From Trip Route Management to Broadcasting Events of Any Occasion: Endless Miles is the Solution!</p>
+            <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Find Out More</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="bg-primary" id="about">
+      <div class="container">
+        <div class="cd-user-modal" style="display: block;"> <!-- this is the entire modal form, including the background -->
+      <div class="cd-user-modal-container"> <!-- this is the container wrapper -->
+        <ul class="cd-switcher" type="none">
+          <li><a href="#0">Sign in</a></li>
+          <li><a href="#0">New account</a></li>
+        </ul>
+
+        <div id="cd-login"> <!-- log in form -->
+          <form id="form_login" method="POST" class="cd-form">
+            {% csrf_token %}
+            {{ form.logid }}
+            {{ form.cookie }}
+            <p class="fieldset">
+              <label class="image-replace cd-email" for="signin-username">E-mail</label>
+              {{ form.username }}
+              <span id="username-error" class="cd-error-message"></span>
+            </p>
+
+            <p class="fieldset">
+              <label class="image-replace cd-password" for="signin-password">Password</label>
+              {{form.password}}
+              <a href="#0" class="hide-password">Show</a>
+            </p>
+            
+
+            <p class="fieldset">
+              <input type="checkbox" id="remember-me">
+              <label for="remember-me">Remember me</label>
+              <span id="credential-error"></span>
+            </p>
+
+            <p class="fieldset">
+              <input id="trial" class="full-width" type="submit" value="Login">
+            </p>
+          </form>
+          <p class="cd-form-bottom-message"><a href="#0">Forgot your password?</a></p>
+          <!-- <a href="#0" class="cd-close-form">Close</a> -->
+        </div> <!-- cd-login -->
+
+        <div id="cd-signup"> <!-- sign up form -->
+          <form id="form_registration" method='POST' class="cd-form">
+            {% csrf_token %}
+            
+            <p class="fieldset">
+              <label class="image-replace cd-username" for="signup-username">Username</label>
+              {{ rform.username }}
+              <span id="sign_user_error" class="index-errors"></span>
+            </p>
+
+            <p class="fieldset">
+              <label class="image-replace cd-email" for="signup-email">E-mail</label>
+              {{rform.email}}
+              <span id="sign_email_error" class="index-errors"></span>
+            </p>
 
 
-	{% block top_nav_user_info %}{% endblock top_nav_user_info %}
-"
-	{% block top_nav_extras %}
-		<div class="main-nav">
-			<ul>
-				<!-- inser more links here -->
-				<li><a class="cd-signin" href="#0">Sign in</a></li>
-				<li><a class="cd-signup" href="#0">Sign up</a></li>
-			</ul>	
-		</div>
-		
-	{% endblock top_nav_extras %}
-	{% block right_side_nav %}{% endblock right_side_nav %}
-	{% block content %}
-		<div class="cd-user-modal" style="display: block;"> <!-- this is the entire modal form, including the background -->
-			<div class="cd-user-modal-container"> <!-- this is the container wrapper -->
-				<ul class="cd-switcher" type="none">
-					<li><a href="#0">Sign in</a></li>
-					<li><a href="#0">New account</a></li>
-				</ul>
+            <p class="fieldset">
+              <label class="image-replace cd-password" for="signup-password">Password</label>
+              {{rform.password}}
+              <span id="sign_pass_error" class="index-errors"></span>
+            </p>
 
-				<div id="cd-login"> <!-- log in form -->
-					<form id="form_login" method="POST" class="cd-form">
-						{% csrf_token %}
-						{{ form.logid }}
-						{{ form.cookie }}
-						<p class="fieldset">
-							<label class="image-replace cd-email" for="signin-username">E-mail</label>
-							{{ form.username }}
-							<span id="username-error" class="cd-error-message"></span>
-						</p>
+            <p class="fieldset">
+              <label class="image-replace cd-password" for="signup-repassword">Re</label>
+              {{rform.repassword}}
+              <span id="sign_repass_error" class="index-errors"></span>
+            </p>
 
-						<p class="fieldset">
-							<label class="image-replace cd-password" for="signin-password">Password</label>
-							{{form.password}}
-							<a href="#0" class="hide-password">Show</a>
-						</p>
-						
+            <p class="fieldset">
+              <label class="image-replace cd-password" for="signup-dob">Date of Birth</label>
+              {{ rform.dob }}
+              <span id="sign_dob_error" class="index-errors"></span>
+            </p>
 
-						<p class="fieldset">
-							<input type="checkbox" id="remember-me">
-							<label for="remember-me">Remember me</label>
-							<span id="credential-error"></span>
-						</p>
+            <p class="fieldset">
+              <label class="image-replace cd-password" for="signup-gender">Contact</label>
+              {{ rform.gender }}
+              <span id="sign_gender_error" class="index-errors"></span>
+            </p>
 
-						<p class="fieldset">
-							<input id="trial" class="full-width" type="submit" value="Login">
-						</p>
-					</form>
-					<p class="cd-form-bottom-message"><a href="#0">Forgot your password?</a></p>
-					<!-- <a href="#0" class="cd-close-form">Close</a> -->
-				</div> <!-- cd-login -->
+            <p class="fieldset">
+              <label class="image-replace cd-password" for="signup-contact">Contact</label>
+              {{rform.contact}}
+              <span id="sign_contact_error" class="index-errors"></span>
+              <span id="registererrors"></span>
+            </p>
+            
+            <p class="fieldset">
+              <input type="checkbox" id="accept-terms">
+              <label for="accept-terms">I agree to the <a href="#0" class="terms">Terms</a></label>
+              <span id="accept_terms_errors" class="index-errors"></span>
+            </p>
 
-				<div id="cd-signup"> <!-- sign up form -->
-					<form id="form_registration" method='POST' class="cd-form">
-						{% csrf_token %}
-						
-						<p class="fieldset">
-							<label class="image-replace cd-username" for="signup-username">Username</label>
-							{{ rform.username }}
-							<span id="sign_user_error" class="index-errors"></span>
-						</p>
+            <p class="fieldset">
+              <input id="registersubmit" class="full-width has-padding" type="submit" value="Create account">
+            </p>
+          </form>
 
-						<p class="fieldset">
-							<label class="image-replace cd-email" for="signup-email">E-mail</label>
-							{{rform.email}}
-							<span id="sign_email_error" class="index-errors"></span>
-						</p>
+          <!-- <a href="#0" class="cd-close-form">Close</a> -->
+        </div> <!-- cd-signup -->
 
+        <div id="cd-reset-password"> <!-- reset password form -->
+          <p class="cd-form-message">Lost your password? Please enter your email address. You will receive a link to create a new password.</p>
 
-						<p class="fieldset">
-							<label class="image-replace cd-password" for="signup-password">Password</label>
-							{{rform.password}}
-							<span id="sign_pass_error" class="index-errors"></span>
-						</p>
+          <form class="cd-form">
+            <p class="fieldset">
+              <label class="image-replace cd-email" for="reset-email">E-mail</label>
+              <input class="full-width has-padding has-border" id="reset-email" type="email" placeholder="E-mail">
+              <span class="cd-error-message">Error message here!</span>
+            </p>
 
-						<p class="fieldset">
-							<label class="image-replace cd-password" for="signup-repassword">Re</label>
-							{{rform.repassword}}
-							<span id="sign_repass_error" class="index-errors"></span>
-						</p>
+            <p class="fieldset">
+              <input name="reset" id="resetsubmit" class="full-width has-padding" type="submit" value="Reset password">
+            </p>
+          </form>
 
-						<p class="fieldset">
-							<label class="image-replace cd-password" for="signup-dob">Date of Birth</label>
-							{{ rform.dob }}
-							<span id="sign_dob_error" class="index-errors"></span>
-						</p>
+          <p class="cd-form-bottom-message"><a href="#0">Back to log-in</a></p>
+        </div> <!-- cd-reset-password -->
+        <a href="#0" class="cd-close-form">Close</a>
+      </div> <!-- cd-user-modal-container -->
+    </div> <!-- cd-user-modal -->
+        <div class="row">
+          <div class="col-lg-8 mx-auto text-center">
+            <h2 class="section-heading text-white">What's under the Hood?</h2>
+            <hr class="light my-4">
+            <p class="text-faded mb-4">A Socio-Travel Platform with ETR (Ease-To-Route) feature for enhancing your journey to an automated one yet accompained with travellers around the GLOBE!
+            <br>
+            <br>
+            Parties? Ceremonies? Live-Concerts? Or any other type of EVENT? Well, see no further, go no further. With Endless Miles, You get hands-on facility to organize and host events and other interested users can join the venture!
+            </p>
+            <a class="btn btn-light btn-xl js-scroll-trigger" href="#services">Get Started!</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-						<p class="fieldset">
-							<label class="image-replace cd-password" for="signup-gender">Contact</label>
-							{{ rform.gender }}
-							<span id="sign_gender_error" class="index-errors"></span>
-						</p>
+    <section id="services">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h2 class="section-heading">At Your Service</h2>
+            <hr class="my-4">
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-6 text-center">
+            <div class="service-box mt-5 mx-auto">
+              <i class="fa fa-4x fa fa fa-globe text-primary mb-3 sr-icons"></i>
+              <h3 class="mb-3">A Whole New World to Explore</h3>
+              <p class="text-muted mb-0">Endless Miles dozed with Endless Travelling and Exploring Opportunities.</p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 text-center">
+            <div class="service-box mt-5 mx-auto">
+              <i class="fa fa-4x fa fa-group text-primary mb-3 sr-icons"></i>
+              <h3 class="mb-3">The Real Social Network</h3>
+              <p class="text-muted mb-0">Unlike the rest, You can actually socialize with Real People in the Real World.</p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 text-center">
+            <div class="service-box mt-5 mx-auto">
+              <i class="fa fa-4x fa fa-rocket text-primary mb-3 sr-icons"></i>
+              <h3 class="mb-3">Share Your Awesomeness</h3>
+              <p class="text-muted mb-0">No only can you travel or event, but also share it across various social media websites.</p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 text-center">
+            <div class="service-box mt-5 mx-auto">
+              <i class="fa fa-4x fa-heart text-primary mb-3 sr-icons"></i>
+              <h3 class="mb-3">Made with Dreams & Love</h3>
+              <p class="text-muted mb-0">We promise to give You all the love You deserve with the best of services we can provide.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-						<p class="fieldset">
-							<label class="image-replace cd-password" for="signup-contact">Contact</label>
-							{{rform.contact}}
-							<span id="sign_contact_error" class="index-errors"></span>
-							<span id="registererrors"></span>
-						</p>
-						
-						<p class="fieldset">
-							<input type="checkbox" id="accept-terms">
-							<label for="accept-terms">I agree to the <a href="#0" class="terms">Terms</a></label>
-							<span id="accept_terms_errors" class="index-errors"></span>
-						</p>
+    <section class="p-0" id="portfolio">
+      <div class="container-fluid p-0">
+        <div class="row no-gutters popup-gallery">
+          <div class="col-lg-4 col-sm-6">
+            <a class="portfolio-box" href="{% static "img/Adventure.jpg" %}">
+              <img class="img-fluid" src="{% static "img/Adventure.jpg" %}" alt="" style="height: 330px;">
+              <div class="portfolio-box-caption">
+                <div class="portfolio-box-caption-content">
+                  <div class="project-category text-faded">
+                    Adventure & Serenity
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-4 col-sm-6">
+            <a class="portfolio-box" href="{% static "img/chicago.jpg" %}">
+              <img id="img-fluid" class="img-fluid" src="{% static "img/chicago.jpg" %}" alt="" style="height: 330px;">
+              <div class="portfolio-box-caption">
+                <div class="portfolio-box-caption-content">
+                  <div class="project-category text-faded">
+                    Passion & Glamour
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-4 col-sm-6">
+            <a class="portfolio-box" href="{% static "img/Food & Cuisine.jpg" %}">
+              <img id="img-fluid" class="img-fluid" src="{% static "img/Food & Cuisine.jpg" %}" alt="" style="height: 330px;">
+              <div class="portfolio-box-caption">
+                <div class="portfolio-box-caption-content">
+                  <div class="project-category text-faded">
+                    Delicacy & Delight
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-4 col-sm-6">
+            <a class="portfolio-box" href="{% static "img/party.jpg" %}">
+              <img id="img-fluid" class="img-fluid" src="{% static "img/party.jpg" %}" alt="" style="height: 330px;">
+              <div class="portfolio-box-caption">
+                <div class="portfolio-box-caption-content">
+                  <div class="project-category text-faded">
+                    Buzz & Fuzz
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-4 col-sm-6">
+            <a class="portfolio-box" href="{% static "img/Travel Blogging.jpg" %}">
+              <img id="img-fluid" class="img-fluid" src="{% static "img/Travel Blogging.jpg" %}" alt="" style="height: 330px;">
+              <div class="portfolio-box-caption">
+                <div class="portfolio-box-caption-content">
+                  <div class="project-category text-faded">
+                    Organizing & Accomplishment
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-4 col-sm-6">
+            <a class="portfolio-box" href="{% static "img/Exploring.jpg" %}">
+              <img id="img-fluid" class="img-fluid" src="{% static "img/Exploring.jpg" %}" alt="" style="height: 330px;">
+              <div class="portfolio-box-caption">
+                <div class="portfolio-box-caption-content">
+                  <div class="project-category text-faded">
+                    The Beauty & The Peace
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-						<p class="fieldset">
-							<input id="registersubmit" class="full-width has-padding" type="submit" value="Create account">
-						</p>
-					</form>
+    <section class="bg-dark text-white">
+      <div class="container text-center">
+        <h2 class="mb-4">And So Much More!!!</h2>
+        <a id="joinus" class="btn btn-light btn-xl sr-button" href="#0">Join Us Now!</a>
+      </div>
+    </section>
 
-					<!-- <a href="#0" class="cd-close-form">Close</a> -->
-				</div> <!-- cd-signup -->
+    <section id="contact">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto text-center">
+            <h2 class="section-heading">Let's Get In Touch!</h2>
+            <hr class="my-4">
+            <p class="mb-5">Want to share your experience or suggesstion with us? Do not hesitate. Contact us now.</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-4 ml-auto text-center">
+            <i class="fa fa-phone fa-3x mb-3 sr-contact"></i>
+            <p>9737177329 / 8141723441</p>
+          </div>
+          <div class="col-lg-4 mr-auto text-center">
+            <i class="fa fa-envelope-o fa-3x mb-3 sr-contact"></i>
+            <p>
+              <a href="mailto:endless_miles_will_inc@gmail.com">feedback@endlessmiless.com</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-				<div id="cd-reset-password"> <!-- reset password form -->
-					<p class="cd-form-message">Lost your password? Please enter your email address. You will receive a link to create a new password.</p>
+    <!-- Bootstrap core JavaScript -->
+    <script src="{% static "vendor/jquery/jquery.min.js" %}"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-					<form class="cd-form">
-						<p class="fieldset">
-							<label class="image-replace cd-email" for="reset-email">E-mail</label>
-							<input class="full-width has-padding has-border" id="reset-email" type="email" placeholder="E-mail">
-							<span class="cd-error-message">Error message here!</span>
-						</p>
-
-						<p class="fieldset">
-							<input name="reset" id="resetsubmit" class="full-width has-padding" type="submit" value="Reset password">
-						</p>
-					</form>
-
-					<p class="cd-form-bottom-message"><a href="#0">Back to log-in</a></p>
-				</div> <!-- cd-reset-password -->
-				<a href="#0" class="cd-close-form">Close</a>
-			</div> <!-- cd-user-modal-container -->
-		</div> <!-- cd-user-modal -->
-	{% endblock content %}
-
-	{% block custom_scripts %}
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript"></script>
+    <!-- Plugin JavaScript -->
+    <script src="{% static "vendor/jquery-easing/jquery.easing.min.js" %}"></script>
+    <script src="{% static "vendor/scrollreveal/scrollreveal.min.js" %}"></script>
+    <script src="{% static "vendor/magnific-popup/jquery.magnific-popup.min.js" %}">
+    </script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript"></script>
+     <script type="text/javascript" src="{% static "js/custom.js" %}"></script>
     <script  src="{% static "js/index.js" %}"></script>
     <script type="text/javascript">
-    	var flag = 1
-    	$(document).ready(function(){
-	    	if(flag == 1){
-	    		$("#registersubmit").prop("disabled", true)
-	    		$("#registersubmit").css("background-color", "grey")
-	    	}
-	    })
-    	sign_user_error = ""
-    	var sub = []
-    	function isNotBlank(inputString){
-	    	if (/^(?!\s*$).+/.test(inputString)){
-	    		return true
-	    	}	
-    	}
-    	function validateEmail(email) {
-    		var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    		if (re.test(String(email).toLowerCase())) {
-    			return true
-				}
-			}
-			function checkdate(start_year, start_month, start_date, end_year, end_month, end_date){
-				if (start_year > end_year){
+      var flag = 1
+      $(document).ready(function(){
+        if(flag == 1){
+          $("#registersubmit").prop("disabled", true)
+          $("#registersubmit").css("background-color", "grey")
+        }
+      })
+      sign_user_error = ""
+      var sub = []
+      function isNotBlank(inputString){
+        if (/^(?!\s*$).+/.test(inputString)){
+          return true
+        } 
+      }
+      function validateEmail(email) {
+        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        if (re.test(String(email).toLowerCase())) {
+          return true
+        }
+      }
+      function checkdate(start_year, start_month, start_date, end_year, end_month, end_date){
+        if (start_year > end_year){
           return [false, 'Error in selecting Year', flag=1]
         }
         else if (start_year == end_year){
@@ -205,228 +448,231 @@
         else{
           return[true, '', 0]
         }
-			}
+      }
 
-    	$("#signup-username").blur(function(){
-				sign_user = $("#signup-username").val()
-				if (isNotBlank(sign_user) != true){
-	    		$("#sign_user_error").text("This field is required")
-	    		sub[0] = 1
-	    	}
-	    	else{
-	    		$("#sign_user_error").text("")	
-	    		sub[0] = 0
-	    	}
-    	})
-    	$("#signup-email").blur(function(){
-				sign_email = $("#signup-email").val()
-				if (isNotBlank(sign_email) != true){
-	    		$("#sign_email_error").text("This field is required")
-	    		sub[1] = 1
-	    	}
-	    	else{
-	    		if (validateEmail(sign_email) != true){
-	    			$("#sign_email_error").text("Invalid email")
-	    			sub[1] = 1	
-	    		}
-	    		else{
-	    			$("#sign_email_error").text("")		
-	    			sub[1] = 0
-	    		}
-	    	}
-    	})
-    	$("#signup-password").blur(function(){
-				sign_pass = $("#signup-password").val()
-				if (isNotBlank(sign_pass) != true){
-	    		$("#sign_pass_error").text("This field is required")
-	    		sub[2] = 1
-	    	}
-	    	else{
-	    		if((sign_pass.length >= 6) && (sign_pass.length < 30)) {
-		    		if (/^(?=.*\d)(?=.*[a-zA-Z]).{6,30}$/.test(sign_pass)){
-		    			$("#sign_pass_error").text("")	
-		    			sub[2] = 0
-		    		}
-		    		else{
-	    				$("#sign_pass_error").text("Password should be Alpha-Numeric")	
-	    				sub[2] = 1
-	    			}
-		    	}
-		    	else{
-		    		$("#sign_pass_error").text("Password must be 6-30 characters")
-		    			sub[2] = 1
-		    	}
-	    	}
-    	})
-    	$("#signup-repassword").blur(function(){
-				sign_repass = $("#signup-repassword").val()
-				if (isNotBlank(sign_repass) != true){
-	    		$("#sign_repass_error").text("This field is required")
-	    		sub[3] = 1
-	    	}
-	    	else{
-	    		if (sign_repass != sign_pass){
-	    			$("#sign_repass_error").text("Password don't match")
-	    			sub[3] = 1
-	    		}	
-	    		else{
-	    			$("#sign_repass_error").text("")
-	    			sub[3] = 0
-	    		}
-	    	}
-    	})
-    	$("#signup-dob").blur(function(){
-				sign_dob = $("#signup-dob").val()
-				if (isNotBlank(sign_dob) != true){
-	    		$("#sign_dob_error").text("This field is required")
-	    		sub[4] = 1
-	    	}
-	    	else{
-	    		if (/[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])/.test(sign_dob.slice(0,10))){
-	    			var d = new Date()
-		    		year = parseInt(sign_dob.slice(0,4))
-		    		month = parseInt(sign_dob.slice(5,7))
-		    		date = parseInt(sign_dob.slice(-2,))
-		    		this_year = d.getFullYear()
-		    		this_month = d.getMonth()
-		    		this_date = d.getDate()
-		    		checked = checkdate(year, month, date, this_year, this_month, this_date)
-		    		if (checked[0] != true){
-		    			$("#sign_dob_error").text("Invalid Date")		
-		    			sub[4] = 1
-		    		}
-		    		else{
-	    				$("#sign_dob_error").text("")		
-	    				sub[4] = 0
-		    		}
-		    	}
-		    	else{
-		    		$("#sign_dob_error").text("Invalid Date")		
-	    				sub[4] = 1
-		    	}	
-	    	}
-    	})
-    	$("#signup-gender").blur(function(){
-				sign_gender = $("#signup-gender").val()
-				if (isNotBlank(sign_gender) != true){
-	    		$("#sign_gender_error").text("This field is required")
-	    		sub[5] = 1
-	    	}
-	    	else{
-	    		gen_list = {'male': 'male', 'female': 'female', 'others': 'others'}
-	    		sign_gender = sign_gender.toLowerCase()
-	    		for (key in gen_list){
-	    			if (sign_gender === gen_list[key]){
-			    		$("#sign_gender_error").text("")	
-			    		sub[5] = 0
-			    		break;
-	    			}
-	    			else{
-	    				$("#sign_gender_error").text("Please type a correct gender")
-	    				sub[5] = 1
-	    			}
-	    		}
-	    	}
-    	})
-    	$("#signup-contact").blur(function(){
-				sign_cont = $("#signup-contact").val()
-				if (isNotBlank(sign_cont) != true){
-	    		$("#sign_contact_error").text("This field is required")
-	    		sub[6] = 1
-	    	}
-	    	else{
-	    		if (/^\d{10}$/.test(sign_cont)){
-	 		   		$("#sign_contact_error").text("")	
-	 		   		sub[6] = 0
-	    		}
-	    		else{
-	    			$("#sign_contact_error").text("Should be digits only of 10 numbers")	
-	    			sub[6] = 1
-	    		}
-	    	}
-    	})
-    	var flag = 1
-	    $("#accept-terms").focus(function(){
-	    	for(var i=0; i<sub.length; i++){
-	    		if (sub[i] == 0){
-	    			flag = 0
-	    		}
-	    		else if(sub[i] == 1) {
-	    			flag = 1
-	    		}
-	    	}
-	    })
-	  	$("#accept-terms").click(function(){
-	  		if (flag == 1){
-	  			$("#accept-terms").prop("checked", false)
-	  			$("#accept_terms_errors").text("Please solve the errors above to proceed")
-	  		}
-	  		else{
-	  			$("#accept-terms").prop("checked", true)
-	  			$("#accept_terms_errors").text("")
-	  			$("#registersubmit").prop("disabled", false)
-		    	$("#registersubmit").css("background-color", "#da3838")
-	  		}
-	  	})
+      $("#signup-username").blur(function(){
+        sign_user = $("#signup-username").val()
+        if (isNotBlank(sign_user) != true){
+          $("#sign_user_error").text("This field is required")
+          sub[0] = 1
+        }
+        else{
+          $("#sign_user_error").text("")  
+          sub[0] = 0
+        }
+      })
+      $("#signup-email").blur(function(){
+        sign_email = $("#signup-email").val()
+        if (isNotBlank(sign_email) != true){
+          $("#sign_email_error").text("This field is required")
+          sub[1] = 1
+        }
+        else{
+          if (validateEmail(sign_email) != true){
+            $("#sign_email_error").text("Invalid email")
+            sub[1] = 1  
+          }
+          else{
+            $("#sign_email_error").text("")   
+            sub[1] = 0
+          }
+        }
+      })
+      $("#signup-password").blur(function(){
+        sign_pass = $("#signup-password").val()
+        if (isNotBlank(sign_pass) != true){
+          $("#sign_pass_error").text("This field is required")
+          sub[2] = 1
+        }
+        else{
+          if((sign_pass.length >= 6) && (sign_pass.length < 30)) {
+            if (/^(?=.*\d)(?=.*[a-zA-Z]).{6,30}$/.test(sign_pass)){
+              $("#sign_pass_error").text("")  
+              sub[2] = 0
+            }
+            else{
+              $("#sign_pass_error").text("Password should be Alpha-Numeric")  
+              sub[2] = 1
+            }
+          }
+          else{
+            $("#sign_pass_error").text("Password must be 6-30 characters")
+              sub[2] = 1
+          }
+        }
+      })
+      $("#signup-repassword").blur(function(){
+        sign_repass = $("#signup-repassword").val()
+        if (isNotBlank(sign_repass) != true){
+          $("#sign_repass_error").text("This field is required")
+          sub[3] = 1
+        }
+        else{
+          if (sign_repass != sign_pass){
+            $("#sign_repass_error").text("Password don't match")
+            sub[3] = 1
+          } 
+          else{
+            $("#sign_repass_error").text("")
+            sub[3] = 0
+          }
+        }
+      })
+      $("#signup-dob").blur(function(){
+        sign_dob = $("#signup-dob").val()
+        if (isNotBlank(sign_dob) != true){
+          $("#sign_dob_error").text("This field is required")
+          sub[4] = 1
+        }
+        else{
+          if (/[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])/.test(sign_dob.slice(0,10))){
+            var d = new Date()
+            year = parseInt(sign_dob.slice(0,4))
+            month = parseInt(sign_dob.slice(5,7))
+            date = parseInt(sign_dob.slice(-2,))
+            this_year = d.getFullYear()
+            this_month = d.getMonth()
+            this_date = d.getDate()
+            checked = checkdate(year, month, date, this_year, this_month, this_date)
+            if (checked[0] != true){
+              $("#sign_dob_error").text("Invalid Date")   
+              sub[4] = 1
+            }
+            else{
+              $("#sign_dob_error").text("")   
+              sub[4] = 0
+            }
+          }
+          else{
+            $("#sign_dob_error").text("Invalid Date")   
+              sub[4] = 1
+          } 
+        }
+      })
+      $("#signup-gender").blur(function(){
+        sign_gender = $("#signup-gender").val()
+        if (isNotBlank(sign_gender) != true){
+          $("#sign_gender_error").text("This field is required")
+          sub[5] = 1
+        }
+        else{
+          gen_list = {'male': 'male', 'female': 'female', 'others': 'others'}
+          sign_gender = sign_gender.toLowerCase()
+          for (key in gen_list){
+            if (sign_gender === gen_list[key]){
+              $("#sign_gender_error").text("")  
+              sub[5] = 0
+              break;
+            }
+            else{
+              $("#sign_gender_error").text("Please type a correct gender")
+              sub[5] = 1
+            }
+          }
+        }
+      })
+      $("#signup-contact").blur(function(){
+        sign_cont = $("#signup-contact").val()
+        if (isNotBlank(sign_cont) != true){
+          $("#sign_contact_error").text("This field is required")
+          sub[6] = 1
+        }
+        else{
+          if (/^\d{10}$/.test(sign_cont)){
+            $("#sign_contact_error").text("") 
+            sub[6] = 0
+          }
+          else{
+            $("#sign_contact_error").text("Should be digits only of 10 numbers")  
+            sub[6] = 1
+          }
+        }
+      })
+      var flag = 1
+      $("#accept-terms").focus(function(){
+        for(var i=0; i<sub.length; i++){
+          if (sub[i] == 0){
+            flag = 0
+          }
+          else if(sub[i] == 1) {
+            flag = 1
+          }
+        }
+      })
+      $("#accept-terms").click(function(){
+        if (flag == 1){
+          $("#accept-terms").prop("checked", false)
+          $("#accept_terms_errors").text("Please solve the errors above to proceed")
+        }
+        else{
+          $("#accept-terms").prop("checked", true)
+          $("#accept_terms_errors").text("")
+          $("#registersubmit").prop("disabled", false)
+          $("#registersubmit").css("background-color", "#da3838")
+        }
+      })
 
-	  	$("#remember-me").click(function(){
-	  			$("#cookie").val('yes')
-	  	})
+      $("#remember-me").click(function(){
+          $("#cookie").val('yes')
+      })
 
+      $("#joinus").click(function(){
+        $("#signup").trigger("click");
+      })
 
     </script>
     <script type="text/javascript">
 
     </script>
-		<script>
-			$(document).ready(function() {
-			    $("#trial").click(function(){
-					  $.ajax({
-					    type: 'POST', 
-					    url: '#', 
-					    dataType: 'json',
-					    data: $('#form_login').serialize(),
-					    success: function (x) {                
-					      $("#credential-error").text("Login Success");
-					      var delay = 1000; 
-					      redirect_url = x.url
-					      //alert("Welcome to Endless Miles. Happy Travelling!");
-					      setTimeout(function(){ window.location = redirect_url; }, delay);
-					    },
-					    error:function(){
-					      $("#credential-error").text("Invalid Credentials");
-					    }
-				  	});
-				  return false;
-				});
-			})
-		</script>
-	  <script>
-			$(document).ready(function() {
-			    $("#registersubmit").click(function(){
-					  $.ajax({
-					    type: 'POST', 
-					    url: '#', 
-					    dataType: 'json',
-					    data: $('#form_registration').serialize(),
-					    success: function (x) {                
-					      $("#registererrors").text(x.message);
-					      //var delay = 1000; 
-					      //redirect_url = x.url
-					      //alert("Welcome to Endless Miles. Happy Travelling!");
-					      //setTimeout(function(){ window.location = redirect_url; }, delay);
-					    },
-					    error:function(err){
-					      $("#registererrors").text(err.message);
-					    }
-				  	});
-				  return false;
-				});
-			})
-	  </script>
-  {% endblock custom_scripts %}
+    <script>
+      $(document).ready(function() {
+          $("#trial").click(function(){
+            $.ajax({
+              type: 'POST', 
+              url: '#', 
+              dataType: 'json',
+              data: $('#form_login').serialize(),
+              success: function (x) {                
+                $("#credential-error").text("Login Success");
+                var delay = 1000; 
+                redirect_url = x.url
+                //alert("Welcome to Endless Miles. Happy Travelling!");
+                setTimeout(function(){ window.location = redirect_url; }, delay);
+              },
+              error:function(){
+                $("#credential-error").text("Invalid Credentials");
+              }
+            });
+          return false;
+        });
+      })
+    </script>
+    <script>
+      $(document).ready(function() {
+          $("#registersubmit").click(function(){
+            $.ajax({
+              type: 'POST', 
+              url: '#', 
+              dataType: 'json',
+              data: $('#form_registration').serialize(),
+              success: function (x) {                
+                $("#registererrors").text(x.message);
+                //var delay = 1000; 
+                //redirect_url = x.url
+                //alert("Welcome to Endless Miles. Happy Travelling!");
+                //setTimeout(function(){ window.location = redirect_url; }, delay);
+              },
+              error:function(err){
+                $("#registererrors").text(err.message);
+              }
+            });
+          return false;
+        });
+      })
+    </script>
+    <!-- Custom scripts for this template -->
+   
 
-
-</body>
+  </body>
 
 </html>

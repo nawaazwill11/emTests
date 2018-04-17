@@ -1,0 +1,432 @@
+{% extends 'frame.html' %}
+{% load staticfiles %}
+
+  {% block title %}Welcome To Endless Miles{% endblock title %}
+  {% block static_files %}
+	  <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='
+	  text/css'>
+		<link rel="stylesheet" href="{% static "css/custom/index-style.css" %}">
+	{% endblock static_files %}
+
+	{% block page_name %}Endless Miles{% endblock page_name %}
+
+
+	{% block top_nav_user_info %}{% endblock top_nav_user_info %}
+"
+	{% block top_nav_extras %}
+		<div class="main-nav">
+			<ul>
+				<!-- inser more links here -->
+				<li><a class="cd-signin" href="#0">Sign in</a></li>
+				<li><a class="cd-signup" href="#0">Sign up</a></li>
+			</ul>	
+		</div>
+		
+	{% endblock top_nav_extras %}
+	{% block right_side_nav %}{% endblock right_side_nav %}
+	{% block content %}
+		<div class="cd-user-modal" style="display: block;"> <!-- this is the entire modal form, including the background -->
+			<div class="cd-user-modal-container"> <!-- this is the container wrapper -->
+				<ul class="cd-switcher" type="none">
+					<li><a href="#0">Sign in</a></li>
+					<li><a href="#0">New account</a></li>
+				</ul>
+
+				<div id="cd-login"> <!-- log in form -->
+					<form id="form_login" method="POST" class="cd-form">
+						{% csrf_token %}
+						{{ form.logid }}
+						{{ form.cookie }}
+						<p class="fieldset">
+							<label class="image-replace cd-email" for="signin-username">E-mail</label>
+							{{ form.username }}
+							<span id="username-error" class="cd-error-message"></span>
+						</p>
+
+						<p class="fieldset">
+							<label class="image-replace cd-password" for="signin-password">Password</label>
+							{{form.password}}
+							<a href="#0" class="hide-password">Show</a>
+						</p>
+						
+
+						<p class="fieldset">
+							<input type="checkbox" id="remember-me">
+							<label for="remember-me">Remember me</label>
+							<span id="credential-error"></span>
+						</p>
+
+						<p class="fieldset">
+							<input id="trial" class="full-width" type="submit" value="Login">
+						</p>
+					</form>
+					<p class="cd-form-bottom-message"><a href="#0">Forgot your password?</a></p>
+					<!-- <a href="#0" class="cd-close-form">Close</a> -->
+				</div> <!-- cd-login -->
+
+				<div id="cd-signup"> <!-- sign up form -->
+					<form id="form_registration" method='POST' class="cd-form">
+						{% csrf_token %}
+						
+						<p class="fieldset">
+							<label class="image-replace cd-username" for="signup-username">Username</label>
+							{{ rform.username }}
+							<span id="sign_user_error" class="index-errors"></span>
+						</p>
+
+						<p class="fieldset">
+							<label class="image-replace cd-email" for="signup-email">E-mail</label>
+							{{rform.email}}
+							<span id="sign_email_error" class="index-errors"></span>
+						</p>
+
+
+						<p class="fieldset">
+							<label class="image-replace cd-password" for="signup-password">Password</label>
+							{{rform.password}}
+							<span id="sign_pass_error" class="index-errors"></span>
+						</p>
+
+						<p class="fieldset">
+							<label class="image-replace cd-password" for="signup-repassword">Re</label>
+							{{rform.repassword}}
+							<span id="sign_repass_error" class="index-errors"></span>
+						</p>
+
+						<p class="fieldset">
+							<label class="image-replace cd-password" for="signup-dob">Date of Birth</label>
+							{{ rform.dob }}
+							<span id="sign_dob_error" class="index-errors"></span>
+						</p>
+
+						<p class="fieldset">
+							<label class="image-replace cd-password" for="signup-gender">Contact</label>
+							{{ rform.gender }}
+							<span id="sign_gender_error" class="index-errors"></span>
+						</p>
+
+						<p class="fieldset">
+							<label class="image-replace cd-password" for="signup-contact">Contact</label>
+							{{rform.contact}}
+							<span id="sign_contact_error" class="index-errors"></span>
+							<span id="registererrors"></span>
+						</p>
+						
+						<p class="fieldset">
+							<input type="checkbox" id="accept-terms">
+							<label for="accept-terms">I agree to the <a href="#0" class="terms">Terms</a></label>
+							<span id="accept_terms_errors" class="index-errors"></span>
+						</p>
+
+						<p class="fieldset">
+							<input id="registersubmit" class="full-width has-padding" type="submit" value="Create account">
+						</p>
+					</form>
+
+					<!-- <a href="#0" class="cd-close-form">Close</a> -->
+				</div> <!-- cd-signup -->
+
+				<div id="cd-reset-password"> <!-- reset password form -->
+					<p class="cd-form-message">Lost your password? Please enter your email address. You will receive a link to create a new password.</p>
+
+					<form class="cd-form">
+						<p class="fieldset">
+							<label class="image-replace cd-email" for="reset-email">E-mail</label>
+							<input class="full-width has-padding has-border" id="reset-email" type="email" placeholder="E-mail">
+							<span class="cd-error-message">Error message here!</span>
+						</p>
+
+						<p class="fieldset">
+							<input name="reset" id="resetsubmit" class="full-width has-padding" type="submit" value="Reset password">
+						</p>
+					</form>
+
+					<p class="cd-form-bottom-message"><a href="#0">Back to log-in</a></p>
+				</div> <!-- cd-reset-password -->
+				<a href="#0" class="cd-close-form">Close</a>
+			</div> <!-- cd-user-modal-container -->
+		</div> <!-- cd-user-modal -->
+	{% endblock content %}
+
+	{% block custom_scripts %}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript"></script>
+    <script  src="{% static "js/index.js" %}"></script>
+    <script type="text/javascript">
+    	var flag = 1
+    	$(document).ready(function(){
+	    	if(flag == 1){
+	    		$("#registersubmit").prop("disabled", true)
+	    		$("#registersubmit").css("background-color", "grey")
+	    	}
+	    })
+    	sign_user_error = ""
+    	var sub = []
+    	function isNotBlank(inputString){
+	    	if (/^(?!\s*$).+/.test(inputString)){
+	    		return true
+	    	}	
+    	}
+    	function validateEmail(email) {
+    		var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    		if (re.test(String(email).toLowerCase())) {
+    			return true
+				}
+			}
+			function checkdate(start_year, start_month, start_date, end_year, end_month, end_date){
+				if (start_year > end_year){
+          return [false, 'Error in selecting Year', flag=1]
+        }
+        else if (start_year == end_year){
+          if (start_month > end_month){
+            return [false, 'Error in selecting Month', flag=1]
+          }
+          else if (start_month == end_month){
+            if (start_date > end_date){
+              return[false, 'Error in selecting Date', flag=1]
+            }
+            else if (start_date == end_date) {
+              if ((start_time > end_time) || (start_time == end_time)) {
+                return[false, 'Time mismatch', flag=1]
+              }
+              else{
+                return[true, '', 0]
+              }
+            }
+            else{
+              return[true, '', 0]  
+            }
+            
+          }
+          else {
+            return[true, '', 0]  
+          }
+          
+        }
+        else{
+          return[true, '', 0]
+        }
+			}
+
+    	$("#signup-username").blur(function(){
+				sign_user = $("#signup-username").val()
+				if (isNotBlank(sign_user) != true){
+	    		$("#sign_user_error").text("This field is required")
+	    		sub[0] = 1
+	    	}
+	    	else{
+	    		$("#sign_user_error").text("")	
+	    		sub[0] = 0
+	    	}
+    	})
+    	$("#signup-email").blur(function(){
+				sign_email = $("#signup-email").val()
+				if (isNotBlank(sign_email) != true){
+	    		$("#sign_email_error").text("This field is required")
+	    		sub[1] = 1
+	    	}
+	    	else{
+	    		if (validateEmail(sign_email) != true){
+	    			$("#sign_email_error").text("Invalid email")
+	    			sub[1] = 1	
+	    		}
+	    		else{
+	    			$("#sign_email_error").text("")		
+	    			sub[1] = 0
+	    		}
+	    	}
+    	})
+    	$("#signup-password").blur(function(){
+				sign_pass = $("#signup-password").val()
+				if (isNotBlank(sign_pass) != true){
+	    		$("#sign_pass_error").text("This field is required")
+	    		sub[2] = 1
+	    	}
+	    	else{
+	    		if((sign_pass.length >= 6) && (sign_pass.length < 30)) {
+		    		if (/^(?=.*\d)(?=.*[a-zA-Z]).{6,30}$/.test(sign_pass)){
+		    			$("#sign_pass_error").text("")	
+		    			sub[2] = 0
+		    		}
+		    		else{
+	    				$("#sign_pass_error").text("Password should be Alpha-Numeric")	
+	    				sub[2] = 1
+	    			}
+		    	}
+		    	else{
+		    		$("#sign_pass_error").text("Password must be 6-30 characters")
+		    			sub[2] = 1
+		    	}
+	    	}
+    	})
+    	$("#signup-repassword").blur(function(){
+				sign_repass = $("#signup-repassword").val()
+				if (isNotBlank(sign_repass) != true){
+	    		$("#sign_repass_error").text("This field is required")
+	    		sub[3] = 1
+	    	}
+	    	else{
+	    		if (sign_repass != sign_pass){
+	    			$("#sign_repass_error").text("Password don't match")
+	    			sub[3] = 1
+	    		}	
+	    		else{
+	    			$("#sign_repass_error").text("")
+	    			sub[3] = 0
+	    		}
+	    	}
+    	})
+    	$("#signup-dob").blur(function(){
+				sign_dob = $("#signup-dob").val()
+				if (isNotBlank(sign_dob) != true){
+	    		$("#sign_dob_error").text("This field is required")
+	    		sub[4] = 1
+	    	}
+	    	else{
+	    		if (/[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])/.test(sign_dob.slice(0,10))){
+	    			var d = new Date()
+		    		year = parseInt(sign_dob.slice(0,4))
+		    		month = parseInt(sign_dob.slice(5,7))
+		    		date = parseInt(sign_dob.slice(-2,))
+		    		this_year = d.getFullYear()
+		    		this_month = d.getMonth()
+		    		this_date = d.getDate()
+		    		checked = checkdate(year, month, date, this_year, this_month, this_date)
+		    		if (checked[0] != true){
+		    			$("#sign_dob_error").text("Invalid Date")		
+		    			sub[4] = 1
+		    		}
+		    		else{
+	    				$("#sign_dob_error").text("")		
+	    				sub[4] = 0
+		    		}
+		    	}
+		    	else{
+		    		$("#sign_dob_error").text("Invalid Date")		
+	    				sub[4] = 1
+		    	}	
+	    	}
+    	})
+    	$("#signup-gender").blur(function(){
+				sign_gender = $("#signup-gender").val()
+				if (isNotBlank(sign_gender) != true){
+	    		$("#sign_gender_error").text("This field is required")
+	    		sub[5] = 1
+	    	}
+	    	else{
+	    		gen_list = {'male': 'male', 'female': 'female', 'others': 'others'}
+	    		sign_gender = sign_gender.toLowerCase()
+	    		for (key in gen_list){
+	    			if (sign_gender === gen_list[key]){
+			    		$("#sign_gender_error").text("")	
+			    		sub[5] = 0
+			    		break;
+	    			}
+	    			else{
+	    				$("#sign_gender_error").text("Please type a correct gender")
+	    				sub[5] = 1
+	    			}
+	    		}
+	    	}
+    	})
+    	$("#signup-contact").blur(function(){
+				sign_cont = $("#signup-contact").val()
+				if (isNotBlank(sign_cont) != true){
+	    		$("#sign_contact_error").text("This field is required")
+	    		sub[6] = 1
+	    	}
+	    	else{
+	    		if (/^\d{10}$/.test(sign_cont)){
+	 		   		$("#sign_contact_error").text("")	
+	 		   		sub[6] = 0
+	    		}
+	    		else{
+	    			$("#sign_contact_error").text("Should be digits only of 10 numbers")	
+	    			sub[6] = 1
+	    		}
+	    	}
+    	})
+    	var flag = 1
+	    $("#accept-terms").focus(function(){
+	    	for(var i=0; i<sub.length; i++){
+	    		if (sub[i] == 0){
+	    			flag = 0
+	    		}
+	    		else if(sub[i] == 1) {
+	    			flag = 1
+	    		}
+	    	}
+	    })
+	  	$("#accept-terms").click(function(){
+	  		if (flag == 1){
+	  			$("#accept-terms").prop("checked", false)
+	  			$("#accept_terms_errors").text("Please solve the errors above to proceed")
+	  		}
+	  		else{
+	  			$("#accept-terms").prop("checked", true)
+	  			$("#accept_terms_errors").text("")
+	  			$("#registersubmit").prop("disabled", false)
+		    	$("#registersubmit").css("background-color", "#da3838")
+	  		}
+	  	})
+
+	  	$("#remember-me").click(function(){
+	  			$("#cookie").val('yes')
+	  	})
+
+
+    </script>
+    <script type="text/javascript">
+
+    </script>
+		<script>
+			$(document).ready(function() {
+			    $("#trial").click(function(){
+					  $.ajax({
+					    type: 'POST', 
+					    url: '#', 
+					    dataType: 'json',
+					    data: $('#form_login').serialize(),
+					    success: function (x) {                
+					      $("#credential-error").text("Login Success");
+					      var delay = 1000; 
+					      redirect_url = x.url
+					      //alert("Welcome to Endless Miles. Happy Travelling!");
+					      setTimeout(function(){ window.location = redirect_url; }, delay);
+					    },
+					    error:function(){
+					      $("#credential-error").text("Invalid Credentials");
+					    }
+				  	});
+				  return false;
+				});
+			})
+		</script>
+	  <script>
+			$(document).ready(function() {
+			    $("#registersubmit").click(function(){
+					  $.ajax({
+					    type: 'POST', 
+					    url: '#', 
+					    dataType: 'json',
+					    data: $('#form_registration').serialize(),
+					    success: function (x) {                
+					      $("#registererrors").text(x.message);
+					      //var delay = 1000; 
+					      //redirect_url = x.url
+					      //alert("Welcome to Endless Miles. Happy Travelling!");
+					      //setTimeout(function(){ window.location = redirect_url; }, delay);
+					    },
+					    error:function(err){
+					      $("#registererrors").text(err.message);
+					    }
+				  	});
+				  return false;
+				});
+			})
+	  </script>
+  {% endblock custom_scripts %}
+
+
+</body>
+
+</html>

@@ -78,6 +78,65 @@ class IndexPageView(TemplateView):
 						return JsonResponse({"success": True, "url": 'story/'})
 				return JsonResponse({"success": False})
 
+class IndexOldPageView(TemplateView):
+	template_name = 'index.old.html'
+	form = LoginForm
+	rform = RegistrationForm
+
+	def get(self, request, *args, **kwargs):
+		form = self.form(initial='')
+		rform  = self.rform(initial='')
+		#Printer.print(rform)
+		return render(request, self.template_name, {'form': form,'rform': rform})
+		
+	def post(self, request, *args, **kwargs):
+		form = self.form(request.POST)
+		rform = self.rform(request.POST)
+		if 'contact' in request.POST:
+			if rform.is_valid():
+				cleaned = rform.cleaned_data
+				username = cleaned['username']
+				email = cleaned['email']
+				password = cleaned['password']
+				dob = cleaned['dob']
+				gender = cleaned['gender']
+				contact = cleaned['contact']
+				recorded = RegistrationForm.register(username, email, password)
+				if recorded:
+					pi = RegPi.pied(username, email, dob, gender, contact)
+					if pi:
+						misc = Miscer.misced(username)
+						if misc:
+							return JsonResponse({"success": True, "message": "Congratulations! User has been created."})
+			return JsonResponse({'success': False, 'message': "Error! User with same email or username exists. Change credentials and Try again."})
+
+		if 'logid' in request.POST:
+			if form.is_valid():
+				print("aatle")
+				cleaned = form.cleaned_data
+				username = cleaned['username']
+				password = cleaned['password']
+				cookie = cleaned['cookie']
+				print(username, password)
+				user = authenticate(username=username, password=password)
+				print(user)
+				if user:
+					print('aithed')
+					auth_login(request, user)
+					user_in_session = create_session(request, username)
+					info_in_session = create_session_rest(request, username)
+					if cookie == 'yes':
+						request.session.set_expiry(0)
+					else:
+						request.session.set_expiry(3600)
+					if user_in_session and info_in_session:
+						print("got sess")
+						misc = Miscer.miscZ(username)
+						if misc:
+							print("miscing")
+							return JsonResponse({"success": True, "url": 'about/about_fill/'})	
+						return JsonResponse({"success": True, "url": 'story/'})
+				return JsonResponse({"success": False})
 
 
 
