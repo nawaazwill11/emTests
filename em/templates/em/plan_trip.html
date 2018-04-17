@@ -1079,7 +1079,7 @@
       var moto_dict = {'adventure': 'Adventure', 'exploring': 'Exploring', 'photography': 'Photography', 'sports': 'Sport Event', 'food': 'Food & Cuisine', 'fitness': 'Fitness', 'shopping': 'Shopping', 'travel': 'Travel Blogging', 'partying': 'Partying', 'backtracking': 'Backtracking'};
       var focus_dict = {'one': 'pb-one', 'two': 'pb-two', 'three': 'pb-three', 'four': 'pb-four'};
       var post_dict = {'company':'', 'moto': '', 'source': '', 'destination': '', 'mode': '', 'pitstop': '', 'timeperpit': '', 'distance': '', 'start_date': '', 'gender': '', 'age_group': '', 'participants': '', 'title': '', 'description': '', 'fuel': '', 'vehicle': '', 'hotel': '', 'total_cost': ''};
-      var mode_dict = {'cycle': 'Cycle', 'motorbike': 'Motorbike', 'car': 'Car', 'onfoot': 'On Foot'}
+      var mode_dict = {'DRIVING': 'Driving', 'WALKING': 'Walking'}
       var time_string = '';
       var month_dict = {'01': 'Jan'}
       function pb_focus(pb_id) {
@@ -1265,6 +1265,7 @@
         var source = $("#frominp").val()
         var destination = $("#toinp").val()
         var mode_val = $("#travel_mode option:selected").val()
+
         var mode = mode_dict[mode_val]
         trip_duration = $("#trip_duration").text()
         post_dict['source'] = source
@@ -1288,6 +1289,7 @@
         $("#pb_destination").text(post_dict['destination'])
         $("#pb_mode").text(post_dict['mode'])
         $("#pb_trip_duration").text(post_dict['duration'])
+        $('#pb_trip_distance').text(post_dict['distance'])
         if (source != '' && destination != '' && mode != ''){
           focus_click('three', 'two')
           navigante('three', 'one', 'two', 'four')

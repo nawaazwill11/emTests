@@ -907,7 +907,7 @@ class Bifurcator():
 			trip_id_list = []
 			for p in part:
 				trip_id_list.append(p['trip_id'])
-			#print(trip_id_list)
+			print('ids:',trip_id_list)
 			trip_contents_list = Bifurcator.Tfetcher(username, trip_id_list)
 			
 			
@@ -917,7 +917,8 @@ class Bifurcator():
 			trip_id_list = []
 			for p in part:
 				trip_id_list.append(p['trip_id'])
-			print(trip_id_list)
+			#print(trip_id_list)
+			print('create')
 			trip_contents_list = Bifurcator.Tfetcher(username, trip_id_list)
 
 		elif parameter == 'joined':
@@ -926,7 +927,8 @@ class Bifurcator():
 			trip_id_list = []
 			for p in part:
 				trip_id_list.append(p['trip_id'])
-			print(trip_id_list)
+			#print(trip_id_list)
+			print('joined')
 			trip_contents_list = Bifurcator.Tfetcher(username, trip_id_list)
 
 		return trip_contents_list
@@ -935,14 +937,15 @@ class Bifurcator():
 		trip_contents_list = []
 		part_contents_list = []
 		for trip_id in id_list:
-			trip = Trip.objects.filter(username=username, trip_id=trip_id).values()
+			trip = Trip.objects.filter(trip_id=trip_id).values()
+			print('trip: ',trip)
 			parts = TripParticipants.objects.filter(trip_id=trip_id).values('username')
 			users_list = []
 			for p in parts:
 				users_list.append(p['username'])
-			#print(trip_id, users_list)
+			print(trip_id, users_list)
 			part_contents_list = (Bifurcator.sub_Tfetcher(username, users_list))
-			#print(part_contents_list)
+			print(part_contents_list)
 			trip_total = deepcopy(trip[0])
 			trip_total['plist'] = part_contents_list
 			trip_contents_list.append(trip_total)
