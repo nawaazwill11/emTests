@@ -1,5 +1,5 @@
-from datetime import datetime as dt
 
-dob = "1993-11-24"
-madedate = dt.strptime(dob, '%Y-%m-%d')
-print(madedate)
+string = "willo walker"
+
+name_list = string.split(" ")
+print(name_list[0])

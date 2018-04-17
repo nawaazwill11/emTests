@@ -5,7 +5,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.models import User
 import hashlib
 import re
-from em.models import Login, Pi, AuthUser, Trip, Event, Feedback, Contribute, Misc, TripParticipants, EventParticipants
+from em.models import Login, Pi, AuthUser, Trip, Event, Feedback, Contribute, Misc, TripParticipants, EventParticipants, PrivacySetting, EmergencyInfo
 from copy import deepcopy
 
 #Using clean_<field_name>. This is the best choice.
@@ -1076,6 +1076,76 @@ class JoinEvent():
 			return True
 		return False
 
+class Credentials():
+	def credentials(username):
+		credentials = {}
+		user = AuthUser.objects.get(username=username)
+		if user is not None:
+			credentials['name'] = user.first_name+" "+user.last_name
+			credentials['email'] = user.email
+			credentials['password'] = user.password
+			return credentials
+		return False
+
+	def altercredentials(username, response):
+		kwargs = dict(response.lists())
+		name = kwargs['fullname'][0]
+		password = kwargs['passw'][0]
+		name_list = name.split(" ")
+		first_name = name_list[0]
+		last_name = name_list[1]
+		user = User.objects.get(username=username)
+		user.first_name = first_name
+		user.last_name = last_name
+		if not (password == 'none'):
+			user.set_password(password)
+		user.save()
+		return True
+
+	def getPrivacy(username):
+		privacy = {}
+		if (PrivacySetting.objects.filter(username=username).exists()):
+			priv = PrivacySetting.objects.get(username=username)
+			privacy['timeline'] = priv.timeline
+			privacy['friends_list'] = priv.friends_list
+			privacy['album'] = priv.album
+			return privacy
+		else:
+			privacy_id = TripPlanValidation.hexer(username)
+			priv = PrivacySetting.objects.create(timeline='Everyone', friends_list='Everyone', album='Everyone', privacy_id=privacy_id, username=username)
+			priv = PrivacySetting.objects.get(username=username)
+			print(priv)
+			privacy['timeline'] = priv.timeline
+			privacy['friends_list'] = priv.friends_list
+			privacy['album'] = priv.album
+			return privacy
+
+	def alterPrivacy(username,response):
+		kwargs = dict(response.lists())
+		timeline = kwargs['timeline'][0]
+		friends_list = kwargs['friends_list'][0]
+		album = kwargs['album'][0]
+		priv = PrivacySetting.objects.get(username=username)
+		priv.timeline = timeline
+		priv.friends_list = friends_list
+		priv.album = album
+		priv.save()
+		return True
+
+class Emergency():
+	def postEmergency(username, response):
+		kwargs = dict(response.lists())
+		nature = kwargs['nature'][0]
+		personel = kwargs['personel'][0]
+		loi = kwargs['loi'][0]
+		contact = kwargs['contact'][0]
+		description = kwargs['description'][0]
+		#print(nature, personel, loi, contact, description)
+		emer_id = TripPlanValidation.hexer(username)
+		emer = EmergencyInfo.objects.create(emergency_id=emer_id, username=username, nature=nature, personnel=personel, loi=loi, contact=contact, description=description)
+		if emer:
+			return True
+		return False
 
 '''
 #Using clean()

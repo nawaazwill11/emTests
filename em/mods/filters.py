@@ -1,4 +1,4 @@
-from em.models import Trip, Event
+from em.models import Trip, Event, EmergencyInfo
 import django_filters
 from django_filters.filters import CharFilter, ChoiceFilter, MultipleChoiceFilter, NumberFilter
 from django import forms
@@ -47,3 +47,9 @@ class EventSearchFilter(django_filters.FilterSet):
 	class Meta:
 		model = Event
 		fields = ['ownership']
+
+class EmergencyFilter(django_filters.FilterSet):
+	
+	class Meta:
+		model: EmergencyInfo
+		fields = ['username']

@@ -160,6 +160,20 @@ class Emergency(models.Model):
         db_table = 'emergency'
 
 
+class EmergencyInfo(models.Model):
+    emergency_id = models.CharField(primary_key=True, max_length=32)
+    nature = models.CharField(max_length=15)
+    loi = models.CharField(max_length=200)
+    contact = models.CharField(max_length=15)
+    description = models.CharField(max_length=500, blank=True, null=True)
+    username = models.CharField(max_length=200)
+    personnel = models.CharField(max_length=100)
+
+    class Meta:
+        managed = False
+        db_table = 'emergency_info'
+
+
 class Event(models.Model):
     event_id = models.CharField(primary_key=True, max_length=32)
     event_privacy = models.CharField(max_length=20)
@@ -417,10 +431,11 @@ class PollsQuestion(models.Model):
 
 
 class PrivacySetting(models.Model):
-    user = models.ForeignKey(Login, models.DO_NOTHING, primary_key=True)
-    timeline = models.IntegerField()
-    friends_list = models.IntegerField()
-    album = models.IntegerField()
+    timeline = models.CharField(max_length=20)
+    friends_list = models.CharField(max_length=20)
+    album = models.CharField(max_length=20)
+    username = models.CharField(max_length=200)
+    privacy_id = models.CharField(primary_key=True, max_length=32)
 
     class Meta:
         managed = False

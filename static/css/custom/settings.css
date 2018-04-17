@@ -102,7 +102,7 @@ select.priv-select {
 .pli-4 {
 
 }
-.edit-done, .edit-cancel {
+.edit-done, .edit-cancel, .privdone {
 	display: none;
 	height: 30px;
     padding: 0 15px;

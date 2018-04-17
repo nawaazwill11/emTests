@@ -28,9 +28,9 @@
 			</div>
 			<div class="head-desc">
 				<p>
-					Emergency should be used during unfortunate incidents ie. when the user needs emergency services for himself, his fellow traveller or any other person who requires assistance. On using this feature, nearby local authorities will be contacted by the number provided in the profile and your GPS location. Depending on the nature of the incident, the authorities will be contacted ie. Hospital for medical assistance and Fire Brigade for infernous circumstances.
+					Emergency should be used during unfortunate incidents ie. when the user needs emergency services for himself, his fellow traveller or any other person who requires assistance. On using this feature, nearby local authorities will be contacted by the number provided in the profile along with your GPS coordinates. Depending on the nature of the incident, the authorities such as contacted ie. Hospital for medical assistance and Fire Brigade for infernous events, will be contacted.
 				<p>
-					<b>Warning: Use Emergency only when you really need it. Using is unnecessarily is an offense and can have legal consequences.</b>
+					<b>Warning: Use Emergency only when you really need it. Using is unnecessarily is an offense and can have legal consequences. We advice you to use it cautiously.</b>
 				</p>
 				</p>
 			</div>
@@ -40,88 +40,92 @@
 				<div class="mini-head">
 					<h3>Fill Details</h3>
 				</div>
-				<ol class="emer-list">
-	        <li>
-	          <div class="emer-layer">
-	            <div class="colt-op">
-	              <div class="lI-group">
-	                <label >Nature of emergency<span style="color: red">*</span></label>
-	                <div class="emer-check">
-	                	<label><input type="checkbox" name="Medical">Medical</label>
-	                	<label><input type="checkbox" name="Crime">Crime</label>
-	                	<label><input type="checkbox" name="Vehicle">Vehicle</label>
-	                	<label><input type="checkbox" name="Stucked">Stucked</label>
-	                	<label><input type="checkbox" name="Other">Other</label>
-	                </div>
-	              </div>
-	            </div>
-	          </div>
-	        </li>
-	        <li>
-	          <div class="emer-layer">
-	            <div class="emer-op">
-	              <div class="lI-group">
-	                <label class="">Contact Personel <span style="color: red">*</span></label>
-	                <div class="emer-check">
-	                	<label><input type="checkbox" name="hospital">Hospital</label>
-	                	<label><input type="checkbox" name="Police">Police</label>
-	                	<label><input type="checkbox" name="fire-brigade">Mechanic</label>
-	                	<label><input type="checkbox" name="Other Travellers">Travellers</label>
-	                	<label><input type="checkbox" name="All">All</label>
-	                </div>
-	              </div>  
-	            </div>
-	          </div>
-	        </li>
-	        <li>
-	          <div class="emer-layer">
-	            <div class="emer-op">
-	              <div>
-	              	<label>Location of Incident<span style="color: red">*</span></label>
-	                <div class="emer-check">
-	                	<label><input type="radio" name="loi" value="loi-gps" >GPS</label>
-	                	<label><input type="radio" name="loi" value="loi-man">Manual</label>
-	                </div>
-	                <div class="alt-show" style="display: none">
-	                	<div class="lI-group" style="display: flex;">
-			                <label class="lI-label">Street Address <span style="color: red">*</span></label>
-			                <input type="text" class="lI-input" style="margin-left: 0" autocomplete="off">
-		              	</div>
-		              	<div class="lI-group" style="display: flex;">
-			                <label class="lI-label">City<span style="color: red">*</span></label>
-			                <input type="text" class="lI-input" style="margin-left: 0" autocomplete="off">
-		              	</div>
-		              	<div class="lI-group" style="display: flex;">
-			                <label class="lI-label">Landmark</label>
-			                <input type="text" class="lI-input" style="margin-left: 0" autocomplete="off">
-		              	</div>
-	                </div>
-	              </div>  
-	            </div>
-	          </div>
-	        </li>
-	        <li>
-	          <div class="emer-layer">
-	            <div class="emer-op">
-	              <div class="lI-group" style="display: flex;">
-	                <label class="lI-label">Contact Number <span style="color: red">*</span></label>
-	                <input id="phone" type="text" class="lI-input" style="margin-left: 0" autocomplete="off" value="+91 ">
-              	</div>
-	            </div>
-	          </div>
-	        </li>
-	        <li>
-	          <div class="emer-layer">
-	            <div class="emer-op" style="display: flex; flex-direction: column;" >
-	          		<label>Short Descripton	<span style="font-weight: 400;">(optional)</span></label>
-	          		<textarea placeholder="About the emergency" rows="5"></textarea>
-	          	</div>    
-	          </div>
-	        </li>
-				</ol>
-				<div class="emer-submit">
-  				<button type="submit" class="btn btn-success">Submit</button>
-  			</div>
+				<form id="emer_form" method="POST">
+					{% csrf_token %}
+					<ol class="emer-list">
+		        <li>
+		          <div class="emer-layer">
+		            <div class="colt-op">
+		              <div class="lI-group">
+		                <label >Nature of emergency<span style="color: red">*</span></label>
+		                <div class="emer-check">
+		                	<input id="nature" type="hidden" name="nature" value="">
+		                	<label><input type="radio" name="nature" value="Medical">Medical</label>
+		                	<label><input type="radio" name="nature" value="Crime">Crime</label>
+		                	<label><input type="radio" name="nature" value="Vehicle">Vehicle</label>
+		                	<label><input type="radio" name="nature" value="Stucked">Stucked</label>
+		                </div>
+		              </div>
+		            </div>
+		          </div>
+		        </li>
+		        <li>
+		          <div class="emer-layer">
+		            <div class="emer-op">
+		              <div class="lI-group">
+		                <label class="">Contact Personnel <span style="color: red">*</span></label>
+		                <div class="emer-check">
+		                	<input id="personel" type="hidden" name="personel" value="">
+		                	<label><input type="radio" name="personel" value="Hospital">Hospital</label>
+		                	<label><input type="radio" name="personel" value="Police">Police</label>
+		                	<label><input type="radio" name="personel" value="Mechanic">Mechanic</label>
+		                	<label><input type="radio" name="personel" value="Travellers">Travellers</label>
+		                </div>
+		              </div>  
+		            </div>
+		          </div>
+		        </li>
+		        <li>
+		          <div class="emer-layer">
+		            <div class="emer-op">
+		              <div>
+		              	<label>Location of Incident<span style="color: red">*</span></label>
+		                <div class="emer-check">
+		                	<input id="loi" type="hidden" name="loi" value="">
+		                	<label><input type="radio" name="loi" value="loi-gps" >GPS</label>
+		                	<label><input type="radio" name="loi" value="loi-man">Manual</label>
+		                </div>
+		                <div class="alt-show" style="display: none">
+		                	<div class="lI-group" style="display: flex;">
+				                <label class="lI-label">Street Address <span style="color: red">*</span></label>
+				                <input id="street" type="text" class="lI-input" style="margin-left: 0" autocomplete="off">
+			              	</div>
+			              	<div class="lI-group" style="display: flex;">
+				                <label class="lI-label">City<span style="color: red">*</span></label>
+				                <input id="city" type="text" class="lI-input" style="margin-left: 0" autocomplete="off">
+			              	</div>
+			              	<div class="lI-group" style="display: flex;">
+				                <label class="lI-label">Landmark</label>
+				                <input id="landmark" type="text" class="lI-input" style="margin-left: 0" autocomplete="off">
+			              	</div>
+		                </div>
+		              </div>  
+		            </div>
+		          </div>
+		        </li>
+		        <li>
+		          <div class="emer-layer">
+		            <div class="emer-op">
+		              <div class="lI-group" style="display: flex;">
+		                <label class="lI-label">Contact Number <span style="color: red">*</span></label>
+		                <input id="contact" type="text" class="lI-input" style="margin-left: 0" autocomplete="off" value="+91 " maxlength="14"   name="contact">
+	              	</div>
+		            </div>
+		          </div>
+		        </li>
+		        <li>
+		          <div class="emer-layer">
+		            <div class="emer-op" style="display: flex; flex-direction: column;" >
+		          		<label>Short Descripton	<span style="font-weight: 400;">(optional)</span></label>
+		          		<textarea id="description" name="description" placeholder="About the emergency" rows="5"></textarea>
+		          	</div>    
+		          </div>
+		        </li>
+					</ol>
+					<div class="emer-submit">
+	  				<button id="submit" class="btn btn-success">Submit</button>
+	  			</div>
+  			</form>
 			</div>
 		</div>
 	{% endblock content %}
@@ -159,7 +163,7 @@
 		listen('load', window, init);
 
 		function init() {
-		    var phone = document.getElementById('phone');
+		    var phone = document.getElementById('contact');
 		    var val = phone.value;
 		    listen('keydown', phone, replaceVal);
 		    listen('keyup', phone, replaceVal);
@@ -179,6 +183,67 @@
 		        elem.attachEvent('on' + event, func);   
 		    }
 		}
+
+	</script>
+	<script type="text/javascript">
+		var lat= '';
+		var lng = '';
+		$(document).ready(function getLocation() {
+      if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(showPosition);
+      } else { 
+          alert('Unable to get location')
+      }
+		});
+
+		function showPosition(position) {
+      lat = position.coords.latitude
+      lng = position.coords.longitude
+      //document.getElementById('inputs').innerHTML = lat+', '+lng 
+      alert(lat+", "+lng)
+		}	
+
+		$("input[name='nature']").click(function(){
+			$("#nature").val($("input[name=nature]:checked").val())
+		})
+
+		$("input[name=personel]").click(function(){
+			$("#personel").val($("input[name=personel]:checked").val())
+		})
+
+		$("input[name=loi]").click(function(){
+			loi = $("input[name=loi]:checked").val()
+			
+			if (loi === 'loi-gps'){
+				$("#loi").val(lat+", "+lng)
+			}
+		})
+		$("#contact").focus(function(){
+			if ($("input[name=loi]:checked").val() === 'loi-man'){
+				$("#loi").val($("#street").val()+", "+$("#city").val()+" (Landmark: "+$("#landmark").val()+")")}
+		})
+
+	</script>
+	<script type="text/javascript">
+
+		$("#emer_form").submit(function(e){
+			e.preventDefault();
+    	e.stopImmediatePropagation();
+			$.ajax({
+            type: 'POST', 
+            url: '#', 
+            dataType: 'json',
+            data: $(this).serialize(),
+            success: function(x) {   
+              if (x['success'] === true) {
+                alert('Emergency Requested')
+              }     
+              else{
+                alert('Error. Retry!')
+              }
+            }
+    });
+		})
 
 	</script>
   {% endblock custom_scripts %}

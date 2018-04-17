@@ -126,7 +126,7 @@
     padding-top: 10px;
 }
 .left-panel {
-  height: 350px;
+  height: fit-content;
 }
 .left-panel-body-low {
     margin-bottom: 60px;
@@ -138,7 +138,7 @@
 /*****Left Panel end*****/
 #box {
   width: 450px;
-    height: 200px;
+  height: fit-content;
 }
 #sb {
   margin-top: 7px;
@@ -148,9 +148,20 @@
   color: white;
 }
 .section {
-  padding-left: 90px;
+  padding-left: 20.5%;
 }
 #rp-head {
   padding-left: 5px;
   margin-bottom: 30px;
+}
+.sub-layer > span {
+  flex: 1;
+}
+.layers{
+  padding: 10px;
+}
+#emer_desc {
+  text-overflow: unset;
+  overflow: unset;
+  white-space: unset;
 }

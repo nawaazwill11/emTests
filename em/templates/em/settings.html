@@ -7,6 +7,10 @@
   	<link rel="stylesheet" type="text/css" href="{% static "css/custom/settings.css" %}">
 	{% endblock static_files %}
 
+	{% block page_name %}
+		Settings
+	{% endblock page_name %}
+
 	{% block inner_leftSideBar %}
 	  <li><a href="{% url "story" %}"><span class="glyphicon glyphicon-th" style="font-size: 25px">&nbsp</span>Story</a></li>
 	  <li><a href="{% url "timeline" %}"><span class="glyphicon glyphicon-sunglasses">&nbsp</span>Profile</a></li>
@@ -53,65 +57,71 @@
 					</h3>
 	 			</div>
 	 			<hr>
-	 			<div class="setting-body">
-	 				<ul class="lists" type="none">
-	 					<li class="list-item">
-	 						<label class="label-dark li-1">Name</label>
-	 						<div class="li-2">
-	 							<input class="label-light name" value="Nawaaz Will" readonly="readonly" >
-	 							<button class="btn btn-success edit-done">Save</button>
-	 							<button class="btn btn-default edit-cancel">Cancel</button>	
-	 						</div>
-	 						<a href="#!" class="edit-click li-3"><span class="span-edit">Edit</span></a>
-	 					</li>
-	 					<hr>
-	 					<li class="list-item">
-	 						<label class="label-dark li-1">Username</label>
-	 						<div class="li-2">
-	 							<input class="label-light name" value="Willo Walker" readonly="readonly" >
-	 							<button class="btn btn-success edit-done">Save</button>
-	 							<button class="btn btn-default edit-cancel">Cancel</button>	
-	 						</div>
-	 						<a href="#!" class="edit-click li-3"><span class="span-edit">Edit</span></a>
-	 					</li>
-	 					<hr>
-	 					<li class="list-item">
-	 						<label class="label-dark li-1">Email</label>
-	 						<div class="li-2">
-	 							<input class="label-light name" value="mastermindjim@gmail.com" readonly="readonly" >
-	 							<button class="btn btn-success edit-done">Save</button>
-	 							<button class="btn btn-default edit-cancel">Cancel</button>	
-	 						</div>
-	 						<a href="#!" class="edit-click li-3"><span class="span-edit">Edit</span></a>
-	 					</li>
-	 					<hr>
-	 					<li class="list-item">
-	 						<label class="label-dark li-1">Password</label>
-	 						<div class="li-2">
-	 							<input class="label-light name passO" type="password" value="ooooooooo" readonly="readonly" placeholder="Current Password">
-	 							<input class="label-light name pass" type="password" placeholder="New Password" value="" style="display: none">
-	 							<input class="label-light name pass" type="password" placeholder="Retype new password" value="" style="display: none; margin-bottom: 10px;">
-	 							<br>
-	 							<button class="btn btn-success edit-done">Save</button>
-	 							<button class="btn btn-default edit-cancel">Cancel</button>	
-	 						</div>
-	 						<a href="#!" class="edit-click li-3"><span class="span-edit">Edit</span></a>
-	 					</li>
-	 					<hr>
-	 					<li class="list-item">
-	 						<label class="label-dark li-1">Deactivate Account</label>
-	 						<div class="li-2">
-	 							<label class="label-light label-small">Deactivate your account</label>
-	 							<br>
-	 							<label class="dact"><input type="radio" name="dact-rad" value="yes">Yes</label>
-	 							<label class="dact"><input type="radio" name="dact-rad" value="no">No</label>
-	 							<button class="btn btn-success edit-done">Save</button>
-	 							<button class="btn btn-default edit-cancel">Cancel</button>
-	 						</div>
-	 						<a href="#!" class="edit-click li-3"><span class="span-edit">Edit</span></a>
-	 					</li>
-	 				</ul>
-	 			</div>
+	 			<form method="POST"	id="gen_form">
+	 				{% csrf_token %}
+		 			<div class="setting-body">
+		 				<ul class="lists" type="none">
+		 					<li class="list-item">
+		 						<label class="label-dark li-1">Name</label>
+		 						<div class="li-2">
+		 							<input class="label-light name" name="fullname" value="{{ credentials.name }}" readonly="readonly" >
+		 							
+		 							<button id="" class="btn btn-success edit-done gendone" type="submit">Save</button>
+		 							<button class="btn btn-default edit-cancel">Cancel</button>	
+		 						</div>
+		 						<a href="#!" class="edit-click li-3"><span class="span-edit">Edit</span></a>
+		 					</li>
+		 					<hr>
+		 					<li class="list-item">
+		 						<label class="label-dark li-1">Username</label>
+		 						<div class="li-2" style="flex: 7">
+		 							<input class="label-light name" value="{{ username }}" readonly="readonly" >
+		 							<button class="btn btn-success edit-done">Save</button>
+		 							<button class="btn btn-default edit-cancel">Cancel</button>	
+		 						</div>
+		 						
+		 					</li>
+		 					<hr>
+		 					<li class="list-item">
+		 						<label class="label-dark li-1">Email</label>
+		 						<div class="li-2" style="flex: 7">
+		 							<input class="label-light name" value="{{ credentials.email }}" readonly="readonly" >
+		 							<button class="btn btn-success edit-done">Save</button>
+		 							<button class="btn btn-default edit-cancel">Cancel</button>	
+		 						</div>
+		 						
+		 					</li>
+		 					<hr>
+		 					<li class="list-item">
+		 						<label class="label-dark li-1">Password</label>
+		 						<div class="li-2">
+		 							<input class="label-light name passO" type="password" value="ooooooooo" readonly="readonly" placeholder="Current Password">
+		 							<input class="label-light name pass" type="password" placeholder="New Password" value="" style="display: none">
+		 							<input class="label-light name pass" type="password" placeholder="Retype new password" value="none" style="display: none; margin-bottom: 10px;" name="passw">
+		 							<br>
+		 							<button class="btn btn-success edit-done  gendone">Save</button>
+		 							<button class="btn btn-default edit-cancel">Cancel</button>	
+		 						</div>
+		 						<a href="#!" class="edit-click li-3"><span class="span-edit">Edit</span></a>
+		 					</li>
+		 					<hr>
+		 					<!-- Deactivate account
+		 					<li class="list-item">
+		 						<label class="label-dark li-1">Deactivate Account</label>
+		 						<div class="li-2">
+		 							<label class="label-light label-small">Deactivate your account</label>
+		 							<br>
+		 							<label class="dact"><input type="radio" name="dact-rad" value="yes">Yes</label>
+		 							<label class="dact"><input type="radio" name="dact-rad" value="no">No</label>
+		 							<button class="btn btn-success edit-done">Save</button>
+		 							<button class="btn btn-default edit-cancel">Cancel</button>
+		 						</div>
+		 						<a href="#!" class="edit-click li-3"><span class="span-edit">Edit</span></a>
+		 					</li>
+		 					-->
+		 				</ul>
+		 			</div>
+	 			</form>
 	 		</div>
 	 		<div class="privacy-setting">
 				<div class="privacy-head">
@@ -120,61 +130,70 @@
 					</h3>
 	 			</div>
 	 			<hr>
-	 			<div class="privacy-body">
-	 				<ul class="lists" type="none">
-	 					<li class="list-item">
-	 						<label class="label-dark pli-1">Timeline</label>
-	 						<label class="label-light label-small pli-2">Who can view your timeline?</label>
-	 						<div class="pli-3">
-	 							<select class="priv-select" disabled="disabled">
-	 								<option>Everyone</option>
-	 								<option>Friends</option>
-	 								<option>Friends of Friends</option>
-	 								<option>Only Me</option>
-	 							</select>
-	 							<br>
-	 							<button class="btn btn-success edit-done">Save</button>
-	 							<button class="btn btn-default edit-cancel">Cancel</button>	
-	 						</div>
-	 						<a href="#!" class="edit-click pli-4"><span class="span-edit">Edit</span></a>
-	 					</li>
-	 					<hr>
-	 					<li class="list-item">
-	 						<label class="label-dark pli-1">Friends</label>
-	 						<label class="label-light label-small pli-2">Who can view your Friends List?</label>
-	 						<div class="pli-3">
-	 							<select class="priv-select" disabled="disabled">
-	 								<option>Everyone</option>
-	 								<option>Friends</option>
-	 								<option>Friends of Friends</option>
-	 								<option>Only Me</option>
-	 							</select>
-	 							<br>
-	 							<button class="btn btn-success edit-done">Save</button>
-	 							<button class="btn btn-default edit-cancel">Cancel</button>	
-	 						</div>
-	 						<a href="#!" class="edit-click pli-4"><span class="span-edit">Edit</span></a>
-	 					</li>
-	 					<hr>
-	 					<li class="list-item">
-	 						<label class="label-dark pli-1">Album</label>
-	 						<label class="label-light label-small pli-2">Who can view your Photos & Videos?</label>
-	 						<div class="pli-3">
-	 							<select class="priv-select" disabled="disabled">
-	 								<option>Everyone</option>
-	 								<option>Friends</option>
-	 								<option>Friends of Friends</option>
-	 								<option>Only Me</option>
-	 							</select>
-	 							<br>
-	 							<button class="btn btn-success edit-done">Save</button>
-	 							<button class="btn btn-default edit-cancel">Cancel</button>	
-	 						</div>
-	 						<a href="#!" class="edit-click pli-4"><span class="span-edit">Edit</span></a>
-	 					</li>
-	 					<hr>
-	 				</ul>
-	 			</div>
+	 			<form id="priv_form" method="POST">
+	 				{% csrf_token %}
+		 			<div class="privacy-body">
+		 				<ul class="lists" type="none">
+		 					<li class="list-item">
+		 						<label class="label-dark pli-1">Timeline</label>
+		 						<label class="label-light label-small pli-2">Who can view your timeline?</label>
+		 						<div class="pli-3">
+		 							<input id="timeline" type="hidden" name="timeline" value="">
+		 							<select id="timeline_sel" class="priv-select" disabled="disabled">
+		 								<option disabled="" selected="selected">{{ privacy.timeline }}</option>
+		 								<option>Everyone</option>
+		 								<option>Friends</option>
+		 								<option>Friends of Friends</option>
+		 								<option>Only Me</option>
+		 							</select>
+		 							<br>
+		 							<button id="timeline_save" class="btn btn-success privdone">Save</button>
+		 							<button class="btn btn-default edit-cancel">Cancel</button>	
+		 						</div>
+		 						<a href="#!" class="edit-click pli-4"><span class="span-edit">Edit</span></a>
+		 					</li>
+		 					<hr>
+		 					<li class="list-item">
+		 						<label class="label-dark pli-1">Friends</label>
+		 						<label class="label-light label-small pli-2">Who can view your Friends List?</label>
+		 						<div class="pli-3">
+		 							<input id="friends_list" type="hidden" name="friends_list" value="">
+		 							<select id="friends_list_sel" class="priv-select" disabled="disabled">
+		 								<option disabled="" selected="selected">{{ privacy.friends_list }}</option>
+		 								<option>Everyone</option>
+		 								<option>Friends</option>
+		 								<option>Friends of Friends</option>
+		 								<option>Only Me</option>
+		 							</select>
+		 							<br>
+		 							<button id="friends_list_save" class="btn btn-success privdone">Save</button>
+		 							<button class="btn btn-default edit-cancel">Cancel</button>	
+		 						</div>
+		 						<a href="#!" class="edit-click pli-4"><span class="span-edit">Edit</span></a>
+		 					</li>
+		 					<hr>
+		 					<li class="list-item">
+		 						<label class="label-dark pli-1">Album</label>
+		 						<label class="label-light label-small pli-2">Who can view your Photos & Videos?</label>
+		 						<div class="pli-3">
+		 							<input id="album" type="hidden" name="album" value="">
+		 							<select id="album_sel" class="priv-select" disabled="disabled">
+		 								<option disabled="" selected="selected">{{ privacy.album }}</option>
+		 								<option>Everyone</option>
+		 								<option>Friends</option>
+		 								<option>Friends of Friends</option>
+		 								<option>Only Me</option>
+		 							</select>
+		 							<br>
+		 							<button id="album_save" class="btn btn-success privdone">Save</button>
+		 							<button class="btn btn-default edit-cancel">Cancel</button>	
+		 						</div>
+		 						<a href="#!" class="edit-click pli-4"><span class="span-edit">Edit</span></a>
+		 					</li>
+		 					<hr>
+		 				</ul>
+		 			</div>
+	 			</form>
 	 		</div>
 	 		<div class="complete">
 	 			<a href="{% url "timeline" %}" class="btn btn-primary">Done</a>
@@ -182,4 +201,39 @@
 	 	</div>
 	{% endblock content %}
 
-	{% block custom_scripts %}{% endblock custom_scripts %}
+	{% block custom_scripts %}
+		<script type="text/javascript">
+
+
+			$(document).ready(function(){
+
+				$("#timeline").val($("#timeline_sel option:selected").text())
+				$("#friends_list").val($("#friends_list_sel option:selected").text())
+				$("#album").val($("#album_sel option:selected").text())
+
+			})
+			$("#timeline_sel").change(function(){
+
+				timeline = $("#timeline_sel option:selected").text()
+				$("#timeline").val(timeline)
+			})
+
+			$("#friends_list_sel").change(function(){
+
+				friends_list = $("#friends_list_sel option:selected").text()
+				$("#friends_list").val(friends_list)
+
+			})
+
+			$("#album_sel").change(function(){
+
+				album = $("#album_sel option:selected").text()
+				$("#album").val(album)
+				
+
+			})
+
+		</script>
+		
+
+	{% endblock custom_scripts %}

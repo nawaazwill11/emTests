@@ -10,9 +10,9 @@ from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect, HttpResponsePermanentRedirect, JsonResponse
 from django.shortcuts import render
 from django.views.generic import TemplateView
-from .models import Login, Pi, Trip, Event, Misc
-from .mods.forms import LoginForm, RegistrationForm, Printer, AboutEditForm, GetInitial, ProfileForm, TripPlanValidation, MyTripForm, EventPlanForm, MyEventForm, FeedbackForm, ContributeForm, ReportForm, ProfileRoot, Miscer, RegPi, Bifurcator, Listing, JoinTrip, JoinEvent
-from .mods.filters import TripSearchFilter, EventSearchFilter
+from .models import Login, Pi, Trip, Event, Misc, EmergencyInfo
+from .mods.forms import LoginForm, RegistrationForm, Printer, AboutEditForm, GetInitial, ProfileForm, TripPlanValidation, MyTripForm, EventPlanForm, MyEventForm, FeedbackForm, ContributeForm, ReportForm, ProfileRoot, Miscer, RegPi, Bifurcator, Listing, JoinTrip, JoinEvent, Credentials, Emergency
+from .mods.filters import TripSearchFilter, EventSearchFilter, EmergencyFilter
 from .mods.test import SharingForm
 from .mods.required import UserInfo
 import re
@@ -304,7 +304,11 @@ class EmergencyPageView(TemplateView):
 
 	def post(self, request, *args, **kwargs):
 		context = {"username": request.session['username'], 'userpic': request.session['userpic']}
-		return render(request, self.template_name, context)
+		emerged = Emergency.postEmergency(request.session['username'], request.POST)
+		if emerged:
+			return JsonResponse({'success': True})
+		#return JsonResponse({'success': False})
+		#return render(request, self.template_name, context)
 
 
 class EmergencyRequestPageView(TemplateView):
@@ -312,6 +316,9 @@ class EmergencyRequestPageView(TemplateView):
 
 	def get(self, request, *args, **kwargs):
 		context = {"username": request.session['username'], 'userpic': request.session['userpic']}
+		emer_list = EmergencyInfo.objects.all()
+		emer_filter = EmergencyFilter(request.GET, queryset=emer_list)
+		context['filters'] = emer_filter
 		return render(request, self.template_name, context)
 
 	def post(self, request, *args, **kwargs):
@@ -475,12 +482,29 @@ class ProfileSettingsPageView(TemplateView):
 		context = {}
 		context['username'] = request.session['username']
 		context['userpic'] = request.session['userpic']
+		credentials = Credentials.credentials(request.session['username']) 
+		privacy = Credentials.getPrivacy(request.session['username'])	
+		context['credentials'] = credentials
+		context['privacy'] = privacy
 		return render(request, self.template_name, context)
 
 	def post(self, request, *args, **kwargs):
 		context = {}
 		context['username'] = request.session['username']
 		context['userpic'] = request.session['userpic']
+		print(request.POST)
+		if 'fullname' in request.POST:
+			credentials = Credentials.altercredentials(request.session['username'], request.POST)
+			if credentials:
+				return JsonResponse({"success": True})
+			return JsonResponse({"success": False})
+		if 'timeline' in request.POST:
+			print('here')
+			privacy = Credentials.alterPrivacy(request.session['username'], request.POST)
+			if privacy:
+				return JsonResponse({"success": True})
+			return JsonResponse({"success": False})
+		
 		return render(request, self.template_name, context)
 
 
@@ -589,6 +613,7 @@ class StoryPageView(TemplateView):
 
 class TimelinePageView(TemplateView):
 	template_name = 'timeline.html'
+	form = AboutEditForm
 	rootform = ProfileForm
 	initials = ''
 
@@ -597,14 +622,18 @@ class TimelinePageView(TemplateView):
 		username_list = Listing.username_lister()
 		rootform = self.rootform(initial='')
 		initials = GetInitial.initial(request.session['username'])
-		context = {'rootform': rootform, 'initials': initials, 'username': request.session['username'], 'userpic': request.session['userpic'], 'firstname': request.session['firstname'], 'lastname': request.session['lastname'], 'ulist': username_list}
+		form = self.form(initial=initials)
+		context = {'form': form, 'rootform': rootform, 'initials': initials, 'username': request.session['username'], 'userpic': request.session['userpic'], 'firstname': request.session['firstname'], 'lastname': request.session['lastname'], 'ulist': username_list}
+
 		return render(request, self.template_name, context)
 
 	def post(self, request, *args, **kwargs):
 		RootHandler.rooter(request.session['username'], request.FILES)
+		username_list = Listing.username_lister()
 		rootform = self.rootform(initial='')
 		initials = GetInitial.initial(request.session['username'])
-		context = {'rootform': rootform, 'initials': initials, 'username': request.session['username'], 'userpic': request.session['userpic'], 'firstname': request.session['firstname'], 'lastname': request.session['lastname']}
+		form = self.form(initial=initials)
+		context = {'form': form, 'rootform': rootform, 'initials': initials, 'username': request.session['username'], 'userpic': request.session['userpic'], 'firstname': request.session['firstname'], 'lastname': request.session['lastname'], 'ulist': username_list}
 		return render(request, self.template_name, context)
 
 
