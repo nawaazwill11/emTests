@@ -513,7 +513,8 @@ margin-bottom: 14px;
 }
 
 .media-patch-1 > img, .media-patch-2 > img, .media-patch-3 > img {
-    width: 165px;
+    width: 182px;
+    height: 164px;
 }
 .media-more{
     position: relative;

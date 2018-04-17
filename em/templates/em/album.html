@@ -70,6 +70,150 @@
 		    </div>
 		  </div>
 		</div>
+		<div class="albums">
+		  <div class="album-card">
+		    <div class="album-card-contents">
+		      <div class="album-card-cover">
+		        <a href="#!" id="album-select"><img src="{% static "img/Shopping.jpg" %}"></a>
+		      </div>
+		      <div class="album-card-info">
+		      	<div class="album-type">
+		      		<label class="label-dark">Event</label>
+		      	</div>
+		      	<div class="album-card-info-low">
+		      		<div class="album-name">
+		      			<label class="label-dark">Shopping Cart Fun</label>
+		      		</div>
+		      		<div class="album-updated">
+		      			<span>Last Added: 12 days ago</span>
+		      		</div>
+		      		<div class="album-popular">
+		        		<div class="album-popular-case">
+		        			<div class="album-popular-score">
+		        				<span>67</span>
+		        			</div>
+		        			<div class="album-popular-title">
+		        				<label class="label-dark">Items</label>
+		        			</div>
+		        		</div>
+		        		<div class="album-popular-case">
+		        			<div class="album-popular-score">
+		        				<span>89</span>
+		        			</div>
+		        			<div class="album-popular-title">
+		        				<label class="label-dark">Likes</label>
+		        			</div>
+		        		</div>
+		        		<div class="album-popular-case">
+		        			<div class="album-popular-score">
+		        				<span>34</span>
+		        			</div>
+		        			<div class="album-popular-title">
+		        				<label class="label-dark">Comments</label>
+		        			</div>
+		        		</div>
+		      		</div>	
+		      	</div>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		<div class="albums">
+		  <div class="album-card">
+		    <div class="album-card-contents">
+		      <div class="album-card-cover">
+		        <a href="#!" id="album-select"><img src="{% static "img/Photography.jpg" %}"></a>
+		      </div>
+		      <div class="album-card-info">
+		      	<div class="album-type">
+		      		<label class="label-dark">Event</label>
+		      	</div>
+		      	<div class="album-card-info-low">
+		      		<div class="album-name">
+		      			<label class="label-dark">Lens Magic</label>
+		      		</div>
+		      		<div class="album-updated">
+		      			<span>Last Added: 19 days ago</span>
+		      		</div>
+		      		<div class="album-popular">
+		        		<div class="album-popular-case">
+		        			<div class="album-popular-score">
+		        				<span>44</span>
+		        			</div>
+		        			<div class="album-popular-title">
+		        				<label class="label-dark">Items</label>
+		        			</div>
+		        		</div>
+		        		<div class="album-popular-case">
+		        			<div class="album-popular-score">
+		        				<span>90</span>
+		        			</div>
+		        			<div class="album-popular-title">
+		        				<label class="label-dark">Likes</label>
+		        			</div>
+		        		</div>
+		        		<div class="album-popular-case">
+		        			<div class="album-popular-score">
+		        				<span>13</span>
+		        			</div>
+		        			<div class="album-popular-title">
+		        				<label class="label-dark">Comments</label>
+		        			</div>
+		        		</div>
+		      		</div>	
+		      	</div>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		<div class="albums">
+		  <div class="album-card">
+		    <div class="album-card-contents">
+		      <div class="album-card-cover">
+		        <a href="#!" id="album-select"><img src="{% static "img/group-traveller.jpg" %}"></a>
+		      </div>
+		      <div class="album-card-info">
+		      	<div class="album-type">
+		      		<label class="label-dark">Travel</label>
+		      	</div>
+		      	<div class="album-card-info-low">
+		      		<div class="album-name">
+		      			<label class="label-dark">From Basement to Timbacktu</label>
+		      		</div>
+		      		<div class="album-updated">
+		      			<span>Last Added: 1 month ago</span>
+		      		</div>
+		      		<div class="album-popular">
+		        		<div class="album-popular-case">
+		        			<div class="album-popular-score">
+		        				<span>10</span>
+		        			</div>
+		        			<div class="album-popular-title">
+		        				<label class="label-dark">Items</label>
+		        			</div>
+		        		</div>
+		        		<div class="album-popular-case">
+		        			<div class="album-popular-score">
+		        				<span>257</span>
+		        			</div>
+		        			<div class="album-popular-title">
+		        				<label class="label-dark">Likes</label>
+		        			</div>
+		        		</div>
+		        		<div class="album-popular-case">
+		        			<div class="album-popular-score">
+		        				<span>76i</span>
+		        			</div>
+		        			<div class="album-popular-title">
+		        				<label class="label-dark">Comments</label>
+		        			</div>
+		        		</div>
+		      		</div>	
+		      	</div>
+		      </div>
+		    </div>
+		  </div>
+		</div>
 		<div class="album-overlay-view" id="album-selected" hidden="hidden">
 			<div class="album-overlay-container">
 				<div class="album-photo-container">
@@ -367,5 +511,32 @@
 	{% endblock overlay %}
 
 	{% block cs %}
-		
+		<script type="text/javascript">
+
+			
+      var link = $( '#album-select' )[0];
+      var overlay = $( '#olay' )[0];
+      var TD = $( '#album-selected' )[0];
+
+      $( link ).on( 'click', function ( e ) {
+          $( overlay ).show();
+          $( TD ).show();
+          e.stopPropagation();
+      });
+
+      $( document ).on( 'click', function ( e ) {
+          if ( $( e.target ).closest( TD ).length === 0 ) {
+              $( overlay ).hide();
+              $( TD ).hide();
+          }
+      });
+                      
+      $( document ).on( 'keydown', function ( e ) {
+          if ( e.keyCode === 27 ) {
+              $( overlay ).hide();
+              $( TD ).hide();
+          }
+      });
+
+		</script>
 	{% endblock cs %}
