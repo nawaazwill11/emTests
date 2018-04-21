@@ -147,6 +147,7 @@
 }
 .tb-title {
     flex: 3;
+    text-align: center;
 }
 .tb-credit {
     display: flex;
