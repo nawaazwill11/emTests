@@ -998,7 +998,7 @@ class Bifurcator():
 		event_contents_list = []
 		part_contents_list = []
 		for event_id in id_list:
-			event = Event.objects.filter(username=username, event_id=event_id).values()
+			event = Event.objects.filter(event_id=event_id).values()
 			parts = EventParticipants.objects.filter(event_id=event_id).values('username')
 			users_list = []
 			for p in parts:
