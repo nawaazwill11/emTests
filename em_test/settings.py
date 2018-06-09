@@ -152,8 +152,6 @@ STATICFILES_DIRS = [
     STATIC_DIRS,
 ]
 
-STATIC_ROOT = os.path.join(STATIC_DIRS)
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 LOGIN_URL = ("/em/")
 
