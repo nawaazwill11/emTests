@@ -28,7 +28,7 @@ SECRET_KEY = 'yy^90ekqhzotxrjzjxvu6&exw!cqr=&0f64kn4q77dez6tlc=b'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'endlessmiles101.herokuapp.com', '127.0.0.1:8000', 'localhost', 'localhost:8000']
 
 
 # Application definition
@@ -139,6 +139,9 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     STATIC_DIRS,
 ]
+
+STATIC_ROOT = os.path.join(STATIC_DIRS)
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 LOGIN_URL = ("/em/")
 
