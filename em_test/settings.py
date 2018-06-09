@@ -84,7 +84,7 @@ WSGI_APPLICATION = 'em_test.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
-
+"""
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -95,8 +95,22 @@ DATABASES = {
         'PORT': '',
     }
 }
+"""
 
+"""DATABASES = {
+    'default': {
+        'ENGINE': 'postgres://zwunpyuzrxmzja:4cb673cc2f230291c596656926cfc40bb3647853b8573f224ebfad59530b468d@ec2-50-19-232-205.compute-1.amazonaws.com:5432/dfsa2naq8bnsek',
+        'HOST': 'ec2-50-19-232-205.compute-1.amazonaws.com',
+        'NAME': 'dfsa2naq8bnsek',
+        'USER': 'zwunpyuzrxmzja',
+        'PORT': '5432',
+        'PASSWORD': '4cb673cc2f230291c596656926cfc40bb3647853b8573f224ebfad59530b468d',
 
+    }
+}
+"""
+
+{'default': dj_database_url.config(default=os.environ["DATABASE_URL"])}
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
