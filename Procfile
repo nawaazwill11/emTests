@@ -1,2 +1,2 @@
 release: python manage.py migrate
-web: gunicorn tarpatri.wsgi --log-file -
+web: gunicorn em_tests.wsgi --log-file -
