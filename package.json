@@ -1,0 +1,4 @@
+{
+  "scripts": {
+    "postinstall": "sudo service postgresql start"
+}
