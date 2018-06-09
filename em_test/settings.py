@@ -35,7 +35,6 @@ ALLOWED_HOSTS = ['127.0.0.1', 'endlessmiles101.herokuapp.com', '127.0.0.1:8000',
 
 INSTALLED_APPS = [
     'em',
-    'widget_tweaks',
     'django_filters',
     'django.contrib.admin',
     'django.contrib.auth',
