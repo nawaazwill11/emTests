@@ -28,18 +28,18 @@
                 <div class="page-title col-lg-1"><h1><i>{% block page_name %}{% endblock page_name %}</i></h1></div>
                 <div class="input-group input-group-md col-lg-offset-2 col-lg-3" id="nav-search">
                 {% block top_nav_search %}
-                <form id="navsearch_form" method="GET" style="display: flex">
-                    <input type="text" name="search" list="search_list" data-list-focus="true" class="form-control search-input-top" placeholder="Search people..." style="color:white;">
+                <form id="navsearch_form" method="POST" style="display: flex; flex: 1">
+                  {% csrf_token %}
+                    <input type="text" id="search_box" name="search" list="search_list" data-list-focus="true" class="form-control search-input-top" placeholder="Search people..." style="color:white;">
                     <datalist id="search_list">
-                        <select>
-                            {% for user in ulist  %}
-                                <option>{{ user }}</option>
-                            {% endfor %}
-                        </select>
-                        
+                        <select id="search_list_select"></select>
                     </datalist>
+                </form>
+                <form id="search_user_btn" method="POST" style="display: flex">
+                  {% csrf_token %}
                     <span class="input-group-btn">
-                        <button class="btn btn-danger search-button-top" style="left: -45px; z-index: 1000; width: 50px"><span class="glyphicon glyphicon-search"></span></button>
+                        <input id="user_selected" type="hidden" name="user_selected">
+                        <button id="search_user_btn" class="btn btn-danger search-button-top" style="z-index: 1000; width: 50px"><span class="glyphicon glyphicon-search"></span></button>
                     </span>
                 </form>
                 {% endblock top_nav_search %}
@@ -59,7 +59,9 @@
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a href="{% url "timeline" %}">Profile</a></li>
+                        <li><a href="{% url "timeline" %}">Profile</a>
+
+                        </li>
                         <li><a href="{% url "profilesetting" %}">Settings</a></li>
                         <li><a href="#">Help</a></li>
                         <li role="separator" class="divider"></li>
@@ -114,14 +116,14 @@
             <li style="color: #ef0707"><h1><u> Page Options</u></h1></li>
             {% block inner_rightSideBar %}{% endblock inner_rightSideBar %}
         </ul>
-    </div>
+      </div>
 
-    <div class="rightSidenav-content ">
-        <ul class="rightSidenav-content-ul">
-            <li id="t-ham"><span data-toggle="tooltip" data-placement="top" data-original-title="Menu" class="glyphicon glyphicon-menu-hamburger" onclick="rightOpenNav()"></span></li>
-            {% block outer_rightSideBar %}{% endblock outer_rightSideBar %}
-        </ul>
-    </div>
+      <div class="rightSidenav-content ">
+          <ul class="rightSidenav-content-ul">
+              <li id="t-ham"><span data-toggle="tooltip" data-placement="top" data-original-title="Menu" class="glyphicon glyphicon-menu-hamburger" onclick="rightOpenNav()"></span></li>
+              {% block outer_rightSideBar %}{% endblock outer_rightSideBar %}
+          </ul>
+      </div>
     {% endblock right_side_nav %}
     
 
@@ -166,6 +168,11 @@
         }
       })  
 </script>
+<script type="text/javascript">
+  {% for user in ulist %}
+    alert('yes')
+  {% endfor %}
+</script>
 <script>
     $(document).ready(function() {
         $("#aboutsubmit").click(function(){
@@ -184,6 +191,53 @@
           return false;
         });
     })
+</script>
+<script type="text/javascript">
+    
+    var options = ""
+    $(document).ready(function(){
+      $('#search_box').keyup(function(){
+        search_string = $('#search_box').val()
+        ss = $("#search_list_select")
+        sb = $('#search_box')
+        ss.html("");
+          $.ajax({
+            type: 'POST',
+            url: '#',
+            dataType: 'json',
+            data: $('#navsearch_form').serialize(),
+            success: function (x){
+              ulist = x['ulist']
+              options = ""
+              for (var i=0; i< ulist.length; i++){
+                ss.html("")
+                options = options + ("<option value="+ulist[i]['username']+">"+ulist[i]['username']+"</option>")
+              }
+              ss.append(options)
+              len = sb.val()
+              if (len.length === 0){
+                ss.html("")
+              }
+            }
+          })
+          
+      });
+    });
+    
+
+    $(document).ready(function(){
+      $("#search_list_select").change(function(){
+        var search_user = $("#search_list_select option:selected").val();
+        $("#search_box").val(search_user);
+      })
+    })
+
+    $(document).ready(function(){
+      $("#search_user_btn").click(function (){
+        username = $("#search_box").val()
+        $("#user_selected").val(username)
+      })
+    });
 </script>
 {% block custom_scripts %}{% endblock custom_scripts %}
 </body>

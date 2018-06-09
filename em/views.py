@@ -11,7 +11,7 @@ from django.http import HttpResponseRedirect, HttpResponsePermanentRedirect, Jso
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from .models import Login, Pi, Trip, Event, Misc, EmergencyInfo
-from .mods.forms import LoginForm, RegistrationForm, Printer, AboutEditForm, GetInitial, ProfileForm, TripPlanValidation, MyTripForm, EventPlanForm, MyEventForm, FeedbackForm, ContributeForm, ReportForm, ProfileRoot, Miscer, RegPi, Bifurcator, Listing, JoinTrip, JoinEvent, Credentials, Emergency
+from .mods.forms import LoginForm, RegistrationForm, Printer, AboutEditForm, GetInitial, ProfileForm, TripPlanValidation, MyTripForm, EventPlanForm, MyEventForm, FeedbackForm, ContributeForm, ReportForm, ProfileRoot, Miscer, RegPi, Bifurcator, Listing, JoinTrip, JoinEvent, Credentials, Emergency, TopSearch
 from .mods.filters import TripSearchFilter, EventSearchFilter, EmergencyFilter
 from .mods.test import SharingForm
 from .mods.required import UserInfo
@@ -56,26 +56,29 @@ class IndexPageView(TemplateView):
 				cleaned = form.cleaned_data
 				username = cleaned['username']
 				password = cleaned['password']
-				cookie = cleaned['cookie']
-				print(username, password)
-				user = authenticate(username=username, password=password)
-				print(user)
-				if user:
-					print('aithed')
-					auth_login(request, user)
-					user_in_session = create_session(request, username)
-					info_in_session = create_session_rest(request, username)
-					if cookie == 'yes':
-						request.session.set_expiry(0)
-					else:
-						request.session.set_expiry(3600)
-					if user_in_session and info_in_session:
-						print("got sess")
-						misc = Miscer.miscZ(username)
-						if misc:
-							print("miscing")
-							return JsonResponse({"success": True, "url": 'about/about_fill/'})	
-						return JsonResponse({"success": True, "url": 'story/'})
+				valid = LoginForm.loginValid(username)
+				print(valid)
+				if valid:
+					cookie = cleaned['cookie']
+					print(username, password)
+					user = authenticate(username=username, password=password)
+					print(user)
+					if user:
+						print('aithed')
+						auth_login(request, user)
+						user_in_session = create_session(request, username)
+						info_in_session = create_session_rest(request, username)
+						if cookie == 'yes':
+							request.session.set_expiry(0)
+						else:
+							request.session.set_expiry(3600)
+						if user_in_session and info_in_session:
+							print("got sess")
+							misc = Miscer.miscZ(username)
+							if misc:
+								print("miscing")
+								return JsonResponse({"success": True, "url": 'about/about_fill/'})	
+							return JsonResponse({"success": True, "url": 'friends/'})
 				return JsonResponse({"success": False})
 
 class IndexOldPageView(TemplateView):
@@ -160,6 +163,7 @@ def create_session_rest(request, username):
 		request.session['userpic'] = str(pi.profilepic)
 		request.session['firstname'] = str(user.first_name)
 		request.session['lastname'] = str(user.last_name)
+		request.session['visit'] = str(user.username)
 		print(request.session['userpic'])
 		return True
 	return False
@@ -429,7 +433,18 @@ class FriendsPageView(TemplateView):
 		rootform = self.rootform(initial='')
 		initials = GetInitial.initial(request.session['username'])
 		context = {'rootform': rootform, 'initials': initials,"username": request.session['username'], 'userpic': request.session['userpic']}
-		return render(request, self.template_name, context)
+		if 'search' in request.POST:
+			username_list = TopSearch.userList(request.POST)
+			if not username_list:
+				username_list = []
+			context['ulist'] = username_list
+			return JsonResponse({'success': True, 'ulist': username_list})
+
+		if 'user_selected' in request.POST:
+			username = request.POST['user_selected']
+			print(username)
+			request.session['username'] = username
+			return render(request, 'about.html', context)
 
 
 class MyEventPageView(TemplateView):

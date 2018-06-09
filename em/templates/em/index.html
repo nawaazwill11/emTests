@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Creative - Start Bootstrap Theme</title>
+    <title>Welcome to Endless Miles</title>
 
     <!-- Bootstrap core CSS -->
     {% block static_files %}
@@ -633,11 +633,16 @@
               dataType: 'json',
               data: $('#form_login').serialize(),
               success: function (x) {                
-                $("#credential-error").text("Login Success");
                 var delay = 1000; 
-                redirect_url = x.url
+                if (x.success === true){
+                  $("#credential-error").text("Login Success");
+                  redirect_url = x.url
+                  setTimeout(function(){ window.location = redirect_url; }, delay);
+                }
+                else {
+                  $("#credential-error").text("Invalid Credentials");
+                }
                 //alert("Welcome to Endless Miles. Happy Travelling!");
-                setTimeout(function(){ window.location = redirect_url; }, delay);
               },
               error:function(){
                 $("#credential-error").text("Invalid Credentials");

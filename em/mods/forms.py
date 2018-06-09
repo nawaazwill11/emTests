@@ -46,21 +46,13 @@ class LoginForm(forms.Form):
 		return isclean
 
 
-	def loginauth(email):
-		print(email)
-
-		'''
-		try:
-			#if (Login.objects.get(email=email, passw=password)):
-			#	return True
-			
-			if (User.objects.filter(email=email).exists()):
-				user = authenticate(email=email, password=password)
-				
-		except ObjectDoesNotExist as e:
+	def loginValid(username):
+		if (User.objects.filter(username=username).exists()):
+			return True
+		else:
 			return False
-		'''
-		
+			
+			
 
 
 	'''def clean_image(self):
@@ -1149,6 +1141,27 @@ class Emergency():
 		if emer:
 			return True
 		return False
+
+class TopSearch():
+	#userList returns the name and img of the users -- 
+	#-- matching the search_string
+	def userList(response):
+		#Gets the response dictionary from the form.
+		#Converts the response dict to a list
+		kwargs = dict(response.lists())
+		#Extracts the value from the search key in the response dictionry
+		usernames = kwargs['search'][0]
+		uList = []
+		if (Pi.objects.filter(username__icontains=usernames)):
+			pi = Pi.objects.filter(username__icontains=usernames).values('username', 'profilepic')
+			for p in pi:
+				uList.append(p)
+			return uList
+		return False
+			
+
+
+
 
 '''
 #Using clean()
